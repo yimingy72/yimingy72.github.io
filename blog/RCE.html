@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="RCE," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="yym's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="RCE漏洞原理英文全称：remote command&#x2F;code execute(远程命令&#x2F;代码执行漏洞)；RCE分为远程命令执行和远程代码执行区别：     能够对一个php的站点，控制php代码，那么我们就把它划分为代码执行       如果能执行网站所在服务器中的命令，我们这就把它划分为命令执行，因为它执行的是系统命令  远程命令执行命令执行漏洞指的是可以执行系统或者应用指令的漏洞如CMD命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RCE">
+<meta property="og:url" content="http://yoursite.com/blog/RCE.html">
+<meta property="og:site_name" content="yym&#39;s blog">
+<meta property="og:description" content="RCE漏洞原理英文全称：remote command&#x2F;code execute(远程命令&#x2F;代码执行漏洞)；RCE分为远程命令执行和远程代码执行区别：     能够对一个php的站点，控制php代码，那么我们就把它划分为代码执行       如果能执行网站所在服务器中的命令，我们这就把它划分为命令执行，因为它执行的是系统命令  远程命令执行命令执行漏洞指的是可以执行系统或者应用指令的漏洞如CMD命令">
+<meta property="article:published_time" content="2020-04-25T12:14:00.000Z">
+<meta property="article:modified_time" content="2020-04-27T04:46:34.582Z">
+<meta property="article:author" content="yimingy72">
+<meta property="article:tag" content="RCE">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/blog/RCE.html"/>
+
+
+
+
+
+  <title>RCE | yym's blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yym's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/RCE.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yimingy72">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yym's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RCE</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T20:14:00+08:00">
+                2020-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" itemprop="url" rel="index">
+                    <span itemprop="name">远程代码/命令执行</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="RCE漏洞原理"><a href="#RCE漏洞原理" class="headerlink" title="RCE漏洞原理"></a><center>RCE漏洞原理<center></h1><h5 id="英文全称：remote-command-code-execute-远程命令-代码执行漏洞-；"><a href="#英文全称：remote-command-code-execute-远程命令-代码执行漏洞-；" class="headerlink" title="英文全称：remote command/code execute(远程命令/代码执行漏洞)；"></a>英文全称：remote command/code execute(远程命令/代码执行漏洞)；</h5><h3 id="RCE分为远程命令执行和远程代码执行"><a href="#RCE分为远程命令执行和远程代码执行" class="headerlink" title="RCE分为远程命令执行和远程代码执行"></a>RCE分为<font color = red>远程命令执行</font>和<font color = red>远程代码执行</font></h3><p>区别：   </p>
+<ul>
+<li>能够对一个php的站点，控制php代码，那么我们就把它划分为代码执行      </li>
+<li>如果能执行网站所在服务器中的命令，我们这就把它划分为命令执行，因为它执行的是系统命令</li>
+</ul>
+<h2 id="远程命令执行"><a href="#远程命令执行" class="headerlink" title="远程命令执行"></a><font color = gree>远程命令执行</font></h2><h4 id="命令执行漏洞指的是可以执行系统或者应用指令的漏洞"><a href="#命令执行漏洞指的是可以执行系统或者应用指令的漏洞" class="headerlink" title="命令执行漏洞指的是可以执行系统或者应用指令的漏洞"></a>命令执行漏洞指的是可以执行系统或者应用指令的漏洞</h4><p>如CMD命令或者bash命令的漏洞，PHP的命令执行漏洞主要基于一些函数的参数过滤不严导致，可以执行命令的函数有:<br><font color =red >system()、exec()、shell_exec()、passthru()、pcntl_exec()、popen()、proc_open(),ob_start()，mail函数+LD_PRELOAD </font><br>执行系统命令共九个函数,另外反引号(`)也可以执行命令,不过实际上这种方式也是调用的shell_exec()函数。</p>
+<h2 id="讲解函数"><a href="#讲解函数" class="headerlink" title="讲解函数"></a><font color = gree>讲解函数</font></h2><p>php提供了system(),exec(),passthru()这几个函数来调用外部的命令.    </p>
+<p><font color = red>他们的区别 :</font>   </p>
+<ul>
+<li>exec 执行系统外部命令时不会输出结果，而是返回结果的最后一行，如果你想得到结果你可以使用第二个参数，让其输出到指定的数组，此数组一个记录代表输出的一行，即如果输出结果有20行，则这个数组就有20条记录，第三个参数用来取得命令执行的状态码，通常执行成功都是返回０。  </li>
+<li>system和exec的区别在于system在执行系统外部命令时，直接将结果输出到浏览器，不需要使用 echo 或 return 来查看结果，如果执行命令成功则返回true，否则返回false。第二个参数与exec第三个参数含义一样。</li>
+<li>passthru与exec的区别，passthru直接将结果输出到浏览器，不需要使用 echo 或 return 来查看结果，不返回任何值，且其可以输出二进制，比如图像数据。   </li>
+</ul>
+<p><font color = red>相同点:</font>  </p>
+<ul>
+<li>都可以获得命令执行的状态码  <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Linux下一条命令或一个进程执行完成会返回一个一个状态码。</span><br><span class="line"></span><br><span class="line"><span class="number">0</span>   ===   成功执行</span><br><span class="line"></span><br><span class="line">非<span class="number">0</span> ===  执行过程中出现异常或非正常退出</span><br></pre></td></tr></table></figure>
+在PHP中调用外部命令，可以用如下三种方法来实现：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">highlight_file(<span class="keyword">__FILE__</span>);</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"system('whoami'):   "</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php">system(<span class="string">'whoami'</span>);</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"var_dump(exec('ipconfig')):   "</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php">var_dump(exec(<span class="string">'ipconfig'</span>));</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">'exec(whoami,$b):'</span>;</span></span><br><span class="line"><span class="php">exec(<span class="string">'whoami'</span>,$b);</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php">var_dump($b);</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"exec('whoami')"</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php">exec(<span class="string">'whoami'</span>);</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"passthru('whoami'):"</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php">passthru(<span class="string">'whoami'</span>);</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"shell_exec('ipconfig')"</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="popen-函数"><a href="#popen-函数" class="headerlink" title="popen()函数"></a><font color = red>popen()函数</font></h3>popen()丶proc_open()函数不会直接返回执行结果，而是返回一个文件指针，但命令是已经执行了的，下面我们看看 popen()的用法,它需要两个参数,一个是执行的命令,另<br>外一个是指针文件的连接模式，有r 和 w代表读和写。<br>测试代码如下：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">windows下</span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">popen(<span class="string">'dir &gt;&gt;E:/2.txt'</span>,<span class="string">'w'</span>)</span></span><br><span class="line"><span class="php"><span class="comment">//把标准输出重定向到一个文件中(追加)</span></span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br><span class="line">linux下：</span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">$file = popen(<span class="string">"/bin/ls"</span>,<span class="string">"r"</span>);</span></span><br><span class="line"><span class="php"><span class="comment">//some code to be executed</span></span></span><br><span class="line"><span class="php">pclose($file);</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="CTF例题："><a href="#CTF例题：" class="headerlink" title="CTF例题："></a><font color = gree>CTF例题：</font></h2></li>
+<li>DVWA靶场命令执行题<br><a href="http://127.0.0.1:8000/DVWA/vulnerabilities/exec/" target="_blank" rel="noopener">http://127.0.0.1:8000/DVWA/vulnerabilities/exec/</a></li>
+</ul>
+<h2 id="远程代码执行"><a href="#远程代码执行" class="headerlink" title="远程代码执行"></a><font color = gree>远程代码执行</font></h2><p>代码执行漏洞是指应用程序本身过滤不严,用户可以通过请求将代码注入到应用中执行.说得好理解一点类似于SQL注人漏洞,可以把SQL语句注入到SQL服务执行，而PHP代码执行漏洞则是可以把代码注入<br>到应用中，最终到Webserver去执行。   </p>
+<p>这样的漏洞如果没有特殊的过滤，相当于直接有一个Web后门存在，该漏洞主要由<font color = red>eval()、assert()、preg_replace()、call_user_func()call_user_func_array()、array_map()</font>等函数的参数过滤不严格导致     </p>
+<p>另外还有PHP的动态函数（$a($b))也是目前出现比较多的。</p>
+<h2 id="讲解函数-1"><a href="#讲解函数-1" class="headerlink" title="讲解函数"></a><font color = gree>讲解函数</font></h2><h3 id="eval-函数"><a href="#eval-函数" class="headerlink" title="eval()函数"></a><font color = red>eval()函数</font></h3><p>eval() 函数把字符串按照 PHP 代码来计算。<br>该字符串必须是合法的 PHP 代码，且必须以分号结尾。<br>如果代码中存在解析错误，则 eval() 函数返回 false。   </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">$a = <span class="string">'aaa'</span>;</span></span><br><span class="line"><span class="php">$b = <span class="string">'bbb'</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">eval</span>(<span class="string">'$a=$b;'</span>);</span></span><br><span class="line"><span class="php">var_dump($a);</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php"><span class="keyword">eval</span>(<span class="string">'echo 1111;'</span>);</span></span><br></pre></td></tr></table></figure>
+<p>代码不能包含打开/关闭PHP标签，但可以用合适的 PHP tag 来闭合离开、重新进入 PHP 模式。   </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php"><span class="keyword">eval</span>(<span class="string">'&lt;?php echo "Hi!"; ?&gt;'</span>);</span></span><br><span class="line"><span class="php"><span class="keyword">eval</span>(<span class="string">'echo "In PHP mode!"; ?&gt;In HTML mode!&lt;?php echo "Hi!";'</span>);</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span>闭合php文件开头的<span class="php"><span class="meta">&lt;?php</span>，<span class="meta">&lt;?</span>=可以输出。</span></span><br><span class="line"><span class="php">另外这里<span class="meta">&lt;?</span> <span class="meta">?&gt;</span></span>是短标签，<span class="php"><span class="meta">&lt;?php</span> <span class="meta">?&gt;</span></span>是长标签。在php的配置文件php.ini中有一个short_open_tag的值，开启以后可以使用PHP的短标签：<span class="php"><span class="meta">&lt;?</span> <span class="meta">?&gt;</span></span>同时，</span><br><span class="line">只有开启这个才可以使用 <span class="php"><span class="meta">&lt;?</span>= 以代替 <span class="meta">&lt;?</span> <span class="keyword">echo</span>。不过在php7中这个标签被移除了。</span></span><br><span class="line"><span class="php">~~~ </span></span><br><span class="line"><span class="php"><span class="comment">### &lt;font color = red&gt;assert()函数&lt;/font&gt;  </span></span></span><br><span class="line"><span class="php">bool assert ( mixed $assertion [, string $description ] )    </span></span><br><span class="line"><span class="php">在PHP语言中是用来判断一个表达式是否成立，返回<span class="keyword">true</span> <span class="keyword">or</span> <span class="keyword">false</span>。    </span></span><br><span class="line"><span class="php">如果assertion 是字符串，它将会被assert（）当做PHP代码来执行。</span></span><br></pre></td></tr></table></figure>
+<?php
+$s = 123;
+var_dump(assert("is_int($s)"));
+?>
+
+<?php
+function fo(){
+  $fp = fopen("E://2.txt",'w');
+  fwrite($fp,"123");
+  fclose($fp);
+  return true;
+}
+var_dump(assert("fo()"));
+?>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">函数原理：https:<span class="comment">//www.jianshu.com/p/6f7cc896ba2a</span></span><br><span class="line">### &lt;font color = red&gt;preg_replace()函数&lt;/font&gt; </span><br><span class="line">preg_replace 函数的作用是对字符串进行正则处理，执行一个正则表达式的搜索和替换,它经常会出现漏洞的位置，下面我们来看看它在什么情况下才会出现代码执行漏洞。这个函数比较早，<span class="number">5.5</span>中它已经被弃用了，但是你一样可以去使用它，但是在<span class="number">7.0</span>之后，你就没办法去调用。    </span><br><span class="line"></span><br><span class="line">它的参数和返回如下：   </span><br><span class="line"></span><br><span class="line">&lt;font color = blue&gt;mixed preg_replace ( mixed <span class="symbol">$</span>pattern , mixed <span class="symbol">$</span>replacement , mixed <span class="symbol">$</span>subject [, int <span class="symbol">$</span>limit = <span class="number">-1</span> [, int &amp;<span class="symbol">$</span>count ]] )&lt;/font&gt;    </span><br><span class="line"></span><br><span class="line">搜索 subject 中匹配 pattern 的部分，以 replacement 进行替换。   </span><br><span class="line">参数说明：   </span><br><span class="line"><span class="meta"><span class="meta-keyword">$pattern</span>: 要搜索的模式，可以是字符串或一个字符串数组。   </span></span><br><span class="line"><span class="meta"><span class="meta-keyword">$replacement</span>: 用于替换的字符串或字符串数组。   </span></span><br><span class="line"><span class="meta"><span class="meta-keyword">$subject</span>: 要搜索替换的目标字符串或字符串数组。   </span></span><br><span class="line"><span class="meta"><span class="meta-keyword">$limit</span>: 可选，对于每个模式用于每个 subject 字符串的最大可替换次数。 默认是-1（无限制）。    </span></span><br><span class="line"><span class="meta"><span class="meta-keyword">$count</span>: 可选，为替换执行的次数。</span></span><br></pre></td></tr></table></figure>
+<?php
+@preg_replace("/\[(.*)\]/e",'\\1',$_GET['str']);
+//preg_replace函数需要使用/e修饰符执行正则。
+?>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">正则的意思是GET传递的str变量里搜索中括号口中间的内容作为第一组结果， preg_replace（）函数</span><br><span class="line">第二个参数为 '\\\<span class="number">1</span>'代表这里用第一组结果填充，这里是可以直接执行代码的，所以当我们请求 /<span class="number">1</span>.php?str=[phpinfo()]时，则执行代码&lt;font color = red&gt;phpinfo()&lt;/font&gt;      </span><br><span class="line">这个函数比较复杂，感兴趣的可以去这个博客看看   </span><br><span class="line"></span><br><span class="line">https://mochazz.github.io/<span class="number">2018</span>/<span class="number">08</span>/<span class="number">13</span>/<span class="symbol">%E6</span><span class="symbol">%B7</span><span class="symbol">%B1</span><span class="symbol">%E5</span><span class="symbol">%85</span><span class="symbol">%A5</span><span class="symbol">%E7</span><span class="symbol">%A0</span><span class="symbol">%94</span><span class="symbol">%E7</span><span class="symbol">%A9</span><span class="symbol">%B6preg_replace</span><span class="symbol">%E4</span><span class="symbol">%B8</span><span class="symbol">%8</span>E<span class="symbol">%E4</span><span class="symbol">%BB</span><span class="symbol">%A3</span><span class="symbol">%E7</span><span class="symbol">%A0</span><span class="symbol">%81</span><span class="symbol">%E6</span><span class="symbol">%89</span><span class="symbol">%A7</span><span class="symbol">%E8</span><span class="symbol">%A1</span><span class="symbol">%8</span>C/#<span class="symbol">%E6</span><span class="symbol">%A1</span><span class="symbol">%88</span><span class="symbol">%E4</span><span class="symbol">%BE</span><span class="symbol">%8</span>B</span><br><span class="line"></span><br><span class="line">### &lt;font color = red&gt;eval()函数例题：&lt;/font&gt;</span><br><span class="line">http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8000</span>/anhengweb<span class="number">2</span>.php</span><br></pre></td></tr></table></figure>
+<?php
+include 'flag.php';
+if(isset($_GET['code'])){
+    $code = $_GET['code'];
+    if(strlen($code)>35){
+        die("Long.");
+    }
+    if(preg_match("/[A-Za-z0-9_$]+/",$code)){
+        die("NO.");
+    }
+    @eval($code);
+}else{
+    highlight_file(__FILE__);
+}
+//$hint =  "php function getFlag() to get flag";
+?>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/bin/cat 执行命令    </span><br><span class="line"><span class="string">``</span>反单引号执行命令</span><br></pre></td></tr></table></figure>
+<p>?&gt;<?=`/???/???%20/???/???/????/*`?><br>“/bin/cat /var/www/html/*”</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span> = <span class="string">red</span>&gt;</span>无字母数字preg_match绕过<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://www.cnblogs.com/v01cano/p/11736722.html" target="_blank" rel="noopener">https://www.cnblogs.com/v01cano/p/11736722.html</a></p>
+<pre><code></code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="yimingy72 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="yimingy72 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RCE/" rel="tag"># RCE</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/hello-world.html" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">yimingy72</p>
+              <p class="site-description motion-element" itemprop="description">hello world</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RCE漏洞原理"><span class="nav-number">1.</span> <span class="nav-text">RCE漏洞原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#英文全称：remote-command-code-execute-远程命令-代码执行漏洞-；"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">英文全称：remote command&#x2F;code execute(远程命令&#x2F;代码执行漏洞)；</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RCE分为远程命令执行和远程代码执行"><span class="nav-number">1.0.1.</span> <span class="nav-text">RCE分为远程命令执行和远程代码执行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程命令执行"><span class="nav-number">1.1.</span> <span class="nav-text">远程命令执行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命令执行漏洞指的是可以执行系统或者应用指令的漏洞"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">命令执行漏洞指的是可以执行系统或者应用指令的漏洞</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#讲解函数"><span class="nav-number">1.2.</span> <span class="nav-text">讲解函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#popen-函数"><span class="nav-number">1.2.1.</span> <span class="nav-text">popen()函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CTF例题："><span class="nav-number">1.3.</span> <span class="nav-text">CTF例题：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程代码执行"><span class="nav-number">1.4.</span> <span class="nav-text">远程代码执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#讲解函数-1"><span class="nav-number">1.5.</span> <span class="nav-text">讲解函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#eval-函数"><span class="nav-number">1.5.1.</span> <span class="nav-text">eval()函数</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yimingy72</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
