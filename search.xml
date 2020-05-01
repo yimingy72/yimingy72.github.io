@@ -1,6 +1,557 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>11.thinkphp5模型操作之删除数据</title>
+    <url>/undefined/11.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<h1 id="一丶模型操作之删除数据"><a href="#一丶模型操作之删除数据" class="headerlink" title="一丶模型操作之删除数据"></a><font color=red>一丶模型操作之删除数据</font></h1><h2 id="1丶删除当前模型"><a href="#1丶删除当前模型" class="headerlink" title="1丶删除当前模型"></a><font color=green>1丶删除当前模型</font></h2><p>删除模型数据，可以实例化模型后调用delete方法</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$user</span> = User::get(<span class="number">1</span>);</span><br><span class="line"><span class="variable">$user</span>-&gt;delete();</span><br></pre></td></tr></table></figure>
+<h2 id="2丶根据主键删除"><a href="#2丶根据主键删除" class="headerlink" title="2丶根据主键删除"></a><font color=green>2丶根据主键删除</font></h2><p>或者直接调用静态方法   </p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">User::destroy(<span class="number">1</span>)</span><br><span class="line"><span class="comment">//支持删除多个数据</span></span><br><span class="line">User::destroy(<span class="string">'1,2,3'</span>);</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">User::destroy([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br></pre></td></tr></table></figure>
+<h2 id="3丶条件删除"><a href="#3丶条件删除" class="headerlink" title="3丶条件删除"></a><font color=green>3丶条件删除</font></h2><p>使用数组进行条件删除，例如：</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">//删除状态为0的数据</span></span><br><span class="line">User::destroy([<span class="string">'status'</span>=&gt;<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
+<p>或者通过数据库类的查询条件删除</p>
+<pre><code>User::where(&apos;id&apos;,&apos;&gt;&apos;,10)-&gt;delete();</code></pre>]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>10.thinkphp5模型操作之查询数据</title>
+    <url>/undefined/10.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<h1 id="一丶模型操作之查询数据"><a href="#一丶模型操作之查询数据" class="headerlink" title="一丶模型操作之查询数据"></a><font color=red>一丶模型操作之查询数据</font></h1><h2 id="1丶获取单个数据"><a href="#1丶获取单个数据" class="headerlink" title="1丶获取单个数据"></a><font color=green>1丶获取单个数据</font></h2><p><img src="https://i.imgur.com/r5MBwFC.png" alt="1"> </p>
+<h2 id="2丶获取多个数据"><a href="#2丶获取多个数据" class="headerlink" title="2丶获取多个数据"></a><font color=green>2丶获取多个数据</font></h2><p><img src="https://i.imgur.com/4wU4rjB.png" alt="1"> </p>
+<h2 id="3丶聚合"><a href="#3丶聚合" class="headerlink" title="3丶聚合"></a><font color=green>3丶聚合</font></h2><p><img src="https://i.imgur.com/0ZWVjMe.png" alt="1"> </p>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1.thinkphp5开发规范</title>
+    <url>/undefined/1.thinkphp5%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</url>
+    <content><![CDATA[<h1 id="一丶URL访问"><a href="#一丶URL访问" class="headerlink" title="一丶URL访问"></a><font color=green>一丶URL访问</font></h1><h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a><font color=green>命名规范</font></h2><h3 id="ThinkPHP5-遵循-PSR-2-命名规范和-PSR-4-自动加载规范，并且注意如下规范："><a href="#ThinkPHP5-遵循-PSR-2-命名规范和-PSR-4-自动加载规范，并且注意如下规范：" class="headerlink" title="ThinkPHP5 遵循 PSR-2 命名规范和 PSR-4 自动加载规范，并且注意如下规范："></a>ThinkPHP5 遵循 PSR-2 命名规范和 PSR-4 自动加载规范，并且注意如下规范：</h3><h3 id="目录和文件"><a href="#目录和文件" class="headerlink" title="目录和文件"></a><font color=red>目录和文件</font></h3><ul>
+<li>目录使用小写+下划线；  </li>
+<li>类库、 函数文件统一以 .php 为后缀；   </li>
+<li>类的文件名均以命名空间定义，并且命名空间的路径和类库文件所在路径一致；   </li>
+<li>类文件采用驼峰法命名（首字母大写），其它文件采用小写+下划线命名；   </li>
+<li>类名和类文件名保持一致，统一采用驼峰法命名（首字母大写）；   <h3 id="函数和类、-属性命名"><a href="#函数和类、-属性命名" class="headerlink" title="函数和类、 属性命名  "></a><font color=red>函数和类、 属性命名  </font></h3></li>
+<li>类的命名采用驼峰法（首字母大写），例如 User 、 UserType ，默认不需要添加后缀，例如<br>UserController 应该直接命名为 User ；   </li>
+<li>函数的命名使用小写字母和下划线（小写字母开头）的方式，例如 get_client_ip ；   </li>
+<li>方法的命名使用驼峰法（首字母小写），例如 getUserName ；   </li>
+<li>属性的命名使用驼峰法（首字母小写），例如 tableName 、 instance ；   </li>
+<li>以双下划线“__” 打头的函数或方法作为魔术方法，例如 __call 和 __autoload ；   <h3 id="常量和配置"><a href="#常量和配置" class="headerlink" title="常量和配置"></a><font color=red>常量和配置</font></h3></li>
+<li>常量以大写字母和下划线命名，例如 APP_PATH 和 THINK_PATH ；  </li>
+<li>配置参数以小写字母和下划线命名，例如 url_route_on 和 url_convert ；    <h3 id="数据表和字段"><a href="#数据表和字段" class="headerlink" title="数据表和字段 "></a><font color=red>数据表和字段 </font></h3></li>
+<li>数据表和字段采用小写加下划线方式命名，并注意字段名不要以下划线开头，例如 think_user 表和<br>user_name 字段，不建议使用驼峰和中文作为数据表字段命名。   <h3 id="应用类库命名空间规范"><a href="#应用类库命名空间规范" class="headerlink" title="应用类库命名空间规范"></a><font color=red>应用类库命名空间规范</font></h3></li>
+<li>应用类库的根命名空间统一为app（不建议更改，可以设置 app_namespace 配置参数更改， V5.0.8 版本<br>开始使用 APP_NAMESPACE 常量定义）；<br>例如： app\index\controller\Index 和 app\index\model\User 。   </li>
+</ul>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>12.thinkphp5视图之模板赋值和模板渲染</title>
+    <url>/undefined/12.thinkphp5%E8%A7%86%E5%9B%BE%E4%B9%8B%E6%A8%A1%E6%9D%BF%E8%B5%8B%E5%80%BC%E5%92%8C%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93/</url>
+    <content><![CDATA[<h1 id="一丶视图之模板赋值和模板渲染"><a href="#一丶视图之模板赋值和模板渲染" class="headerlink" title="一丶视图之模板赋值和模板渲染"></a><font color=red>一丶视图之模板赋值和模板渲染</font></h1><h2 id="首先创建文件夹"><a href="#首先创建文件夹" class="headerlink" title="首先创建文件夹"></a><font color=green>首先创建文件夹</font></h2><p><img src="https://i.imgur.com/lu7oH89.png" alt="1"> </p>
+<h2 id="1丶视图实例化"><a href="#1丶视图实例化" class="headerlink" title="1丶视图实例化"></a><font color=green>1丶视图实例化</font></h2><p>视图由\think\View类配合试图驱动（模板引擎）类一起完成，目前的内置模板引擎包含PHP原生模板和think模板引擎；   </p>
+<p>因为新版的控制器可以无需继承任何的基础类，因此在控制器中如何使用视图决定于你怎么定义控制器。   </p>
+<h2 id="2丶继承-think-Controller类"><a href="#2丶继承-think-Controller类" class="headerlink" title="2丶继承\think\Controller类"></a><font color=green>2丶继承\think\Controller类</font></h2><p>如果你的控制器继承了\think\Controller类的话，则无需自己实例化视图类，可以直接调用控制器基础类封装的相关视图类的方法。<br>|下面的方法可以直接被调用|方法|<br>|  —- | —- |<br>|fetch|渲染模板输出|<br>|display|渲染内容输出|<br>|assign|模板变量赋值|<br>|engine|初始化模板引擎|</p>
+<h2 id="3丶模板赋值"><a href="#3丶模板赋值" class="headerlink" title="3丶模板赋值"></a><font color=green>3丶模板赋值</font></h2><p>除了系统变量和配置参数输出无需赋值外，其他变量如果需要在模板中输出必须首先进行模板赋值操作，绑定数据到模板输出有以下方式：   </p>
+<h2 id="assign方法"><a href="#assign方法" class="headerlink" title="assign方法"></a><font color=green>assign方法</font></h2><figure class="highlight scala"><table><tr><td class="code"><pre><span class="line">namespace index \appcontroller； </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Index</span> <span class="keyword">extends</span> <span class="title">\think\Controller</span> </span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">function</span> <span class="title">index（）</span></span></span><br><span class="line"><span class="class"><span class="title">/模板变量赋值</span></span></span><br><span class="line"><span class="class"><span class="title">$name</span> <span class="title">=ThinkPHP：</span></span></span><br><span class="line"><span class="class"><span class="title">$eamil</span> <span class="title">=thinkphp@qq</span>.<span class="title">comi</span> </span></span><br><span class="line"><span class="class"><span class="title">$this-&gt;assign（</span>'<span class="title">name</span>'<span class="title">，</span> <span class="title">$name</span> <span class="title">）</span></span></span><br><span class="line"><span class="class"><span class="title">$this-&gt;assign（‘email’</span>,<span class="title">$email）</span></span></span><br><span class="line"><span class="class"><span class="title">//或者批量赋值</span></span></span><br><span class="line"><span class="class"><span class="title">$this-&gt;assign（</span>[</span></span><br><span class="line"><span class="class">        ‘name’ =&gt; $name </span></span><br><span class="line"><span class="class">          'email'=&gt;$email</span></span><br><span class="line"><span class="class">//模板输出</span></span><br><span class="line"><span class="class">return $this-&gt;fetch（'index'）；</span></span><br><span class="line"><span class="class">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="4丶模板渲染"><a href="#4丶模板渲染" class="headerlink" title="4丶模板渲染"></a><font color=green>4丶模板渲染</font></h2><p>模板渲染最常用的是使用\think\View类的fetch方法，调用格式：   </p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">fetch</span><span class="params">(<span class="string">'[模板文件]'</span>,[<span class="string">'模板变量（数组）'</span>])</span></span></span><br></pre></td></tr></table></figure>
+<p>模板文件的写法支持下面几种：<br>|用法|描述|<br>|——|————-|<br>|不带任何参数|自动定位当前操作的模板文件|<br>|模块[操作]|常用写法，支持跨模块|<br>|完整的模板文件名|直接使用完整的模板文件名(包括模板)|<br>下面是一个最典型的用法，不带任何参数：   </p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//不带任何参数，自动定位当前操作的模板文件</span></span><br><span class="line"><span class="keyword">return</span> $<span class="keyword">this</span>-&gt;fetch();</span><br></pre></td></tr></table></figure>
+<p>表示系统会按照默认规则自动定位模板文件，其规则是：   </p>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">当前模块/默认视图目录/当前控制器<span class="comment">(小写)</span>/当前操作<span class="comment">(小写)</span>.html;</span><br></pre></td></tr></table></figure>
+<p>可以在fetch方法里面去写对应的模板名，他会去当前控制器下面去找对应的模板文件；</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//指定模板输出</span></span><br><span class="line"><span class="keyword">return</span> $<span class="keyword">this</span>-&gt;fetch(<span class="string">'edit'</span>);</span><br></pre></td></tr></table></figure>
+<p>另外fetch方法支持跨模块的操作</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">表示调用user控制器下面的user模板。</span><br><span class="line"><span class="keyword">return</span> $<span class="keyword">this</span>-&gt;fetch(<span class="string">'user/user'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="调用方法："><a href="#调用方法：" class="headerlink" title="调用方法："></a>调用方法：</h3><p><img src="https://i.imgur.com/aKOSRYQ.png" alt="1"> </p>
+<h2 id="5丶传入参数方法"><a href="#5丶传入参数方法" class="headerlink" title="5丶传入参数方法"></a><font color=green>5丶传入参数方法</font></h2><p>方法fetch可以传入模板变量，例如：   </p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line">namespace app\index\controller;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Index</span> <span class="keyword">extends</span> <span class="title">think\Controller</span> </span>&#123;</span><br><span class="line">        public function index()</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> sthis-&gt;fetch(<span class="symbol">'inde</span>x'[</span><br><span class="line">                <span class="symbol">'nam</span>e'=&gt;<span class="symbol">'Think</span> <span class="type">PHP</span>', <span class="symbol">'emai</span>l'=&gt;<span class="symbol">'thinkphp</span><span class="meta">@qq</span>.com'</span><br><span class="line">            ]);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6丶助手函数"><a href="#6丶助手函数" class="headerlink" title="6丶助手函数"></a><font color=green>6丶助手函数</font></h2><p>如果使用view助手函数渲染输出的话，可以使用下面的方法进行模板变量赋值：  </p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> view(<span class="string">'index'</span>,[</span><br><span class="line">    <span class="string">'name'</span>=&gt;<span class="string">'thinkphp'</span>,</span><br><span class="line">    <span class="string">'email'</span>=&gt;<span class="string">'thinkphp<span class="subst">$qq</span>.com'</span></span><br><span class="line">]);</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>14.thinkphp5模板之模板布局</title>
+    <url>/undefined/14.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A8%A1%E6%9D%BF%E5%B8%83%E5%B1%80/</url>
+    <content><![CDATA[<h1 id="一丶模板之模板布局"><a href="#一丶模板之模板布局" class="headerlink" title="一丶模板之模板布局"></a><font color=red>一丶模板之模板布局</font></h1><h2 id="1丶全局配置方式"><a href="#1丶全局配置方式" class="headerlink" title="1丶全局配置方式"></a><font color=green>1丶全局配置方式</font></h2><p>这种方式仅需在项目配置文件中添加相关的布局模板配置,就可以简单实现模板布局功能，比较适用于全站使用相同布局的情况,需要配置开启layout_on参数(默认不开启),并且设置布局入口文件名 layout_name(默认为layout).</p>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line"><span class="symbol">'template</span><span class="symbol">'=&gt;</span>[</span><br><span class="line">    <span class="symbol">'layout_on</span><span class="symbol">'=&gt;true</span>,</span><br><span class="line">    <span class="symbol">'layout_name</span><span class="symbol">'=&gt;</span><span class="symbol">'layout</span>',</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>开启 layout_on后，我们的模板渲染流程就有所变化，例如：</p>
+<figure class="highlight fortran"><table><tr><td class="code"><pre><span class="line">namespace app\<span class="built_in">index</span>\controller； </span><br><span class="line"><span class="keyword">use</span> think\ Controller； </span><br><span class="line"><span class="keyword">Class</span> <span class="built_in">Index</span> <span class="keyword">extends</span> Controller&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span></span> <span class="built_in">index</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> $this-&gt;fetcho()</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在不开启layout_on布局模板之前，会直接渲染application/ index/view/ index/ index.htm模板文件，开启之后，首先会渲染 application/inex/view/ layout. htm1模板，布局模板的写法和其他模板的写法类似，本身也可以支持所有的模板标签以及包含文件，区别在于有一个特定的输出替换变量（_ <em>CONTENT_</em>}，例如，下面是一个典型的Layout.htm模板的写法</p>
+<figure class="highlight dust"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width：100%； height：100px； background-color:red； "</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="template-variable">&#123;__CONTENT__&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width：100%； height：100px； background-color:blue；"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>读取layout模板之后，会解析 index/index.html模板文件，并把解析后的内容替换到layout布局模板文件的{CONTENT}特定字符串。   </p>
+<p>当然可以通过设置来改变这个特定的替换字符串，例如：</p>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line"><span class="symbol">'template</span><span class="symbol">'=&gt;</span>[</span><br><span class="line">    <span class="symbol">'layout_on</span><span class="symbol">'=&gt;true</span>,</span><br><span class="line">    <span class="symbol">'layout_name</span><span class="symbol">'=&gt;</span><span class="symbol">'layout</span>',</span><br><span class="line">    <span class="symbol">'layout_time</span><span class="symbol">'=&gt;</span>'&#123;__REPLACE&#125;'</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>一个布局模板同时只能有一个特定替换字符串。<br>采用这种布局方式的情况下，一旦 index/ index. htm模板文件或者 layout. htm布局模板文件发生修改，都会导致模板重新编译。<br>如果需要指定其他位置的布局模板，可以使用</p>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line"><span class="symbol">'template</span><span class="symbol">'=&gt;</span>[</span><br><span class="line">    <span class="symbol">'layout_on</span><span class="symbol">'=&gt;true</span>,</span><br><span class="line">    <span class="symbol">'layout_name</span><span class="symbol">'=&gt;</span><span class="symbol">'lang</span>',</span><br><span class="line">    <span class="symbol">'layout_item</span><span class="symbol">'=&gt;</span>'&#123;__REPLACE&#125;'</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>就表示采用 application/ index/view/ lang. htm1作为布局模板。<br>如果某些页而不需要使用布局模板功能，可以在模板文件开头加上{_ _ NOLAYOUT__}字符串。<br>如果上面的 Index/index. htm模板文件里面包含有{_ <em>NOLAYOUT_</em>},则即使开启布局模板,也不会进行布局模板解析.</p>
+<h2 id="2丶模板标签方式"><a href="#2丶模板标签方式" class="headerlink" title="2丶模板标签方式"></a><font color=green>2丶模板标签方式</font></h2><p>这种布局模板不需要在配置文件中设置任何参数，也不需要开启 ayout on，直接在模板文件中指定布局模板即可，相关的布局模板调整也在模板中进行。<br>以前面的输出模板为例，这种方式的入口还是在 index/index. htm模板，但是我们可以修改下 index模板文件的内容，在头部增加下面的布局标签（记得首先关闭前面的layout_ on设置，否则可能出现布局循环）：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&#123;layout <span class="attribute">name</span>=<span class="string">"layout"</span>/&#125;</span><br></pre></td></tr></table></figure>
+<p>表示当前模板文件需要使用1 Layout. htm1布局模板文件，而布局模板文件的写法上面第一种方式是一样的。当渲染 index./ index. htm模板文件的时候，如果读取到 layout标签，则会把当前模板的解析内容替换到 layout布局模板的{<em>_CONTENT</em> _}特定字符串。<br>个模板文件只能使用一个布局模板，如果模板文件中没有使用任何1 ayout标签则表示当前模板不使用任何布局如果需要使用其他的布局模板，可以改变 layout的name属性，例如：</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">&#123;layout <span class="built_in">name</span>=<span class="string">"newlayout"</span> /&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3丶layout控制模板布局"><a href="#3丶layout控制模板布局" class="headerlink" title="3丶layout控制模板布局"></a><font color=green>3丶layout控制模板布局</font></h2><p>使用内置的ayou方法可以更灵活的在程序中控制模板输出的布局功能，尤其适用于局部需要布局或者关闭布局的情况，这种方式也不需要在配置文件中开启 layout_on.<br>三种模板布局方式中，第一种和第三种是在程序中配置实现模板布局，第二种方式则是单纯通过模板标签在模板中使用布局。<br>具体选择什么方式，需要根据项目的实际情况来了。</p>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>13.thinkphp5模板系统变量输出和函数使用</title>
+    <url>/undefined/13.thinkphp5%E6%A8%A1%E6%9D%BF%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E8%BE%93%E5%87%BA%E5%92%8C%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="一丶模板系统变量输出和函数使用"><a href="#一丶模板系统变量输出和函数使用" class="headerlink" title="一丶模板系统变量输出和函数使用"></a><font color=red>一丶模板系统变量输出和函数使用</font></h1><h2 id="1丶系统变量输出"><a href="#1丶系统变量输出" class="headerlink" title="1丶系统变量输出"></a><font color=green>1丶系统变量输出</font></h2><p>普通的模板变量需要首先赋值之后才能在模板中输出，但是系统变量则不需要，可以直接在模板中输出，系统变量的输出通常以{$Think打头，例如：</p>
+<figure class="highlight puppet"><table><tr><td class="code"><pre><span class="line">&#123;<span class="variable">$Think</span>, server, server_name&#125;//输出 <span class="variable">$_SERVER</span>[<span class="string">'SERVER_NAME'</span>]变量;</span><br><span class="line">&#123;<span class="variable">$Think</span>, session. user_id&#125;//输出<span class="variable">$_SESSION</span>[<span class="string">'user_id]变量;</span></span><br><span class="line"><span class="string">&#123;<span class="variable">$Think</span>,get.pageNumber&#125;//输出<span class="variable">$_GET</span>['</span>pageNumber]变量;</span><br><span class="line">&#123;<span class="variable">$Think</span>. cookie.name&#125;/输出<span class="variable">$_C0OKIE</span>[<span class="string">'name'</span>]变量;</span><br></pre></td></tr></table></figure>
+<p>支持输出$_SERVER丶$_ENV丶$_POST丶$_GET丶$_REQUEST丶$_SESSION和$_COOKIE变量。</p>
+<h2 id="2丶常量输出"><a href="#2丶常量输出" class="headerlink" title="2丶常量输出"></a><font color=green>2丶常量输出</font></h2><figure class="highlight autoit"><table><tr><td class="code"><pre><span class="line">&#123;$Think.<span class="keyword">const</span>.APP_PATH&#125;或者直接使用&#123;$Think.APP_PATH&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3丶配置输出"><a href="#3丶配置输出" class="headerlink" title="3丶配置输出"></a><font color=green>3丶配置输出</font></h2><figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">&#123;$<span class="module-access"><span class="module"><span class="identifier">Think</span>.</span></span>config.defaule_moudle&#125;</span><br><span class="line">&#123;$<span class="module-access"><span class="module"><span class="identifier">Think</span>.</span></span>config.default_controller&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4丶使用函数"><a href="#4丶使用函数" class="headerlink" title="4丶使用函数"></a><font color=green>4丶使用函数</font></h2><p>我们往往需要对模板输出变量使用函数，可以使用：</p>
+<figure class="highlight fortran"><table><tr><td class="code"><pre><span class="line">&#123;$<span class="keyword">data</span>.<span class="keyword">name</span>|md5&#125;</span><br></pre></td></tr></table></figure>
+<p>编译后的结果是：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> (md5(data[name]));<span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>如果函数有多个参数需要调用，则使用：</p>
+<figure class="highlight clean"><table><tr><td class="code"><pre><span class="line">&#123;$create_time|date=<span class="string">"y-m-d"</span>,###&#125;</span><br></pre></td></tr></table></figure>
+<p>表示date函数传入两个参数，每个参数用逗号分割，这里第一个参数是y-m-d，第二个参数是前面要输出的create time变量，因为该变量是第二个参数，因此需要用###标识变量位置，编译后的结果是：  </p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>php echo(<span class="built_in">date</span>(y-m-d,<span class="built_in">create</span> <span class="built_in">time</span>));<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>还可以支持多个函数过滤，多个函数之间用““分割即可，例如:</p>
+<figure class="highlight coq"><table><tr><td class="code"><pre><span class="line">($name|<span class="type">md5</span>|<span class="type">strtoupper</span>|<span class="type">substr</span>=<span class="number">0</span>,<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>编译后的结果是：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> (substr(strtoupper(md5($name)),<span class="number">0</span>,<span class="number">3</span>));<span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>函数会按照从左到右的顺序依次调用。<br>如果你觉得这样写起来比较麻烦，也可以直接这样写：</p>
+<figure class="highlight clojure"><table><tr><td class="code"><pre><span class="line">&#123;<span class="symbol">:substr</span>(<span class="name">strtoupper</span>(<span class="name">md5</span>($name)),<span class="number">0</span>,<span class="number">3</span>)&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>16.thinkphp5模板之内置标签</title>
+    <url>/undefined/16.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%86%85%E7%BD%AE%E6%A0%87%E7%AD%BE/</url>
+    <content><![CDATA[<h1 id="一丶模板之内置标签"><a href="#一丶模板之内置标签" class="headerlink" title="一丶模板之内置标签"></a><font color=red>一丶模板之内置标签</font></h1><h2 id="1丶内置标签"><a href="#1丶内置标签" class="headerlink" title="1丶内置标签"></a><font color=green>1丶内置标签</font></h2><p>变量输岀使用普通标签就足够了，但是要完成其他的控制、循环和判断功能，就需要借助模板引擎的标签库功能了，系统内置标签库的所有标签无需引入即可直接使用。   </p>
+<p>内置标签包括：<br>|标签名|作用|<br>|——|————————-|<br>|include|包含外部模板文件|<br>|load|导入资源文件(闭合包括js css import别名)|<br>|volist|循环数组数据输出|<br>|foreach|数组或对象遍历输出|<br>|for|For循环数据输出|<br>|switch|分支判断输出|<br>|case|分支判断输出(必须个switch配套使用)|<br>|default|默认情况输出(闭合 必须和switch配套使用)|<br>|compare|比较输出(包括eq neq it gt egt elt heq nheq等别名)|<br>|range|判断范围输出(包括 in notin between notbetween别名)|<br>|present|判断是否赋值|<br>|notpresent|判断是否尚未赋值|<br>|empty|判断数据是否为空|<br>|notempty|判断数据是否不为空|<br>|defined|判断常量是否定义|<br>|notdefined|判断常量是否未定义|<br>|define|常量定义|<br>|assign|变量赋值(闭合)|<br>|if|条件判断输出|<br>|elseif|条件判断输出(闭合 必须和if标签配套使用)|<br>|else|条件不成立输出(闭合 可用于其他标签)|<br>|php|使用php代码volist|</p>
+<h2 id="2丶循环输出标签"><a href="#2丶循环输出标签" class="headerlink" title="2丶循环输出标签"></a><font color=green>2丶循环输出标签</font></h2><h2 id="VOLIST标签"><a href="#VOLIST标签" class="headerlink" title="VOLIST标签"></a><font color=green>VOLIST标签</font></h2><p>volist标签通常用于查询数据集（ select方法）的结果输出，通常模型的select方法返回的结果是一个二维数组，可以直接使用 alist标签进行输出。在控制器中首先对模板赋值：</p>
+<figure class="highlight ocaml"><table><tr><td class="code"><pre><span class="line">$<span class="built_in">list</span> = <span class="type">User</span>::all<span class="literal">()</span>;</span><br><span class="line">$<span class="built_in">list</span>-&gt;assign(<span class="symbol">'list</span>,$<span class="built_in">list</span>);</span><br></pre></td></tr></table></figure>
+<p>在模板定义如下，循环输出姓名的编号和姓名：</p>
+<figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">&#123;volist<span class="built_in"> name</span>=<span class="string">"list"</span><span class="built_in"> id</span>=<span class="string">"vo"</span>&#125;</span><br><span class="line">&#123;<span class="variable">$vo</span><span class="built_in">.id</span>&#125;=====&gt;&#123;<span class="variable">$vo</span><span class="built_in">.name</span>&#125;&lt;br/&gt;</span><br><span class="line">&#123;/volist&#125;</span><br></pre></td></tr></table></figure>
+<p>Volist标签的name属性表示模板赋值的变量名称，因此不可随意在糢板文件中改变。id表示当前的循环变量，可以随意指定，但确保不要和nme属性冲突支持输出查询结果中的部分数据，例如输出其中的第5条~15条记录。</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">&#123;volist <span class="built_in">name</span>=<span class="string">"list"</span> <span class="built_in">id</span>=<span class="string">"vo"</span> <span class="built_in">offset</span>=<span class="string">"5"</span> <span class="built_in">length</span>=<span class="string">"10"</span>&#125;</span><br><span class="line">&#123;$vo.<span class="built_in">name</span>&#125;</span><br><span class="line">&#123;/volist&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/MttrKTC.png" alt="1"><br><img src="https://i.imgur.com/JTnMxoM.png" alt="1"><br><img src="https://i.imgur.com/8sJTDDv.png" alt="1"><br><img src="https://i.imgur.com/o6Q9aiB.png" alt="1"></p>
+<h2 id="FOREACH标签"><a href="#FOREACH标签" class="headerlink" title="FOREACH标签"></a><font color=green>FOREACH标签</font></h2><p>foreach标签类似与volist标签，只是更加简单，没有太多额外的属性，最简单的用法是：</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">&#123;<span class="keyword">foreach</span> $list <span class="keyword">as</span> $vo&#125;</span><br><span class="line">	&#123;$vo.id&#125;:&#123;$vo.name&#125;</span><br><span class="line">&#123;/<span class="keyword">foreach</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="FOR标签"><a href="#FOR标签" class="headerlink" title="FOR标签"></a>FOR标签</h2><p>用法：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&#123;<span class="keyword">for</span> <span class="attribute">start</span>=<span class="string">"开始值"</span>  <span class="attribute">end</span>=<span class="string">"结束值"</span> <span class="attribute">comparison</span>=<span class="string">""</span> <span class="attribute">step</span>=<span class="string">"步进值"</span>  <span class="attribute">name</span>=<span class="string">"循环变量名"</span> &#125;</span><br><span class="line">&#123;/<span class="keyword">for</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>开始值、结束值、步进值和循环变量都可以支持变量，开始值和结束值是必须的，其他是可选的。comparison的默认值lt,  name的默认值是i ， 步进值的默认值是1，举例如下：</p>
+<figure class="highlight clojure"><table><tr><td class="code"><pre><span class="line">&#123;for start=<span class="string">"1"</span>  end=<span class="string">"100"</span>&#125;</span><br><span class="line">&#123;$i&#125;</span><br><span class="line">&#123;/for&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解析后的代码是：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span>=1; <span class="variable">$i</span>&lt;100; <span class="variable">$i</span>+=1) &#123;</span><br><span class="line">  	<span class="built_in">echo</span> <span class="variable">$i</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="标签嵌套"><a href="#标签嵌套" class="headerlink" title="标签嵌套"></a>标签嵌套</h2><p>模板引擎支持标签的多层嵌套功能，可以对标签库的标签指定嵌套。</p>
+<p>系统内置的标签中，volist、 switch、if、 elseif、else、foreach、compare（包含所有的比较标签）、（not）present、 （not）empty、 （not）defined等标签都可以嵌套使用。例如：</p>
+<figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">&#123;volist<span class="built_in"> name</span>=<span class="string">"list"</span><span class="built_in"> id</span>=<span class="string">"vo"</span>&#125;</span><br><span class="line">    &#123;volist<span class="built_in"> name</span>=<span class="string">"vo['sub']"</span><span class="built_in"> id</span>=<span class="string">"sub"</span>&#125;</span><br><span class="line">   		 &#123;<span class="variable">$sub</span><span class="built_in">.name</span>&#125;</span><br><span class="line">    &#123;/volist&#125;</span><br><span class="line">&#123;/volist&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的标签可以用于输出双重循环。</p>
+<h2 id="原生PHP"><a href="#原生PHP" class="headerlink" title="原生PHP"></a>原生PHP</h2><p>Php代码可以和标签在模板文件中混合使用，可以在模板文件里面书写任意的PHP语句代码，包括下面两种方式：</p>
+<h3 id="使用php标签"><a href="#使用php标签" class="headerlink" title="使用php标签"></a>使用php标签</h3><p>例如：</p>
+<figure class="highlight dust"><table><tr><td class="code"><pre><span class="line"><span class="template-variable">&#123;php&#125;</span><span class="xml">echo 'Hello  world!';</span><span class="template-tag">&#123;/<span class="name">php</span>&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们建议需要使用PHP代码的时候尽量采用php标签，因为原生的PHP语法可能会被配置禁用而导致解析错误。</p>
+<h3 id="使用原生php代码"><a href="#使用原生php代码" class="headerlink" title="使用原生php代码"></a>使用原生php代码</h3><p><code>&lt;?php echo &#39;Hello world!&#39;; ?&gt;</code></p>
+<p>注意：php标签或者php代码里面就不能再使用标签（包括普通标签和XML标签了），因此下面的几种方式都是无效的。</p>
+<p>Php标签里面使用了eq标签，因此无效</p>
+<p><code>{php}{eq name=&#39;name&#39;   value=&#39;value&#39;}value{/eq}{/php}</code></p>
+<p>Php标签里面使用了<code>{$user}</code>普通标签输出变量，因此无效。</p>
+<p><code>{php}if($user.name != &#39;ThinkPHP&#39; ) echo  &#39;ThinkPHP&#39; ;{/php}</code></p>
+<p>简而言之，在PHP标签里面不能在使用PHP本身不支持的代码。</p>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>15.thinkphp5模板之模板继承和包含文件</title>
+    <url>/undefined/15.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8C%85%E5%90%AB%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="一丶模板之模板继承和包含文件"><a href="#一丶模板之模板继承和包含文件" class="headerlink" title="一丶模板之模板继承和包含文件"></a><font color=red>一丶模板之模板继承和包含文件</font></h1><h2 id="1丶模板继承"><a href="#1丶模板继承" class="headerlink" title="1丶模板继承"></a><font color=green>1丶模板继承</font></h2><p>模板继承是一项更加灵活的模板布局方式，模板继承不同于模板布局，甚至来说，应该是在模板布局的上层。模板继承其实并不难理解，就好比类的继承一样，模板也可以定义一个基础模板（或者是布局），并且其中定义的相关的区块（block），然后继承（extend）该基础模块的子模板中就可以对基础模板中定义的区块进行重载。</p>
+<p>因此，模板继承的优势其实是设计基础模块中的区块（block）和子模块中替换这些区块。   </p>
+<p>每个区块由（b1ock}{/b1ock}标签组成。下面就是基础模板中的一个典型的区块设计。</p>
+<figure class="highlight xl"><table><tr><td class="code"><pre><span class="line">&#123;<span class="keyword">block</span> <span class="keyword">name</span>=<span class="string">"title"</span>&#125;&lt;<span class="built_in">title</span>&gt;网站标题&lt;/<span class="built_in">title</span>&gt;&#123;/<span class="keyword">block</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>block标签必零指定name属性来标识当前区块的名称，这个标识在当前模板中应该是唯一的， block标签中可以包含任何模板内容，包括其他标签和变量。</p>
+<figure class="highlight dust"><table><tr><td class="code"><pre><span class="line"><span class="template-variable">&#123;block name="title"&#125;</span><span class="xml"><span class="tag">&lt;<span class="name">title</span>&gt;</span></span><span class="template-variable">&#123;$web_title&#125;</span><span class="xml"><span class="tag">&lt;<span class="name">title</span>&gt;</span></span><span class="template-tag">&#123;/<span class="name">block</span>&#125;</span></span><br></pre></td></tr></table></figure>
+<p>一个模板中可以定义任意多个名称标识不重复的区块，例如我们在vew视图目录下面定义了一个 base. html基础模板:</p>
+<figure class="highlight dust"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">utf-8</span>"&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt; <span class="attr">title</span>&gt;</span>模板继承的演示<span class="tag">&lt;/<span class="name">tit1e</span></span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml">    block name="head"&#125;这是头部</span><span class="template-tag">&#123;/ <span class="name">block</span>&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;block name=" footer"&#125;</span><span class="xml">这是底部</span><span class="template-tag">&#123;/ <span class="name">block</span>&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>然后我们在子模板（其实是当前操作的入口模板）中使用继承：</p>
+<figure class="highlight xl"><table><tr><td class="code"><pre><span class="line">&#123;extend <span class="keyword">name</span>=<span class="string">"base"</span>/&#125;</span><br><span class="line">&#123;<span class="keyword">block</span> <span class="keyword">name</span>=<span class="string">"head"</span>&#125;这里是子模板里面的区块，用来替换基础模板里面的内容的&#123;/<span class="keyword">block</span>&#125;</span><br><span class="line">&#123;<span class="keyword">block</span> <span class="keyword">name</span>=<span class="string">" footer&#125;这里是子模板里面的底部内容&lt;/block&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上例中，我们可以看到在子模板中使用了 extend标签来继承base模板。   </p>
+<p>在子模板中，可以对基模板中的区块进行重载定义，如果没有重新定义的话，则表示沿用基础模板中的区块定义，如果定义了一个空的区块，则表示删除基础模板中的该区块内容。   </p>
+<p>{_ block_}这个标签，当区块中有这个标记时，就不只是直接重载这个区块，他表示引用所继承模板对应区块的内容到这个位置，最终这个区块是合并后的内容。   </p>
+<p>在当前子模板中，只能定义区块而不能定义其他的模板内容，否则将会直接忽略，并且只能定义基础模板中已经定义的区块。   </p>
+<p>模板可以多级继承，比如B继承了A而C又继承了B，最终C中的区块会覆盖B和A中的同名区块，但C和B中的区块必须是A中已定义过的。   </p>
+<p>子模板中的区块定义顺序是随意的，模板继承的用法关键在于基础模板如何布局和设计规划了，如果结合原来的布局功能，则会更加灵活。</p>
+<h2 id="2丶包含文件"><a href="#2丶包含文件" class="headerlink" title="2丶包含文件"></a><font color=green>2丶包含文件</font></h2><p>在当前模板文件中包含其他的模板文件使用 include标签，标签语法   </p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">&#123;<span class="keyword">include</span> <span class="keyword">file</span>=<span class="string">'模板文件1，模板文件2，......'</span><span class="regexp">/&#125;</span></span><br></pre></td></tr></table></figure>
+<p>包含的模板文件中不能再使用模板布局或者模板继承。   </p>
+<p>路径以项目目录/public/路径下为起点   </p>
+<p>可以直接包含一个模板文件名(包含完整路径),例如：  </p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">&#123;<span class="keyword">include</span> <span class="keyword">file</span>=<span class="string">"../application/index（模块名）/view（视图文件夹）/index（控制器）/lang.html（具体模板）"</span>/&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/hhMt8F0.png" alt="1"><br><img src="https://i.imgur.com/eprHQT5.png" alt="1"><br>包含文件中可以再使用 include标签包含别的文件，但注意不要形成A包含A，或者A包含B而B又包含A这样的死循环。</p>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>17.thinkphp5路由之路由注册</title>
+    <url>/undefined/17.thinkphp5%E8%B7%AF%E7%94%B1%E4%B9%8B%E8%B7%AF%E7%94%B1%E6%B3%A8%E5%86%8C/</url>
+    <content><![CDATA[<h1 id="一丶路由之路由注册"><a href="#一丶路由之路由注册" class="headerlink" title="一丶路由之路由注册"></a><font color=red>一丶路由之路由注册</font></h1><h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a><font color=green size=6>路由</font></h1><p>路由功能由<code>\think\Route</code>类完成。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a><font color=green>概述</font></h2><p>由于<code>ThinkPHP5.0默认采用的URL规则是：</code></p>
+<p><code>http://server/module/controller/action/param/value/.....</code></p>
+<p>路由的作用是简化URL访问地址，并根据定义的路由类型做出正确的解析。</p>
+<h2 id="路由模式"><a href="#路由模式" class="headerlink" title="路由模式"></a><font color=green>路由模式</font></h2><p><code>ThinkPHP5.0</code>的路由比较灵活，并且不需要强制定义，可以总结归纳为如下三种方式：</p>
+<h3 id="一、普通模式"><a href="#一、普通模式" class="headerlink" title="一、普通模式"></a><font color=green>一、普通模式</font></h3><p>关闭路由，完全使用默认的<code>PATH_INFO</code>方式URL：</p>
+<p><code>url_route_on     =&gt;   false,</code></p>
+<p>路由关闭后，不会解析任何路由规则，采用默认的<code>PATH_INFO</code>模式访问URL:</p>
+<p><code>http://serverName/index.php/module/controller/action/param/value/...</code></p>
+<h3 id="二、混合模式"><a href="#二、混合模式" class="headerlink" title="二、混合模式"></a><font color=green>二、混合模式</font></h3><p>开启路由，并使用路由定义+默认<code>PATH_INFO</code>方式的混合:</p>
+<p><code>&#39;url_route_on&#39;  =&gt;  true,</code></p>
+<p><code>&#39;url_route_must&#39;   =&gt; false,</code></p>
+<p>该方式下面，只需要对需要定义路由规则的访问地址定义路由规则，其他的仍然按照第一种普通模式的<code>PATH_INFO</code>模式访问URL。</p>
+<h3 id="三、强制模式"><a href="#三、强制模式" class="headerlink" title="三、强制模式"></a><font color=green>三、强制模式</font></h3><p>开启路由，并设置必须定义路由才能访问：</p>
+<p><code>url_route_on   =&gt;  true,</code></p>
+<p><code>url_route_must   =&gt;   true,</code></p>
+<p>这种方式下面必须严格给每一个访问地址定义路由规则（包括首页），否则将抛出异常。</p>
+<p>首页的路由规则采用<code>/</code>定义即可，例如下面把网站首页路由输出<code>Hello,world!</code>我们需要在<code>route.php</code>这个文件中配置路由，要使用官方的   <code>use  think\Route</code></p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">Route::<span class="keyword">get</span>(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">'Hello,world!'</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="路由定义"><a href="#路由定义" class="headerlink" title="路由定义"></a><font color=red>路由定义</font></h2><h3 id="注册路由规则"><a href="#注册路由规则" class="headerlink" title="注册路由规则"></a><font color=green>注册路由规则</font></h3><p>路由注册可以采用方法动态单个和批量注册，也可以直接定义路由定义文件的方式进行集中注册。</p>
+<h3 id="动态注册"><a href="#动态注册" class="headerlink" title="动态注册"></a><font color=green>动态注册</font></h3><p>路由定义采用<code>\think\Route</code>类的rule方法注册，通常是在应用的路由配置文件</p>
+<p><code>application/route.php</code>进行注册，格式是：</p>
+<p><code>Route::rule(&#39;路由表达式&#39;，&#39;路由地址&#39;，&#39;请求类型&#39;，&#39;路由参数（数组）&#39;，&#39;变量规则（数组）&#39;)；</code></p>
+<p>例如注册如下路由规则：</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">think</span>\<span class="title">Route</span>;</span><br><span class="line"><span class="comment">// 注册路由到index模块的Index控制器的list操作</span></span><br><span class="line">Route::rule(<span class="string">'new/:id'</span>,<span class="string">'index/Index/list'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>我们访问：</p>
+<p><code>http://serverName/new/5</code></p>
+<p>会自动路由到：</p>
+<p><code>http://serverName/index/index/list/id/5</code></p>
+<p>并且原来的访问地址会自动失效。ThinkPHP5.0的路由规则定义是从根目录开始，而不是基于模块名的。</p>
+<p>注意，路由命名标识必须唯一，定义后可以用于URL的快速生成。</p>
+<p>可以在rule方法中指定请求类型，不指定的话默认为任何请求类型，例如：</p>
+<p><code>Route::rule(&#39;new/:id&#39;,&#39;News/update&#39;,&#39;POST&#39;);</code>    表示定义的路由规则在POST请求下才有效。注意：请求类型参数必须大写。</p>
+<table>
+<thead>
+<tr>
+<th>请求类型包括：</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>GET请求</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>POST请求</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>PUT请求</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>DELETE请求</td>
+</tr>
+<tr>
+<td>*</td>
+<td>任何请求类型</td>
+</tr>
+</tbody></table>
+<p>系统提供了为不同的请求类型定义路由规则的简化方法，例如：</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line">Route::get(<span class="string">'new/:id'</span>,<span class="string">'News/read'</span>); <span class="regexp">//</span> 定义GET请求路由规则</span><br><span class="line">Route::post(<span class="string">'new/:id'</span>,<span class="string">'News/update'</span>); <span class="regexp">//</span> 定义POST请求路由规则</span><br><span class="line">Route::put(<span class="string">'new/:id'</span>,<span class="string">'News/update'</span>); <span class="regexp">//</span> 定义PUT请求路由规则</span><br><span class="line">Route::delete(<span class="string">'new/:id'</span>,<span class="string">'News/delete'</span>); <span class="regexp">//</span> 定义DELETE请求路由规则</span><br><span class="line">Route::any(<span class="string">'new/:id'</span>,<span class="string">'News/read'</span>); <span class="regexp">//</span> 所有请求都支持的路由规则</span><br></pre></td></tr></table></figure>
+
+<p>如果要定义get和post请求支持的路由规则，也可以用：</p>
+<p><code>Route::rule(&#39;new/:id&#39;,&#39;News/read&#39;,&#39;GET|POST&#39;);</code></p>
+<p>我们也可以批量注册路由规则，例如：</p>
+<figure class="highlight sml"><table><tr><td class="code"><pre><span class="line"><span class="type">Route</span>::rule([<span class="symbol">'new</span>/:id'=&gt;<span class="symbol">'News</span>/read',<span class="symbol">'blog</span>/:name'=&gt;<span class="symbol">'Blog</span>/detail']);</span><br><span class="line"><span class="type">Route</span>::get([<span class="symbol">'new</span>/:id'=&gt;<span class="symbol">'News</span>/read',<span class="symbol">'blog</span>/:name'=&gt;<span class="symbol">'Blog</span>/detail']);</span><br><span class="line"><span class="type">Route</span>::post([<span class="symbol">'new</span>/:id'=&gt;<span class="symbol">'News</span>/update',<span class="symbol">'blog</span>/:name'=&gt;<span class="symbol">'Blog</span>/detail']);</span><br></pre></td></tr></table></figure>
+
+<p>注册多个路由规则后，系统会依次遍历注册过的满足请求类型的路由规则，一旦匹配到正确的路由规则后则开始调用控制器的操作方法，后续规则就不再检测。</p>
+<h2 id="定义路由配置文件"><a href="#定义路由配置文件" class="headerlink" title="定义路由配置文件"></a><font color=green>定义路由配置文件</font></h2><p>除了支持动态注册，也可以直接在应用目录下面的route.php的最后通过返回数组的方式直接定义路由规则，内容示例如下:</p>
+<figure class="highlight sml"><table><tr><td class="code"><pre><span class="line">return [</span><br><span class="line">    <span class="symbol">'new</span>/:id' =&gt; <span class="symbol">'News</span>/read',</span><br><span class="line">    <span class="symbol">'blog</span>/:id' =&gt; [<span class="symbol">'Blog</span>/update',[<span class="symbol">'method'</span> =&gt; <span class="symbol">'post</span>|put'], [<span class="symbol">'id'</span> =&gt; <span class="string">'\d+'</span>]],</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>路由动态注册和配置定义的方式可以并存。由于检测机制问题，动态注册的性能比路由配置要高一些，尤其是多种请求类型混合定义的时候。</p>
+<p>默认情况下，只会加载一个路由配置文件<code>route.php</code>，如果需要定义多个路由文件，可以修改<code>route_config_file</code>的配置参数，例如：</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">定义路由配置文件（数组）</span><br><span class="line"><span class="string">'route_config_file'</span> =&gt; [<span class="string">'route'</span>, <span class="string">'route1'</span>, <span class="string">'route2'</span>],</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>18.thinkphp5资源路由和快捷路由</title>
+    <url>/undefined/18.thinkphp5%E8%B5%84%E6%BA%90%E8%B7%AF%E7%94%B1%E5%92%8C%E5%BF%AB%E6%8D%B7%E8%B7%AF%E7%94%B1/</url>
+    <content><![CDATA[<h1 id="一丶资源路由和快捷路由"><a href="#一丶资源路由和快捷路由" class="headerlink" title="一丶资源路由和快捷路由"></a><font color=red>一丶资源路由和快捷路由</font></h1><h1 id="1丶资源路由"><a href="#1丶资源路由" class="headerlink" title="1丶资源路由"></a><font color=green>1丶资源路由</font></h1><p>5.0支持设置 RESTFu1请求的资源路由，方式如下:</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="string">Route:</span>resource（<span class="string">'blog'</span>,<span class="string">'index/blog'</span>）</span><br></pre></td></tr></table></figure>
+<p>或者在路由配置文件中使用<strong>rest</strong>添加资源路由定义：</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span>[</span><br><span class="line">    <span class="comment">//定义资源路由</span></span><br><span class="line">    <span class="string">'__rest__'</span>=&gt;[</span><br><span class="line">        <span class="comment">//指向index模块的blog控制器</span></span><br><span class="line">        <span class="string">'blog'</span>=&gt;<span class="string">'index/blog'</span>,</span><br><span class="line">    ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>设置过后会自动注册7个路由规则，如下：<br><img src="https://i.imgur.com/B6I8AzU.png" alt="1"><br>具体指向的控制器由路由地址决定，例如上面的设置，会对应 index模块的blog控制器，你只需要为Blog控制器创建以上对应的操作方法就可以支持下面的URL访问：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">http:<span class="regexp">//</span>serverName<span class="regexp">/blog/</span></span><br><span class="line">http:<span class="regexp">//</span>serverName<span class="regexp">/blog/</span><span class="number">128</span></span><br><span class="line">http:<span class="regexp">//</span>serverName<span class="regexp">/blog/</span><span class="number">28</span><span class="regexp">/edit</span></span><br></pre></td></tr></table></figure>
+<p>Blog控制器中对应的方法如下：<br><img src="https://i.imgur.com/zXL2LmW.png" alt="1"></p>
+<h1 id="2丶快捷路由"><a href="#2丶快捷路由" class="headerlink" title="2丶快捷路由"></a><font color=green>2丶快捷路由</font></h1><p>快捷路由允许你快速给控制器注册路由，并且针对不同的请求类型可以设置方法前缀，例如：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">//给User控制器设置快捷路由</span></span><br><span class="line"><span class="string">Route:</span>:controller(<span class="string">'user'</span>,<span class="string">'index/User'</span>);</span><br></pre></td></tr></table></figure>
+<p>User控制器定义如下：<br><img src="https://i.imgur.com/6a8Efg1.png" alt="1"><br>我们可以通过下面的URL访问</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">get</span> http://localhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br><span class="line"><span class="keyword">get</span> http://localhost/<span class="keyword">user</span>/phone</span><br><span class="line">post http://localhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br><span class="line">put http://localhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br><span class="line"><span class="keyword">delete</span> http://loaclhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>3.thinkphp5数据库操作</title>
+    <url>/undefined/3.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h1 id="配置文件定义"><a href="#配置文件定义" class="headerlink" title="配置文件定义"></a><font color=red>配置文件定义</font></h1><p>常用的配置方式是在应用目录或者模块目录下面的database.php中添加下面的参数：   </p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> [</span><br><span class="line"><span class="comment">// 数据库类型</span></span><br><span class="line"><span class="string">'type'</span> =&gt; <span class="string">'mysql'</span>,</span><br><span class="line"><span class="comment">// 数据库连接DSN配置</span></span><br><span class="line"><span class="string">'dsn'</span> =&gt; <span class="string">''</span>,</span><br><span class="line"><span class="comment">// 服务器地址</span></span><br><span class="line"><span class="string">'hostname'</span> =&gt; <span class="string">'127.0.0.1'</span>,</span><br><span class="line"><span class="comment">// 数据库名</span></span><br><span class="line"><span class="string">'database'</span> =&gt; <span class="string">'thinkphp'</span>,</span><br><span class="line"><span class="comment">// 数据库用户名</span></span><br><span class="line"><span class="string">'username'</span> =&gt; <span class="string">'root'</span>,</span><br><span class="line"><span class="comment">// 数据库密码</span></span><br><span class="line"><span class="string">'password'</span> =&gt; <span class="string">''</span>,</span><br><span class="line"><span class="comment">// 数据库连接端口</span></span><br><span class="line"><span class="string">'hostport'</span> =&gt; <span class="string">''</span>,</span><br><span class="line"><span class="comment">// 数据库连接参数</span></span><br><span class="line"><span class="string">'params'</span> =&gt; [],</span><br><span class="line"><span class="comment">// 数据库编码默认采用utf8</span></span><br><span class="line"><span class="string">'charset'</span> =&gt; <span class="string">'utf8'</span>,</span><br><span class="line"><span class="comment">// 数据库表前缀</span></span><br><span class="line"><span class="string">'prefix'</span> =&gt; <span class="string">'think_'</span>,</span><br><span class="line"><span class="comment">// 数据库调试模式</span></span><br><span class="line"><span class="string">'debug'</span> =&gt; <span class="keyword">false</span>,</span><br><span class="line"><span class="comment">// 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)</span></span><br><span class="line"><span class="string">'deploy'</span> =&gt; <span class="number">0</span>,</span><br><span class="line"><span class="comment">// 数据库读写是否分离 主从式有效</span></span><br><span class="line"><span class="string">'rw_separate'</span> =&gt; <span class="keyword">false</span>,</span><br><span class="line"><span class="comment">// 读写分离后 主服务器数量</span></span><br><span class="line"><span class="string">'master_num'</span> =&gt; <span class="number">1</span>,</span><br><span class="line"><span class="comment">// 指定从服务器序号</span></span><br><span class="line"><span class="string">'slave_no'</span> =&gt; <span class="string">''</span>,</span><br><span class="line"><span class="comment">// 是否严格检查字段是否存在</span></span><br><span class="line"><span class="string">'fields_strict'</span> =&gt; <span class="keyword">true</span>,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>type 参数支持命名空间完整定义，不带命名空间定义的话，默认采用 \think\db\connector 作为命名<br>空间，如果使用应用自己扩展的数据库驱动，可以配置为：</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数据库类型</span></span><br><span class="line"><span class="string">'type'</span> =&gt; <span class="string">'\org\db\Mysql'</span>,</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>4.thinkphp5数据库操作之原生查询</title>
+    <url>/undefined/4.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%8E%9F%E7%94%9F%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<h1 id="一丶数据库操作之原生查询"><a href="#一丶数据库操作之原生查询" class="headerlink" title="一丶数据库操作之原生查询"></a><font color=red>一丶数据库操作之原生查询</font></h1><h3 id="Db-类支持原生-SQL-查询操作，主要包括下面两个方法："><a href="#Db-类支持原生-SQL-查询操作，主要包括下面两个方法：" class="headerlink" title="Db 类支持原生 SQL 查询操作，主要包括下面两个方法："></a>Db 类支持原生 SQL 查询操作，主要包括下面两个方法：</h3><h4 id="1丶query-方法"><a href="#1丶query-方法" class="headerlink" title="1丶query 方法   "></a><font color=red>1丶query 方法   </font></h4><p>query 方法用于执行 SQL 查询操作，如果数据非法或者查询错误则返回false，否则返回查询结果数据集<br>（同 select 方法）。<br><font color=red>使用示例：</font><br>Db::query(“select * from think_user where status=1”);<br>如果你当前采用了分布式数据库，并且设置了读写分离的话，query方法始终是在读服务器执行，因此query方法对应的都是读操作，而不管你的SQL语句是什么。<br><font color=red>2丶execute 方法</font><br>execute用于更新和写入数据的sql操作，如果数据非法或者查询错误则返回false ，否则返回影响的记录数。<br><font color=red>使用示例：</font><br>Db::execute(“update think_user set name=’thinkphp’ where status=1”);<br>如果你当前采用了分布式数据库，并且设置了读写分离的话，execute方法始终是在写服务器执行，因此execute方法对应的都是写操作，而不管你的SQL语句是什么。 </p>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2.thinkphp5请求</title>
+    <url>/undefined/2.thinkphp5%E8%AF%B7%E6%B1%82/</url>
+    <content><![CDATA[<h1 id="请求信息"><a href="#请求信息" class="headerlink" title="请求信息"></a><font color=red>请求信息</font></h1><h4 id="如果要获取当前的请求信息，可以使用-think-Request-类，"><a href="#如果要获取当前的请求信息，可以使用-think-Request-类，" class="headerlink" title="如果要获取当前的请求信息，可以使用 \think\Request 类，"></a>如果要获取当前的请求信息，可以使用 \think\Request 类，</h4><p>除了下文中的   </p>
+<h3 id="request-Request-instance"><a href="#request-Request-instance" class="headerlink" title="$request = Request::instance();"></a>$request = Request::instance();</h3><p>也可以使用助手函数   </p>
+<h3 id="request-request"><a href="#request-request" class="headerlink" title="$request = request();"></a>$request = request();</h3><h4 id="当然，最方便的还是使用注入请求对象的方式来获取变量。"><a href="#当然，最方便的还是使用注入请求对象的方式来获取变量。" class="headerlink" title="当然，最方便的还是使用注入请求对象的方式来获取变量。"></a>当然，最方便的还是使用注入请求对象的方式来获取变量。</h4><p>例如：   </p>
+<h3 id="获取URL信息"><a href="#获取URL信息" class="headerlink" title="获取URL信息"></a>获取URL信息</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$request = Request::instance();</span><br><span class="line"><span class="comment">// 获取当前域名</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'domain: '</span> . $request-&gt;domain() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取当前入口文件</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'file: '</span> . $request-&gt;baseFile() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取当前URL地址 不含域名</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'url: '</span> . $request-&gt;url() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取包含域名的完整URL地址</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'url with domain: '</span> . $request-&gt;url(<span class="keyword">true</span>) . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取当前URL地址 不含QUERY_STRING</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'url without query: '</span> . $request-&gt;baseUrl() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取URL访问的ROOT地址</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'root:'</span> . $request-&gt;root() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取URL访问的ROOT地址</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'root with domain: '</span> . $request-&gt;root(<span class="keyword">true</span>) . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取URL地址中的PATH_INFO信息</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'pathinfo: '</span> . $request-&gt;pathinfo() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取URL地址中的PATH_INFO信息 不含后缀</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'pathinfo: '</span> . $request-&gt;path() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取URL地址中的后缀信息</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'ext: '</span> . $request-&gt;ext() . <span class="string">'&lt;br/&gt;'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="输出结果为："><a href="#输出结果为：" class="headerlink" title="输出结果为：   "></a><font color = red>输出结果为：   </font></h4><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="string">domain:</span> <span class="string">http:</span><span class="comment">//tp5.com</span></span><br><span class="line"><span class="string">file:</span> <span class="regexp">/index.php url: /</span>index<span class="regexp">/index/</span>hello.html?name=thinkphp</span><br><span class="line">url with domain: <span class="string">http:</span><span class="comment">//tp5.com/index/index/hello.html?name=thinkphp</span></span><br><span class="line">url without <span class="string">query:</span> <span class="regexp">/index/</span>index/hello.html</span><br><span class="line"><span class="string">root:</span></span><br><span class="line">root with <span class="string">domain:</span> <span class="string">http:</span><span class="comment">//tp5.com</span></span><br><span class="line"><span class="string">pathinfo:</span> index<span class="regexp">/index/</span>hello.html</span><br><span class="line"><span class="string">pathinfo:</span> index<span class="regexp">/index/</span>hello</span><br><span class="line"><span class="string">ext:</span> html</span><br></pre></td></tr></table></figure>
+<h3 id="设置-获取-模块-控制器-操作名称"><a href="#设置-获取-模块-控制器-操作名称" class="headerlink" title="设置/获取 模块/控制器/操作名称"></a><font color=red>设置/获取 模块/控制器/操作名称</font></h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$request = Request::instance();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"当前模块名称是"</span> . $request-&gt;module();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"当前控制器名称是"</span> . $request-&gt;controller();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"当前操作名称是"</span> . $request-&gt;action();</span><br></pre></td></tr></table></figure>
+<p>如果当前访问的地址是 <a href="http://serverName/index.php/index/hello_world/index" target="_blank" rel="noopener">http://serverName/index.php/index/hello_world/index</a><br>输出结果为：   </p>
+<figure class="highlight fortran"><table><tr><td class="code"><pre><span class="line">当前模块名称是<span class="built_in">index</span></span><br><span class="line">当前控制器名称是HelloWorld</span><br><span class="line">当前操作名称是<span class="built_in">index</span></span><br><span class="line">~~~ </span><br><span class="line">设置模块名称值需要向<span class="keyword">module</span>方法中传入名称即可，同样使用于设置控制器名称和操作名称</span><br></pre></td></tr></table></figure>
+<p>Request::instance()-&gt;module(‘module_name’);</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">### <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span> = <span class="string">red</span>&gt;</span>获取请求参数<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>$request = Request::instance();<br>echo ‘请求方法：’ . $request-&gt;method() . ‘<br/>‘;<br>echo ‘资源类型：’ . $request-&gt;type() . ‘<br/>‘;<br>echo ‘访问ip地址：’ . $request-&gt;ip() . ‘<br/>‘;<br>echo ‘是否AJax请求：’ . var_export($request-&gt;isAjax(), true) . ‘<br/>‘;<br>echo ‘请求参数：’;<br>dump($request-&gt;param());<br>echo ‘请求参数：仅包含name’;<br>dump($request-&gt;only([‘name’]));<br>echo ‘请求参数：排除name’;<br>dump($request-&gt;except([‘name’]));<br>输出结果为：<br>请求方法：GET<br>资源类型：html<br>访问ip地址：127.0.0.1<br>是否Ajax请求：false<br>请求参数：<br>array (size=2)<br>‘test’ =&gt; string ‘ddd’ (length=3)<br>‘name’ =&gt; string ‘thinkphp’ (length=8)<br>请求参数：仅包含name<br>array (size=1)<br>‘name’ =&gt; string ‘thinkphp’ (length=8)<br>请求参数：排除name<br>array (size=1)<br>‘test’ =&gt; string ‘ddd’ (length=3)<br><del>~</del></p>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>7.thinkphp5数据库查询之查询构造器2</title>
+    <url>/undefined/7.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A82/</url>
+    <content><![CDATA[<h1 id="二丶数据库查询之查询构造器"><a href="#二丶数据库查询之查询构造器" class="headerlink" title="二丶数据库查询之查询构造器"></a><font color = red >二丶数据库查询之查询构造器</font></h1><h2 id="一丶查询数据"><a href="#一丶查询数据" class="headerlink" title="一丶查询数据"></a><font color = green >一丶查询数据</font></h2><p>最普通的查询就是判断某个字段是否等于某个值，而select（）方法用于查询数据集，如果查询成功，返回的是一个二维数组，如果没有满足条件的话则返回空数组。      </p>
+<p>find（）方法用于查找满足条件的第一个记录（即使你的查询条件有多个符合的数据），如果查询成功，返回的是一个一维数组，没有满足条件的话默认返回null；   </p>
+<figure class="highlight livescript"><table><tr><td class="code"><pre><span class="line">$result = Db::name<span class="function"><span class="params">(<span class="string">'data'</span>)</span>-&gt;</span>where<span class="function"><span class="params">(<span class="string">'status'</span>,<span class="number">1</span>)</span>-&gt;</span>find();   </span><br><span class="line">$result = Db::name<span class="function"><span class="params">(<span class="string">'data'</span>)</span>-&gt;</span>where<span class="function"><span class="params">(<span class="string">'status'</span>,<span class="number">1</span>)</span>-&gt;</span>select();</span><br></pre></td></tr></table></figure>
+<h2 id="模糊查询："><a href="#模糊查询：" class="headerlink" title="模糊查询："></a><font color = green >模糊查询：</font></h2><p><font color = green >查询name中含有’明’的数据</font></p>
+<figure class="highlight livescript"><table><tr><td class="code"><pre><span class="line">$result = Db::name<span class="function"><span class="params">(<span class="string">'data'</span>)</span>-&gt;</span>where<span class="function"><span class="params">(<span class="string">'name'</span>,<span class="string">'like'</span>,<span class="string">'%明%'</span>)</span>-&gt;</span>select();</span><br></pre></td></tr></table></figure>
+<h2 id="区间查询："><a href="#区间查询：" class="headerlink" title="区间查询："></a><font color = green >区间查询：</font></h2><p><font color = green >查询id区间为2~6的数据</font></p>
+<figure class="highlight livescript"><table><tr><td class="code"><pre><span class="line">$result = Db::name<span class="function"><span class="params">(<span class="string">'data'</span>)</span>-&gt;</span>where<span class="function"><span class="params">(<span class="string">'id'</span>,<span class="string">'BETWEEN'</span>,[<span class="number">2</span>,<span class="number">6</span>])</span>-&gt;</span>select();</span><br></pre></td></tr></table></figure>
+<h2 id="二丶添加数据："><a href="#二丶添加数据：" class="headerlink" title="二丶添加数据："></a><font color = green >二丶添加数据：</font></h2><h2 id="添加多条数据："><a href="#添加多条数据：" class="headerlink" title="添加多条数据："></a><font color = green >添加多条数据：</font></h2><p>添加多条数据直接向Db类的insertAll方法传入需要添加的数据即可。<br><img src="https://i.imgur.com/AJwt1dE.png" alt="1">   </p>
+<h2 id="三丶更新数据："><a href="#三丶更新数据：" class="headerlink" title="三丶更新数据："></a><font color = green >三丶更新数据：</font></h2><p>Db::name(‘data’)-&gt;where(‘id’,1)-&gt;setFileld(‘name’,’thinkphp’);<br>setFiled方法返回数据的条数，没修改任何数据字段返回0；</p>
+<h2 id="四丶自增或自减一个字段的值："><a href="#四丶自增或自减一个字段的值：" class="headerlink" title="四丶自增或自减一个字段的值："></a><font color = green >四丶自增或自减一个字段的值：</font></h2><p>setInc/setDec如果不加第二个参数，默认值为1   </p>
+<h3 id="score-字段加1"><a href="#score-字段加1" class="headerlink" title="score 字段加1"></a><font color=green>score 字段加1</font></h3><p>Db::name(‘data’)-&gt;where(‘id’,1)-&gt;setInc(‘status’);   </p>
+<h3 id="score-字段加5"><a href="#score-字段加5" class="headerlink" title="score 字段加5"></a><font color=green>score 字段加5</font></h3><p>Db::name(‘data’)-&gt;where(‘id’,1)-&gt;setInc(‘status’,5); </p>
+<h3 id="score-字段减5"><a href="#score-字段减5" class="headerlink" title="score 字段减5"></a><font color=green>score 字段减5</font></h3><p>Db::name(‘data’)-&gt;where(‘id’,1)-&gt;setDec(‘status’,5);  </p>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>6.thinkphp5数据库查询之查询构造器1</title>
+    <url>/undefined/6.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A81/</url>
+    <content><![CDATA[<h1 id="二丶数据库查询之查询构造器"><a href="#二丶数据库查询之查询构造器" class="headerlink" title="二丶数据库查询之查询构造器"></a><font color = red >二丶数据库查询之查询构造器</font></h1><h2 id="1丶table方法选择数据表"><a href="#1丶table方法选择数据表" class="headerlink" title="1丶table方法选择数据表"></a><font color=green>1丶table方法选择数据表</font></h2><p><img src="https://i.imgur.com/OdaxDKH.png" alt="1">   </p>
+<h2 id="2丶name方法"><a href="#2丶name方法" class="headerlink" title="2丶name方法"></a><font color = green >2丶name方法</font></h2><p><font size=3>由于我们在数据可以配置文件中设置了数据表的前缀为think_，因此，<font color = red >table方法</font>可以改成<font color = red >name方法</font>这样就不会因为数据表前缀的修改而改动CURD代码，例如：</font><br><img src="https://i.imgur.com/1VER43B.png" alt="1">   </p>
+<h2 id="3丶助手函数db"><a href="#3丶助手函数db" class="headerlink" title="3丶助手函数db"></a><font color = green >3丶助手函数db</font></h2><p>传入的表名也是不带前缀的，原表名为think_data;<br><img src="https://i.imgur.com/SpkCjkC.png" alt="1">   </p>
+<h2 id="4丶链式操作"><a href="#4丶链式操作" class="headerlink" title="4丶链式操作"></a><font color = green >4丶链式操作</font></h2><p>使用链式操作可以完成复杂的数据库查询操作，例如：<br><img src="https://i.imgur.com/FPsjaCj.png" alt="1"><br>链式操作不分先后，只要在查询方法（这里是select方法）之前调用就行。所以，下面的查询是等效的；<br><img src="https://i.imgur.com/VmyKyL7.png" alt="1">  </p>
+<h3 id="支持链式操作的查询方法包括："><a href="#支持链式操作的查询方法包括：" class="headerlink" title="支持链式操作的查询方法包括："></a><font color = green >支持链式操作的查询方法包括：</font></h3><p><img src="https://i.imgur.com/3oi4RLJ.png" alt="1">  </p>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>8.thinkphp5模型定义与新增数据</title>
+    <url>/undefined/8.thinkphp5%E6%A8%A1%E5%9E%8B%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%96%B0%E5%A2%9E%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<h1 id="一丶模型定义与新增数据"><a href="#一丶模型定义与新增数据" class="headerlink" title="一丶模型定义与新增数据"></a><font color=red>一丶模型定义与新增数据</font></h1><h2 id="模型定义"><a href="#模型定义" class="headerlink" title="模型定义"></a><font color=red>模型定义</font></h2><p><font color=red size=3>大多数情况下，我们无需为模型定义任何的属性和方法即可完成基础的操作。   </p>
+<p>因为模型会自动对应一个数据表。   </font></p>
+<p>规范是：数据库前缀+当前的模型类名（不含命名空间）因为模型类名是驼峰法，所以获取实际的数据表的时候会自动转换为小写+下划线命名的数据表名称。<br><font color = green size=3>先在数据库创建一个think_user数据表：<br><img src="https://i.imgur.com/Wu2V5it.png" alt="1"></p>
+<p>模型定义的话先在application下，index模块下创建一个模型文件夹，创建一个User.php模型</font><br><img src="https://i.imgur.com/cUz5yF7.png" alt="1"><br>然后按照图示命名空间和继承thinkphp下的Modle模型；<br>然后在controller控制器下创建User.php控制器</p>
+<h2 id="新增数据1"><a href="#新增数据1" class="headerlink" title="新增数据1"></a><font color=red>新增数据1</font></h2><p><img src="https://i.imgur.com/Xtf2ymH.png" alt="1">   </p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$user</span>-&gt;save()</span><br></pre></td></tr></table></figure>
+<p>$user调用save（）这个方法；如果调用save这个方法有返回值，就表示用户新增成功</p>
+<h2 id="新增数据2（使用create方法）"><a href="#新增数据2（使用create方法）" class="headerlink" title="新增数据2（使用create方法）"></a><font color=red>新增数据2（使用create方法）</font></h2><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">$user[<span class="string">'name'</span>]=<span class="string">'yym'</span>;   </span><br><span class="line">$user[<span class="string">'email'</span>]=<span class="string">'1806849051@qq.com'</span>;   </span><br><span class="line">$user[<span class="string">'birthday'</span>]=strtotime(<span class="string">'1999-12-14'</span>);</span><br><span class="line"><span class="keyword">if</span>($result = UserModel::create($user))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'用户新增成功'</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'用户新增失败'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="新增数据3（批量新增数据）"><a href="#新增数据3（批量新增数据）" class="headerlink" title="新增数据3（批量新增数据）"></a><font color=red>新增数据3（批量新增数据）</font></h2><p><img src="https://i.imgur.com/3schQ0t.png" alt="1"> </p>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>9.thinkphp5模型操作之更新数据</title>
+    <url>/undefined/9.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<h1 id="一丶模型操作之更新数据"><a href="#一丶模型操作之更新数据" class="headerlink" title="一丶模型操作之更新数据"></a><font color=red>一丶模型操作之更新数据</font></h1><h2 id="1丶查找并更新"><a href="#1丶查找并更新" class="headerlink" title="1丶查找并更新"></a><font color=green>1丶查找并更新</font></h2><p><img src="https://i.imgur.com/rHDc90y.png" alt="1"><br><font size=3>解释：  </font><br>调用UserModel模型的get方法;<br>“（1）”表示get主键为1的数据<br>save（）方法判断</p>
+<h2 id="2丶直接更新数据"><a href="#2丶直接更新数据" class="headerlink" title="2丶直接更新数据"></a><font color=green>2丶直接更新数据</font></h2><p><img src="https://i.imgur.com/XUUONWY.png" alt="1"><br><font size=3>解释：  </font><br>还是调用get方法选择数据<br>save（）方法直接进行保存，将name保存为刘涛</p>
+<h2 id="3丶批量更新数据"><a href="#3丶批量更新数据" class="headerlink" title="3丶批量更新数据"></a><font color=green>3丶批量更新数据</font></h2><p><img src="https://i.imgur.com/S6Nxat1.png" alt="1"> </p>
+<h2 id="4丶通过数据库类更新数据"><a href="#4丶通过数据库类更新数据" class="headerlink" title="4丶通过数据库类更新数据"></a><font color=green>4丶通过数据库类更新数据</font></h2><p><img src="https://i.imgur.com/3DRiYoV.png" alt="1"> </p>
+<h2 id="5丶静态方法"><a href="#5丶静态方法" class="headerlink" title="5丶静态方法"></a><font color=green>5丶静态方法</font></h2><p><img src="https://i.imgur.com/MppLkpE.png" alt="1"> </p>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>dockerfile解析</title>
+    <url>/undefined/dockerfile%E8%A7%A3%E6%9E%90/</url>
+    <content><![CDATA[<h1 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a><font color = yellow >Dockerfile</font></h1><h2 id="dockerfile是什么："><a href="#dockerfile是什么：" class="headerlink" title="dockerfile是什么："></a><font color = red>dockerfile是什么：</font></h2><p>Dockerfile是用来构建Docker镜像的构建文件，是由一系列命令和参数构成的脚本。</p>
+<h3 id="构建三步骤"><a href="#构建三步骤" class="headerlink" title="构建三步骤"></a><font color = gree >构建三步骤</font></h3><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>丶编写Dockerfile 文件</span><br><span class="line"><span class="number">2</span>丶docker build 创建镜像</span><br><span class="line"><span class="number">3</span>丶docker run 运行容器</span><br></pre></td></tr></table></figure>
+<h3 id="文件什么样？"><a href="#文件什么样？" class="headerlink" title="文件什么样？"></a><font color = gree>文件什么样？</font></h3><h4 id="以我们熟悉的centos为例："><a href="#以我们熟悉的centos为例：" class="headerlink" title="以我们熟悉的centos为例："></a>以我们熟悉的centos为例：</h4><figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> scratch</span><br><span class="line"><span class="keyword">MAINTAINER</span> The CentOS Project &lt;cloud-ops@centos.org&gt;</span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> c68-docker.tar.xz /</span></span><br><span class="line"><span class="keyword">LABEL</span><span class="bash"> name=<span class="string">"CentOS Base Image"</span> \</span></span><br><span class="line"><span class="bash">    vendor=<span class="string">"CentOS"</span> \</span></span><br><span class="line"><span class="bash">    license=<span class="string">"GPLv2"</span> \</span></span><br><span class="line"><span class="bash">    build-date=<span class="string">"2016-06-02"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Default command</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">"/bin/bash"</span>]</span></span><br></pre></td></tr></table></figure>
+<h1 id="Dockerfile-构建过程解析"><a href="#Dockerfile-构建过程解析" class="headerlink" title=" Dockerfile 构建过程解析"></a><font color = yellow> Dockerfile 构建过程解析</font></h1><h3 id="Docker内容基础知识"><a href="#Docker内容基础知识" class="headerlink" title="Docker内容基础知识"></a><font color = gree>Docker内容基础知识</font></h3><ul>
+<li>1：每条表指令都必须为大写字母且后面要跟随至少一个参数</li>
+<li>2：指令按照从上到下，顺序执行</li>
+<li>3：#表示注释</li>
+<li>4：每条指令都会创建一个新的镜像层，并对镜像进行提交<h3 id="Docker执行Dockerfile的大致流程"><a href="#Docker执行Dockerfile的大致流程" class="headerlink" title="Docker执行Dockerfile的大致流程"></a><font color = gree>Docker执行Dockerfile的大致流程</font></h3></li>
+<li>1：docker从基础镜像运行一个容器</li>
+<li>2：执行一条指令并对容器做出修改</li>
+<li>3：执行类似docker commit的操作提交一个新的镜像层</li>
+<li>4：docker再基于刚提交的镜像运行一个新容器</li>
+<li>5：执行dockerfile中的下一条指令知道所有指令都执行完成<h3 id="小总结："><a href="#小总结：" class="headerlink" title="小总结："></a>小总结：</h3><h4 id="从应用软件的角度来看，Dockerfile丶Docker镜像与Docker容器分别代表软件的三个不同截断"><a href="#从应用软件的角度来看，Dockerfile丶Docker镜像与Docker容器分别代表软件的三个不同截断" class="headerlink" title="从应用软件的角度来看，Dockerfile丶Docker镜像与Docker容器分别代表软件的三个不同截断"></a><font color = red>从应用软件的角度来看，Dockerfile丶Docker镜像与Docker容器分别代表软件的三个不同截断</font></h4></li>
+<li>Dockerfile是原件的原材料</li>
+<li>Docker镜像是原件的交付品</li>
+<li>Docker容器则可以认为是软件的运行态<br>Dockerfile面向开发，Docker镜像成为交付标准，Docker容器则涉及部署与运维，三者缺一不可</li>
+</ul>
+<hr>
+<ul>
+<li><p>1丶Dockerfile，需要定义一个Dockerfile，Dockerfile定 义了进程需要的一-切东西。Dockerfile涉及的内容包括执行代码或者是文件、环境变量、依赖包、运行时环境、动态链接库、操作系统的发行版、服务进程和内核进程（当应用进程需要和系统服务和内核进程打交道，这时需要考虑如何设计namespace的权限控制）等等；</p>
+</li>
+<li><p>2丶Docker镜像，在用Dockerfile定义-一个 文件之后，docker build时会产生–个Docker镜像，当运行Docker镜像时，会真正开始提供服务；</p>
+</li>
+<li><p>3丶Docker容器，容器是直接提供服务的。</p>
+</li>
+</ul>
+<hr>
+<h1 id="DockerFile体系结构"><a href="#DockerFile体系结构" class="headerlink" title="DockerFile体系结构"></a><font color = yellow>DockerFile体系结构</font></h1><ul>
+<li><p><font color = gree>FROM</font><br>基础镜像，当前新镜像是基于哪个镜像的</p>
+</li>
+<li><p><font color = gree>MAINTAINER</font><br>镜像维护者的姓名和邮箱地址</p>
+</li>
+<li><p><font color = gree>RUN</font><br>容器构建时需要运行的命令</p>
+</li>
+<li><p><font color = gree>EXPOSE</font><br>当前容器对外暴露出的端口</p>
+</li>
+<li><p><font color = gree>WORKDIR</font><br>指定在创建容器后，终端默认登录的进来的工作目录，一个落脚点<br>举例：默认打开centos的目录为根目录”/“  ，就是WORKDIR指定的落脚点</p>
+</li>
+<li><p><font color = gree>ENV</font><br>用来在构建镜像过程中设置环境变量</p>
+</li>
+<li><p><font color = gree>ADD</font><br>将宿主机目录下的文件拷贝进镜像且ADD命令会自动处理URL和解压tar压缩包</p>
+</li>
+<li><p><font color = gree>COPY</font><br>类似ADD，拷贝文件和目录到镜像中。<br>将从构建上下文目录中&lt;源路径&gt;的文件/目录复制到新的–层的镜像内的&lt;目标路径&gt;位置<br>COPY src dest<br>COPY [“src”,”dest”]</p>
+</li>
+<li><p><font color = gree>VOLUME</font><br>容器数据卷，用于数据保存和持久化工作</p>
+</li>
+<li><p><font color = gree>CMD</font><br>指定一个容器启动时要运行的命令:<br>Dockerfile 中可以有多个CMD指令，但只有最后一个生效，CMD会被docker run之后的参数替换</p>
+</li>
+<li><p><font color = gree>ENTRYPOINT</font><br>指定一个容器启动时要运行的命令<br>ENTRYPOINT的目的和CMD一样，都是在指定容器启动程序及参数</p>
+</li>
+<li><p><font color = gree>ONBUILD</font><br>当构建一个被继承的Dockerfile时运行命令，父镜像在被子继承后父镜像的onbuild被触发</p>
+</li>
+</ul>
+<h1 id="案例一"><a href="#案例一" class="headerlink" title="案例一"></a><font color = yellow>案例一</font></h1><ul>
+<li><p><font color = gree>Base镜像(scratch)</font><br>DockerHub中99%的镜像都是通过在base<br>镜像中安装和配置需要的软件构建出来的</p>
+</li>
+<li><p><font color = gree>自定义镜像mycentos</font><br>1丶编写<br>Hub默认CentOS镜像什么情况   </p>
+</li>
+</ul>
+<p>1.初始centos运行该镜像时默认路径是根<br>2.默认不支持vim<br>3.默认不支持ifconfig<br>准备编写DockerFile文件<br>myCentOS内容DockerFile<br>2丶构建<br>docker build -t 新镜像名字：TAG .<br>3丶运行<br>docker run -it<br>4丶列出镜像的变更历史<br>docker history 镜像ID</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> centos                //设置基础镜像为centos</span><br><span class="line"><span class="keyword">MAINTAINER</span> yym&lt;yimingy72@gmail.com&gt;  //设置作者和作者邮箱</span><br><span class="line"><span class="keyword">ENV</span> mypath /tmp            //设置环境变量mypath为 /tmp</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> <span class="variable">$mypath</span>           //设置落脚点为 /tmp</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">  yum  -y  install       //安装Vim </span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">  yum  -y  net-tools    //安装net-tool   </span></span><br><span class="line">EXPO <span class="number">80</span>                    //设置运行端口</span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> /bin/bash              //设置运行命令</span></span><br></pre></td></tr></table></figure>
+<h1 id="案例二"><a href="#案例二" class="headerlink" title="案例二"></a><font color = yellow>案例二</font></h1><h3 id="CMD-ENTRYPOINT镜像案例："><a href="#CMD-ENTRYPOINT镜像案例：" class="headerlink" title="CMD/ENTRYPOINT镜像案例："></a>CMD/ENTRYPOINT镜像案例：</h3><ul>
+<li><p>都是指定一个容器启动时要运行的命令   </p>
+</li>
+<li><p>CMD<br>Dockerfile中可以有多个CMD指令，但只有最后一个生效，CMD会被docker run之后的参数替换<br>Case<br>tomcat的讲解演示    </p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">docker run -it -p <span class="number">8888</span>:<span class="number">8080</span> tomcat ls -l</span><br></pre></td></tr></table></figure></li>
+<li><p>ENTRYPOINT<br>docker run之后的参数会被当做参数传递给ENTRYPOINT，之后形成新的命令组合<br>Case<br>制作CMD版可以查询IP信息的容器<br>问题<br>WHY<br>制作ENTROYPOINT版查询IP信息的容器</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> centos</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yum install -y curl               //安装curl命令</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">"curl"</span>,<span class="string">"-s"</span>,<span class="string">"http://ip.cn"</span>]         //查IP</span></span><br></pre></td></tr></table></figure>
+<p>制作ENTROYPOINT版查询IP信息的容器,可以追加命令docker run myip -i返回文件头</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> centos</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yum install -y curl               //安装curl命令</span></span><br><span class="line">ENTROYPOINT [<span class="string">"curl"</span>,<span class="string">"-s"</span>,<span class="string">"http://ip.cn"</span>]         //查IP</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RCE</title>
     <url>/undefined/RCE/</url>
     <content><![CDATA[<h1 id="RCE漏洞原理"><a href="#RCE漏洞原理" class="headerlink" title="RCE漏洞原理"></a>RCE漏洞原理</h1><p> <strong>英文全称：remote command/code execute(远程命令/代码执行漏洞)；</strong></p>
@@ -107,96 +658,6 @@ preg_replace 执行一个正则表达式的搜索和替换。
       </tags>
   </entry>
   <entry>
-    <title>Hello Zy</title>
-    <url>/undefined/hello-world/</url>
-    <content><![CDATA[<p>熬夜所以顺便多想你一会儿</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>dockerfile解析</title>
-    <url>/undefined/dockerfile%E8%A7%A3%E6%9E%90/</url>
-    <content><![CDATA[<h1 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a><font color = yellow >Dockerfile</font></h1><h2 id="dockerfile是什么："><a href="#dockerfile是什么：" class="headerlink" title="dockerfile是什么："></a><font color = red>dockerfile是什么：</font></h2><p>Dockerfile是用来构建Docker镜像的构建文件，是由一系列命令和参数构成的脚本。</p>
-<h3 id="构建三步骤"><a href="#构建三步骤" class="headerlink" title="构建三步骤"></a><font color = gree >构建三步骤</font></h3><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>丶编写Dockerfile 文件</span><br><span class="line"><span class="number">2</span>丶docker build 创建镜像</span><br><span class="line"><span class="number">3</span>丶docker run 运行容器</span><br></pre></td></tr></table></figure>
-<h3 id="文件什么样？"><a href="#文件什么样？" class="headerlink" title="文件什么样？"></a><font color = gree>文件什么样？</font></h3><h4 id="以我们熟悉的centos为例："><a href="#以我们熟悉的centos为例：" class="headerlink" title="以我们熟悉的centos为例："></a>以我们熟悉的centos为例：</h4><figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> scratch</span><br><span class="line"><span class="keyword">MAINTAINER</span> The CentOS Project &lt;cloud-ops@centos.org&gt;</span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> c68-docker.tar.xz /</span></span><br><span class="line"><span class="keyword">LABEL</span><span class="bash"> name=<span class="string">"CentOS Base Image"</span> \</span></span><br><span class="line"><span class="bash">    vendor=<span class="string">"CentOS"</span> \</span></span><br><span class="line"><span class="bash">    license=<span class="string">"GPLv2"</span> \</span></span><br><span class="line"><span class="bash">    build-date=<span class="string">"2016-06-02"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Default command</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">"/bin/bash"</span>]</span></span><br></pre></td></tr></table></figure>
-<h1 id="Dockerfile-构建过程解析"><a href="#Dockerfile-构建过程解析" class="headerlink" title=" Dockerfile 构建过程解析"></a><font color = yellow> Dockerfile 构建过程解析</font></h1><h3 id="Docker内容基础知识"><a href="#Docker内容基础知识" class="headerlink" title="Docker内容基础知识"></a><font color = gree>Docker内容基础知识</font></h3><ul>
-<li>1：每条表指令都必须为大写字母且后面要跟随至少一个参数</li>
-<li>2：指令按照从上到下，顺序执行</li>
-<li>3：#表示注释</li>
-<li>4：每条指令都会创建一个新的镜像层，并对镜像进行提交<h3 id="Docker执行Dockerfile的大致流程"><a href="#Docker执行Dockerfile的大致流程" class="headerlink" title="Docker执行Dockerfile的大致流程"></a><font color = gree>Docker执行Dockerfile的大致流程</font></h3></li>
-<li>1：docker从基础镜像运行一个容器</li>
-<li>2：执行一条指令并对容器做出修改</li>
-<li>3：执行类似docker commit的操作提交一个新的镜像层</li>
-<li>4：docker再基于刚提交的镜像运行一个新容器</li>
-<li>5：执行dockerfile中的下一条指令知道所有指令都执行完成<h3 id="小总结："><a href="#小总结：" class="headerlink" title="小总结："></a>小总结：</h3><h4 id="从应用软件的角度来看，Dockerfile丶Docker镜像与Docker容器分别代表软件的三个不同截断"><a href="#从应用软件的角度来看，Dockerfile丶Docker镜像与Docker容器分别代表软件的三个不同截断" class="headerlink" title="从应用软件的角度来看，Dockerfile丶Docker镜像与Docker容器分别代表软件的三个不同截断"></a><font color = red>从应用软件的角度来看，Dockerfile丶Docker镜像与Docker容器分别代表软件的三个不同截断</font></h4></li>
-<li>Dockerfile是原件的原材料</li>
-<li>Docker镜像是原件的交付品</li>
-<li>Docker容器则可以认为是软件的运行态<br>Dockerfile面向开发，Docker镜像成为交付标准，Docker容器则涉及部署与运维，三者缺一不可</li>
-</ul>
-<hr>
-<ul>
-<li><p>1丶Dockerfile，需要定义一个Dockerfile，Dockerfile定 义了进程需要的一-切东西。Dockerfile涉及的内容包括执行代码或者是文件、环境变量、依赖包、运行时环境、动态链接库、操作系统的发行版、服务进程和内核进程（当应用进程需要和系统服务和内核进程打交道，这时需要考虑如何设计namespace的权限控制）等等；</p>
-</li>
-<li><p>2丶Docker镜像，在用Dockerfile定义-一个 文件之后，docker build时会产生–个Docker镜像，当运行Docker镜像时，会真正开始提供服务；</p>
-</li>
-<li><p>3丶Docker容器，容器是直接提供服务的。</p>
-</li>
-</ul>
-<hr>
-<h1 id="DockerFile体系结构"><a href="#DockerFile体系结构" class="headerlink" title="DockerFile体系结构"></a><font color = yellow>DockerFile体系结构</font></h1><ul>
-<li><p><font color = gree>FROM</font><br>基础镜像，当前新镜像是基于哪个镜像的</p>
-</li>
-<li><p><font color = gree>MAINTAINER</font><br>镜像维护者的姓名和邮箱地址</p>
-</li>
-<li><p><font color = gree>RUN</font><br>容器构建时需要运行的命令</p>
-</li>
-<li><p><font color = gree>EXPOSE</font><br>当前容器对外暴露出的端口</p>
-</li>
-<li><p><font color = gree>WORKDIR</font><br>指定在创建容器后，终端默认登录的进来的工作目录，一个落脚点<br>举例：默认打开centos的目录为根目录”/“  ，就是WORKDIR指定的落脚点</p>
-</li>
-<li><p><font color = gree>ENV</font><br>用来在构建镜像过程中设置环境变量</p>
-</li>
-<li><p><font color = gree>ADD</font><br>将宿主机目录下的文件拷贝进镜像且ADD命令会自动处理URL和解压tar压缩包</p>
-</li>
-<li><p><font color = gree>COPY</font><br>类似ADD，拷贝文件和目录到镜像中。<br>将从构建上下文目录中&lt;源路径&gt;的文件/目录复制到新的–层的镜像内的&lt;目标路径&gt;位置<br>COPY src dest<br>COPY [“src”,”dest”]</p>
-</li>
-<li><p><font color = gree>VOLUME</font><br>容器数据卷，用于数据保存和持久化工作</p>
-</li>
-<li><p><font color = gree>CMD</font><br>指定一个容器启动时要运行的命令:<br>Dockerfile 中可以有多个CMD指令，但只有最后一个生效，CMD会被docker run之后的参数替换</p>
-</li>
-<li><p><font color = gree>ENTRYPOINT</font><br>指定一个容器启动时要运行的命令<br>ENTRYPOINT的目的和CMD一样，都是在指定容器启动程序及参数</p>
-</li>
-<li><p><font color = gree>ONBUILD</font><br>当构建一个被继承的Dockerfile时运行命令，父镜像在被子继承后父镜像的onbuild被触发</p>
-</li>
-</ul>
-<h1 id="案例一"><a href="#案例一" class="headerlink" title="案例一"></a><font color = yellow>案例一</font></h1><ul>
-<li><p><font color = gree>Base镜像(scratch)</font><br>DockerHub中99%的镜像都是通过在base<br>镜像中安装和配置需要的软件构建出来的</p>
-</li>
-<li><p><font color = gree>自定义镜像mycentos</font><br>1丶编写<br>Hub默认CentOS镜像什么情况   </p>
-</li>
-</ul>
-<p>1.初始centos运行该镜像时默认路径是根<br>2.默认不支持vim<br>3.默认不支持ifconfig<br>准备编写DockerFile文件<br>myCentOS内容DockerFile<br>2丶构建<br>docker build -t 新镜像名字：TAG .<br>3丶运行<br>docker run -it<br>4丶列出镜像的变更历史<br>docker history 镜像ID</p>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> centos                //设置基础镜像为centos</span><br><span class="line"><span class="keyword">MAINTAINER</span> yym&lt;yimingy72@gmail.com&gt;  //设置作者和作者邮箱</span><br><span class="line"><span class="keyword">ENV</span> mypath /tmp            //设置环境变量mypath为 /tmp</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> <span class="variable">$mypath</span>           //设置落脚点为 /tmp</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">  yum  -y  install       //安装Vim </span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">  yum  -y  net-tools    //安装net-tool   </span></span><br><span class="line">EXPO <span class="number">80</span>                    //设置运行端口</span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> /bin/bash              //设置运行命令</span></span><br></pre></td></tr></table></figure>
-<h1 id="案例二"><a href="#案例二" class="headerlink" title="案例二"></a><font color = yellow>案例二</font></h1><h3 id="CMD-ENTRYPOINT镜像案例："><a href="#CMD-ENTRYPOINT镜像案例：" class="headerlink" title="CMD/ENTRYPOINT镜像案例："></a>CMD/ENTRYPOINT镜像案例：</h3><ul>
-<li><p>都是指定一个容器启动时要运行的命令   </p>
-</li>
-<li><p>CMD<br>Dockerfile中可以有多个CMD指令，但只有最后一个生效，CMD会被docker run之后的参数替换<br>Case<br>tomcat的讲解演示    </p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">docker run -it -p <span class="number">8888</span>:<span class="number">8080</span> tomcat ls -l</span><br></pre></td></tr></table></figure></li>
-<li><p>ENTRYPOINT<br>docker run之后的参数会被当做参数传递给ENTRYPOINT，之后形成新的命令组合<br>Case<br>制作CMD版可以查询IP信息的容器<br>问题<br>WHY<br>制作ENTROYPOINT版查询IP信息的容器</p>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> centos</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yum install -y curl               //安装curl命令</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">"curl"</span>,<span class="string">"-s"</span>,<span class="string">"http://ip.cn"</span>]         //查IP</span></span><br></pre></td></tr></table></figure>
-<p>制作ENTROYPOINT版查询IP信息的容器,可以追加命令docker run myip -i返回文件头</p>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> centos</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yum install -y curl               //安装curl命令</span></span><br><span class="line">ENTROYPOINT [<span class="string">"curl"</span>,<span class="string">"-s"</span>,<span class="string">"http://ip.cn"</span>]         //查IP</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>dockerfile创建数据卷</title>
     <url>/undefined/dockerfile%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%8D%B7/</url>
     <content><![CDATA[<h1 id="DockerFile-创建数据卷"><a href="#DockerFile-创建数据卷" class="headerlink" title="DockerFile 创建数据卷"></a><font color=red>DockerFile 创建数据卷</font></h1><p>在 Dockerfile 中使用 Volume 指令来给镜像添加一个或多个数据卷。<br>语法格式：</p>
@@ -241,5 +702,11 @@ preg_replace 执行一个正则表达式的搜索和替换。
       <tags>
         <tag>docker</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello Zy</title>
+    <url>/undefined/hello-world/</url>
+    <content><![CDATA[<p>熬夜所以顺便多想你一会儿</p>
+]]></content>
   </entry>
 </search>
