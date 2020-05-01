@@ -487,14 +487,14 @@
 <p><code>url_route_must   =&gt;   true,</code></p>
 <p>这种方式下面必须严格给每一个访问地址定义路由规则（包括首页），否则将抛出异常。</p>
 <p>首页的路由规则采用<code>/</code>定义即可，例如下面把网站首页路由输出<code>Hello,world!</code>我们需要在<code>route.php</code>这个文件中配置路由，要使用官方的   <code>use  think\Route</code></p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Route::<span class="keyword">get</span>(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">'Hello,world!'</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ACTIONSCRIPT"><figure class="iseeu highlight /actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Route::<span class="keyword">get</span>(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">'Hello,world!'</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
 
 <h2 id="路由定义"><a href="#路由定义" class="headerlink" title="路由定义"></a><font color=red>路由定义</font></h2><h3 id="注册路由规则"><a href="#注册路由规则" class="headerlink" title="注册路由规则"></a><font color=green>注册路由规则</font></h3><p>路由注册可以采用方法动态单个和批量注册，也可以直接定义路由定义文件的方式进行集中注册。</p>
 <h3 id="动态注册"><a href="#动态注册" class="headerlink" title="动态注册"></a><font color=green>动态注册</font></h3><p>路由定义采用<code>\think\Route</code>类的rule方法注册，通常是在应用的路由配置文件</p>
 <p><code>application/route.php</code>进行注册，格式是：</p>
 <p><code>Route::rule(&#39;路由表达式&#39;，&#39;路由地址&#39;，&#39;请求类型&#39;，&#39;路由参数（数组）&#39;，&#39;变量规则（数组）&#39;)；</code></p>
 <p>例如注册如下路由规则：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">think</span>\<span class="title">Route</span>;</span><br><span class="line"><span class="comment">// 注册路由到index模块的Index控制器的list操作</span></span><br><span class="line">Route::rule(<span class="string">'new/:id'</span>,<span class="string">'index/Index/list'</span>);</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PHP"><figure class="iseeu highlight /php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">think</span>\<span class="title">Route</span>;</span><br><span class="line"><span class="comment">// 注册路由到index模块的Index控制器的list操作</span></span><br><span class="line">Route::rule(<span class="string">'new/:id'</span>,<span class="string">'index/Index/list'</span>);</span><br></pre></td></tr></table></figure></div>
 
 <p>我们访问：</p>
 <p><code>http://serverName/new/5</code></p>
@@ -533,20 +533,20 @@
 </tr>
 </tbody></table>
 <p>系统提供了为不同的请求类型定义路由规则的简化方法，例如：</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Route::get(<span class="string">'new/:id'</span>,<span class="string">'News/read'</span>); <span class="regexp">//</span> 定义GET请求路由规则</span><br><span class="line">Route::post(<span class="string">'new/:id'</span>,<span class="string">'News/update'</span>); <span class="regexp">//</span> 定义POST请求路由规则</span><br><span class="line">Route::put(<span class="string">'new/:id'</span>,<span class="string">'News/update'</span>); <span class="regexp">//</span> 定义PUT请求路由规则</span><br><span class="line">Route::delete(<span class="string">'new/:id'</span>,<span class="string">'News/delete'</span>); <span class="regexp">//</span> 定义DELETE请求路由规则</span><br><span class="line">Route::any(<span class="string">'new/:id'</span>,<span class="string">'News/read'</span>); <span class="regexp">//</span> 所有请求都支持的路由规则</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Route::get(<span class="string">'new/:id'</span>,<span class="string">'News/read'</span>); <span class="regexp">//</span> 定义GET请求路由规则</span><br><span class="line">Route::post(<span class="string">'new/:id'</span>,<span class="string">'News/update'</span>); <span class="regexp">//</span> 定义POST请求路由规则</span><br><span class="line">Route::put(<span class="string">'new/:id'</span>,<span class="string">'News/update'</span>); <span class="regexp">//</span> 定义PUT请求路由规则</span><br><span class="line">Route::delete(<span class="string">'new/:id'</span>,<span class="string">'News/delete'</span>); <span class="regexp">//</span> 定义DELETE请求路由规则</span><br><span class="line">Route::any(<span class="string">'new/:id'</span>,<span class="string">'News/read'</span>); <span class="regexp">//</span> 所有请求都支持的路由规则</span><br></pre></td></tr></table></figure></div>
 
 <p>如果要定义get和post请求支持的路由规则，也可以用：</p>
 <p><code>Route::rule(&#39;new/:id&#39;,&#39;News/read&#39;,&#39;GET|POST&#39;);</code></p>
 <p>我们也可以批量注册路由规则，例如：</p>
-<figure class="highlight sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Route</span>::rule([<span class="symbol">'new</span>/:id'=&gt;<span class="symbol">'News</span>/read',<span class="symbol">'blog</span>/:name'=&gt;<span class="symbol">'Blog</span>/detail']);</span><br><span class="line"><span class="type">Route</span>::get([<span class="symbol">'new</span>/:id'=&gt;<span class="symbol">'News</span>/read',<span class="symbol">'blog</span>/:name'=&gt;<span class="symbol">'Blog</span>/detail']);</span><br><span class="line"><span class="type">Route</span>::post([<span class="symbol">'new</span>/:id'=&gt;<span class="symbol">'News</span>/update',<span class="symbol">'blog</span>/:name'=&gt;<span class="symbol">'Blog</span>/detail']);</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SML"><figure class="iseeu highlight /sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Route</span>::rule([<span class="symbol">'new</span>/:id'=&gt;<span class="symbol">'News</span>/read',<span class="symbol">'blog</span>/:name'=&gt;<span class="symbol">'Blog</span>/detail']);</span><br><span class="line"><span class="type">Route</span>::get([<span class="symbol">'new</span>/:id'=&gt;<span class="symbol">'News</span>/read',<span class="symbol">'blog</span>/:name'=&gt;<span class="symbol">'Blog</span>/detail']);</span><br><span class="line"><span class="type">Route</span>::post([<span class="symbol">'new</span>/:id'=&gt;<span class="symbol">'News</span>/update',<span class="symbol">'blog</span>/:name'=&gt;<span class="symbol">'Blog</span>/detail']);</span><br></pre></td></tr></table></figure></div>
 
 <p>注册多个路由规则后，系统会依次遍历注册过的满足请求类型的路由规则，一旦匹配到正确的路由规则后则开始调用控制器的操作方法，后续规则就不再检测。</p>
 <h2 id="定义路由配置文件"><a href="#定义路由配置文件" class="headerlink" title="定义路由配置文件"></a><font color=green>定义路由配置文件</font></h2><p>除了支持动态注册，也可以直接在应用目录下面的route.php的最后通过返回数组的方式直接定义路由规则，内容示例如下:</p>
-<figure class="highlight sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">return [</span><br><span class="line">    <span class="symbol">'new</span>/:id' =&gt; <span class="symbol">'News</span>/read',</span><br><span class="line">    <span class="symbol">'blog</span>/:id' =&gt; [<span class="symbol">'Blog</span>/update',[<span class="symbol">'method'</span> =&gt; <span class="symbol">'post</span>|put'], [<span class="symbol">'id'</span> =&gt; <span class="string">'\d+'</span>]],</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SML"><figure class="iseeu highlight /sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">return [</span><br><span class="line">    <span class="symbol">'new</span>/:id' =&gt; <span class="symbol">'News</span>/read',</span><br><span class="line">    <span class="symbol">'blog</span>/:id' =&gt; [<span class="symbol">'Blog</span>/update',[<span class="symbol">'method'</span> =&gt; <span class="symbol">'post</span>|put'], [<span class="symbol">'id'</span> =&gt; <span class="string">'\d+'</span>]],</span><br><span class="line">];</span><br></pre></td></tr></table></figure></div>
 
 <p>路由动态注册和配置定义的方式可以并存。由于检测机制问题，动态注册的性能比路由配置要高一些，尤其是多种请求类型混合定义的时候。</p>
 <p>默认情况下，只会加载一个路由配置文件<code>route.php</code>，如果需要定义多个路由文件，可以修改<code>route_config_file</code>的配置参数，例如：</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">定义路由配置文件（数组）</span><br><span class="line"><span class="string">'route_config_file'</span> =&gt; [<span class="string">'route'</span>, <span class="string">'route1'</span>, <span class="string">'route2'</span>],</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DART"><figure class="iseeu highlight /dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">定义路由配置文件（数组）</span><br><span class="line"><span class="string">'route_config_file'</span> =&gt; [<span class="string">'route'</span>, <span class="string">'route1'</span>, <span class="string">'route2'</span>],</span><br></pre></td></tr></table></figure></div>
       
     </div>
     
@@ -605,8 +605,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/18.thinkphp5%E8%B5%84%E6%BA%90%E8%B7%AF%E7%94%B1%E5%92%8C%E5%BF%AB%E6%8D%B7%E8%B7%AF%E7%94%B1/" rel="next" title="18.thinkphp5资源路由和快捷路由">
-                <i class="fa fa-chevron-left"></i> 18.thinkphp5资源路由和快捷路由
+              <a href="/undefined/2.thinkphp5%E8%AF%B7%E6%B1%82/" rel="next" title="2.thinkphp5请求">
+                <i class="fa fa-chevron-left"></i> 2.thinkphp5请求
               </a>
             
           </div>
@@ -615,8 +615,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/15.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8C%85%E5%90%AB%E6%96%87%E4%BB%B6/" rel="prev" title="15.thinkphp5模板之模板继承和包含文件">
-                15.thinkphp5模板之模板继承和包含文件 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/18.thinkphp5%E8%B5%84%E6%BA%90%E8%B7%AF%E7%94%B1%E5%92%8C%E5%BF%AB%E6%8D%B7%E8%B7%AF%E7%94%B1/" rel="prev" title="18.thinkphp5资源路由和快捷路由">
+                18.thinkphp5资源路由和快捷路由 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

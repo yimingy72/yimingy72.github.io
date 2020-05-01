@@ -479,9 +479,9 @@
 <p>规范是：数据库前缀+当前的模型类名（不含命名空间）因为模型类名是驼峰法，所以获取实际的数据表的时候会自动转换为小写+下划线命名的数据表名称。<br><font color = green size=3>先在数据库创建一个think_user数据表：<br><img src="https://i.imgur.com/Wu2V5it.png" alt="1"></p>
 <p>模型定义的话先在application下，index模块下创建一个模型文件夹，创建一个User.php模型</font><br><img src="https://i.imgur.com/cUz5yF7.png" alt="1"><br>然后按照图示命名空间和继承thinkphp下的Modle模型；<br>然后在controller控制器下创建User.php控制器</p>
 <h2 id="新增数据1"><a href="#新增数据1" class="headerlink" title="新增数据1"></a><font color=red>新增数据1</font></h2><p><img src="https://i.imgur.com/Xtf2ymH.png" alt="1">   </p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$user</span>-&gt;save()</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$user</span>-&gt;save()</span><br></pre></td></tr></table></figure></div>
 <p>$user调用save（）这个方法；如果调用save这个方法有返回值，就表示用户新增成功</p>
-<h2 id="新增数据2（使用create方法）"><a href="#新增数据2（使用create方法）" class="headerlink" title="新增数据2（使用create方法）"></a><font color=red>新增数据2（使用create方法）</font></h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$user[<span class="string">'name'</span>]=<span class="string">'yym'</span>;   </span><br><span class="line">$user[<span class="string">'email'</span>]=<span class="string">'1806849051@qq.com'</span>;   </span><br><span class="line">$user[<span class="string">'birthday'</span>]=strtotime(<span class="string">'1999-12-14'</span>);</span><br><span class="line"><span class="keyword">if</span>($result = UserModel::create($user))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'用户新增成功'</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'用户新增失败'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="新增数据2（使用create方法）"><a href="#新增数据2（使用create方法）" class="headerlink" title="新增数据2（使用create方法）"></a><font color=red>新增数据2（使用create方法）</font></h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="RUBY"><figure class="iseeu highlight /ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$user[<span class="string">'name'</span>]=<span class="string">'yym'</span>;   </span><br><span class="line">$user[<span class="string">'email'</span>]=<span class="string">'1806849051@qq.com'</span>;   </span><br><span class="line">$user[<span class="string">'birthday'</span>]=strtotime(<span class="string">'1999-12-14'</span>);</span><br><span class="line"><span class="keyword">if</span>($result = UserModel::create($user))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'用户新增成功'</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'用户新增失败'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <h2 id="新增数据3（批量新增数据）"><a href="#新增数据3（批量新增数据）" class="headerlink" title="新增数据3（批量新增数据）"></a><font color=red>新增数据3（批量新增数据）</font></h2><p><img src="https://i.imgur.com/3schQ0t.png" alt="1"> </p>
 
       
@@ -542,8 +542,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/9.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE/" rel="next" title="9.thinkphp5模型操作之更新数据">
-                <i class="fa fa-chevron-left"></i> 9.thinkphp5模型操作之更新数据
+              <a href="/undefined/dockerfile%E8%A7%A3%E6%9E%90/" rel="next" title="dockerfile解析">
+                <i class="fa fa-chevron-left"></i> dockerfile解析
               </a>
             
           </div>
@@ -552,8 +552,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/6.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A81/" rel="prev" title="6.thinkphp5数据库查询之查询构造器1">
-                6.thinkphp5数据库查询之查询构造器1 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/9.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE/" rel="prev" title="9.thinkphp5模型操作之更新数据">
+                9.thinkphp5模型操作之更新数据 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

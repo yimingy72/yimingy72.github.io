@@ -470,11 +470,11 @@
 
       
         <h1 id="一丶模型操作之删除数据"><a href="#一丶模型操作之删除数据" class="headerlink" title="一丶模型操作之删除数据"></a><font color=red>一丶模型操作之删除数据</font></h1><h2 id="1丶删除当前模型"><a href="#1丶删除当前模型" class="headerlink" title="1丶删除当前模型"></a><font color=green>1丶删除当前模型</font></h2><p>删除模型数据，可以实例化模型后调用delete方法</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$user</span> = User::get(<span class="number">1</span>);</span><br><span class="line"><span class="variable">$user</span>-&gt;delete();</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$user</span> = User::get(<span class="number">1</span>);</span><br><span class="line"><span class="variable">$user</span>-&gt;delete();</span><br></pre></td></tr></table></figure></div>
 <h2 id="2丶根据主键删除"><a href="#2丶根据主键删除" class="headerlink" title="2丶根据主键删除"></a><font color=green>2丶根据主键删除</font></h2><p>或者直接调用静态方法   </p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">User::destroy(<span class="number">1</span>)</span><br><span class="line"><span class="comment">//支持删除多个数据</span></span><br><span class="line">User::destroy(<span class="string">'1,2,3'</span>);</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">User::destroy([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">User::destroy(<span class="number">1</span>)</span><br><span class="line"><span class="comment">//支持删除多个数据</span></span><br><span class="line">User::destroy(<span class="string">'1,2,3'</span>);</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">User::destroy([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br></pre></td></tr></table></figure></div>
 <h2 id="3丶条件删除"><a href="#3丶条件删除" class="headerlink" title="3丶条件删除"></a><font color=green>3丶条件删除</font></h2><p>使用数组进行条件删除，例如：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除状态为0的数据</span></span><br><span class="line">User::destroy([<span class="string">'status'</span>=&gt;<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PHP"><figure class="iseeu highlight /php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除状态为0的数据</span></span><br><span class="line">User::destroy([<span class="string">'status'</span>=&gt;<span class="number">0</span>]);</span><br></pre></td></tr></table></figure></div>
 <p>或者通过数据库类的查询条件删除</p>
 <pre><code>User::where(&apos;id&apos;,&apos;&gt;&apos;,10)-&gt;delete();</code></pre>
       
@@ -535,8 +535,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/10.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/" rel="next" title="10.thinkphp5模型操作之查询数据">
-                <i class="fa fa-chevron-left"></i> 10.thinkphp5模型操作之查询数据
+              <a href="/undefined/15.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8C%85%E5%90%AB%E6%96%87%E4%BB%B6/" rel="next" title="15.thinkphp5模板之模板继承和包含文件">
+                <i class="fa fa-chevron-left"></i> 15.thinkphp5模板之模板继承和包含文件
               </a>
             
           </div>
@@ -545,8 +545,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/hello-world/" rel="prev" title="Hello Zy">
-                Hello Zy <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/12.thinkphp5%E8%A7%86%E5%9B%BE%E4%B9%8B%E6%A8%A1%E6%9D%BF%E8%B5%8B%E5%80%BC%E5%92%8C%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93/" rel="prev" title="12.thinkphp5视图之模板赋值和模板渲染">
+                12.thinkphp5视图之模板赋值和模板渲染 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
