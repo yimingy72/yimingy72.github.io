@@ -7,6 +7,18 @@
 ]]></content>
   </entry>
   <entry>
+    <title>ISCC | Where is file?</title>
+    <url>/undefined/%5BISCC%5DWhere%20is%20file/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>WEB漏洞</category>
+        <category>文件包含</category>
+      </categories>
+      <tags>
+        <tag>文件包含 | PHP伪协议</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>web应用安全概述</title>
     <url>/undefined/web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E6%A6%82%E8%BF%B0/</url>
     <content><![CDATA[<h3 id="OWASP-开放的web应用程序安全项目组织"><a href="#OWASP-开放的web应用程序安全项目组织" class="headerlink" title="OWASP(开放的web应用程序安全项目组织)"></a>OWASP(开放的web应用程序安全项目组织)</h3><p>OWASP TOP10（10大应用安全风险）</p>
@@ -279,17 +291,6 @@
       </tags>
   </entry>
   <entry>
-    <title>dockerfile创建数据卷</title>
-    <url>/undefined/2019%E5%BC%BA%E7%BD%91%E6%9D%AF&#39;&#39;%E9%9A%8F%E4%BE%BF%E6%B3%A8&#39;&#39;/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>SQL注入</category>
-      </categories>
-      <tags>
-        <tag>SQL注入</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>BUUCTF | 2018护网杯(WEB)easy_tornado(模板注入)</title>
     <url>/undefined/2018%E6%8A%A4%E7%BD%91%E6%9D%AF(WEB)easy_tornado(%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5)/</url>
     <content><![CDATA[<h1 id="考察知识点：模板注入"><a href="#考察知识点：模板注入" class="headerlink" title="考察知识点：模板注入"></a><center>考察知识点：模板注入</center></h1><p>打开页面发现三个链接依次打开，发现各自的文本<br><img src="https://i.imgur.com/zsu1I4d.png" alt="1"></p>
@@ -313,30 +314,23 @@
       </tags>
   </entry>
   <entry>
+    <title>dockerfile创建数据卷</title>
+    <url>/undefined/2019%E5%BC%BA%E7%BD%91%E6%9D%AF&#39;&#39;%E9%9A%8F%E4%BE%BF%E6%B3%A8&#39;&#39;/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>SQL注入</category>
+      </categories>
+      <tags>
+        <tag>SQL注入</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>10.thinkphp5模型操作之查询数据</title>
     <url>/undefined/10.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</url>
     <content><![CDATA[<h1 id="一丶模型操作之查询数据"><a href="#一丶模型操作之查询数据" class="headerlink" title="一丶模型操作之查询数据"></a><font color=red>一丶模型操作之查询数据</font></h1><h2 id="1丶获取单个数据"><a href="#1丶获取单个数据" class="headerlink" title="1丶获取单个数据"></a><font color=green>1丶获取单个数据</font></h2><p><img src="https://i.imgur.com/r5MBwFC.png" alt="1"> </p>
 <h2 id="2丶获取多个数据"><a href="#2丶获取多个数据" class="headerlink" title="2丶获取多个数据"></a><font color=green>2丶获取多个数据</font></h2><p><img src="https://i.imgur.com/4wU4rjB.png" alt="1"> </p>
 <h2 id="3丶聚合"><a href="#3丶聚合" class="headerlink" title="3丶聚合"></a><font color=green>3丶聚合</font></h2><p><img src="https://i.imgur.com/0ZWVjMe.png" alt="1"> </p>
 ]]></content>
-      <categories>
-        <category>thinkphp5</category>
-      </categories>
-      <tags>
-        <tag>thinkphp5</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>11.thinkphp5模型操作之删除数据</title>
-    <url>/undefined/11.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE/</url>
-    <content><![CDATA[<h1 id="一丶模型操作之删除数据"><a href="#一丶模型操作之删除数据" class="headerlink" title="一丶模型操作之删除数据"></a><font color=red>一丶模型操作之删除数据</font></h1><h2 id="1丶删除当前模型"><a href="#1丶删除当前模型" class="headerlink" title="1丶删除当前模型"></a><font color=green>1丶删除当前模型</font></h2><p>删除模型数据，可以实例化模型后调用delete方法</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$user</span> = User::get(<span class="number">1</span>);</span><br><span class="line"><span class="variable">$user</span>-&gt;delete();</span><br></pre></td></tr></table></figure></div>
-<h2 id="2丶根据主键删除"><a href="#2丶根据主键删除" class="headerlink" title="2丶根据主键删除"></a><font color=green>2丶根据主键删除</font></h2><p>或者直接调用静态方法   </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="code"><pre><span class="line">User::destroy(<span class="number">1</span>)</span><br><span class="line"><span class="comment">//支持删除多个数据</span></span><br><span class="line">User::destroy(<span class="string">'1,2,3'</span>);</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">User::destroy([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br></pre></td></tr></table></figure></div>
-<h2 id="3丶条件删除"><a href="#3丶条件删除" class="headerlink" title="3丶条件删除"></a><font color=green>3丶条件删除</font></h2><p>使用数组进行条件删除，例如：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PHP"><figure class="iseeu highlight /php"><table><tr><td class="code"><pre><span class="line"><span class="comment">//删除状态为0的数据</span></span><br><span class="line">User::destroy([<span class="string">'status'</span>=&gt;<span class="number">0</span>]);</span><br></pre></td></tr></table></figure></div>
-<p>或者通过数据库类的查询条件删除</p>
-<pre><code>User::where(&apos;id&apos;,&apos;&gt;&apos;,10)-&gt;delete();</code></pre>]]></content>
       <categories>
         <category>thinkphp5</category>
       </categories>
@@ -403,6 +397,52 @@
       </tags>
   </entry>
   <entry>
+    <title>14.thinkphp5模板之模板布局</title>
+    <url>/undefined/14.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A8%A1%E6%9D%BF%E5%B8%83%E5%B1%80/</url>
+    <content><![CDATA[<h1 id="一丶模板之模板布局"><a href="#一丶模板之模板布局" class="headerlink" title="一丶模板之模板布局"></a><font color=red>一丶模板之模板布局</font></h1><h2 id="1丶全局配置方式"><a href="#1丶全局配置方式" class="headerlink" title="1丶全局配置方式"></a><font color=green>1丶全局配置方式</font></h2><p>这种方式仅需在项目配置文件中添加相关的布局模板配置,就可以简单实现模板布局功能，比较适用于全站使用相同布局的情况,需要配置开启layout_on参数(默认不开启),并且设置布局入口文件名 layout_name(默认为layout).</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCHEME"><figure class="iseeu highlight /scheme"><table><tr><td class="code"><pre><span class="line"><span class="symbol">'template</span><span class="symbol">'=&gt;</span>[</span><br><span class="line">    <span class="symbol">'layout_on</span><span class="symbol">'=&gt;true</span>,</span><br><span class="line">    <span class="symbol">'layout_name</span><span class="symbol">'=&gt;</span><span class="symbol">'layout</span>',</span><br><span class="line">]</span><br></pre></td></tr></table></figure></div>
+<p>开启 layout_on后，我们的模板渲染流程就有所变化，例如：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="FORTRAN"><figure class="iseeu highlight /fortran"><table><tr><td class="code"><pre><span class="line">namespace app\<span class="built_in">index</span>\controller； </span><br><span class="line"><span class="keyword">use</span> think\ Controller； </span><br><span class="line"><span class="keyword">Class</span> <span class="built_in">Index</span> <span class="keyword">extends</span> Controller&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span></span> <span class="built_in">index</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> $this-&gt;fetcho()</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>在不开启layout_on布局模板之前，会直接渲染application/ index/view/ index/ index.htm模板文件，开启之后，首先会渲染 application/inex/view/ layout. htm1模板，布局模板的写法和其他模板的写法类似，本身也可以支持所有的模板标签以及包含文件，区别在于有一个特定的输出替换变量（_ <em>CONTENT_</em>}，例如，下面是一个典型的Layout.htm模板的写法</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DUST"><figure class="iseeu highlight /dust"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width：100%； height：100px； background-color:red； "</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="template-variable">&#123;__CONTENT__&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width：100%； height：100px； background-color:blue；"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></div>
+<p>读取layout模板之后，会解析 index/index.html模板文件，并把解析后的内容替换到layout布局模板文件的{CONTENT}特定字符串。   </p>
+<p>当然可以通过设置来改变这个特定的替换字符串，例如：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCHEME"><figure class="iseeu highlight /scheme"><table><tr><td class="code"><pre><span class="line"><span class="symbol">'template</span><span class="symbol">'=&gt;</span>[</span><br><span class="line">    <span class="symbol">'layout_on</span><span class="symbol">'=&gt;true</span>,</span><br><span class="line">    <span class="symbol">'layout_name</span><span class="symbol">'=&gt;</span><span class="symbol">'layout</span>',</span><br><span class="line">    <span class="symbol">'layout_time</span><span class="symbol">'=&gt;</span>'&#123;__REPLACE&#125;'</span><br><span class="line">]</span><br></pre></td></tr></table></figure></div>
+<p>一个布局模板同时只能有一个特定替换字符串。<br>采用这种布局方式的情况下，一旦 index/ index. htm模板文件或者 layout. htm布局模板文件发生修改，都会导致模板重新编译。<br>如果需要指定其他位置的布局模板，可以使用</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCHEME"><figure class="iseeu highlight /scheme"><table><tr><td class="code"><pre><span class="line"><span class="symbol">'template</span><span class="symbol">'=&gt;</span>[</span><br><span class="line">    <span class="symbol">'layout_on</span><span class="symbol">'=&gt;true</span>,</span><br><span class="line">    <span class="symbol">'layout_name</span><span class="symbol">'=&gt;</span><span class="symbol">'lang</span>',</span><br><span class="line">    <span class="symbol">'layout_item</span><span class="symbol">'=&gt;</span>'&#123;__REPLACE&#125;'</span><br><span class="line">]</span><br></pre></td></tr></table></figure></div>
+<p>就表示采用 application/ index/view/ lang. htm1作为布局模板。<br>如果某些页而不需要使用布局模板功能，可以在模板文件开头加上{_ _ NOLAYOUT__}字符串。<br>如果上面的 Index/index. htm模板文件里面包含有{_ <em>NOLAYOUT_</em>},则即使开启布局模板,也不会进行布局模板解析.</p>
+<h2 id="2丶模板标签方式"><a href="#2丶模板标签方式" class="headerlink" title="2丶模板标签方式"></a><font color=green>2丶模板标签方式</font></h2><p>这种布局模板不需要在配置文件中设置任何参数，也不需要开启 ayout on，直接在模板文件中指定布局模板即可，相关的布局模板调整也在模板中进行。<br>以前面的输出模板为例，这种方式的入口还是在 index/index. htm模板，但是我们可以修改下 index模板文件的内容，在头部增加下面的布局标签（记得首先关闭前面的layout_ on设置，否则可能出现布局循环）：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="code"><pre><span class="line">&#123;layout <span class="attribute">name</span>=<span class="string">"layout"</span>/&#125;</span><br></pre></td></tr></table></figure></div>
+<p>表示当前模板文件需要使用1 Layout. htm1布局模板文件，而布局模板文件的写法上面第一种方式是一样的。当渲染 index./ index. htm模板文件的时候，如果读取到 layout标签，则会把当前模板的解析内容替换到 layout布局模板的{<em>_CONTENT</em> _}特定字符串。<br>个模板文件只能使用一个布局模板，如果模板文件中没有使用任何1 ayout标签则表示当前模板不使用任何布局如果需要使用其他的布局模板，可以改变 layout的name属性，例如：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="APPLESCRIPT"><figure class="iseeu highlight /applescript"><table><tr><td class="code"><pre><span class="line">&#123;layout <span class="built_in">name</span>=<span class="string">"newlayout"</span> /&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="3丶layout控制模板布局"><a href="#3丶layout控制模板布局" class="headerlink" title="3丶layout控制模板布局"></a><font color=green>3丶layout控制模板布局</font></h2><p>使用内置的ayou方法可以更灵活的在程序中控制模板输出的布局功能，尤其适用于局部需要布局或者关闭布局的情况，这种方式也不需要在配置文件中开启 layout_on.<br>三种模板布局方式中，第一种和第三种是在程序中配置实现模板布局，第二种方式则是单纯通过模板标签在模板中使用布局。<br>具体选择什么方式，需要根据项目的实际情况来了。</p>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>11.thinkphp5模型操作之删除数据</title>
+    <url>/undefined/11.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<h1 id="一丶模型操作之删除数据"><a href="#一丶模型操作之删除数据" class="headerlink" title="一丶模型操作之删除数据"></a><font color=red>一丶模型操作之删除数据</font></h1><h2 id="1丶删除当前模型"><a href="#1丶删除当前模型" class="headerlink" title="1丶删除当前模型"></a><font color=green>1丶删除当前模型</font></h2><p>删除模型数据，可以实例化模型后调用delete方法</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$user</span> = User::get(<span class="number">1</span>);</span><br><span class="line"><span class="variable">$user</span>-&gt;delete();</span><br></pre></td></tr></table></figure></div>
+<h2 id="2丶根据主键删除"><a href="#2丶根据主键删除" class="headerlink" title="2丶根据主键删除"></a><font color=green>2丶根据主键删除</font></h2><p>或者直接调用静态方法   </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="code"><pre><span class="line">User::destroy(<span class="number">1</span>)</span><br><span class="line"><span class="comment">//支持删除多个数据</span></span><br><span class="line">User::destroy(<span class="string">'1,2,3'</span>);</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">User::destroy([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br></pre></td></tr></table></figure></div>
+<h2 id="3丶条件删除"><a href="#3丶条件删除" class="headerlink" title="3丶条件删除"></a><font color=green>3丶条件删除</font></h2><p>使用数组进行条件删除，例如：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PHP"><figure class="iseeu highlight /php"><table><tr><td class="code"><pre><span class="line"><span class="comment">//删除状态为0的数据</span></span><br><span class="line">User::destroy([<span class="string">'status'</span>=&gt;<span class="number">0</span>]);</span><br></pre></td></tr></table></figure></div>
+<p>或者通过数据库类的查询条件删除</p>
+<pre><code>User::where(&apos;id&apos;,&apos;&gt;&apos;,10)-&gt;delete();</code></pre>]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>13.thinkphp5模板系统变量输出和函数使用</title>
     <url>/undefined/13.thinkphp5%E6%A8%A1%E6%9D%BF%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E8%BE%93%E5%87%BA%E5%92%8C%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h1 id="一丶模板系统变量输出和函数使用"><a href="#一丶模板系统变量输出和函数使用" class="headerlink" title="一丶模板系统变量输出和函数使用"></a><font color=red>一丶模板系统变量输出和函数使用</font></h1><h2 id="1丶系统变量输出"><a href="#1丶系统变量输出" class="headerlink" title="1丶系统变量输出"></a><font color=green>1丶系统变量输出</font></h2><p>普通的模板变量需要首先赋值之后才能在模板中输出，但是系统变量则不需要，可以直接在模板中输出，系统变量的输出通常以{$Think打头，例如：</p>
@@ -434,25 +474,31 @@
       </tags>
   </entry>
   <entry>
-    <title>14.thinkphp5模板之模板布局</title>
-    <url>/undefined/14.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A8%A1%E6%9D%BF%E5%B8%83%E5%B1%80/</url>
-    <content><![CDATA[<h1 id="一丶模板之模板布局"><a href="#一丶模板之模板布局" class="headerlink" title="一丶模板之模板布局"></a><font color=red>一丶模板之模板布局</font></h1><h2 id="1丶全局配置方式"><a href="#1丶全局配置方式" class="headerlink" title="1丶全局配置方式"></a><font color=green>1丶全局配置方式</font></h2><p>这种方式仅需在项目配置文件中添加相关的布局模板配置,就可以简单实现模板布局功能，比较适用于全站使用相同布局的情况,需要配置开启layout_on参数(默认不开启),并且设置布局入口文件名 layout_name(默认为layout).</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCHEME"><figure class="iseeu highlight /scheme"><table><tr><td class="code"><pre><span class="line"><span class="symbol">'template</span><span class="symbol">'=&gt;</span>[</span><br><span class="line">    <span class="symbol">'layout_on</span><span class="symbol">'=&gt;true</span>,</span><br><span class="line">    <span class="symbol">'layout_name</span><span class="symbol">'=&gt;</span><span class="symbol">'layout</span>',</span><br><span class="line">]</span><br></pre></td></tr></table></figure></div>
-<p>开启 layout_on后，我们的模板渲染流程就有所变化，例如：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="FORTRAN"><figure class="iseeu highlight /fortran"><table><tr><td class="code"><pre><span class="line">namespace app\<span class="built_in">index</span>\controller； </span><br><span class="line"><span class="keyword">use</span> think\ Controller； </span><br><span class="line"><span class="keyword">Class</span> <span class="built_in">Index</span> <span class="keyword">extends</span> Controller&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span></span> <span class="built_in">index</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> $this-&gt;fetcho()</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>在不开启layout_on布局模板之前，会直接渲染application/ index/view/ index/ index.htm模板文件，开启之后，首先会渲染 application/inex/view/ layout. htm1模板，布局模板的写法和其他模板的写法类似，本身也可以支持所有的模板标签以及包含文件，区别在于有一个特定的输出替换变量（_ <em>CONTENT_</em>}，例如，下面是一个典型的Layout.htm模板的写法</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DUST"><figure class="iseeu highlight /dust"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width：100%； height：100px； background-color:red； "</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="template-variable">&#123;__CONTENT__&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width：100%； height：100px； background-color:blue；"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></div>
-<p>读取layout模板之后，会解析 index/index.html模板文件，并把解析后的内容替换到layout布局模板文件的{CONTENT}特定字符串。   </p>
-<p>当然可以通过设置来改变这个特定的替换字符串，例如：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCHEME"><figure class="iseeu highlight /scheme"><table><tr><td class="code"><pre><span class="line"><span class="symbol">'template</span><span class="symbol">'=&gt;</span>[</span><br><span class="line">    <span class="symbol">'layout_on</span><span class="symbol">'=&gt;true</span>,</span><br><span class="line">    <span class="symbol">'layout_name</span><span class="symbol">'=&gt;</span><span class="symbol">'layout</span>',</span><br><span class="line">    <span class="symbol">'layout_time</span><span class="symbol">'=&gt;</span>'&#123;__REPLACE&#125;'</span><br><span class="line">]</span><br></pre></td></tr></table></figure></div>
-<p>一个布局模板同时只能有一个特定替换字符串。<br>采用这种布局方式的情况下，一旦 index/ index. htm模板文件或者 layout. htm布局模板文件发生修改，都会导致模板重新编译。<br>如果需要指定其他位置的布局模板，可以使用</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCHEME"><figure class="iseeu highlight /scheme"><table><tr><td class="code"><pre><span class="line"><span class="symbol">'template</span><span class="symbol">'=&gt;</span>[</span><br><span class="line">    <span class="symbol">'layout_on</span><span class="symbol">'=&gt;true</span>,</span><br><span class="line">    <span class="symbol">'layout_name</span><span class="symbol">'=&gt;</span><span class="symbol">'lang</span>',</span><br><span class="line">    <span class="symbol">'layout_item</span><span class="symbol">'=&gt;</span>'&#123;__REPLACE&#125;'</span><br><span class="line">]</span><br></pre></td></tr></table></figure></div>
-<p>就表示采用 application/ index/view/ lang. htm1作为布局模板。<br>如果某些页而不需要使用布局模板功能，可以在模板文件开头加上{_ _ NOLAYOUT__}字符串。<br>如果上面的 Index/index. htm模板文件里面包含有{_ <em>NOLAYOUT_</em>},则即使开启布局模板,也不会进行布局模板解析.</p>
-<h2 id="2丶模板标签方式"><a href="#2丶模板标签方式" class="headerlink" title="2丶模板标签方式"></a><font color=green>2丶模板标签方式</font></h2><p>这种布局模板不需要在配置文件中设置任何参数，也不需要开启 ayout on，直接在模板文件中指定布局模板即可，相关的布局模板调整也在模板中进行。<br>以前面的输出模板为例，这种方式的入口还是在 index/index. htm模板，但是我们可以修改下 index模板文件的内容，在头部增加下面的布局标签（记得首先关闭前面的layout_ on设置，否则可能出现布局循环）：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="code"><pre><span class="line">&#123;layout <span class="attribute">name</span>=<span class="string">"layout"</span>/&#125;</span><br></pre></td></tr></table></figure></div>
-<p>表示当前模板文件需要使用1 Layout. htm1布局模板文件，而布局模板文件的写法上面第一种方式是一样的。当渲染 index./ index. htm模板文件的时候，如果读取到 layout标签，则会把当前模板的解析内容替换到 layout布局模板的{<em>_CONTENT</em> _}特定字符串。<br>个模板文件只能使用一个布局模板，如果模板文件中没有使用任何1 ayout标签则表示当前模板不使用任何布局如果需要使用其他的布局模板，可以改变 layout的name属性，例如：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="APPLESCRIPT"><figure class="iseeu highlight /applescript"><table><tr><td class="code"><pre><span class="line">&#123;layout <span class="built_in">name</span>=<span class="string">"newlayout"</span> /&#125;</span><br></pre></td></tr></table></figure></div>
-<h2 id="3丶layout控制模板布局"><a href="#3丶layout控制模板布局" class="headerlink" title="3丶layout控制模板布局"></a><font color=green>3丶layout控制模板布局</font></h2><p>使用内置的ayou方法可以更灵活的在程序中控制模板输出的布局功能，尤其适用于局部需要布局或者关闭布局的情况，这种方式也不需要在配置文件中开启 layout_on.<br>三种模板布局方式中，第一种和第三种是在程序中配置实现模板布局，第二种方式则是单纯通过模板标签在模板中使用布局。<br>具体选择什么方式，需要根据项目的实际情况来了。</p>
+    <title>15.thinkphp5模板之模板继承和包含文件</title>
+    <url>/undefined/15.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8C%85%E5%90%AB%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="一丶模板之模板继承和包含文件"><a href="#一丶模板之模板继承和包含文件" class="headerlink" title="一丶模板之模板继承和包含文件"></a><font color=red>一丶模板之模板继承和包含文件</font></h1><h2 id="1丶模板继承"><a href="#1丶模板继承" class="headerlink" title="1丶模板继承"></a><font color=green>1丶模板继承</font></h2><p>模板继承是一项更加灵活的模板布局方式，模板继承不同于模板布局，甚至来说，应该是在模板布局的上层。模板继承其实并不难理解，就好比类的继承一样，模板也可以定义一个基础模板（或者是布局），并且其中定义的相关的区块（block），然后继承（extend）该基础模块的子模板中就可以对基础模板中定义的区块进行重载。</p>
+<p>因此，模板继承的优势其实是设计基础模块中的区块（block）和子模块中替换这些区块。   </p>
+<p>每个区块由（b1ock}{/b1ock}标签组成。下面就是基础模板中的一个典型的区块设计。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XL"><figure class="iseeu highlight /xl"><table><tr><td class="code"><pre><span class="line">&#123;<span class="keyword">block</span> <span class="keyword">name</span>=<span class="string">"title"</span>&#125;&lt;<span class="built_in">title</span>&gt;网站标题&lt;/<span class="built_in">title</span>&gt;&#123;/<span class="keyword">block</span>&#125;</span><br></pre></td></tr></table></figure></div>
+<p>block标签必零指定name属性来标识当前区块的名称，这个标识在当前模板中应该是唯一的， block标签中可以包含任何模板内容，包括其他标签和变量。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DUST"><figure class="iseeu highlight /dust"><table><tr><td class="code"><pre><span class="line"><span class="template-variable">&#123;block name="title"&#125;</span><span class="xml"><span class="tag">&lt;<span class="name">title</span>&gt;</span></span><span class="template-variable">&#123;$web_title&#125;</span><span class="xml"><span class="tag">&lt;<span class="name">title</span>&gt;</span></span><span class="template-tag">&#123;/<span class="name">block</span>&#125;</span></span><br></pre></td></tr></table></figure></div>
+<p>一个模板中可以定义任意多个名称标识不重复的区块，例如我们在vew视图目录下面定义了一个 base. html基础模板:</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DUST"><figure class="iseeu highlight /dust"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">utf-8</span>"&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt; <span class="attr">title</span>&gt;</span>模板继承的演示<span class="tag">&lt;/<span class="name">tit1e</span></span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml">    block name="head"&#125;这是头部</span><span class="template-tag">&#123;/ <span class="name">block</span>&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;block name=" footer"&#125;</span><span class="xml">这是底部</span><span class="template-tag">&#123;/ <span class="name">block</span>&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure></div>
+<p>然后我们在子模板（其实是当前操作的入口模板）中使用继承：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XL"><figure class="iseeu highlight /xl"><table><tr><td class="code"><pre><span class="line">&#123;extend <span class="keyword">name</span>=<span class="string">"base"</span>/&#125;</span><br><span class="line">&#123;<span class="keyword">block</span> <span class="keyword">name</span>=<span class="string">"head"</span>&#125;这里是子模板里面的区块，用来替换基础模板里面的内容的&#123;/<span class="keyword">block</span>&#125;</span><br><span class="line">&#123;<span class="keyword">block</span> <span class="keyword">name</span>=<span class="string">" footer&#125;这里是子模板里面的底部内容&lt;/block&gt;</span></span><br></pre></td></tr></table></figure></div>
+<p>上例中，我们可以看到在子模板中使用了 extend标签来继承base模板。   </p>
+<p>在子模板中，可以对基模板中的区块进行重载定义，如果没有重新定义的话，则表示沿用基础模板中的区块定义，如果定义了一个空的区块，则表示删除基础模板中的该区块内容。   </p>
+<p>{_ block_}这个标签，当区块中有这个标记时，就不只是直接重载这个区块，他表示引用所继承模板对应区块的内容到这个位置，最终这个区块是合并后的内容。   </p>
+<p>在当前子模板中，只能定义区块而不能定义其他的模板内容，否则将会直接忽略，并且只能定义基础模板中已经定义的区块。   </p>
+<p>模板可以多级继承，比如B继承了A而C又继承了B，最终C中的区块会覆盖B和A中的同名区块，但C和B中的区块必须是A中已定义过的。   </p>
+<p>子模板中的区块定义顺序是随意的，模板继承的用法关键在于基础模板如何布局和设计规划了，如果结合原来的布局功能，则会更加灵活。</p>
+<h2 id="2丶包含文件"><a href="#2丶包含文件" class="headerlink" title="2丶包含文件"></a><font color=green>2丶包含文件</font></h2><p>在当前模板文件中包含其他的模板文件使用 include标签，标签语法   </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GRADLE"><figure class="iseeu highlight /gradle"><table><tr><td class="code"><pre><span class="line">&#123;<span class="keyword">include</span> <span class="keyword">file</span>=<span class="string">'模板文件1，模板文件2，......'</span><span class="regexp">/&#125;</span></span><br></pre></td></tr></table></figure></div>
+<p>包含的模板文件中不能再使用模板布局或者模板继承。   </p>
+<p>路径以项目目录/public/路径下为起点   </p>
+<p>可以直接包含一个模板文件名(包含完整路径),例如：  </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMAKE"><figure class="iseeu highlight /cmake"><table><tr><td class="code"><pre><span class="line">&#123;<span class="keyword">include</span> <span class="keyword">file</span>=<span class="string">"../application/index（模块名）/view（视图文件夹）/index（控制器）/lang.html（具体模板）"</span>/&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img src="https://i.imgur.com/hhMt8F0.png" alt="1"><br><img src="https://i.imgur.com/eprHQT5.png" alt="1"><br>包含文件中可以再使用 include标签包含别的文件，但注意不要形成A包含A，或者A包含B而B又包含A这样的死循环。</p>
 ]]></content>
       <categories>
         <category>thinkphp5</category>
@@ -511,31 +557,20 @@
       </tags>
   </entry>
   <entry>
-    <title>15.thinkphp5模板之模板继承和包含文件</title>
-    <url>/undefined/15.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8C%85%E5%90%AB%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="一丶模板之模板继承和包含文件"><a href="#一丶模板之模板继承和包含文件" class="headerlink" title="一丶模板之模板继承和包含文件"></a><font color=red>一丶模板之模板继承和包含文件</font></h1><h2 id="1丶模板继承"><a href="#1丶模板继承" class="headerlink" title="1丶模板继承"></a><font color=green>1丶模板继承</font></h2><p>模板继承是一项更加灵活的模板布局方式，模板继承不同于模板布局，甚至来说，应该是在模板布局的上层。模板继承其实并不难理解，就好比类的继承一样，模板也可以定义一个基础模板（或者是布局），并且其中定义的相关的区块（block），然后继承（extend）该基础模块的子模板中就可以对基础模板中定义的区块进行重载。</p>
-<p>因此，模板继承的优势其实是设计基础模块中的区块（block）和子模块中替换这些区块。   </p>
-<p>每个区块由（b1ock}{/b1ock}标签组成。下面就是基础模板中的一个典型的区块设计。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XL"><figure class="iseeu highlight /xl"><table><tr><td class="code"><pre><span class="line">&#123;<span class="keyword">block</span> <span class="keyword">name</span>=<span class="string">"title"</span>&#125;&lt;<span class="built_in">title</span>&gt;网站标题&lt;/<span class="built_in">title</span>&gt;&#123;/<span class="keyword">block</span>&#125;</span><br></pre></td></tr></table></figure></div>
-<p>block标签必零指定name属性来标识当前区块的名称，这个标识在当前模板中应该是唯一的， block标签中可以包含任何模板内容，包括其他标签和变量。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DUST"><figure class="iseeu highlight /dust"><table><tr><td class="code"><pre><span class="line"><span class="template-variable">&#123;block name="title"&#125;</span><span class="xml"><span class="tag">&lt;<span class="name">title</span>&gt;</span></span><span class="template-variable">&#123;$web_title&#125;</span><span class="xml"><span class="tag">&lt;<span class="name">title</span>&gt;</span></span><span class="template-tag">&#123;/<span class="name">block</span>&#125;</span></span><br></pre></td></tr></table></figure></div>
-<p>一个模板中可以定义任意多个名称标识不重复的区块，例如我们在vew视图目录下面定义了一个 base. html基础模板:</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DUST"><figure class="iseeu highlight /dust"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">utf-8</span>"&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt; <span class="attr">title</span>&gt;</span>模板继承的演示<span class="tag">&lt;/<span class="name">tit1e</span></span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml">    block name="head"&#125;这是头部</span><span class="template-tag">&#123;/ <span class="name">block</span>&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;block name=" footer"&#125;</span><span class="xml">这是底部</span><span class="template-tag">&#123;/ <span class="name">block</span>&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure></div>
-<p>然后我们在子模板（其实是当前操作的入口模板）中使用继承：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XL"><figure class="iseeu highlight /xl"><table><tr><td class="code"><pre><span class="line">&#123;extend <span class="keyword">name</span>=<span class="string">"base"</span>/&#125;</span><br><span class="line">&#123;<span class="keyword">block</span> <span class="keyword">name</span>=<span class="string">"head"</span>&#125;这里是子模板里面的区块，用来替换基础模板里面的内容的&#123;/<span class="keyword">block</span>&#125;</span><br><span class="line">&#123;<span class="keyword">block</span> <span class="keyword">name</span>=<span class="string">" footer&#125;这里是子模板里面的底部内容&lt;/block&gt;</span></span><br></pre></td></tr></table></figure></div>
-<p>上例中，我们可以看到在子模板中使用了 extend标签来继承base模板。   </p>
-<p>在子模板中，可以对基模板中的区块进行重载定义，如果没有重新定义的话，则表示沿用基础模板中的区块定义，如果定义了一个空的区块，则表示删除基础模板中的该区块内容。   </p>
-<p>{_ block_}这个标签，当区块中有这个标记时，就不只是直接重载这个区块，他表示引用所继承模板对应区块的内容到这个位置，最终这个区块是合并后的内容。   </p>
-<p>在当前子模板中，只能定义区块而不能定义其他的模板内容，否则将会直接忽略，并且只能定义基础模板中已经定义的区块。   </p>
-<p>模板可以多级继承，比如B继承了A而C又继承了B，最终C中的区块会覆盖B和A中的同名区块，但C和B中的区块必须是A中已定义过的。   </p>
-<p>子模板中的区块定义顺序是随意的，模板继承的用法关键在于基础模板如何布局和设计规划了，如果结合原来的布局功能，则会更加灵活。</p>
-<h2 id="2丶包含文件"><a href="#2丶包含文件" class="headerlink" title="2丶包含文件"></a><font color=green>2丶包含文件</font></h2><p>在当前模板文件中包含其他的模板文件使用 include标签，标签语法   </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GRADLE"><figure class="iseeu highlight /gradle"><table><tr><td class="code"><pre><span class="line">&#123;<span class="keyword">include</span> <span class="keyword">file</span>=<span class="string">'模板文件1，模板文件2，......'</span><span class="regexp">/&#125;</span></span><br></pre></td></tr></table></figure></div>
-<p>包含的模板文件中不能再使用模板布局或者模板继承。   </p>
-<p>路径以项目目录/public/路径下为起点   </p>
-<p>可以直接包含一个模板文件名(包含完整路径),例如：  </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMAKE"><figure class="iseeu highlight /cmake"><table><tr><td class="code"><pre><span class="line">&#123;<span class="keyword">include</span> <span class="keyword">file</span>=<span class="string">"../application/index（模块名）/view（视图文件夹）/index（控制器）/lang.html（具体模板）"</span>/&#125;</span><br></pre></td></tr></table></figure></div>
-<p><img src="https://i.imgur.com/hhMt8F0.png" alt="1"><br><img src="https://i.imgur.com/eprHQT5.png" alt="1"><br>包含文件中可以再使用 include标签包含别的文件，但注意不要形成A包含A，或者A包含B而B又包含A这样的死循环。</p>
+    <title>18.thinkphp5资源路由和快捷路由</title>
+    <url>/undefined/18.thinkphp5%E8%B5%84%E6%BA%90%E8%B7%AF%E7%94%B1%E5%92%8C%E5%BF%AB%E6%8D%B7%E8%B7%AF%E7%94%B1/</url>
+    <content><![CDATA[<h1 id="一丶资源路由和快捷路由"><a href="#一丶资源路由和快捷路由" class="headerlink" title="一丶资源路由和快捷路由"></a><font color=red>一丶资源路由和快捷路由</font></h1><h1 id="1丶资源路由"><a href="#1丶资源路由" class="headerlink" title="1丶资源路由"></a><font color=green>1丶资源路由</font></h1><p>5.0支持设置 RESTFu1请求的资源路由，方式如下:</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line"><span class="string">Route:</span>resource（<span class="string">'blog'</span>,<span class="string">'index/blog'</span>）</span><br></pre></td></tr></table></figure></div>
+<p>或者在路由配置文件中使用<strong>rest</strong>添加资源路由定义：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DART"><figure class="iseeu highlight /dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span>[</span><br><span class="line">    <span class="comment">//定义资源路由</span></span><br><span class="line">    <span class="string">'__rest__'</span>=&gt;[</span><br><span class="line">        <span class="comment">//指向index模块的blog控制器</span></span><br><span class="line">        <span class="string">'blog'</span>=&gt;<span class="string">'index/blog'</span>,</span><br><span class="line">    ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></div>
+<p>设置过后会自动注册7个路由规则，如下：<br><img src="https://i.imgur.com/B6I8AzU.png" alt="1"><br>具体指向的控制器由路由地址决定，例如上面的设置，会对应 index模块的blog控制器，你只需要为Blog控制器创建以上对应的操作方法就可以支持下面的URL访问：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="AWK"><figure class="iseeu highlight /awk"><table><tr><td class="code"><pre><span class="line">http:<span class="regexp">//</span>serverName<span class="regexp">/blog/</span></span><br><span class="line">http:<span class="regexp">//</span>serverName<span class="regexp">/blog/</span><span class="number">128</span></span><br><span class="line">http:<span class="regexp">//</span>serverName<span class="regexp">/blog/</span><span class="number">28</span><span class="regexp">/edit</span></span><br></pre></td></tr></table></figure></div>
+<p>Blog控制器中对应的方法如下：<br><img src="https://i.imgur.com/zXL2LmW.png" alt="1"></p>
+<h1 id="2丶快捷路由"><a href="#2丶快捷路由" class="headerlink" title="2丶快捷路由"></a><font color=green>2丶快捷路由</font></h1><p>快捷路由允许你快速给控制器注册路由，并且针对不同的请求类型可以设置方法前缀，例如：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">//给User控制器设置快捷路由</span></span><br><span class="line"><span class="string">Route:</span>:controller(<span class="string">'user'</span>,<span class="string">'index/User'</span>);</span><br></pre></td></tr></table></figure></div>
+<p>User控制器定义如下：<br><img src="https://i.imgur.com/6a8Efg1.png" alt="1"><br>我们可以通过下面的URL访问</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PGSQL"><figure class="iseeu highlight /pgsql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">get</span> http://localhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br><span class="line"><span class="keyword">get</span> http://localhost/<span class="keyword">user</span>/phone</span><br><span class="line">post http://localhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br><span class="line">put http://localhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br><span class="line"><span class="keyword">delete</span> http://loaclhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br></pre></td></tr></table></figure></div>
+
 ]]></content>
       <categories>
         <category>thinkphp5</category>
@@ -655,20 +690,9 @@
       </tags>
   </entry>
   <entry>
-    <title>18.thinkphp5资源路由和快捷路由</title>
-    <url>/undefined/18.thinkphp5%E8%B5%84%E6%BA%90%E8%B7%AF%E7%94%B1%E5%92%8C%E5%BF%AB%E6%8D%B7%E8%B7%AF%E7%94%B1/</url>
-    <content><![CDATA[<h1 id="一丶资源路由和快捷路由"><a href="#一丶资源路由和快捷路由" class="headerlink" title="一丶资源路由和快捷路由"></a><font color=red>一丶资源路由和快捷路由</font></h1><h1 id="1丶资源路由"><a href="#1丶资源路由" class="headerlink" title="1丶资源路由"></a><font color=green>1丶资源路由</font></h1><p>5.0支持设置 RESTFu1请求的资源路由，方式如下:</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line"><span class="string">Route:</span>resource（<span class="string">'blog'</span>,<span class="string">'index/blog'</span>）</span><br></pre></td></tr></table></figure></div>
-<p>或者在路由配置文件中使用<strong>rest</strong>添加资源路由定义：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DART"><figure class="iseeu highlight /dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span>[</span><br><span class="line">    <span class="comment">//定义资源路由</span></span><br><span class="line">    <span class="string">'__rest__'</span>=&gt;[</span><br><span class="line">        <span class="comment">//指向index模块的blog控制器</span></span><br><span class="line">        <span class="string">'blog'</span>=&gt;<span class="string">'index/blog'</span>,</span><br><span class="line">    ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></div>
-<p>设置过后会自动注册7个路由规则，如下：<br><img src="https://i.imgur.com/B6I8AzU.png" alt="1"><br>具体指向的控制器由路由地址决定，例如上面的设置，会对应 index模块的blog控制器，你只需要为Blog控制器创建以上对应的操作方法就可以支持下面的URL访问：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="AWK"><figure class="iseeu highlight /awk"><table><tr><td class="code"><pre><span class="line">http:<span class="regexp">//</span>serverName<span class="regexp">/blog/</span></span><br><span class="line">http:<span class="regexp">//</span>serverName<span class="regexp">/blog/</span><span class="number">128</span></span><br><span class="line">http:<span class="regexp">//</span>serverName<span class="regexp">/blog/</span><span class="number">28</span><span class="regexp">/edit</span></span><br></pre></td></tr></table></figure></div>
-<p>Blog控制器中对应的方法如下：<br><img src="https://i.imgur.com/zXL2LmW.png" alt="1"></p>
-<h1 id="2丶快捷路由"><a href="#2丶快捷路由" class="headerlink" title="2丶快捷路由"></a><font color=green>2丶快捷路由</font></h1><p>快捷路由允许你快速给控制器注册路由，并且针对不同的请求类型可以设置方法前缀，例如：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">//给User控制器设置快捷路由</span></span><br><span class="line"><span class="string">Route:</span>:controller(<span class="string">'user'</span>,<span class="string">'index/User'</span>);</span><br></pre></td></tr></table></figure></div>
-<p>User控制器定义如下：<br><img src="https://i.imgur.com/6a8Efg1.png" alt="1"><br>我们可以通过下面的URL访问</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PGSQL"><figure class="iseeu highlight /pgsql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">get</span> http://localhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br><span class="line"><span class="keyword">get</span> http://localhost/<span class="keyword">user</span>/phone</span><br><span class="line">post http://localhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br><span class="line">put http://localhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br><span class="line"><span class="keyword">delete</span> http://loaclhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br></pre></td></tr></table></figure></div>
-
+    <title>4.thinkphp5数据库操作之原生查询</title>
+    <url>/undefined/4.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%8E%9F%E7%94%9F%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<h1 id="一丶数据库操作之原生查询"><a href="#一丶数据库操作之原生查询" class="headerlink" title="一丶数据库操作之原生查询"></a><font color=red>一丶数据库操作之原生查询</font></h1><h3 id="Db-类支持原生-SQL-查询操作，主要包括下面两个方法："><a href="#Db-类支持原生-SQL-查询操作，主要包括下面两个方法：" class="headerlink" title="Db 类支持原生 SQL 查询操作，主要包括下面两个方法："></a>Db 类支持原生 SQL 查询操作，主要包括下面两个方法：</h3><h4 id="1丶query-方法"><a href="#1丶query-方法" class="headerlink" title="1丶query 方法   "></a><font color=red>1丶query 方法   </font></h4><p>query 方法用于执行 SQL 查询操作，如果数据非法或者查询错误则返回false，否则返回查询结果数据集<br>（同 select 方法）。<br><font color=red>使用示例：</font><br>Db::query(“select * from think_user where status=1”);<br>如果你当前采用了分布式数据库，并且设置了读写分离的话，query方法始终是在读服务器执行，因此query方法对应的都是读操作，而不管你的SQL语句是什么。<br><font color=red>2丶execute 方法</font><br>execute用于更新和写入数据的sql操作，如果数据非法或者查询错误则返回false ，否则返回影响的记录数。<br><font color=red>使用示例：</font><br>Db::execute(“update think_user set name=’thinkphp’ where status=1”);<br>如果你当前采用了分布式数据库，并且设置了读写分离的话，execute方法始终是在写服务器执行，因此execute方法对应的都是写操作，而不管你的SQL语句是什么。 </p>
 ]]></content>
       <categories>
         <category>thinkphp5</category>
@@ -692,34 +716,6 @@
       </tags>
   </entry>
   <entry>
-    <title>6.thinkphp5数据库查询之查询构造器1</title>
-    <url>/undefined/6.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A81/</url>
-    <content><![CDATA[<h1 id="二丶数据库查询之查询构造器"><a href="#二丶数据库查询之查询构造器" class="headerlink" title="二丶数据库查询之查询构造器"></a><font color = red >二丶数据库查询之查询构造器</font></h1><h2 id="1丶table方法选择数据表"><a href="#1丶table方法选择数据表" class="headerlink" title="1丶table方法选择数据表"></a><font color=green>1丶table方法选择数据表</font></h2><p><img src="https://i.imgur.com/OdaxDKH.png" alt="1">   </p>
-<h2 id="2丶name方法"><a href="#2丶name方法" class="headerlink" title="2丶name方法"></a><font color = green >2丶name方法</font></h2><p><font size=3>由于我们在数据可以配置文件中设置了数据表的前缀为think_，因此，<font color = red >table方法</font>可以改成<font color = red >name方法</font>这样就不会因为数据表前缀的修改而改动CURD代码，例如：</font><br><img src="https://i.imgur.com/1VER43B.png" alt="1">   </p>
-<h2 id="3丶助手函数db"><a href="#3丶助手函数db" class="headerlink" title="3丶助手函数db"></a><font color = green >3丶助手函数db</font></h2><p>传入的表名也是不带前缀的，原表名为think_data;<br><img src="https://i.imgur.com/SpkCjkC.png" alt="1">   </p>
-<h2 id="4丶链式操作"><a href="#4丶链式操作" class="headerlink" title="4丶链式操作"></a><font color = green >4丶链式操作</font></h2><p>使用链式操作可以完成复杂的数据库查询操作，例如：<br><img src="https://i.imgur.com/FPsjaCj.png" alt="1"><br>链式操作不分先后，只要在查询方法（这里是select方法）之前调用就行。所以，下面的查询是等效的；<br><img src="https://i.imgur.com/VmyKyL7.png" alt="1">  </p>
-<h3 id="支持链式操作的查询方法包括："><a href="#支持链式操作的查询方法包括：" class="headerlink" title="支持链式操作的查询方法包括："></a><font color = green >支持链式操作的查询方法包括：</font></h3><p><img src="https://i.imgur.com/3oi4RLJ.png" alt="1">  </p>
-]]></content>
-      <categories>
-        <category>thinkphp5</category>
-      </categories>
-      <tags>
-        <tag>thinkphp5</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>4.thinkphp5数据库操作之原生查询</title>
-    <url>/undefined/4.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%8E%9F%E7%94%9F%E6%9F%A5%E8%AF%A2/</url>
-    <content><![CDATA[<h1 id="一丶数据库操作之原生查询"><a href="#一丶数据库操作之原生查询" class="headerlink" title="一丶数据库操作之原生查询"></a><font color=red>一丶数据库操作之原生查询</font></h1><h3 id="Db-类支持原生-SQL-查询操作，主要包括下面两个方法："><a href="#Db-类支持原生-SQL-查询操作，主要包括下面两个方法：" class="headerlink" title="Db 类支持原生 SQL 查询操作，主要包括下面两个方法："></a>Db 类支持原生 SQL 查询操作，主要包括下面两个方法：</h3><h4 id="1丶query-方法"><a href="#1丶query-方法" class="headerlink" title="1丶query 方法   "></a><font color=red>1丶query 方法   </font></h4><p>query 方法用于执行 SQL 查询操作，如果数据非法或者查询错误则返回false，否则返回查询结果数据集<br>（同 select 方法）。<br><font color=red>使用示例：</font><br>Db::query(“select * from think_user where status=1”);<br>如果你当前采用了分布式数据库，并且设置了读写分离的话，query方法始终是在读服务器执行，因此query方法对应的都是读操作，而不管你的SQL语句是什么。<br><font color=red>2丶execute 方法</font><br>execute用于更新和写入数据的sql操作，如果数据非法或者查询错误则返回false ，否则返回影响的记录数。<br><font color=red>使用示例：</font><br>Db::execute(“update think_user set name=’thinkphp’ where status=1”);<br>如果你当前采用了分布式数据库，并且设置了读写分离的话，execute方法始终是在写服务器执行，因此execute方法对应的都是写操作，而不管你的SQL语句是什么。 </p>
-]]></content>
-      <categories>
-        <category>thinkphp5</category>
-      </categories>
-      <tags>
-        <tag>thinkphp5</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>7.thinkphp5数据库查询之查询构造器2</title>
     <url>/undefined/7.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A82/</url>
     <content><![CDATA[<h1 id="二丶数据库查询之查询构造器"><a href="#二丶数据库查询之查询构造器" class="headerlink" title="二丶数据库查询之查询构造器"></a><font color = red >二丶数据库查询之查询构造器</font></h1><h2 id="一丶查询数据"><a href="#一丶查询数据" class="headerlink" title="一丶查询数据"></a><font color = green >一丶查询数据</font></h2><p>最普通的查询就是判断某个字段是否等于某个值，而select（）方法用于查询数据集，如果查询成功，返回的是一个二维数组，如果没有满足条件的话则返回空数组。      </p>
@@ -735,6 +731,22 @@
 <h3 id="score-字段加1"><a href="#score-字段加1" class="headerlink" title="score 字段加1"></a><font color=green>score 字段加1</font></h3><p>Db::name(‘data’)-&gt;where(‘id’,1)-&gt;setInc(‘status’);   </p>
 <h3 id="score-字段加5"><a href="#score-字段加5" class="headerlink" title="score 字段加5"></a><font color=green>score 字段加5</font></h3><p>Db::name(‘data’)-&gt;where(‘id’,1)-&gt;setInc(‘status’,5); </p>
 <h3 id="score-字段减5"><a href="#score-字段减5" class="headerlink" title="score 字段减5"></a><font color=green>score 字段减5</font></h3><p>Db::name(‘data’)-&gt;where(‘id’,1)-&gt;setDec(‘status’,5);  </p>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>6.thinkphp5数据库查询之查询构造器1</title>
+    <url>/undefined/6.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A81/</url>
+    <content><![CDATA[<h1 id="二丶数据库查询之查询构造器"><a href="#二丶数据库查询之查询构造器" class="headerlink" title="二丶数据库查询之查询构造器"></a><font color = red >二丶数据库查询之查询构造器</font></h1><h2 id="1丶table方法选择数据表"><a href="#1丶table方法选择数据表" class="headerlink" title="1丶table方法选择数据表"></a><font color=green>1丶table方法选择数据表</font></h2><p><img src="https://i.imgur.com/OdaxDKH.png" alt="1">   </p>
+<h2 id="2丶name方法"><a href="#2丶name方法" class="headerlink" title="2丶name方法"></a><font color = green >2丶name方法</font></h2><p><font size=3>由于我们在数据可以配置文件中设置了数据表的前缀为think_，因此，<font color = red >table方法</font>可以改成<font color = red >name方法</font>这样就不会因为数据表前缀的修改而改动CURD代码，例如：</font><br><img src="https://i.imgur.com/1VER43B.png" alt="1">   </p>
+<h2 id="3丶助手函数db"><a href="#3丶助手函数db" class="headerlink" title="3丶助手函数db"></a><font color = green >3丶助手函数db</font></h2><p>传入的表名也是不带前缀的，原表名为think_data;<br><img src="https://i.imgur.com/SpkCjkC.png" alt="1">   </p>
+<h2 id="4丶链式操作"><a href="#4丶链式操作" class="headerlink" title="4丶链式操作"></a><font color = green >4丶链式操作</font></h2><p>使用链式操作可以完成复杂的数据库查询操作，例如：<br><img src="https://i.imgur.com/FPsjaCj.png" alt="1"><br>链式操作不分先后，只要在查询方法（这里是select方法）之前调用就行。所以，下面的查询是等效的；<br><img src="https://i.imgur.com/VmyKyL7.png" alt="1">  </p>
+<h3 id="支持链式操作的查询方法包括："><a href="#支持链式操作的查询方法包括：" class="headerlink" title="支持链式操作的查询方法包括："></a><font color = green >支持链式操作的查询方法包括：</font></h3><p><img src="https://i.imgur.com/3oi4RLJ.png" alt="1">  </p>
 ]]></content>
       <categories>
         <category>thinkphp5</category>
