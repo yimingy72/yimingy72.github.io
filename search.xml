@@ -7,6 +7,73 @@
 ]]></content>
   </entry>
   <entry>
+    <title>web应用安全概述</title>
+    <url>/undefined/web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<h3 id="OWASP-开放的web应用程序安全项目组织"><a href="#OWASP-开放的web应用程序安全项目组织" class="headerlink" title="OWASP(开放的web应用程序安全项目组织)"></a>OWASP(开放的web应用程序安全项目组织)</h3><p>OWASP TOP10（10大应用安全风险）</p>
+<ul>
+<li>1.注入</li>
+<li>2.失效的身份认证和会话管理</li>
+<li>3.XSS</li>
+<li>4.不安全的对象直接引用</li>
+<li>5.CSRF</li>
+<li>6.安全的错误配置</li>
+<li>7.限制URL访问失败</li>
+<li>8.未验证的重定向转发</li>
+<li>9.应用已知的漏洞组件</li>
+<li>10.敏感信息泄露<h4 id="一-SQL-注入漏洞"><a href="#一-SQL-注入漏洞" class="headerlink" title="一.SQL 注入漏洞"></a>一.SQL 注入漏洞</h4><h5 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h5><h5 id="2-流程"><a href="#2-流程" class="headerlink" title="2.流程"></a>2.流程</h5>注入点探测   </li>
+</ul>
+<p>自动探测：web漏扫工具，AWS，APPSCAN，openVAS,nessus，OWASPZAP,Burpsuit   </p>
+<p>手工方式： 手工构造payload   </p>
+<p>信息获取   </p>
+<p>环境信息：数据库的类型，版本，操作系统版本，用户信息</p>
+<p>数据库的信息：库名，表名，字段名，数据值（管理员账户密码）</p>
+<p>获取权限</p>
+<p>获取操作系统权限，通过执行shell，上传大马或者小马</p>
+<h5 id="3-sqlmap"><a href="#3-sqlmap" class="headerlink" title="3.sqlmap"></a>3.sqlmap</h5><p>5中注入类型：盲注，联合注入，二次注入，堆叠注入，报错注入</p>
+<p>整型<br>$ =”select * from users where name = $name and pass = $pass”;<br>$ =”select * from users where name = or 1=1 # and pass = $pass”;<br>等价select * from users;</p>
+<p>字符型<br>$ = “select * from users where name = ‘$name’ and pass =  “$pass””;<br>$ = “select * from users where name = ‘’ or ‘1’=’1’# and pass =  “$pass””;</p>
+<p>搜索型<br>$ = “select * from users where password like ‘%$pwd%’  order by password”;<br>$ = “select * from users where password like ‘%’ 1=1 and ‘%’=’%’  order by password”;   </p>
+<p>sqlmap用法   </p>
+<p>sqlmap -u url地址/参数=值 –dbs<br>sqlmap -u url地址/参数=值 –os-shell———————//拿系统shell<br>sqlmap -u url地址/参数=值 –level 5 –risk=4————-//设置安全级别，风险级别<br>sqlmap -u url地址/参数=值 –file-read”c:\1.sh”———–//读取文件<br>sqlmap -u url地址/参数=值 –file-wirte shell.php –file-dest”C:\www\xxx” ———-//写shell<br>sqlmap -u url地址/参数=值</p>
+<h5 id="4-建议下载安全狗-设置绕过练习"><a href="#4-建议下载安全狗-设置绕过练习" class="headerlink" title="4.建议下载安全狗,设置绕过练习"></a>4.建议下载安全狗,设置绕过练习</h5><p>tyamper脚本 python 基础编程，协议分析，数据库语法及编程,SQL注入漏洞原理</p>
+<h4 id="二-XSS漏洞"><a href="#二-XSS漏洞" class="headerlink" title="二.XSS漏洞"></a>二.XSS漏洞</h4><h4 id="三-上传漏洞"><a href="#三-上传漏洞" class="headerlink" title="三.上传漏洞"></a>三.上传漏洞</h4><p>上传绕过：   </p>
+<h5 id="1-客户端：js检查"><a href="#1-客户端：js检查" class="headerlink" title="1.客户端：js检查"></a>1.客户端：js检查</h5><h5 id="2-服务端："><a href="#2-服务端：" class="headerlink" title="2.服务端："></a>2.服务端：</h5><p>检查后缀：   </p>
+<ul>
+<li>黑名单：可解析的后缀.php .xxx丶上传伪静态文件（.htaccess）丶点绕过，空格绕过丶;;$DATA绕过 </li>
+<li>白名单：%00截断丶0x00截断丶MIME绕过</li>
+</ul>
+<p>检查内容：文件头丶突破getimagesize()丶二次渲染<br>代码逻辑：条件竞争</p>
+<h4 id="四-CSRF"><a href="#四-CSRF" class="headerlink" title="四.CSRF"></a>四.CSRF</h4><h4 id="五-SSRF"><a href="#五-SSRF" class="headerlink" title="五.SSRF"></a>五.SSRF</h4><p>服务端请求伪造</p>
+<h4 id="六-暴力破解漏洞"><a href="#六-暴力破解漏洞" class="headerlink" title="六.暴力破解漏洞"></a>六.暴力破解漏洞</h4><p>账户密码 静态验证码<br>Hydra–九头蛇(ftp.ssh.telnet.mysql等)<br>Burpsuit 测试器 4种</p>
+<h4 id="七-命令执行漏洞"><a href="#七-命令执行漏洞" class="headerlink" title="七.命令执行漏洞"></a>七.命令执行漏洞</h4><p>程序调用系统的函数，php，哪些函数会调用：<br>system()<br>exec:<br>shell_exec:<br>等<br>1.远程命令执行漏洞<br>eval()<br>assert()<br>preg_repalce()<br>2.本地命令执行漏洞<br>system()<br>exec()<br>shell_exec()   </p>
+<h4 id="八-包含漏洞"><a href="#八-包含漏洞" class="headerlink" title="八.包含漏洞"></a>八.包含漏洞</h4><p>include()<br>include_once()<br>require()<br>require_once()   </p>
+<h4 id="九-XXE漏洞"><a href="#九-XXE漏洞" class="headerlink" title="九.XXE漏洞"></a>九.XXE漏洞</h4><p>XML基础知识<br>危害：<br>读取任意文件<br>执行系统指令<br>探测内网端口<br>攻击内网网站</p>
+<h4 id="十-反序列化漏洞"><a href="#十-反序列化漏洞" class="headerlink" title="十.反序列化漏洞"></a>十.反序列化漏洞</h4>]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL注入绕过</title>
+    <url>/undefined/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87/</url>
+    <content><![CDATA[<h2 id="1-WAF相关介绍"><a href="#1-WAF相关介绍" class="headerlink" title="1.WAF相关介绍"></a>1.WAF相关介绍</h2><p>WAF(web应用防火墙)   </p>
+<h3 id="WAF有哪些类："><a href="#WAF有哪些类：" class="headerlink" title="WAF有哪些类："></a>WAF有哪些类：</h3><ul>
+<li>1.软件型WAF</li>
+<li>2.硬件型WAF</li>
+<li>3.云WAF<br>反向代理模式工作，通过配置NS记录或者CNAME记录</li>
+</ul>
+]]></content>
+      <categories>
+        <category>SQL注入</category>
+      </categories>
+      <tags>
+        <tag>SQL注入</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ISCC | Php is the best language</title>
     <url>/undefined/%5BISCC%5DPhp%20is%20the%20best%20language/</url>
     <content><![CDATA[<p>首先拿到题目下载文件得到源码：<br><img src="https://i.imgur.com/LwHKfwo.png" alt=""></p>
