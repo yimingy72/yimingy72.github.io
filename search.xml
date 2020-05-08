@@ -57,6 +57,52 @@
       </tags>
   </entry>
   <entry>
+    <title>ISCC | 是我DIO哒</title>
+    <url>/undefined/%5BISCC%5D%E6%98%AF%E6%88%91DIO%E5%93%92/</url>
+    <content><![CDATA[<p><img src="https://i.imgur.com/pcz4stw.png" alt="">   </p>
+<p>首先下载得到图片   </p>
+<p><img src="https://i.imgur.com/noZWCEy.png" alt=""></p>
+<p>很骚气   </p>
+<p>首先常规操作查看属性详细信息，改成txt后缀啥的，用Stegsolve都没有啥发现。然后还是二话不说binwalk上手。   </p>
+<p><img src="https://i.imgur.com/DxYT4wO.png" alt="">    </p>
+<p>通过扫描二维码得到：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="STYLUS"><figure class="iseeu highlight /stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">Useful_Massage_1</span><span class="params">(SVNDQyU3QmZsQGdfaXN)</span></span></span><br></pre></td></tr></table></figure></div>
+<p>en<del>en</del>en~<br>我这个英语废物也知道这个message拼错了。。。。<br>然后尝试去base64解码了一下    </p>
+<p>得到一部分flag</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="code"><pre><span class="line">ISCC&#123;<span class="symbol">fl@</span>g_is</span><br></pre></td></tr></table></figure></div>
+
+<p>然后再找另一部分，就从分离出来的另一张图片着手    </p>
+<p>再用stegSolve摩擦了一遍Dio。这里因为感觉图片的名字有点问题，所以尝试使用Data Extract功能   </p>
+<p><img src="https://i.imgur.com/HvGIMz3.png" alt=""></p>
+<p>左边一大部分主要是讲了RGBA（Alpha是透明度）的颜色通道</p>
+<p>为了方便理解我们分开说</p>
+<p>RGB是红绿蓝 但他们的值代表的实际上是亮度</p>
+<p>R的数字越大，则代表红色亮度越高；R的数字越小，则代表红色亮度越低。G，B同理</p>
+<p>R的亮度各有256个级别，GB同理。即从0到255，合计为256个。从数字0到255的逐渐增高，我们人眼观察到的就是亮度越来越大，红色、绿色或蓝色越来越亮。然而256是2的8次方 所以你会看见上图的7~0  一共8个通道</p>
+<p>而Alpha就是透明度 该通道用256级灰度来记录图像中的透明度信息，定义透明、不透明和半透明区域</p>
+<p>alpha的值为0就是全透明，alpha 的值为 255 则表示不透明</p>
+<p>因此左半部分就理解了</p>
+<p>右半部分就是Extra By(额外的)和Bit Order（位顺序）和Bit Plane Order（位平面的顺序）</p>
+<p>1）.Extra By(额外的)：分为row（行）和column（纵）</p>
+<p>   每个像素用R，G，B三个分量表示，那么一张图片就像一个矩阵，矩阵的每个单位就是（0<del>255，0</del>255，0~255）</p>
+<p>   也就会有是纵排列和行排列了，一般事先访问行再访问列（如果相反会引起ve使用方法）</p>
+<p>￼2）.Bit Order（位顺序）:MSB是一串数据的最高位，LSB是一串数据的最低位。   </p>
+<p><img src="https://i.imgur.com/Upln9YJ.png" alt="">   </p>
+<p>尝试了几次就成功得到第二个信息   </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ISBL"><figure class="iseeu highlight /isbl"><table><tr><td class="code"><pre><span class="line"><span class="variable">Useful_M</span> <span class="function"><span class="title">assage_2</span>(<span class="variable">fa09fTjBfRCUyMW9fZGFhYWElMjFfXyU3RA</span>==)</span></span><br></pre></td></tr></table></figure></div>
+
+<p>然后这里其实是将两个message拼接然后base64解码得到flag   </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LLVM"><figure class="iseeu highlight /llvm"><table><tr><td class="code"><pre><span class="line">ISCC&#123;fl<span class="title">@g_is_kO_N0_D</span><span class="title">!o_daaaa</span><span class="title">!__</span>&#125;</span><br></pre></td></tr></table></figure></div>]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>杂项</category>
+        <category>PNG图片隐写</category>
+      </categories>
+      <tags>
+        <tag>png图片隐写</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SQL注入绕过</title>
     <url>/undefined/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87/</url>
     <content><![CDATA[<h2 id="1-WAF相关介绍"><a href="#1-WAF相关介绍" class="headerlink" title="1.WAF相关介绍"></a>1.WAF相关介绍</h2><p>WAF(web应用防火墙)   </p>
