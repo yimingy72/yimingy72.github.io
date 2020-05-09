@@ -128,14 +128,14 @@
 
 
 
-<meta name="description" content="1.WAF相关介绍WAF(web应用防火墙)    WAF有哪些类： 1.软件型WAF 2.硬件型WAF 3.云WAF反向代理模式工作，通过配置NS记录或者CNAME记录">
+<meta name="description" content="1.WAF相关介绍WAF(web应用防火墙)    WAF有哪些类： 1.软件型WAF 2.硬件型WAF 3.云WAF反向代理模式工作，通过配置NS记录或者CNAME记录      网站系统内置的WAFwaf的功能：1.审计2.访问控制&#x2F;过滤3.web加固WAF怎么识别扫描器1.AWVS,SQLMAP,APPscan,OpenVAS等工具以下几个点来识别waf   1.扫描器指纹（head字段&#x2F;请">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL注入绕过">
 <meta property="og:url" content="http://yoursite.com/undefined/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87/index.html">
 <meta property="og:site_name" content="yym&#39;s blog">
-<meta property="og:description" content="1.WAF相关介绍WAF(web应用防火墙)    WAF有哪些类： 1.软件型WAF 2.硬件型WAF 3.云WAF反向代理模式工作，通过配置NS记录或者CNAME记录">
+<meta property="og:description" content="1.WAF相关介绍WAF(web应用防火墙)    WAF有哪些类： 1.软件型WAF 2.硬件型WAF 3.云WAF反向代理模式工作，通过配置NS记录或者CNAME记录      网站系统内置的WAFwaf的功能：1.审计2.访问控制&#x2F;过滤3.web加固WAF怎么识别扫描器1.AWVS,SQLMAP,APPscan,OpenVAS等工具以下几个点来识别waf   1.扫描器指纹（head字段&#x2F;请">
 <meta property="article:published_time" content="2020-05-08T01:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-08T08:42:51.098Z">
+<meta property="article:modified_time" content="2020-05-09T02:24:38.035Z">
 <meta property="article:author" content="yimingy72">
 <meta property="article:tag" content="SQL注入">
 <meta name="twitter:card" content="summary">
@@ -456,7 +456,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  49
+                  294
                 </span>
               
 
@@ -497,7 +497,23 @@
 <h3 id="WAF有哪些类："><a href="#WAF有哪些类：" class="headerlink" title="WAF有哪些类："></a>WAF有哪些类：</h3><ul>
 <li>1.软件型WAF</li>
 <li>2.硬件型WAF</li>
-<li>3.云WAF<br>反向代理模式工作，通过配置NS记录或者CNAME记录</li>
+<li>3.云WAF<br>反向代理模式工作，通过配置NS记录或者CNAME记录     </li>
+<li>网站系统内置的WAF<br>waf的功能：<br>1.审计<br>2.访问控制/过滤<br>3.web加固<br>WAF怎么识别扫描器<br>1.AWVS,SQLMAP,APPscan,OpenVAS等工具<br>以下几个点来识别waf   <pre><code>1.扫描器指纹（head字段/请求的参数值）      
+2.单IP+cookie某一个时间段出发多少次来判断       
+3.隐藏链接标签     
+...   </code></pre></li>
+</ul>
+<p>对于注入过程当中如何去判断目标是否有WAF<br>1.sqlmap -u url地址 –identity-waf –batch<br>2.手工判断<br>xxx.com/?user=a’ union select 1,2,3 –+<br>放入一个不存在的参数去触发waf防护；触发形式：页面无法访问，响应码异常，返回提示</p>
+<h2 id="2-SQL注入绕过"><a href="#2-SQL注入绕过" class="headerlink" title="2.SQL注入绕过"></a>2.SQL注入绕过</h2><ul>
+<li>黑名单过滤：空格，/，,‘,and,or,union,select,sleep(),”,#,-,+,limit等   </li>
+<li>一：双写绕过</li>
+<li>二：大小写绕过</li>
+<li>三：编码绕过    </li>
+</ul>
+<p>1.base64<br>2.ASCII<br>3.宽字符<br>4.url编码<br>5.Unicode编码<br>…….</p>
+<ul>
+<li>四：替换关键字<br>id=1 UNIunionON SEselectLECT 1,2,3    </li>
+<li>五：注释绕过<br>空格通过注释来代替   /**/<br>空格通过()来代替     </li>
 </ul>
 
       
@@ -663,7 +679,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -674,7 +690,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -685,7 +701,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -725,7 +741,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-WAF相关介绍"><span class="nav-number">1.</span> <span class="nav-text">1.WAF相关介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WAF有哪些类："><span class="nav-number">1.1.</span> <span class="nav-text">WAF有哪些类：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-WAF相关介绍"><span class="nav-number">1.</span> <span class="nav-text">1.WAF相关介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WAF有哪些类："><span class="nav-number">1.1.</span> <span class="nav-text">WAF有哪些类：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SQL注入绕过"><span class="nav-number">2.</span> <span class="nav-text">2.SQL注入绕过</span></a></li></ol></div>
             
 
           </div>
@@ -759,7 +775,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">18.9k</span>
+    <span title="Site words total count">20.5k</span>
   
 </div>
 <!--
