@@ -7,6 +7,18 @@
 ]]></content>
   </entry>
   <entry>
+    <title>ISCC | 未知的风险-1</title>
+    <url>/undefined/%E6%94%BB%E5%87%BBJWT%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>WEB安全漏洞</category>
+        <category>XXE漏洞</category>
+      </categories>
+      <tags>
+        <tag>JWT | XXE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>bugku | insert into</title>
     <url>/undefined/%5Bbugku%5Dinsert%20into/</url>
     <content><![CDATA[<p>这道题我觉得还是主要考了编写代码的能力  </p>
@@ -160,8 +172,8 @@
 </ul>
 ]]></content>
       <categories>
-        <category>WEB漏洞</category>
-        <category>SQL注入</category>
+        <category>WEB安全漏洞</category>
+        <category>SQL注入漏洞</category>
       </categories>
       <tags>
         <tag>SQL注入</tag>
@@ -184,6 +196,7 @@
 
 ]]></content>
       <categories>
+        <category>WEB安全漏洞</category>
         <category>反序列化漏洞</category>
       </categories>
       <tags>
@@ -207,7 +220,8 @@
 <p>也可以使用burpsuit发包+条件竞争脚本</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PROPERTIES"><figure class="iseeu highlight /properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">import</span> <span class="string">requests</span></span><br><span class="line"></span><br><span class="line"><span class="attr">url</span> = <span class="string">'http://202.119.201.199/challenge/web/uploadfile/upload/index.phtml'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">req</span> = <span class="string">requests.Session()</span></span><br><span class="line"></span><br><span class="line"><span class="attr">while</span> <span class="string">True:</span></span><br><span class="line">	<span class="attr">ans</span> = <span class="string">req.get(url)</span></span><br><span class="line">	<span class="attr">web_content</span> = <span class="string">ans.content</span></span><br><span class="line"></span><br><span class="line">	<span class="attr">if</span> <span class="string">'flag' in web_content:</span></span><br><span class="line">		<span class="attr">print</span> <span class="string">web_content</span></span><br></pre></td></tr></table></figure></div>]]></content>
       <categories>
-        <category>WEB漏洞</category>
+        <category>WEB安全漏洞</category>
+        <category>条件竞争漏洞</category>
       </categories>
       <tags>
         <tag>条件竞争漏洞 | CTF | 文件上传</tag>
@@ -256,7 +270,7 @@
 <p>蚁剑连接得到flag<br><img src="https://i.imgur.com/gZQRTOW.png" alt=""></p>
 ]]></content>
       <categories>
-        <category>WEB漏洞</category>
+        <category>WEB安全漏洞</category>
         <category>文件上传漏洞</category>
       </categories>
       <tags>
@@ -349,11 +363,11 @@
       </tags>
   </entry>
   <entry>
-    <title>dockerfile创建数据卷</title>
+    <title>2019强网杯&#39;&#39;随便注&#39;&#39;</title>
     <url>/undefined/2019%E5%BC%BA%E7%BD%91%E6%9D%AF&#39;&#39;%E9%9A%8F%E4%BE%BF%E6%B3%A8&#39;&#39;/</url>
     <content><![CDATA[]]></content>
       <categories>
-        <category>SQL注入</category>
+        <category>BUUCTF</category>
       </categories>
       <tags>
         <tag>SQL注入</tag>
@@ -1028,7 +1042,7 @@ preg_replace 执行一个正则表达式的搜索和替换。
 
 ]]></content>
       <categories>
-        <category>WEB漏洞</category>
+        <category>WEB安全漏洞</category>
         <category>RCE漏洞</category>
       </categories>
       <tags>

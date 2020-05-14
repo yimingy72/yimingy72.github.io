@@ -9,8 +9,21 @@
     <atom:link href="/rss2.html" rel="self" type="application/rss+xml"/>
     
     <description>hello world</description>
-    <pubDate>Wed, 13 May 2020 13:18:25 GMT</pubDate>
+    <pubDate>Thu, 14 May 2020 23:52:41 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>ISCC | 未知的风险-1</title>
+      <link>http://yoursite.com/undefined/%E6%94%BB%E5%87%BBJWT%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95/</link>
+      <guid>http://yoursite.com/undefined/%E6%94%BB%E5%87%BBJWT%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95/</guid>
+      <pubDate>Thu, 14 May 2020 23:50:00 GMT</pubDate>
+      <description>
+      
+      </description>
+      
+      
+      <comments>http://yoursite.com/undefined/%E6%94%BB%E5%87%BBJWT%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>bugku | insert into</title>
@@ -87,27 +100,6 @@
       <content:encoded><![CDATA[<p><img src="https://i.imgur.com/pcz4stw.png" alt="">   </p><p>首先下载得到图片   </p><p><img src="https://i.imgur.com/noZWCEy.png" alt=""></p><p>很骚气   </p><p>首先常规操作查看属性详细信息，改成txt后缀啥的，用Stegsolve都没有啥发现。然后还是二话不说binwalk上手。   </p><p><img src="https://i.imgur.com/DxYT4wO.png" alt="">    </p><p>通过扫描二维码得到：</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="STYLUS"><figure class="iseeu highlight /stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">Useful_Massage_1</span><span class="params">(SVNDQyU3QmZsQGdfaXN)</span></span></span><br></pre></td></tr></table></figure></div><p>en<del>en</del>en~<br>我这个英语废物也知道这个message拼错了。。。。<br>然后尝试去base64解码了一下    </p><p>得到一部分flag</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ISCC&#123;<span class="symbol">fl@</span>g_is</span><br></pre></td></tr></table></figure></div><p>然后再找另一部分，就从分离出来的另一张图片着手    </p><p>再用stegSolve摩擦了一遍Dio。这里因为感觉图片的名字有点问题，所以尝试使用Data Extract功能   </p><p><img src="https://i.imgur.com/HvGIMz3.png" alt=""></p><p>左边一大部分主要是讲了RGBA（Alpha是透明度）的颜色通道</p><p>为了方便理解我们分开说</p><p>RGB是红绿蓝 但他们的值代表的实际上是亮度</p><p>R的数字越大，则代表红色亮度越高；R的数字越小，则代表红色亮度越低。G，B同理</p><p>R的亮度各有256个级别，GB同理。即从0到255，合计为256个。从数字0到255的逐渐增高，我们人眼观察到的就是亮度越来越大，红色、绿色或蓝色越来越亮。然而256是2的8次方 所以你会看见上图的7~0  一共8个通道</p><p>而Alpha就是透明度 该通道用256级灰度来记录图像中的透明度信息，定义透明、不透明和半透明区域</p><p>alpha的值为0就是全透明，alpha 的值为 255 则表示不透明</p><p>因此左半部分就理解了</p><p>右半部分就是Extra By(额外的)和Bit Order（位顺序）和Bit Plane Order（位平面的顺序）</p><p>1）.Extra By(额外的)：分为row（行）和column（纵）</p><p>   每个像素用R，G，B三个分量表示，那么一张图片就像一个矩阵，矩阵的每个单位就是（0<del>255，0</del>255，0~255）</p><p>   也就会有是纵排列和行排列了，一般事先访问行再访问列（如果相反会引起ve使用方法）</p><p>￼2）.Bit Order（位顺序）:MSB是一串数据的最高位，LSB是一串数据的最低位。   </p><p><img src="https://i.imgur.com/Upln9YJ.png" alt="">   </p><p>尝试了几次就成功得到第二个信息   </p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ISBL"><figure class="iseeu highlight /isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">Useful_M</span> <span class="function"><span class="title">assage_2</span>(<span class="variable">fa09fTjBfRCUyMW9fZGFhYWElMjFfXyU3RA</span>==)</span></span><br></pre></td></tr></table></figure></div><p>然后这里其实是将两个message拼接然后base64解码得到flag   </p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LLVM"><figure class="iseeu highlight /llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ISCC&#123;fl<span class="title">@g_is_kO_N0_D</span><span class="title">!o_daaaa</span><span class="title">!__</span>&#125;</span><br></pre></td></tr></table></figure></div>]]></content:encoded>
       
       <comments>http://yoursite.com/undefined/[ISCC]%E6%98%AF%E6%88%91DIO%E5%93%92/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>SQL注入绕过</title>
-      <link>http://yoursite.com/undefined/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87/</link>
-      <guid>http://yoursite.com/undefined/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87/</guid>
-      <pubDate>Fri, 08 May 2020 01:00:00 GMT</pubDate>
-      <description>
-      
-        
-        
-          &lt;h2 id=&quot;1-WAF相关介绍&quot;&gt;&lt;a href=&quot;#1-WAF相关介绍&quot; class=&quot;headerlink&quot; title=&quot;1.WAF相关介绍&quot;&gt;&lt;/a&gt;1.WAF相关介绍&lt;/h2&gt;&lt;p&gt;WAF(web应用防火墙)   &lt;/p&gt;
-&lt;h3 id=&quot;WAF有哪些类：&quot;&gt;&lt;a 
-        
-      
-      </description>
-      
-      
-      <content:encoded><![CDATA[<h2 id="1-WAF相关介绍"><a href="#1-WAF相关介绍" class="headerlink" title="1.WAF相关介绍"></a>1.WAF相关介绍</h2><p>WAF(web应用防火墙)   </p><h3 id="WAF有哪些类："><a href="#WAF有哪些类：" class="headerlink" title="WAF有哪些类："></a>WAF有哪些类：</h3><ul><li>1.软件型WAF</li><li>2.硬件型WAF</li><li>3.云WAF<br>反向代理模式工作，通过配置NS记录或者CNAME记录     </li><li>网站系统内置的WAF<br>waf的功能：<br>1.审计<br>2.访问控制/过滤<br>3.web加固<br>WAF怎么识别扫描器<br>1.AWVS,SQLMAP,APPscan,OpenVAS等工具<br>以下几个点来识别waf   <pre><code>1.扫描器指纹（head字段/请求的参数值）      2.单IP+cookie某一个时间段出发多少次来判断       3.隐藏链接标签     ...   </code></pre></li></ul><p>对于注入过程当中如何去判断目标是否有WAF<br>1.sqlmap -u url地址 –identity-waf –batch<br>2.手工判断<br>xxx.com/?user=a’ union select 1,2,3 –+<br>放入一个不存在的参数去触发waf防护；触发形式：页面无法访问，响应码异常，返回提示</p><h2 id="2-SQL注入绕过"><a href="#2-SQL注入绕过" class="headerlink" title="2.SQL注入绕过"></a>2.SQL注入绕过</h2><ul><li>黑名单过滤：空格，/，,‘,and,or,union,select,sleep(),”,#,-,+,limit等   </li><li>一：双写绕过</li><li>二：大小写绕过</li><li>三：编码绕过    </li></ul><p>1.base64<br>2.ASCII<br>3.宽字符<br>4.url编码<br>5.Unicode编码<br>…….</p><ul><li>四：替换关键字<br>id=1 UNIunionON SEselectLECT 1,2,3    </li><li>五：注释绕过<br>空格通过注释来代替   /**/<br>空格通过()来代替     </li></ul>]]></content:encoded>
-      
-      <comments>http://yoursite.com/undefined/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87/#disqus_thread</comments>
     </item>
     
   </channel>
