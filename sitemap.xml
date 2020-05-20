@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/undefined/XXE%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/</loc>
+    
+    <lastmod>2020-05-20T07:41:38.299Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/undefined/[bugku]insert%20into/</loc>
+    
+    <lastmod>2020-05-20T07:41:36.403Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/undefined/[ISCC]%E6%9C%AA%E7%9F%A5%E7%9A%84%E9%A3%8E%E9%99%A9-1/</loc>
     
-    <lastmod>2020-05-15T03:26:36.597Z</lastmod>
+    <lastmod>2020-05-19T09:14:03.810Z</lastmod>
     
   </url>
   
@@ -177,9 +191,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/undefined/[bugku]insert%20into/</loc>
+    <loc>http://yoursite.com/undefined/MSF--Metasploit%20Framework%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</loc>
     
-    <lastmod>2020-05-13T13:18:25.860Z</lastmod>
+    <lastmod>2020-05-14T00:11:27.281Z</lastmod>
     
   </url>
   

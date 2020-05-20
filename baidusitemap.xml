@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/undefined/XXE%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/</loc>
+    <lastmod>2020-05-20</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/undefined/%5Bbugku%5Dinsert%20into/</loc>
+    <lastmod>2020-05-20</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/undefined/%5BISCC%5D%E6%9C%AA%E7%9F%A5%E7%9A%84%E9%A3%8E%E9%99%A9-1/</loc>
-    <lastmod>2020-05-15</lastmod>
+    <lastmod>2020-05-19</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/undefined/%5BISCC%5D%E6%98%AF%E6%88%91DIO%E5%93%92/</loc>
     <lastmod>2020-05-14</lastmod>
@@ -76,8 +82,8 @@
     <loc>http://yoursite.com/undefined/1.thinkphp5%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</loc>
     <lastmod>2020-05-14</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/undefined/%5Bbugku%5Dinsert%20into/</loc>
-    <lastmod>2020-05-13</lastmod>
+    <loc>http://yoursite.com/undefined/MSF--Metasploit%20Framework%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2020-05-14</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/undefined/%5BISCC%5DWhere%20is%20file/</loc>
     <lastmod>2020-05-08</lastmod>
