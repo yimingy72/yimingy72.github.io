@@ -115,7 +115,7 @@
 
 
 
-  <meta name="keywords" content="thinkphp5," />
+  <meta name="keywords" content="对称加密," />
 
 
 
@@ -128,17 +128,19 @@
 
 
 
-<meta name="description" content="一丶模型操作之删除数据1丶删除当前模型删除模型数据，可以实例化模型后调用delete方法 12$user &#x3D; User::get(1);$user-&gt;delete(); 2丶根据主键删除或者直接调用静态方法    12345User::destroy(1)&#x2F;&#x2F;支持删除多个数据User::destroy(&#39;1,2,3&#39;);&#x2F;&#x2F;或者User::destroy([1,2,3]); 3丶条件删除使用">
+<meta name="description" content="前言：对称密码沿用替代置换等古典密码技术(混乱与扩散) , 被称为传统密码 原理：加密算法：一次性密码本+完美秘密+伪随机数生成+Diffie-Hellman密钥交换 一次性码本原理：首先是需要加密的明文：“hello”; ——————————————5位字母 然后生成一串拥有与明文相同位数的随机位移：“2,3,1,2,1”———-5个位移 每个位移分别对应相同位的字母进行位移得到密文： 这样加密">
 <meta property="og:type" content="article">
-<meta property="og:title" content="11.thinkphp5模型操作之删除数据">
-<meta property="og:url" content="http://yoursite.com/undefined/11.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE/index.html">
+<meta property="og:title" content="现代对称加密算法原理">
+<meta property="og:url" content="http://yoursite.com/undefined/%E7%8E%B0%E4%BB%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="yym&#39;s blog">
-<meta property="og:description" content="一丶模型操作之删除数据1丶删除当前模型删除模型数据，可以实例化模型后调用delete方法 12$user &#x3D; User::get(1);$user-&gt;delete(); 2丶根据主键删除或者直接调用静态方法    12345User::destroy(1)&#x2F;&#x2F;支持删除多个数据User::destroy(&#39;1,2,3&#39;);&#x2F;&#x2F;或者User::destroy([1,2,3]); 3丶条件删除使用">
-<meta property="article:published_time" content="2020-04-25T12:45:11.000Z">
-<meta property="article:modified_time" content="2020-05-14T00:23:43.750Z">
+<meta property="og:description" content="前言：对称密码沿用替代置换等古典密码技术(混乱与扩散) , 被称为传统密码 原理：加密算法：一次性密码本+完美秘密+伪随机数生成+Diffie-Hellman密钥交换 一次性码本原理：首先是需要加密的明文：“hello”; ——————————————5位字母 然后生成一串拥有与明文相同位数的随机位移：“2,3,1,2,1”———-5个位移 每个位移分别对应相同位的字母进行位移得到密文： 这样加密">
+<meta property="og:image" content="https://pic3.zhimg.com/80/5d668818881609c8543e6efa7c0d6af1_720w.jpg">
+<meta property="article:published_time" content="2020-05-20T12:27:00.000Z">
+<meta property="article:modified_time" content="2020-05-21T06:06:22.607Z">
 <meta property="article:author" content="yimingy72">
-<meta property="article:tag" content="thinkphp5">
+<meta property="article:tag" content="对称加密">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic3.zhimg.com/80/5d668818881609c8543e6efa7c0d6af1_720w.jpg">
 
 
 
@@ -168,13 +170,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/undefined/11.thinkphp5模型操作之删除数据/"/>
+  <link rel="canonical" href="http://yoursite.com/undefined/现代对称加密算法原理/"/>
 
 
 
 
 
-  <title>11.thinkphp5模型操作之删除数据 | yym's blog</title>
+  <title>现代对称加密算法原理 | yym's blog</title>
   
 
 
@@ -345,7 +347,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/undefined/11.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/undefined/%E7%8E%B0%E4%BB%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yimingy72">
@@ -362,7 +364,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">11.thinkphp5模型操作之删除数据</h1>
+          <h1 class="post-title" itemprop="name headline">现代对称加密算法原理</h1>
         
 
         <div class="post-meta">
@@ -375,8 +377,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T20:45:11+08:00">
-                2020-04-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-20T20:27:00+08:00">
+                2020-05-20
               </time>
             
 
@@ -398,8 +400,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thinkphp5/" itemprop="url" rel="index">
-                    <span itemprop="name">thinkphp5</span>
+                  <a href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/" itemprop="url" rel="index">
+                    <span itemprop="name">密码学</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/" itemprop="url" rel="index">
+                    <span itemprop="name">对称加密</span>
                   </a>
                 </span>
 
@@ -416,9 +429,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/undefined/11.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE/#comments" itemprop="discussionUrl">
+                <a href="/undefined/%E7%8E%B0%E4%BB%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="undefined/11.thinkphp5模型操作之删除数据/" itemprop="commentCount"></span>
+                        data-disqus-identifier="undefined/现代对称加密算法原理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -445,7 +458,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  141
+                  1.3k
                 </span>
               
 
@@ -461,7 +474,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -482,14 +495,47 @@
       
 
       
-        <h1 id="一丶模型操作之删除数据"><a href="#一丶模型操作之删除数据" class="headerlink" title="一丶模型操作之删除数据"></a><font color=red>一丶模型操作之删除数据</font></h1><h2 id="1丶删除当前模型"><a href="#1丶删除当前模型" class="headerlink" title="1丶删除当前模型"></a><font color=green>1丶删除当前模型</font></h2><p>删除模型数据，可以实例化模型后调用delete方法</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$user</span> = User::get(<span class="number">1</span>);</span><br><span class="line"><span class="variable">$user</span>-&gt;delete();</span><br></pre></td></tr></table></figure></div>
-<h2 id="2丶根据主键删除"><a href="#2丶根据主键删除" class="headerlink" title="2丶根据主键删除"></a><font color=green>2丶根据主键删除</font></h2><p>或者直接调用静态方法   </p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">User::destroy(<span class="number">1</span>)</span><br><span class="line"><span class="comment">//支持删除多个数据</span></span><br><span class="line">User::destroy(<span class="string">'1,2,3'</span>);</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">User::destroy([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br></pre></td></tr></table></figure></div>
-<h2 id="3丶条件删除"><a href="#3丶条件删除" class="headerlink" title="3丶条件删除"></a><font color=green>3丶条件删除</font></h2><p>使用数组进行条件删除，例如：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PHP"><figure class="iseeu highlight /php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除状态为0的数据</span></span><br><span class="line">User::destroy([<span class="string">'status'</span>=&gt;<span class="number">0</span>]);</span><br></pre></td></tr></table></figure></div>
-<p>或者通过数据库类的查询条件删除</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LIVESCRIPT"><figure class="iseeu highlight /livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User::where<span class="function"><span class="params">(<span class="string">'id'</span>,<span class="string">'&gt;'</span>,<span class="number">10</span>)</span>-&gt;</span><span class="keyword">delete</span>();</span><br></pre></td></tr></table></figure></div>
+        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>对称密码沿用替代置换等古典密码技术(混乱与扩散) , 被称为传统密码</p>
+<h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><h4 id="加密算法："><a href="#加密算法：" class="headerlink" title="加密算法："></a>加密算法：</h4><p>一次性密码本+完美秘密+伪随机数生成+Diffie-Hellman密钥交换</p>
+<h5 id="一次性码本原理："><a href="#一次性码本原理：" class="headerlink" title="一次性码本原理："></a>一次性码本原理：</h5><p>首先是需要加密的明文：“hello”; ——————————————5位字母</p>
+<p>然后生成一串拥有与明文相同位数的随机位移：“2,3,1,2,1”———-5个位移</p>
+<p>每个位移分别对应相同位的字母进行位移得到密文：</p>
+<p><strong>这样加密的信息有两个强大的特性。</strong></p>
+<p>第一：位移没有重复的规律</p>
+<p>第二：加密的消息将有一个均匀的频率分布，将不会被频率分析破解</p>
+<h5 id="完美密码原理："><a href="#完美密码原理：" class="headerlink" title="完美密码原理："></a>完美密码原理：</h5><p>假设A写信给B,长度为20个字母，下一步，A用一个和B共享的密钥，它由20个随机生成的位移组成， 每个位移在1到26之间，密钥空间就是所有可能结果的组合。所以，生成一个密钥相当于，从这20个字母的组合中随机选一个</p>
+<p>例：</p>
+<p>假设要将   “ALICE”   通过位移加密，首先随机生成5个位移，每个位移的值为0-26，对应26个英文字母。</p>
+<p>当使用位移进行加密时，也就是说A经过位移有26种可能，然后L经过位移也有26种可能 ……… 一共就是:</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">位移空间 = <span class="number">26</span>*<span class="number">26</span>*<span class="number">26</span>*<span class="number">26</span>*<span class="number">26</span></span><br></pre></td></tr></table></figure></div>
+
+<p>然后因为是随机得到的5个位移，就能理解每一个位移都有26种可能，所以密钥空间为：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">密钥空间 = <span class="number">26</span>*<span class="number">26</span>*<span class="number">26</span>*<span class="number">26</span>*<span class="number">26</span></span><br></pre></td></tr></table></figure></div>
+
+<p>当使用密钥空间中的 “一种密钥” 对位移空间的 “一种位移可能” 进行加密时，生成一种对应的密文信息；</p>
+<p>所以密文信息空间的大小等于密钥空间；</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="FIX"><figure class="iseeu highlight /fix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">密文信息空间</span>=<span class="string">位移空间=密钥空间</span></span><br></pre></td></tr></table></figure></div>
+
+<p>这对应了完美密码，当有人仅仅获得了加密文字的一页，他们所知道的唯一的事情是每个消息是同等可能的。所以无论有多大的计算能力，都不能帮助改进一个盲目的猜测。</p>
+<p>现在要考虑的是在考虑一次性码本的时候，是我们需要事先分享这些长长的密钥，为了解决这个问题 ，我们需要放松对秘密的定义，这需要引入伪随机数的概念。</p>
+<h5 id="伪随机数生成原理："><a href="#伪随机数生成原理：" class="headerlink" title="伪随机数生成原理："></a>伪随机数生成原理：</h5><p>首先选择一个数</p>
+<p>例 “121” ，称之为 “种子”</p>
+<p>然后将 “种子” 相乘获得乘积 “14641”  </p>
+<p>再从乘积中取中间的与”种子“相同位数的一个数 “464”，</p>
+<p>重复生成乘积，再取中间值，最后生成一串随机数</p>
+<p>这个方法叫做 “中间平方”</p>
+<p>生成的随机数序列的随机性依赖于最初种子的随机性，同样的种子，导致同样的序列，所以，随机生成的序列区别于伪随机生成的序列的实质是什么？</p>
+<p>中间平方的生成会有一个周期，但是当“种子”的长度增加，就会加大这个周期</p>
+<p>与之同时带来一个问题，如何分享这个随机数的种子</p>
+<h5 id="Diffie-Hellman密钥交换原理："><a href="#Diffie-Hellman密钥交换原理：" class="headerlink" title="Diffie-Hellman密钥交换原理："></a>Diffie-Hellman密钥交换原理：</h5><p><img src="https://pic3.zhimg.com/80/5d668818881609c8543e6efa7c0d6af1_720w.jpg" alt=""></p>
+<p>上图很经典<br>它的数学基础就是离散对数这个数学难题。用它进行密钥交换的过程简述如下： </p>
+<p>选取两个大数p和g并公开，其中p是一个素数，g是p的一个<strong>模p本原单位根(primitive root module p)</strong>，所谓<strong>本原单位根</strong>就是指在<strong>模p乘法运算下</strong>，g的1次方，2次方……(p-1)次方这p-1个数互不相同，并且取遍1到p-1； </p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LIVECODESERVER"><figure class="iseeu highlight /livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">对于Alice(其中的一个通信者)，随机产生一个整数<span class="keyword">a</span>，<span class="keyword">a</span>对外保密，计算Ka = g^<span class="keyword">a</span> <span class="keyword">mod</span> p，将Ka发送给Bob；</span><br><span class="line"></span><br><span class="line">对于Bob(另一个通信者)，随机产生一个整数b，b对外保密，计算Kb = g^b <span class="keyword">mod</span> p，将Kb发送给Alice； </span><br><span class="line"></span><br><span class="line">在Alice方面，收到Bob送来的Kb后，计算出密钥为：key = Kb^<span class="keyword">a</span> <span class="keyword">mod</span> p = g^(b*<span class="keyword">a</span>) <span class="keyword">mod</span> p <span class="keyword">mod</span> p； </span><br><span class="line"></span><br><span class="line">对于Bob，收到Alice送来的Ka后，计算出密钥为：key = Ka ^ b <span class="keyword">mod</span> p = g^(<span class="keyword">a</span>*b) <span class="keyword">mod</span> p <span class="keyword">mod</span> p。</span><br><span class="line"></span><br><span class="line">攻击者知道p和g，并且截获了Ka和Kb，但是当它们都是非常大的数的时候，依靠这四个数来计算<span class="keyword">a</span>和b非常困难，这就是离散对数数学难题。</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">（1）Alice与Bob确定两个大素数n和g，这两个数不用保密 </span><br><span class="line">（2）Alice选择另一个大随机数x，并计算A如下：<span class="attribute">A</span>=g^xmod n </span><br><span class="line">（3）Alice将A发给Bob </span><br><span class="line">（4）Bob  选择另一个大随机数y，并计算B如下：<span class="attribute">B</span>=g^ymod n </span><br><span class="line">（5）Bob将B发给Alice </span><br><span class="line">（6）计算秘密密钥K1如下：<span class="attribute">K1</span>=B^xmod n </span><br><span class="line">（7）计算秘密密钥K2如下：<span class="attribute">K2</span>=A^ymod n  <span class="attribute">K1</span>=K2，因此Alice和Bob可以用其进行加解密</span><br></pre></td></tr></table></figure></div>
+
+<p>说实话，完美密码那块我也不是很清楚<del>~</del></p>
+
       
     </div>
     
@@ -535,7 +581,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/thinkphp5/" rel="tag"># thinkphp5</a>
+            <a href="/tags/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/" rel="tag"># 对称加密</a>
           
         </div>
       
@@ -548,8 +594,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/10.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/" rel="next" title="10.thinkphp5模型操作之查询数据">
-                <i class="fa fa-chevron-left"></i> 10.thinkphp5模型操作之查询数据
+              <a href="/undefined/XXE%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/" rel="next" title="XXE漏洞原理">
+                <i class="fa fa-chevron-left"></i> XXE漏洞原理
               </a>
             
           </div>
@@ -557,10 +603,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/undefined/12.thinkphp5%E8%A7%86%E5%9B%BE%E4%B9%8B%E6%A8%A1%E6%9D%BF%E8%B5%8B%E5%80%BC%E5%92%8C%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93/" rel="prev" title="12.thinkphp5视图之模板赋值和模板渲染">
-                12.thinkphp5视图之模板赋值和模板渲染 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -715,7 +757,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一丶模型操作之删除数据"><span class="nav-number">1.</span> <span class="nav-text">一丶模型操作之删除数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1丶删除当前模型"><span class="nav-number">1.1.</span> <span class="nav-text">1丶删除当前模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2丶根据主键删除"><span class="nav-number">1.2.</span> <span class="nav-text">2丶根据主键删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3丶条件删除"><span class="nav-number">1.3.</span> <span class="nav-text">3丶条件删除</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理："><span class="nav-number">2.</span> <span class="nav-text">原理：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#加密算法："><span class="nav-number">2.1.</span> <span class="nav-text">加密算法：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一次性码本原理："><span class="nav-number">2.1.1.</span> <span class="nav-text">一次性码本原理：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#完美密码原理："><span class="nav-number">2.1.2.</span> <span class="nav-text">完美密码原理：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#伪随机数生成原理："><span class="nav-number">2.1.3.</span> <span class="nav-text">伪随机数生成原理：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Diffie-Hellman密钥交换原理："><span class="nav-number">2.1.4.</span> <span class="nav-text">Diffie-Hellman密钥交换原理：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -920,9 +962,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/undefined/11.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE/';
-          this.page.identifier = 'undefined/11.thinkphp5模型操作之删除数据/';
-          this.page.title = '11.thinkphp5模型操作之删除数据';
+          this.page.url = 'http://yoursite.com/undefined/%E7%8E%B0%E4%BB%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86/';
+          this.page.identifier = 'undefined/现代对称加密算法原理/';
+          this.page.title = '现代对称加密算法原理';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';

