@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="dk_iKLSXa89Ch42cfgpElzUSaxAYaiLpu6B-fq5fe-0" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CTF,MISC," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="yym's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Misc-隐写术总结背景介绍隐写术是关于信息隐藏，即不让计划的接收者之外的任何人知道信息的传递事件（而不只是信息的内容）的一门技巧与科学,英文写作Steganography。而密码编码是关于信息加密，即设想到信息可能会被接受者之外的第三方获取而采取的一种措施，通过通信双方预先设定的规则对信息进行加密，使第三方即使获取到信息也无法理解其含义。所以隐写术重点在于信息的隐藏，密码编码重点在于信息的加密，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Misc-隐写术总结">
+<meta property="og:url" content="http://yoursite.com/undefined/Misc%E9%9A%90%E5%86%99%E6%9C%AF%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="yym&#39;s blog">
+<meta property="og:description" content="Misc-隐写术总结背景介绍隐写术是关于信息隐藏，即不让计划的接收者之外的任何人知道信息的传递事件（而不只是信息的内容）的一门技巧与科学,英文写作Steganography。而密码编码是关于信息加密，即设想到信息可能会被接受者之外的第三方获取而采取的一种措施，通过通信双方预先设定的规则对信息进行加密，使第三方即使获取到信息也无法理解其含义。所以隐写术重点在于信息的隐藏，密码编码重点在于信息的加密，">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/x4yP9XTFCOzRnkG.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/ksW5dyzS9hJjntE.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/jIsvnfW5R3oiltL.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/UQPuHLDokX84Sth.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/fH3NKpulMb2Aaqy.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/3FryjsmvewA4Zfx.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/rvZlJpfQgFzG7VH.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/enzkJP9V8q7K3i5.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/18LJvrK2Psy9Wpt.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/f2m5RXLUjCukob7.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/szkZJOCmnRvrhfH.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/ANukZKTzxjcHeYX.png">
+<meta property="og:image" content="c:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612132510439.png">
+<meta property="og:image" content="c:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612132547621.png">
+<meta property="og:image" content="c:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612132759250.png">
+<meta property="og:image" content="c:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612135623777.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/3HJW2Zj9ScwreLn.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/GJOfTlxgCrLqt6V.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/A5eu2Hsc7n3NwEg.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/ZEBcTWJiazyG9qV.png">
+<meta property="og:image" content="c:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612143639110.png">
+<meta property="og:image" content="c:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612150014122.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/k9tZ23uTpOe8Qma.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/c8BWkE1KjvA76Pu.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/HDcyNhuowI7dSJF.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/kHMz9CrNKIw4TQ7.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/m7lZu4LbnGwiIyh.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/WOxzBF587jDyETb.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/q2N3cvbLlBWPXSC.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/2M61E7UwXqFeyza.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/ZsJfSWBc6DjxXRK.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/lgq4HpYXxynvw35.png">
+<meta property="og:image" content="c:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200613125042445.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/13/JeDPrQ3MKizxBN1.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/13/hC1VbJczpwg6T93.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/13/8kDlNi4aZ5WI7y3.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/13/bcx4o3Cw1yiFJzY.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/13/8lSaKOjw4FDZpBY.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/13/mJTRLNEApdvIwYb.png">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/%E5%9B%BD%E9%99%85%E6%91%A9%E5%B0%94%E6%96%AF%E7%94%B5%E7%A0%81.svg/315px-%E5%9B%BD%E9%99%85%E6%91%A9%E5%B0%94%E6%96%AF%E7%94%B5%E7%A0%81.svg.png">
+<meta property="og:image" content="c:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200614093414910.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/14/YcXyOzFIotKpkjU.png">
+<meta property="og:image" content="c:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200614100932009.png">
+<meta property="og:image" content="c:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200614103023624.png">
+<meta property="og:image" content="c:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200614104328986.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/16/MFRdSpUiTo2cDBl.png">
+<meta property="og:image" content="c:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616201440356.png">
+<meta property="og:image" content="c:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616203211716.png">
+<meta property="og:image" content="c:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200614104703882.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/17/IN3oXFRn2YbCqLg.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/17/cHfvkLS24CjPXr1.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/17/kOxgqWjHCso7r14.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/17/vaMYhK3obJs62CU.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/14/JLdmzNC1kVhTW97.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/14/YFlaW2tqB4vpiMK.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/14/wgpCzhIvT48irD2.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/14/S8rMghJPwGN5LQX.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/14/Pabuoxc9ENVqSsR.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/14/8nVd4DWyoTqmj5b.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/14/BLQ7jJZIa2kSOCs.png">
+<meta property="article:published_time" content="2020-06-14T07:37:00.000Z">
+<meta property="article:modified_time" content="2020-06-18T06:11:41.789Z">
+<meta property="article:author" content="yimingy72">
+<meta property="article:tag" content="CTF,MISC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/11/x4yP9XTFCOzRnkG.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/undefined/Misc隐写术总结/"/>
+
+
+
+
+
+  <title>Misc-隐写术总结 | yym's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?185515662a0e642556a61f857b4fab82";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yym's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/undefined/Misc%E9%9A%90%E5%86%99%E6%9C%AF%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yimingy72">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yym's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Misc-隐写术总结</h1>
+        
+
+        <div class="post-meta">
+        
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-14T15:37:00+08:00">
+                2020-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/%E6%9D%82%E9%A1%B9/" itemprop="url" rel="index">
+                    <span itemprop="name">杂项</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/undefined/Misc%E9%9A%90%E5%86%99%E6%9C%AF%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="undefined/Misc隐写术总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  12.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  46
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Misc-隐写术总结"><a href="#Misc-隐写术总结" class="headerlink" title="Misc-隐写术总结"></a>Misc-隐写术总结</h1><h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>隐写术是关于信息隐藏，即不让计划的接收者之外的任何人知道信息的传递事件（而不只是信息的内容）的一门技巧与科学,英文写作Steganography。而密码编码是关于信息加密，即设想到信息可能会被接受者之外的第三方获取而采取的一种措施，通过通信双方预先设定的规则对信息进行加密，使第三方即使获取到信息也无法理解其含义。所以隐写术重点在于信息的隐藏，密码编码重点在于信息的加密，这两者属于完全不同的概念。</p>
+<p>[TOC]</p>
+<h3 id="图片隐写术"><a href="#图片隐写术" class="headerlink" title="图片隐写术"></a>图片隐写术</h3><p>图片隐写术大致分为下列六类</p>
+<ul>
+<li><p>一、附加式的图片隐写</p>
+</li>
+<li><p>二、基于文件结构的图片隐写</p>
+</li>
+<li><p>三、基于LSB原理的图片隐写</p>
+</li>
+<li><p>四、基于DCT域的JPG图片隐写</p>
+</li>
+<li><p>五、数字水印的隐写</p>
+</li>
+<li><p>六、图片容差的隐写</p>
+</li>
+<li><p>其他</p>
+</li>
+</ul>
+<hr>
+<h4 id="一、附加式的图片隐写"><a href="#一、附加式的图片隐写" class="headerlink" title="一、附加式的图片隐写"></a>一、附加式的图片隐写</h4><h5 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h5><p>附加式的图片隐写通常是我们用某种程序或者方法在图片文件上直接附加被隐写的目标。</p>
+<p>程序识别图片的过程是，从文件标识头开始，以文件标识头声明的文件格式所定义的编码格式对数据流进行读取，一直到图片的结束符，当图片处理程序识别到图片的结束符后，不再继续向下识别，所以我们就可以通过在图片结束符后添加数据达到隐写的目的。</p>
+<p><strong>附加式图片隐写分类：</strong></p>
+<ul>
+<li>A丶附加字符串</li>
+<li>B丶图种</li>
+</ul>
+<h5 id="A丶附加字符串"><a href="#A丶附加字符串" class="headerlink" title="A丶附加字符串"></a>A丶附加字符串</h5><p>利用工具将隐藏信息直接写入到图片结束符之后</p>
+<p><strong>解法：</strong></p>
+<p>strings工具扫描/将图片后缀改为<code>.txt</code>文件，打开查看末尾添加的字符串</p>
+<p><strong>实验：</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ASCIIDOC"><figure class="iseeu highlight /asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>双击打开图片，我们先确认一下图片内容并没有什么异常</span><br><span class="line"><span class="bullet">- </span>正如前文所说，我们这个实验部分讲的是附加字符串的隐写方式，所以我们用Strings检查一下图片</span><br><span class="line"><span class="bullet">- </span>在Strings工具的搜索下，就能得到隐藏在图片末尾的字符串</span><br><span class="line"><span class="comment">//也有可能是经过编码或者加密过后的字符串</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>strings使用方法</strong></p>
+<p>strings命令在对象文件或二进制文件中查找可打印的字符串。字符串是4个或更多可打印字符的任意序列，以换行符或空字符结束。 strings命令对识别随机对象文件很有用。</p>
+<p>选项：</p>
+<ul>
+<li>-a –all：扫描整个文件而不是只扫描目标文件初始化和装载段</li>
+</ul>
+<ul>
+<li>-f –print-file-name：在显示字符串前先显示文件名</li>
+<li>-t –radix={o,d,x} ：输出字符的位置，基于八进制，十进制或者十六进制</li>
+<li>-e –encoding={s,S,b,l,B,L} ：选择字符大小和排列顺序:s = 7-bit, S = 8-bit, {b,l} = 16-bit, {B,L} = 32-bit</li>
+</ul>
+<p><strong>Tips  我们使用strings + 文件名字的命令即可</strong></p>
+<p><strong>具体步骤如下：</strong></p>
+<p>在kali中输入命令+文件名</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span>s /root/桌面/<span class="number">11111.</span>jpg</span><br></pre></td></tr></table></figure></div>
+
+<p><img src="https://i.loli.net/2020/06/11/x4yP9XTFCOzRnkG.png" alt="image-20200611150413169"></p>
+<p>有必要提到的是，为什么字符串要附加在文件的后面呢?那是因为，如果图片附加在中间，有可能破坏了图片的信息，如果字符串附加在图片的头部位置，又破坏了文件头，可能导致图片无法识别。关于文件格式的具体内容，我们下一个部分的隐写还会提到。</p>
+<h5 id="B丶图种"><a href="#B丶图种" class="headerlink" title="B丶图种"></a>B丶图种</h5><p>一种采用特殊方式将图片文件（如jpg格式）与rar文件结合起来的文件。该文件一般保存为jpg格式，可以正常显示图片；</p>
+<p><strong>解法：</strong></p>
+<ul>
+<li>可以修改文件的后缀名，将图片改为rar压缩文件，并得到其中的数据。</li>
+<li>binwalk / foremost分离</li>
+</ul>
+<p><strong>实验：</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ASCIIDOC"><figure class="iseeu highlight /asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>双击打开图片，我们先确认一下图片内容并没有什么异常</span><br><span class="line"><span class="bullet">- </span>对图片进行检测，确认是不是图种</span><br><span class="line"><span class="bullet">- </span>使用binwalk/formost分离图片，得到一个压缩包</span><br><span class="line"><span class="bullet">- </span>打开压缩包得到flag。</span><br></pre></td></tr></table></figure></div>
+
+<p>简单的检测方式:</p>
+<p>打开工具中的binwalk。使用如下命令：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ARMASM"><figure class="iseeu highlight /armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">binwalk </span>cqzb.jpg</span><br></pre></td></tr></table></figure></div>
+
+<p><img src="https://i.loli.net/2020/06/11/ksW5dyzS9hJjntE.png" alt="image-20200611162616711"></p>
+<p>我们可以发现，binwalk自动识别出来了zip文件，而且偏移也告诉我们了,当然我们这里可以使用</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">binwalk -e <span class="string">/root/</span>桌面<span class="string">/cqzb.jpg</span></span><br></pre></td></tr></table></figure>
+
+<p>这个命令可以提取出binwalk检测出来的文件</p>
+<p><img src="https://i.loli.net/2020/06/11/jIsvnfW5R3oiltL.png" alt="image-20200611162954920"></p>
+<p> 但是这里也可以通过另一种方式去提取压缩包，从原理上去提取。这里介绍一个工具<code>winhex16进制编辑器</code>，当然也可以使用其他的16进制编辑器。</p>
+<p><strong>使用winhex16进制编辑器提取ZIP文件</strong></p>
+<p>首先需要了解一下什么是文件头</p>
+<p>文件头就是位于文件开头的一段标识文件类型的数据块</p>
+<p><img src="https://i.loli.net/2020/06/11/UQPuHLDokX84Sth.png" alt="image-20200611213803814"></p>
+<p>如上图的FF D8 FF就是JPG图片的文件头，一般当我们看到文件开头是如此的格式，我们就能认为这是一个JPG图片了。</p>
+<p><img src="https://i.loli.net/2020/06/11/fH3NKpulMb2Aaqy.png" alt="image-20200611214620664"></p>
+<p>一般JPG的文件尾以FFD9结尾</p>
+<p><img src="https://i.loli.net/2020/06/11/3FryjsmvewA4Zfx.png" alt="image-20200611214339008"></p>
+<p>上图 50 4B 03 04就是ZIP文件的文件头，一般以PK表示。</p>
+<p>上文我们讲述了，JPG图片的结束标识是FF D9,ZIP文件的文件头是50 4B 03 04，我们只需要在winhex中找到ZIP文件的文件头即可，滑动滚条到最底下。上文讲了一般附加的位置是在原本文件的后面，所以我们果断滑动滚动条到最后。</p>
+<p><img src="https://i.loli.net/2020/06/11/rvZlJpfQgFzG7VH.png" alt="image-20200611214741860"></p>
+<p>明显此图不是以FF D9结尾，而且在上面发现了ZIP文件的文件头50 4B 03 04，所以不使用binwalk也能判断这是个图种文件。然后接下来我们就需要分离ZIP文件了。</p>
+<p><strong>分离ZIP文件</strong></p>
+<p>选取从文件头开始到文件尾的所有数据，以16进制数复制到新建的文件中。</p>
+<p><img src="https://i.loli.net/2020/06/11/enzkJP9V8q7K3i5.png" alt="image-20200611215154084"></p>
+<p><img src="https://i.loli.net/2020/06/11/18LJvrK2Psy9Wpt.png" alt="image-20200611215317247"></p>
+<p>然后保存就能得到zip文件。</p>
+<hr>
+<h4 id="二、基于文件结构的图片隐写"><a href="#二、基于文件结构的图片隐写" class="headerlink" title="二、基于文件结构的图片隐写"></a>二、基于文件结构的图片隐写</h4><h5 id="背景知识："><a href="#背景知识：" class="headerlink" title="背景知识："></a>背景知识：</h5><p>这里的文件结构特指的是图片文件的文件结构。我们这里主要讲的也是PNG图片的文件结构。CTF比赛中也是以PNG图片的隐写为主。</p>
+<p>PNG文件结构很简单，主要由数据块组成，最少包含4个数据块。</p>
+<p>PNG数据块PNG图片有两种数据块的，一种是关键数据块，另一种是辅助数据块。</p>
+<p>正常的关键数据块，定义了4种标准数据块，分别是<font color=red>长度，数据块类型码，数据块数据，循环冗余检测(CRC )</font>font&gt;，每个PNG文件都必须包含它们。</p>
+<table>
+<thead>
+<tr>
+<th>PNG标识符</th>
+<th>PNG文件头数据块（IHDR）</th>
+<th>PNG数据块</th>
+<th>…</th>
+<th align="left">PNG结尾数据块(IEND)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>89504E470D0A1A0A</td>
+<td>IHDR中，包括了图片的宽，高，图像深度，颜色类型，压缩方法等等。</td>
+<td>IDAT 数据块、辅助数据块</td>
+<td></td>
+<td align="left">000000004945 4E44AE426082</td>
+</tr>
+</tbody></table>
+<ul>
+<li>PNG标识符<code>89504E470D0A1A0A</code>总是在文件头部，用于标识这是一个PNG图片。</li>
+<li>PNG文件头数据块IHDR，它包含有PNG文件中存储的图像数据的基本信息，并要作为第一个数据块出现在PNG数据流中，而且一个PNG数据流中只能有一个文件头数据块。</li>
+<li>PNG数据块IDAT，它存储实际的数据，在数据流中可包含多个连续顺序的图像数据块。</li>
+<li>PNG结束数据块IEND：它用来标记PNG文件或者数据流已经结束，并且必须要放在文件的尾部。</li>
+</ul>
+<p><strong>IHDR数据块构成：</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>域的名称</strong></th>
+<th><strong>字节数</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Width</td>
+<td>4 bytes</td>
+<td>图像宽度，以像素为单位</td>
+</tr>
+<tr>
+<td>Height</td>
+<td>4 bytes</td>
+<td>图像高度，以像素为单位</td>
+</tr>
+<tr>
+<td>Bit depth</td>
+<td>1 byte</td>
+<td>图像深度：  索引彩色图像：1，2，4或8  灰度图像：1，2，4，8或16  真彩色图像：8或16</td>
+</tr>
+<tr>
+<td>ColorType</td>
+<td>1 byte</td>
+<td>颜色类型： 0：灰度图像, 1，2，4，8或16  2：真彩色图像，8或16  3：索引彩色图像，1，2，4或8  4：带α通道数据的灰度图像，8或16  6：带α通道数据的真彩色图像，8或16</td>
+</tr>
+<tr>
+<td>Compression method</td>
+<td>1 byte</td>
+<td>压缩方法(LZ77派生算法)</td>
+</tr>
+<tr>
+<td>Filter method</td>
+<td>1 byte</td>
+<td>滤波器方法</td>
+</tr>
+<tr>
+<td>Interlace method</td>
+<td>1 byte</td>
+<td>隔行扫描方法： 0：非隔行扫描  1： Adam7(由Adam M. Costello开发的7遍隔行扫描方法)</td>
+</tr>
+</tbody></table>
+<p>这里我们需要重点关注的是宽和高的数据</p>
+<p><strong>首先举个例子：</strong></p>
+<p><img src="https://i.loli.net/2020/06/11/f2m5RXLUjCukob7.png" alt="image-20200611223017816"></p>
+<p><strong>PNG标识符：</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">89504E470</span>D0A1A0A</span><br></pre></td></tr></table></figure></div>
+
+<p>表示这是一个PNG文件</p>
+<p><strong>接下来是IHDR数据块</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">0</span>D</span><br><span class="line"><span class="comment">//表示IHDR头快长度为13(16进制编辑器，D表示13)</span></span><br><span class="line"><span class="number">49</span> <span class="number">48</span> <span class="number">44</span> <span class="number">52</span></span><br><span class="line"><span class="comment">//IHDR标识，表示这是一个IHDR数据块</span></span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">03</span> E8 </span><br><span class="line"><span class="comment">//表示PNG图像的宽，16^2*3+16^1*14+16^0*8=1000像素</span></span><br><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">02</span> <span class="number">32</span> </span><br><span class="line"><span class="comment">//表示PNG图像的高，16^2*2+16^1*3+16^0*2=562像素</span></span><br><span class="line"><span class="number">08</span> </span><br><span class="line"><span class="comment">//表示图像深度，这里是2^8=256，即这是一个256色的图像</span></span><br><span class="line"><span class="number">06</span> </span><br><span class="line"><span class="comment">//颜色类型，查表可知这是带α通道数据的真彩色图像</span></span><br><span class="line"><span class="number">00</span></span><br><span class="line"><span class="comment">//压缩方法</span></span><br><span class="line"><span class="number">00</span> </span><br><span class="line"><span class="comment">//PNG Spec规定此处总为0（非0值为将来使用更好的压缩方法预留），表示使压缩方法（LZ77派生 算法）</span></span><br><span class="line"><span class="number">00</span></span><br><span class="line"><span class="comment">//滤波器方法</span></span><br><span class="line"><span class="number">58</span> <span class="number">71</span> E0 <span class="number">19</span></span><br><span class="line"><span class="comment">//CRC校验</span></span><br></pre></td></tr></table></figure></div>
+
+<p>接下来的是不重要的数据块，我们只需要知道知道再之后就会有IDAT数据块</p>
+<p><strong>IDAT数据块</strong></p>
+<p><img src="https://i.loli.net/2020/06/11/szkZJOCmnRvrhfH.png" alt="image-20200611230506506"></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">8</span>A</span><br><span class="line"><span class="comment">//表示IDAT数据块的长度为8A=16^1*8+16^0*10=138字节</span></span><br><span class="line"><span class="number">49</span> <span class="number">44</span> <span class="number">41</span> <span class="number">54</span></span><br><span class="line"><span class="comment">//IDAT数据块标识符,表示这是一个IDAT数据块</span></span><br><span class="line">接下去的数据是真正的数据</span><br><span class="line">D9 CF A5 A8 </span><br><span class="line"><span class="comment">//CRC校验码</span></span><br></pre></td></tr></table></figure></div>
+
+<h5 id="常用工具："><a href="#常用工具：" class="headerlink" title="常用工具："></a>常用工具：</h5><ul>
+<li>winhex</li>
+<li>010Editor</li>
+<li>pngcheck</li>
+<li>binwalk</li>
+</ul>
+<p><strong>基于文件结构的图片隐写分类：</strong></p>
+<ul>
+<li>高度被修改引起的隐写</li>
+<li>隐写信息以IDAT块加入图片</li>
+</ul>
+<h5 id="A-高度被修改引起的隐写"><a href="#A-高度被修改引起的隐写" class="headerlink" title="A.高度被修改引起的隐写"></a>A.高度被修改引起的隐写</h5><p>背景知识中，我们了解到，图片的高度，宽度的值存放于PNG图片的IHDR数据块，那么我们就是可以通过修改PNG图片的高度值，来对部分信息进行隐藏的。</p>
+<p><strong>解法：</strong></p>
+<p>使用winhex或010Editor等16进制编辑器修改图片高度，调大一点</p>
+<p><strong>技巧：</strong></p>
+<p>一般的高度修改的图片不会修改IHDR的CRC校验码，在windows下，不会检查CRC校验码，图片能正常显示，但在Linux下，图片查看器会检查图片的CRC校验码，所以可以将图片拖入到Linux中去查看校验</p>
+<p>当然可能会把CRC校验码也重新计算过，就不能用这种方法了。</p>
+<p>这里介绍一款工具，能计算CRC校验码：</p>
+<p><strong>CRC Calculator</strong></p>
+<p><img src="https://i.loli.net/2020/06/12/ANukZKTzxjcHeYX.png" alt="image-20200612133558161"></p>
+<p><strong>实验：</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ASCIIDOC"><figure class="iseeu highlight /asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>双击打开图片，我们先确认一下图片内容并没有什么异常</span><br><span class="line"><span class="bullet">- </span>正如前文所说，我们这个实验部分讲的是图片高度值被修改引起的的隐写方式，所以我们winhex</span><br><span class="line"><span class="bullet">- </span>在winhex运行PNG图片，这样方便于我们修改PNG图片的高度值</span><br><span class="line"><span class="bullet">- </span>找到PNG图片高度值对应的地方，然后修改为一个较大的值，并保存文件</span><br><span class="line"><span class="bullet">- </span>打开保存后的图片，发现底部看到了之前被隐写的信息</span><br></pre></td></tr></table></figure></div>
+
+<p>原图：<img src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612132510439.png" alt="image-20200612132510439"></p>
+<p>修改高度</p>
+<p><img src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612132547621.png" alt="image-20200612132547621"></p>
+<p>修改为</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASIC"><figure class="iseeu highlight /basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">00 </span><span class="number">00</span> <span class="number">02</span> FF</span><br></pre></td></tr></table></figure></div>
+
+<p>得到flag：</p>
+<p><img src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612132759250.png" alt="image-20200612132759250"></p>
+<p><strong>思考：</strong></p>
+<ol>
+<li>如果修改的是宽度该怎么修复呢？                  ————————–通过爆破未被修改的CRC校验码得到原始宽度</li>
+<li>JPG图片是否也有这样的隐写形式呢？</li>
+<li>了解JPG以及GIF等图片文件的格式。</li>
+</ol>
+<h5 id="B-隐写信息以IDAT块加入图片"><a href="#B-隐写信息以IDAT块加入图片" class="headerlink" title="B.隐写信息以IDAT块加入图片"></a>B.隐写信息以IDAT块加入图片</h5><p>在背景知识中，我们提到了一个重要的概念就是图片的IDAT块是可以存在多个的，这导致了我们可以将隐写信息以IDAT块的形式加入图片。</p>
+<p>这里再次提一下IDAT数据块的格式：</p>
+<table>
+<thead>
+<tr>
+<th align="left">IDAT数据块长度</th>
+<th align="left">IDAT数据块标识</th>
+<th align="left">IDAT数据</th>
+<th align="left">CRC校验码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">00 00 00 B3</td>
+<td align="left">49 44 41 54</td>
+<td align="left">50 4B …….00 00</td>
+<td align="left">24 9B 7C 31</td>
+</tr>
+</tbody></table>
+<p><img src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612135623777.png" alt="image-20200612135623777"></p>
+<p><strong>解法：</strong></p>
+<p>首先可以通过<code>pngcheck</code>检测是否有异常的数据块，一般的IDAT数据块都是连续的数据块。</p>
+<p>然后查看偏移量找到数据块的位置，提取IDAT数据块进行分析</p>
+<p><strong>实验：</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ASCIIDOC"><figure class="iseeu highlight /asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>双击打开图片，我们先确认一下图片内容并没有什么异常</span><br><span class="line"><span class="bullet">- </span>使用pngcheck先对图片检测</span><br><span class="line"><span class="bullet">- </span>在pngcheck的检测下，我们会发现异常信息，我们对异常的块进行提取</span><br><span class="line"><span class="bullet">- </span>查看数据块偏移量，找到IDAT数据块</span><br><span class="line"><span class="bullet">- </span>提取数据块</span><br><span class="line"><span class="bullet">- </span>分析数据块</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>前景知识</strong><br>pngcheck可以验证PNG图片的完整性（通过检查内部CRC-32校验和&bra;比特&ket;)和解压缩图像数据；它能够转储几乎所有任选的块级别信息在该图像中的可读数据。<br>我们使用<code>pngcheck -v xxx.png</code>如此的命令对图片进行检测</p>
+<p><strong>使用pngcheck对图片进行检测</strong></p>
+<p><img src="https://i.loli.net/2020/06/12/3HJW2Zj9ScwreLn.png" alt="image-20200612141052876"></p>
+<p>可以发现原本连续的数据块都是32768的大小，然后15871，然后后面还有一个179大小的数据块，说明这个数据块有异常。</p>
+<p><strong>提取数据块</strong></p>
+<p>将数据块内容复制粘贴到新的文件中</p>
+<p><img src="https://i.loli.net/2020/06/12/GJOfTlxgCrLqt6V.png" alt="image-20200612141345571"></p>
+<p><strong>分析数据块：</strong></p>
+<p><img src="https://i.loli.net/2020/06/12/A5eu2Hsc7n3NwEg.png" alt="image-20200612141439513"></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASIC"><figure class="iseeu highlight /basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">50 </span><span class="number">4</span>B <span class="number">03</span> <span class="number">04</span></span><br></pre></td></tr></table></figure></div>
+
+<p>说明这是一个ZIP压缩包，改后缀名得到zip文件</p>
+<p><img src="https://i.loli.net/2020/06/12/ZEBcTWJiazyG9qV.png" alt="image-20200612141914384"></p>
+<p>发现提示需要密码，由于题目没有更多信息提示，所以先检查ZIP文件格式，查看压缩包是否是伪加密</p>
+<p>提示：伪加密的压缩包可以用360压缩打开，也可以修复压缩包的方法打开或者修改数据；</p>
+<p>伪加密是通过将第二个14后面的00 00 修改为14 00 09实现，只要将09修改成00就能破解，具体原理可以搜索zip伪加密实现</p>
+<p><img src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612143639110.png" alt="image-20200612143639110"></p>
+<p><em>思考</em></p>
+<ol>
+<li>我们是否可以将一张二维码以IDAT块的形式写入图片呢？</li>
+<li>试着自己将信息以IDAT块的形式写入图片—————–需要添加长度和CRC校验</li>
+</ol>
+<hr>
+<h4 id="三、基于LSB原理的图片隐写"><a href="#三、基于LSB原理的图片隐写" class="headerlink" title="三、基于LSB原理的图片隐写"></a>三、基于LSB原理的图片隐写</h4><h5 id="背景知识-1"><a href="#背景知识-1" class="headerlink" title="背景知识"></a>背景知识</h5><p>网络上有很多博文抄来抄去也写的不清楚，然后我也找了很久才搞懂。</p>
+<p>LSB，最低有效位。我们知道图像像素一般是由RGB三原色（即红绿蓝）组成的，每一种颜色占用8位，0x00~0xFF，即一共有256种颜色，一共包含了256的3次方的颜色，颜色太多，而人的肉眼能区分的只有其中一小部分，这导致了当我们修改RGB颜色分量中最低的二进制位的时候，我们的肉眼是区分不出来的</p>
+<p>三原色，每种颜色占8位</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">0</span>   <span class="number">0</span>   <span class="number">0</span>   <span class="number">0</span>   |   <span class="number">0</span>   <span class="number">0</span>   <span class="number">0</span>   <span class="number">0</span></span><br><span class="line"><span class="number">2</span>^<span class="number">7</span>      ...........        <span class="number">2</span>^<span class="number">1</span> <span class="number">2</span>^<span class="number">0</span></span><br><span class="line"><span class="comment">//一原色就一共有2^8=256种颜色，三原色就是256^3种颜色</span></span><br><span class="line">当我们修改每种颜色的最低位二进制位<span class="number">2</span>^<span class="number">0</span>时，我们的肉眼区分不出来，所以就可以通过修改最低位达到隐写数据的目的</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>出题思路：</strong></p>
+<ul>
+<li>可以通过对某一颜色的某一个二进制位进行存储0或1 ，存储成这一通道(即二进制位)的黑白图片</li>
+<li>可以在三个颜色通道的最低有效位存储0或1数据，存入图片数据或者其他数据</li>
+</ul>
+<h5 id="常用工具：-1"><a href="#常用工具：-1" class="headerlink" title="常用工具："></a>常用工具：</h5><ul>
+<li>Stegosolve</li>
+</ul>
+<p><strong>Stegosolve介绍</strong><br>CTF中，最常用来检测LSB隐写痕迹的工具是Stegsolve，这是一款可以对图片进行多种操作的工具，包括对图片进行xor,sub等操作，对图片不同通道进行查看等功能。</p>
+<p><strong>基于LSB原理的图片隐写</strong></p>
+<ul>
+<li>简单的LSB隐写</li>
+<li>有一点难度的LSB隐写</li>
+</ul>
+<h5 id="A-简单的LSB隐写"><a href="#A-简单的LSB隐写" class="headerlink" title="A.简单的LSB隐写"></a>A.简单的LSB隐写</h5><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ASCIIDOC"><figure class="iseeu highlight /asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>双击打开图片，我们先确认一下图片内容并没有什么异常</span><br><span class="line"><span class="bullet">- </span>使用Stegsolve打开图片，在不同的通道查看图片</span><br><span class="line"><span class="bullet">- </span>在通道切换的过程中，我们看到了flag</span><br><span class="line"><span class="bullet">- </span>最后的flag是flag:key&#123;forensics<span class="emphasis">_is_</span>fun&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>用Stegsolve打开图片，并在不同的通道中切换</p>
+<p><img src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612150014122.png" alt="image-20200612150014122"></p>
+<p>最后在发现Red的2^0位上隐写了数据</p>
+<p>flag是flag:key{forensics_is_fun}</p>
+<p><strong>思考</strong></p>
+<ol>
+<li>我们如何实现这种LSB隐写的？是否可以通过photoshop这样的工具实现？</li>
+<li>查阅更多关于LSB隐写的资料。</li>
+</ol>
+<h5 id="B-有一点难度的LSB隐写"><a href="#B-有一点难度的LSB隐写" class="headerlink" title="B.有一点难度的LSB隐写"></a>B.有一点难度的LSB隐写</h5><p>我们从第一个部分可以知道，最简单的隐写我们只需要通过工具Stegsolve切换到不同通道，我们就可以直接看到隐写内容了，那么更复杂一点就不是这么直接了，而是只能用工具来查看LSB的隐写痕迹，再通过工具或者脚本的方式提取隐写信息。</p>
+<p>可以通过Stegsolve来查看最低有效位数据：</p>
+<p>也可以进行导出</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ARMASM"><figure class="iseeu highlight /armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Analyse</span>中的<span class="meta">Data</span> Extract模块</span><br></pre></td></tr></table></figure></div>
+
+<p><img src="https://i.loli.net/2020/06/12/k9tZ23uTpOe8Qma.png" alt="image-20200612154608945"></p>
+<p><strong>python脚本实现最低有效位隐藏算法：</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="AXAPTA"><figure class="iseeu highlight /axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># -*- coding: UTF-8 -*-</span></span><br><span class="line">from PIL import Image</span><br><span class="line">def plus(<span class="keyword">str</span>):</span><br><span class="line">      <span class="meta">#Python zfill() 方法返回指定长度的字符串，原字符串右对齐，前面填充0。</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">str</span>.zfill(<span class="number">8</span>) </span><br><span class="line">def get_key(strr):</span><br><span class="line">      <span class="meta">#获取要隐藏的文件内容</span></span><br><span class="line">    tmp = strr</span><br><span class="line">    f = file(tmp,<span class="string">"rb"</span>)</span><br><span class="line">    <span class="keyword">str</span> = <span class="string">""</span></span><br><span class="line">    s = f.read()</span><br><span class="line">    <span class="keyword">for</span> i in range(len(s)):</span><br><span class="line">         <span class="meta">#逐个字节将要隐藏的文件内容转换为二进制，并拼接起来</span></span><br><span class="line">         <span class="meta">#1.先用ord()函数将s的内容逐个转换为ascii码</span></span><br><span class="line">         <span class="meta">#2.使用bin()函数将十进制的ascii码转换为二进制</span></span><br><span class="line">         <span class="meta">#3.由于bin()函数转换二进制后，二进制字符串的前面会有"0b"来表示这个字符串是二进制形式，所以用replace()替换为空</span></span><br><span class="line">         <span class="meta">#4.又由于ascii码转换二进制后是七位，而正常情况下每个字符由8位二进制组成，所以使用自定义函数plus将其填充为8位</span></span><br><span class="line">        <span class="keyword">str</span> = <span class="keyword">str</span>+plus(bin(ord(s[i])).replace(<span class="string">'0b'</span>,<span class="string">''</span>))</span><br><span class="line">        <span class="meta">#print str</span></span><br><span class="line">    f.closed</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">str</span></span><br><span class="line">def <span class="keyword">mod</span>(x,y):</span><br><span class="line">    <span class="keyword">return</span> x%y;</span><br><span class="line"><span class="meta">#str1为载体图片路径，str2为隐写文件，str3为加密图片保存的路径</span></span><br><span class="line">def func(str1,str2,str3):  </span><br><span class="line">    im = Image.open(str1)</span><br><span class="line">    <span class="meta">#获取图片的宽和高</span></span><br><span class="line">    width = im.size[<span class="number">0</span>]</span><br><span class="line">    print <span class="string">"width:"</span>+<span class="keyword">str</span>(width)+<span class="string">"\n"</span></span><br><span class="line">    height = im.size[<span class="number">1</span>]</span><br><span class="line">    print <span class="string">"height:"</span>+<span class="keyword">str</span>(height)+<span class="string">"\n"</span></span><br><span class="line">    <span class="keyword">count</span> = <span class="number">0</span></span><br><span class="line">    <span class="meta">#获取需要隐藏的信息</span></span><br><span class="line">    key = get_key(str2)</span><br><span class="line">    keylen = len(key)</span><br><span class="line">    <span class="keyword">for</span> h in range(<span class="number">0</span>,height):</span><br><span class="line">        <span class="keyword">for</span> w in range(<span class="number">0</span>,width):</span><br><span class="line">            pixel = im.getpixel((w,h))</span><br><span class="line">            a=pixel[<span class="number">0</span>]</span><br><span class="line">            b=pixel[<span class="number">1</span>]</span><br><span class="line">            c=pixel[<span class="number">2</span>]</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">count</span> == keylen:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="meta">#下面的操作是将信息隐藏进去</span></span><br><span class="line">            <span class="meta">#分别将每个像素点的RGB值余2，这样可以去掉最低位的值</span></span><br><span class="line">            <span class="meta">#再从需要隐藏的信息中取出一位，转换为整型</span></span><br><span class="line">            <span class="meta">#两值相加，就把信息隐藏起来了</span></span><br><span class="line">            a= a-<span class="keyword">mod</span>(a,<span class="number">2</span>)+<span class="keyword">int</span>(key[<span class="keyword">count</span>])</span><br><span class="line">            <span class="keyword">count</span>+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">count</span> == keylen:</span><br><span class="line">                im.putpixel((w,h),(a,b,c))</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            b =b-<span class="keyword">mod</span>(b,<span class="number">2</span>)+<span class="keyword">int</span>(key[<span class="keyword">count</span>])</span><br><span class="line">            <span class="keyword">count</span>+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">count</span> == keylen:</span><br><span class="line">                im.putpixel((w,h),(a,b,c))</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            c= c-<span class="keyword">mod</span>(c,<span class="number">2</span>)+<span class="keyword">int</span>(key[<span class="keyword">count</span>])</span><br><span class="line">            <span class="keyword">count</span>+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">count</span> == keylen:</span><br><span class="line">                im.putpixel((w,h),(a,b,c))</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">count</span> % <span class="number">3</span> == <span class="number">0</span>:</span><br><span class="line">                im.putpixel((w,h),(a,b,c))</span><br><span class="line">    im.save(str3)</span><br><span class="line"><span class="meta">#原图</span></span><br><span class="line">old = <span class="string">"C:\Users\yiming\Desktop\heetian.png"</span></span><br><span class="line"><span class="meta">#处理后输出的图片路径</span></span><br><span class="line"><span class="keyword">new</span> = <span class="string">"C:\Users\yiming\Desktop\heetian_LSB.png"</span></span><br><span class="line"><span class="meta">#需要隐藏的信息</span></span><br><span class="line">enc = <span class="string">"C:\Users\yiming\Desktop\flag.txt"</span></span><br><span class="line">func(old,enc,<span class="keyword">new</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>python最低有效位提取脚本</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="AXAPTA"><figure class="iseeu highlight /axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># -*- coding:UTF-8 -*-</span></span><br><span class="line">from PIL import Image</span><br><span class="line">def <span class="keyword">mod</span>(x,y):</span><br><span class="line">    <span class="keyword">return</span> x%y;</span><br><span class="line">def toasc(strr):</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">int</span>(strr, <span class="number">2</span>)</span><br><span class="line"><span class="meta">#le为所要提取的信息的长度，str1为加密载体图片的路径，str2为提取文件的保存路径</span></span><br><span class="line">def func(le,str1,str2):</span><br><span class="line">    a=<span class="string">""</span></span><br><span class="line">    b=<span class="string">""</span></span><br><span class="line">    im = Image.open(str1)</span><br><span class="line">    lenth = le*<span class="number">8</span></span><br><span class="line">    width = im.size[<span class="number">0</span>]</span><br><span class="line">    height = im.size[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">count</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> h in range(<span class="number">0</span>, height):</span><br><span class="line">        <span class="keyword">for</span> w in range(<span class="number">0</span>, width):</span><br><span class="line">             <span class="meta">#获得(w,h)点像素的值</span></span><br><span class="line">            pixel = im.getpixel((w, h))</span><br><span class="line">            <span class="meta">#此处余3，依次从R、G、B三个颜色通道获得最低位的隐藏信息</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">count</span>%<span class="number">3</span>==<span class="number">0</span>:</span><br><span class="line">                <span class="keyword">count</span>+=<span class="number">1</span></span><br><span class="line">                b=b+<span class="keyword">str</span>((<span class="keyword">mod</span>(<span class="keyword">int</span>(pixel[<span class="number">0</span>]),<span class="number">2</span>)))</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">count</span> ==lenth:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">count</span>%<span class="number">3</span>==<span class="number">1</span>:</span><br><span class="line">                <span class="keyword">count</span>+=<span class="number">1</span></span><br><span class="line">                b=b+<span class="keyword">str</span>((<span class="keyword">mod</span>(<span class="keyword">int</span>(pixel[<span class="number">1</span>]),<span class="number">2</span>)))</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">count</span> ==lenth:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">count</span>%<span class="number">3</span>==<span class="number">2</span>:</span><br><span class="line">                <span class="keyword">count</span>+=<span class="number">1</span></span><br><span class="line">                b=b+<span class="keyword">str</span>((<span class="keyword">mod</span>(<span class="keyword">int</span>(pixel[<span class="number">2</span>]),<span class="number">2</span>)))</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">count</span> ==lenth:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">count</span> == lenth:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    with open(str2,<span class="string">"wb"</span>) as f:</span><br><span class="line">        <span class="keyword">for</span> i in range(<span class="number">0</span>,len(b),<span class="number">8</span>):</span><br><span class="line">             <span class="meta">#以每8位为一组二进制，转换为十进制</span></span><br><span class="line">            stra = toasc(b[i:i+<span class="number">8</span>])</span><br><span class="line">            <span class="meta">#将转换后的十进制数视为ascii码，再转换为字符串写入到文件中</span></span><br><span class="line">            f.write(chr(stra))</span><br><span class="line">            stra =<span class="string">""</span></span><br><span class="line">    f.closed</span><br><span class="line"><span class="meta">#文件长度</span></span><br><span class="line">le = <span class="number">30</span></span><br><span class="line"><span class="meta">#含有隐藏信息的图片</span></span><br><span class="line"><span class="keyword">new</span> = <span class="string">"C:\Users\lenovo\Desktop\LSB\demo2\heetian_LSB.png"</span></span><br><span class="line"><span class="meta">#信息提取出后所存放的文件</span></span><br><span class="line">tiqu = <span class="string">"C:\Users\lenovo\Desktop\LSB\demo2\get_flag.txt"</span></span><br><span class="line">func(le,<span class="keyword">new</span>,tiqu)</span><br></pre></td></tr></table></figure></div>
+
+<p>可以在图片中隐藏字符串，也可以在图片中隐藏图片</p>
+<p><strong>实验：</strong></p>
+<p><strong>思考</strong></p>
+<ol>
+<li>我们这里用的LSB隐均对R,G,B，三种颜色都加以修改是否可以只修改一个颜色？</li>
+<li>参考2016 HCTF的官方Writeup学习如何实现将一个文件以LSB的形式加以隐写。</li>
+</ol>
+<hr>
+<h4 id="四、基于DCT域的JPG图片隐写"><a href="#四、基于DCT域的JPG图片隐写" class="headerlink" title="四、基于DCT域的JPG图片隐写"></a>四、基于DCT域的JPG图片隐写</h4><p>这个基于DCT域的JPG图片隐写原理太难，没必要搞懂原理，知道有哪几个类型的题目和解法就行。</p>
+<h5 id="背景知识-2"><a href="#背景知识-2" class="headerlink" title="背景知识"></a>背景知识</h5><p>JPEG图像格式使用离散余弦变换（Discrete Cosine Transform，DCT）函数来压缩图像，而这个图像压缩方法的核心是：通过识别每个8×8像素块中相邻像素中的重复像素来减少显示图像所需的位数，并使用近似估算法降低其冗余度。因此，我们可以把DCT看作一个用于执行压缩的近似计算方法。因为丢失了部分数据，所以DCT是一种有损压缩（Loss Compression）技术，但一般不会影响图像的视觉效果。</p>
+<p><strong>基于DCT域的JPG图片隐写分类：</strong></p>
+<ul>
+<li>JPHide</li>
+<li>JSteg</li>
+<li>Outguess</li>
+<li>F5等</li>
+</ul>
+<h5 id="常用工具：-2"><a href="#常用工具：-2" class="headerlink" title="常用工具："></a>常用工具：</h5><ul>
+<li>Stegdetect</li>
+<li>JPHS</li>
+<li>Jsteg</li>
+<li>Outguess</li>
+</ul>
+<h5 id="A-JPhide隐写—jpg隐写"><a href="#A-JPhide隐写—jpg隐写" class="headerlink" title="A.JPhide隐写—jpg隐写"></a>A.JPhide隐写—jpg隐写</h5><p><strong>隐写原理</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Jphide是基于最低有效位LSB的JPEG格式图像隐写算法，使用JPEG图像作为载体是因为相比其他图像格式更不容易发现隐藏信息，因为JPEG图像在DCT变换域上进行隐藏比空间域隐藏更难检测，并且鲁棒性更强，同时Blowfish算法有较强的抗统计检测能力。</span><br><span class="line">由于JPEG图像格式使用离散余弦变换（Discrete Cosine Transform，DCT）函数来压缩图像，而这个图像压缩方法的核心是：通过识别每个<span class="number">8</span>×<span class="number">8</span>像素块中相邻像素中的重复像素来减少显示图像所需的位数，并使用近似估算法降低其冗余度。因此，我们可以把DCT看作一个用于执行压缩的近似计算方法。因为丢失了部分数据，所以DCT是一种有损压缩（Loss Compression）技术，但一般不会影响图像的视觉效果。</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>隐写过程</strong></p>
+<p>JPhide隐写过程大致为：</p>
+<ul>
+<li>先解压压缩JPEG图像，得到DCT系数；</li>
+<li>然后对隐藏信息用户给定的密码进行Blowfish加密；</li>
+<li>再利用Blowfish算法生成伪随机序列，并据此找到需要改变的DCT系数，将其末位变为需要隐藏的信息的值。最后把DCT系数重新压回成JPEG图片；</li>
+</ul>
+<p><img src="https://i.loli.net/2020/06/12/c8BWkE1KjvA76Pu.png" alt="img"></p>
+<p><strong>隐写实现</strong></p>
+<p>1.Stegdetect<br>实现JPEG图像JPhide隐写算法工具有多个，比如由Neils Provos开发通过统计分析技术评估JPEG文件的DCT频率系数的隐写工具 Stegdetect，它可以检测到通过<font color=red>JSteg、JPHide、OutGuess、Invisible Secrets、F5、appendX和Camouflage</font>等这些隐写工具隐藏的信息，并且还具有基于字典暴力破解密码方法提取通过JPhide、outguess和jsteg-shell方式嵌入的隐藏信息。<br>2.JPHS<br>另一款JPEG图像的信息隐藏软件JPHS，它是由Allan Latham开发设计实现在Windows和Linux系统平台针对有损压缩JPEG文件进行信息加密隐藏和探测提取的工具。软件里面主要包含了两个程序JPHIDE和JPSEEK， JPHIDE程序主要是实现将信息文件加密隐藏到JPEG图像功能，而JPSEEK程序主要实现从用JPHIDE程序加密隐藏得到的JPEG图像探测提取信息文件，Windows版本的JPHS里的JPHSWIN程序具有图形化操作界面且具备JPHIDE和JPSEEK的功能。</p>
+<p><img src="https://i.loli.net/2020/06/12/HDcyNhuowI7dSJF.png" alt="img"></p>
+<p>2.分别准备一个JPEG格式的图片（example.jpg）和一个文本文件（flag.txt）。</p>
+<p>由于JPEG文件使用的数据存储方式有多种不能一一演示，这里用最常用的JPEG格式-JPEG文件交换格式（JPEG File Interchange Format，JFIF）作为示例。<br>这里简单介绍JPEG文件交换格式的JPEG图片的图像开始标记SOI（Start of Image）和应用程序保留标记APP0（Application 0），JPEG文件交换格式的JPEG图片开始前2个字节是图像开始标记为0xFFD8，之后2个字节接着便是应用程序保留标记为0xFFE0，应用程序保留标记APP0包含9个具体字段，这里介绍前三个字段，第一个字段是数据长度占2个字节，表示包括本字段但不包括标记代码的总长度，这里为10个字节，第二个字段是标识符占5个字节0x4A46494600表示“JFIF0”字符串，第三个字段是版本号占2个字节，这里是0X0101，表示JFIF的版本号为1.1，但也可能为其它数值，从而代表了其它版本号。</p>
+<p>分别准备一个JPEG格式的图片（111.jpg）和一个文本文件（flag.txt）。</p>
+<p>由于JPEG文件使用的数据存储方式有多种不能一一演示，这里用最常用的JPEG格式-JPEG文件交换格式（JPEG File Interchange Format，JFIF）作为示例。</p>
+<p>由于JPEG文件使用的数据存储方式有多种不能一一演示，这里用最常用的JPEG格式-JPEG文件交换格式（JPEG File Interchange Format，JFIF）作为示例。</p>
+<p>JPEG是一种压缩标准，有很多种采用不同文件交换格式的JPG图片。</p>
+<p>这里简单介绍JPEG文件交换格式的JPEG图片的图像开始标记SOI（Start of Image）和应用程序保留标记APP0（Application 0）</p>
+<p><img src="https://i.loli.net/2020/06/12/kHMz9CrNKIw4TQ7.png" alt="image-20200612192533248"></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">FF D8</span><br><span class="line"><span class="comment">//JPEG文件交换格式的JPEG图片开始前2个字节是图像开始标记 FF D8</span></span><br><span class="line">FF E0 </span><br><span class="line"><span class="comment">//之后2个字节是应用程序保留标记 FF E0</span></span><br><span class="line"><span class="number">00</span> <span class="number">10</span></span><br><span class="line"><span class="comment">//应用程序保留标记APP0包含9个具体字段，这里介绍前三个字段，第一个字段是数据长度占2个字节 00 10,表示包括本字段但不包括标记代码的总长度</span></span><br><span class="line"><span class="number">4</span>A <span class="number">46</span> <span class="number">49</span> <span class="number">46</span> <span class="number">00</span></span><br><span class="line"><span class="comment">//第二个字段是标识符占5个字节0x4A46494600表示“JFIF0”字符串</span></span><br><span class="line"><span class="number">01</span> <span class="number">01</span></span><br><span class="line"><span class="comment">//第三个字段是版本号占2个字节，这里是01 01,表示JFIF的版本号为1.1,但也可能为其它数值，从而代表了其它版本号。</span></span><br></pre></td></tr></table></figure></div>
+
+<p>1、Windows版本可以使用具有图形化操作界面的Jphswin，选择“Open jpeg”打开示例JPEG格式图片111.jpg</p>
+<p><img src="https://i.loli.net/2020/06/12/m7lZu4LbnGwiIyh.png" alt="image-20200612192920524"></p>
+<p>如果你选择的不是JPEG格式的图片程序会自动退出，你可以16进制编辑器如Winhex查看图片的图像开始标记SOI和应用程序保留标记APP0，当载入JPEG格式图片会显示一些图片的属性。</p>
+<p><img src="https://i.loli.net/2020/06/12/WOxzBF587jDyETb.png" alt="image-20200612192943561"></p>
+<p>2、选择“Hide”选项之后在两次文本框输入相同的密码，这里以输入flag作为密码为例，然后输入要包含隐藏信息的文本。</p>
+<p><img src="https://i.loli.net/2020/06/12/q2N3cvbLlBWPXSC.png" alt="image-20200612193040489"></p>
+<p><img src="https://i.loli.net/2020/06/12/2M61E7UwXqFeyza.png" alt="image-20200612193059255"></p>
+<p>3、选择“Save jpeg as”选项将图片另存为jpeg格式并输入文件的名称为新的图像文件如123.jpg</p>
+<p><img src="https://i.loli.net/2020/06/12/ZsJfSWBc6DjxXRK.png" alt="image-20200612193157903"></p>
+<p>4.之后便可以看到生成结果和相关信息，JPhide隐写生成过程就完成了</p>
+<p><img src="https://i.loli.net/2020/06/12/lgq4HpYXxynvw35.png" alt="image-20200612193225396"></p>
+<p><strong>解法：</strong></p>
+<p>当我们拿到一道JPG图片隐写的题时，可以先用Stegdetect检测是以哪种隐写方式加密的。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DIFF"><figure class="iseeu highlight /diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Stegdetect的主要选项如下：</span><br><span class="line"></span><br><span class="line"><span class="deletion">-q 仅显示可能包含隐藏内容的图像。 </span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-n 启用检查JPEG文件头功能，以降低误报率。如果启用，所有带有批注区域的文件将被视为没有被嵌入信息。如果JPEG文件的JFIF标识符中的版本号不是1.1，则禁用OutGuess检测。 </span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-s 修改检测算法的敏感度，该值的默认值为1。检测结果的匹配度与检测算法的敏感度成正比，算法敏感度的值越大，检测出的可疑文件包含敏感信息的可能性越大。</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-d 打印带行号的调试信息。 </span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-t 设置要检测哪些隐写工具（默认检测jopi），可设置的选项如下： </span></span><br><span class="line">	j 检测图像中的信息是否是用jsteg嵌入的。 </span><br><span class="line">	o 检测图像中的信息是否是用outguess嵌入的。 </span><br><span class="line">	p 检测图像中的信息是否是用jphide嵌入的。 </span><br><span class="line">	i 检测图像中的信息是否是用invisible secrets嵌入的。 </span><br><span class="line"><span class="deletion">-V 显示软件版本号。</span></span><br></pre></td></tr></table></figure></div>
+
+<p>1.将图片复制到stegdetect.exe所在目录下，右键PowerShell命令<code>stegdetect.exe -tjopi -s 10.0 hide.jpg</code>检测该图片用的是哪种加密方式</p>
+<p>2.然而我们并不知道密码是啥，这时可以用stegdetect下的stegbreak字典破解，同样图片和stegbreak.exe在同一目录下，命令<code>stegbreak.exe -r rules.ini -f password.txt -r p hide.jpg</code>破解密码</p>
+<p>3.使用jphide下的工具JPHS从hide.jpg图片提取出隐藏信息</p>
+<p><strong>实验：</strong></p>
+<p>首先，在cmd/powershell中运行<code>Stegdetect</code>，对目标图片进行检测</p>
+<p><img src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200613125042445.png" alt="image-20200613125042445"></p>
+<p>发现结果显示是jphide隐写的可能性很大。<br><strong>接着，我们使用工具JPHS提取信息</strong></p>
+<p><img src="https://i.loli.net/2020/06/13/JeDPrQ3MKizxBN1.png" alt="image-20200613125242778"></p>
+<p>然后打开保存的txt文件，即得flag</p>
+<p><img src="https://i.loli.net/2020/06/13/hC1VbJczpwg6T93.png" alt="image-20200613125410159"></p>
+<p>得到flag</p>
+<p><img src="https://i.loli.net/2020/06/13/8kDlNi4aZ5WI7y3.png" alt="image-20200613125859949"></p>
+<h5 id="B-JSteg隐写—jpg隐写"><a href="#B-JSteg隐写—jpg隐写" class="headerlink" title="B.JSteg隐写—jpg隐写"></a>B.JSteg隐写—jpg隐写</h5><p>隐写工具：jsteg</p>
+<p>先用Stegdetect检测加密类型</p>
+<p>再用jsteg解密</p>
+<p>隐写写入：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CSS"><figure class="iseeu highlight /css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">jsteg-windows-amd64</span><span class="selector-class">.exe</span> <span class="selector-tag">hide</span> 123<span class="selector-class">.jpg</span> <span class="selector-tag">flag</span><span class="selector-class">.txt</span> <span class="selector-tag">out</span><span class="selector-class">.jpg</span></span><br></pre></td></tr></table></figure></div>
+
+<p>解密隐写：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CSS"><figure class="iseeu highlight /css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">jsteg-windows-amd64</span><span class="selector-class">.exe</span> <span class="selector-tag">reveal</span> <span class="selector-tag">out</span><span class="selector-class">.jpg</span> <span class="selector-tag">out</span><span class="selector-class">.txt</span></span><br></pre></td></tr></table></figure></div>
+
+<p><img src="https://i.loli.net/2020/06/13/bcx4o3Cw1yiFJzY.png" alt="image-20200613133121279"></p>
+<h5 id="C-Outguess隐写—jpg隐写"><a href="#C-Outguess隐写—jpg隐写" class="headerlink" title="C.Outguess隐写—jpg隐写"></a>C.Outguess隐写—jpg隐写</h5><p>工具：Outguess工具</p>
+<p><strong>解题步骤：</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ASCIIDOC"><figure class="iseeu highlight /asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>双击打开图片，我们先确认一下图片内容并没有什么异常</span><br><span class="line"><span class="bullet">- </span>使用Stegdetect对图片的隐写方式进行检测</span><br><span class="line"><span class="bullet">- </span>从结果中得知是使用JPHide的隐写，使用JPHS工具对隐写信息进行提取</span><br><span class="line"><span class="bullet">- </span>最后打开保存的文件</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>第一步，在cmd中运行，Stegdetect，对目标图片进行检测</strong></p>
+<p><strong>第二步，使用Outguess工具提取隐写信息</strong></p>
+<p>点击Enter key功能，输入密码<br>点击Load image 加载目标图片<br>点击Extract file功能，将提取出来的信息保存成flag.txt文件。</p>
+<p>打开flag.txt文件得到flag</p>
+<p><strong>思考</strong></p>
+<ol>
+<li>尝试其他DCT域隐写，如F5</li>
+<li>自己尝试使用JPHS的Hide功能，实现一个隐写。</li>
+</ol>
+<hr>
+<h4 id="五、数字水印的隐写"><a href="#五、数字水印的隐写" class="headerlink" title="五、数字水印的隐写"></a>五、数字水印的隐写</h4><h5 id="背景知识-3"><a href="#背景知识-3" class="headerlink" title="背景知识"></a>背景知识</h5><p><strong>数字水印</strong><br>数字水印技术，是指在数字化的数据内容中嵌入不明显的记号。<br>特征是，被嵌入的记号通常是不可见或不可察的，但是可以通过计算操作检测或者提取。</p>
+<p>盲水印，是指人感知不到的水印，包括看不到或听不见（没错，数字盲水印也能够用于音频）。其主要应用于音像作品、数字图书等，目的是，在不破坏原始作品的情况下，实现版权的防护与追踪。</p>
+<p>添加数字盲水印的方法简单可分为<font color=red>空域方法</font>和<font color=red>频域方法</font>，这两种方法添加了冗余信息，但在编码和压缩情况不变的情况下，不会使原始图像大小产生变化（原来是10MB添加盲水印之后还是10MB）。</p>
+<p>空域是指空间域，我们日常所见的图像就是空域。空域添加数字水印的方法是在空间域直接对图像操作（之所以说的这么绕，是因为不仅仅原图是空域，原图的差分等等也是空域），比如将水印直接叠加在图像上。</p>
+<p>相对于空域方法，<font color=red>频域加盲水印</font>的方法隐匿性更强，抵抗攻击能力更强。这类算法解水印困难，你不知道水印加在那个频段，而且受到攻击往往会破坏图像原本内容</p>
+<p>我们常说一个音有多高，这个音高是指频率；同样，图像灰度变化强烈的情况，也可以视为图像的频率。频域添加数字水印的方法，是指通过某种变换手段（傅里叶变换，离散余弦变换，小波变换等）将图像变换到频域（小波域），在频域对图像添加水印，再通过逆变换，将图像转换为空间域。相对于空域手段，频域手段隐匿性更强，抗攻击性更高。</p>
+<p>所谓对水印的攻击，是指破坏水印，包括涂抹，剪切，放缩，旋转，压缩，加噪，滤波等。数字盲水印不仅仅要敏捷性高（不被人抓到），也要防御性强（抗打）。就像Dota的敏捷英雄往往是脆皮，数字盲水印的隐匿性和鲁棒性是互斥的。（鲁棒性是抗攻击性的学术名字）</p>
+<h5 id="常用工具：-3"><a href="#常用工具：-3" class="headerlink" title="常用工具："></a>常用工具：</h5><p>BlindWaterMark</p>
+<p>工具github地址：<a href="https://github.com/chishaxie/BlindWaterMark" target="_blank" rel="noopener">https://github.com/chishaxie/BlindWaterMark</a></p>
+<p><strong>解法：</strong></p>
+<p>盲水印一般会有两张图，一张图是原图，一张为添加了水印的</p>
+<p>使用BlindWaterMark工具提取</p>
+<p>合成盲水印图</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CSS"><figure class="iseeu highlight /css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">python</span> <span class="selector-tag">bwm</span><span class="selector-class">.py</span> <span class="selector-tag">encode</span> <span class="selector-tag">hui</span><span class="selector-class">.png</span> <span class="selector-tag">wm</span><span class="selector-class">.png</span> <span class="selector-tag">hui_with_wm</span><span class="selector-class">.png</span></span><br></pre></td></tr></table></figure></div>
+
+<p>提取图中的盲水印 (需要原图)</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CSS"><figure class="iseeu highlight /css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">python</span> <span class="selector-tag">bwm</span><span class="selector-class">.py</span> <span class="selector-tag">decode</span> <span class="selector-tag">hui</span><span class="selector-class">.png</span> <span class="selector-tag">hui_with_wm</span><span class="selector-class">.png</span> <span class="selector-tag">wm_from_hui</span><span class="selector-class">.png</span></span><br></pre></td></tr></table></figure></div>
+
+<p><img src="https://i.loli.net/2020/06/13/8lSaKOjw4FDZpBY.png" alt="image-20200613151739239"></p>
+<p>有想要深入了解的同学可以去看这篇文章：</p>
+<p><a href="https://stgod.com/1482/" target="_blank" rel="noopener">https://stgod.com/1482/</a></p>
+<p><strong>思考</strong></p>
+<ol>
+<li>请查阅关于空域盲水印的资料</li>
+<li>试着对频域盲水印攻击，如截屏、倒转等操作，再进行提取水印，看看水印是否被破坏。</li>
+</ol>
+<hr>
+<h4 id="六、图片容差的隐写"><a href="#六、图片容差的隐写" class="headerlink" title="六、图片容差的隐写"></a>六、图片容差的隐写</h4><h5 id="背景知识-4"><a href="#背景知识-4" class="headerlink" title="背景知识"></a>背景知识</h5><p><strong>容差</strong><br>容差，在选取颜色时所设置的选取范围，容差越大，选取的范围也越大，其数值是在0-255之间。</p>
+<h5 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h5><p><strong>beyond compare</strong></p>
+<p>beyond compare是一款很适合用来对图片进行比较的工具，就图片而言，它支持容差、范围、混合等模式。</p>
+<p><strong>容差比较的隐写</strong></p>
+<p>没有找到题所以就介绍一下解法</p>
+<p><strong>解法：</strong></p>
+<p>打开工具，选择图片比较，导入两张图片</p>
+<p>选择容差大小，进行比较得到flag</p>
+<p><img src="https://i.loli.net/2020/06/13/mJTRLNEApdvIwYb.png" alt="image-20200613153005517"></p>
+<p><strong>提示：</strong></p>
+<p>如果在CTF赛场中，就隐写这一部分，出题人给于两张或者多张图片，一般都是需要对图片的内容进行比较的</p>
+<hr>
+<h3 id="多媒体文件隐写"><a href="#多媒体文件隐写" class="headerlink" title="多媒体文件隐写"></a>多媒体文件隐写</h3><p>音频、视频等多媒体也是我们生活经常看到的文件格式。我们上网听音乐，看视频，都离不开多媒体，一方面多媒体文件一般比单独的图片文件大，这是否也意味着能存储更多的信息，也可以隐藏更多的信息呢？</p>
+<p>多媒体文件隐写分为：</p>
+<ul>
+<li>音频隐写</li>
+<li>视频隐写</li>
+</ul>
+<hr>
+<h4 id="一、音频隐写"><a href="#一、音频隐写" class="headerlink" title="一、音频隐写"></a>一、音频隐写</h4><p>音频隐写大致分为两大类：</p>
+<ul>
+<li>音轨插入摩尔斯电码</li>
+<li>MP3stego隐写</li>
+</ul>
+<h4 id="常用工具：-4"><a href="#常用工具：-4" class="headerlink" title="常用工具："></a>常用工具：</h4><ul>
+<li>Audacity</li>
+<li>MP3stego</li>
+</ul>
+<h5 id="A-摩尔斯电码音频隐写"><a href="#A-摩尔斯电码音频隐写" class="headerlink" title="A.摩尔斯电码音频隐写"></a>A.摩尔斯电码音频隐写</h5><p><strong>背景知识</strong></p>
+<p>摩尔斯电码（又译为摩斯密码，Morse code）是一种时通时断的信号代码，通过不同的排列顺序来表达不同的英文字母、数字和标点符号。在过去它以电报的形式来发送消息，如今当听到这样的电报你还能解出的他它的明文吗？</p>
+<p><strong>摩尔斯电码对照表</strong></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/%E5%9B%BD%E9%99%85%E6%91%A9%E5%B0%94%E6%96%AF%E7%94%B5%E7%A0%81.svg/315px-%E5%9B%BD%E9%99%85%E6%91%A9%E5%B0%94%E6%96%AF%E7%94%B5%E7%A0%81.svg.png" alt="摩尔斯电码- 维基百科，自由的百科全书"></p>
+<p><strong>实验：</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ASCIIDOC"><figure class="iseeu highlight /asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>在实验机中找到隐写术目录，打多媒体隐写，进一步找到文件夹音频隐写的目录下找到莫尔斯电码.mp3 文件</span><br><span class="line"><span class="bullet">- </span>我们可以先双击点开，尝试听一下内容，我们会听到在影视中常常听见的电报的发文声</span><br><span class="line"><span class="bullet">- </span>由于，单靠听我们很难直接辨别出长短，毕竟我们不是专业的，我们可以尝试用Audacity打开文件</span><br><span class="line"><span class="bullet">- </span>短代表点，长代表横，对照电码表，翻译出flag</span><br><span class="line"><span class="bullet">- </span>翻译摩尔斯电码可以使用在线翻译网站</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>当我们确认是摩尔斯电报之后，我先用Audacity打开目标文件，并观察波形</strong></p>
+<p><img src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200614093414910.png" alt="image-20200614093414910"></p>
+<p><strong>以长的代表代表横线，短的代表点，大的间隔是空格，抄写下摩尔斯电码</strong></p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">..</span> -<span class="string">.-.</span> <span class="string">....</span> <span class="string">..-</span> -. --<span class="string">.-</span> <span class="string">..</span> <span class="string">..-</span> -- <span class="params">---</span> <span class="string">.-.</span> <span class="string">...</span> . - . <span class="string">...</span> -</span><br></pre></td></tr></table></figure>
+
+<p>翻译得：</p>
+<p>ICHUNQIUMORSETEST</p>
+<p><strong>思考与实践</strong></p>
+<ol>
+<li>利用lakey这个软件给制作一个自己ID的摩尔斯电文吧。</li>
+</ol>
+<h5 id="B-MP3stego工具隐写"><a href="#B-MP3stego工具隐写" class="headerlink" title="B.MP3stego工具隐写"></a>B.MP3stego工具隐写</h5><p><strong>MP3stego介绍</strong></p>
+<p>MP3stego是著名的音频数据隐写工具，支持常见的压缩音频文件格式如mp3的数据嵌入，它采用的是一种特殊的量化方法，并且将数据隐藏在MP3文件的奇偶校验块中。</p>
+<p><strong>使用方法</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="TP"><figure class="iseeu highlight /tp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">用MP3Stego进行加密解密：</span><br><span class="line">加密：encode -E 加密文本 -<span class="keyword">P</span> 密码  wav文件 mp<span class="number">3</span>文件</span><br><span class="line">解密：decode -<span class="keyword">X</span> -<span class="keyword">P</span>  密码  mp<span class="number">3</span>文件</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>实验：</strong></p>
+<p>小明想和小红告白，在一个首歌中藏了一个txt文件，可是小红却不知道怎么找到mp3文件中的隐藏信息，你能帮帮她吗？ hit： password： love</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ASCIIDOC"><figure class="iseeu highlight /asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>在实验机中找到隐写术目录，打多媒体隐写，进一步找到文件夹音频隐写的目录下找到love.mp3 文件</span><br><span class="line"><span class="bullet">- </span>我们可以先双击点开，尝试听一下内容，感觉是一个很正常的音乐</span><br><span class="line"><span class="bullet">- </span>因为有个提示，这里我们用到了密码加密，我们可以猜测是否是用mp3stego进行的隐写呢？</span><br><span class="line"><span class="bullet">- </span>在工具文件中找到mp3stego，将目标文件拷贝到工具的目录下</span><br><span class="line"><span class="bullet">- </span>尝试提取隐藏信息，最后的flag是flag&#123;I<span class="emphasis">_love_</span>you&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>首先先将目标文件复制到MP3stego这个工具的目录下</strong></p>
+<p><img src="https://i.loli.net/2020/06/14/YcXyOzFIotKpkjU.png" alt="image-20200614100259368"></p>
+<p><strong>在CMD下使用Decode.exe程序进行提取</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CSS"><figure class="iseeu highlight /css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Decode</span><span class="selector-class">.exe</span> <span class="selector-tag">-X</span> <span class="selector-tag">-P</span> <span class="selector-tag">love</span> <span class="selector-tag">love</span><span class="selector-class">.mp3</span></span><br></pre></td></tr></table></figure></div>
+
+<p><img src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200614100932009.png" alt="image-20200614100932009"></p>
+<p>最后打开目录下的love.mp3.txt文件就能看到隐写内容了</p>
+<p><strong>思考与实践</strong></p>
+<ol>
+<li>最后小明表白成功了，你是否也可以尝试去做一个MP3隐写呢</li>
+</ol>
+<h5 id="C-频谱图音频隐写"><a href="#C-频谱图音频隐写" class="headerlink" title="C.频谱图音频隐写"></a>C.频谱图音频隐写</h5><p><strong>背景知识</strong></p>
+<p>频谱是频率谱密度的简称，是频率的分布曲线。复杂振荡分解为振幅不同和频率不同的谐振荡，这些谐振荡的幅值按频率排列的图形叫做频谱。<br>在CTF中，我们可以单独只对一个声道中，隐写进信息</p>
+<p><strong>实验</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ASCIIDOC"><figure class="iseeu highlight /asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>在实验机中找到隐写术目录，打多媒体隐写，进一步找到文件夹音频隐写的目录下找到这有点刺耳.wav的文件</span><br><span class="line"><span class="bullet">- </span>我们可以先双击点开，尝试听一下内容，感觉是一个很正常的音乐</span><br><span class="line"><span class="bullet">- </span>因为这次是针对频谱的，我们直接用Adobe Aud ton打开目标文件</span><br><span class="line"><span class="bullet">- </span>调整到频谱视图，调整大小，直到能清晰的看到隐写内容</span><br><span class="line"><span class="bullet">- </span>尝试提取隐藏信息，最后的flag是flag&#123;CTF<span class="emphasis">_i5_</span>rea1ly<span class="emphasis">_funny!&#125;</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>直接进入正题吧</strong><br>使用AU打开目标文件</p>
+<p><img src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200614103023624.png" alt="image-20200614103023624"></p>
+<p>调整到频谱图，并调整频谱图大小，直到能看清flag</p>
+<p><img src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200614104328986.png" alt="image-20200614104328986"></p>
+<h5 id="D-波形音频隐写"><a href="#D-波形音频隐写" class="headerlink" title="D.波形音频隐写"></a>D.波形音频隐写</h5><p><strong>背景知识</strong></p>
+<p>通常来说，波形方向的题，在观察到异常后，使用相关软件（Audacity, Adobe Audition 等）观察波形规律，将波形进一步转化为 01 字符串等，从而提取转化出最终的 flag。</p>
+<p><strong>实验:</strong></p>
+<p>ISCC-2017：杂项—-普通的DISCO我们普通的摇<del>~</del></p>
+<p>（1）下载一个Disco.wav音频文件，不是以.mp3结尾。那么mp3stego这个工具是无法使用了。</p>
+<p>（2）细心的童鞋会注意到，音频开头有一段杂音。然后用音频分析软件打开，这里我用audacity这款工具打开音频文件。如下图所示：</p>
+<p><img src="https://i.loli.net/2020/06/16/MFRdSpUiTo2cDBl.png" alt="image-20200616195625454"></p>
+<p>这道题就是考个细心程度，当得到这个波形之后就很容易联想到二进制数据，这道题的话因为上下两个音轨是一样的，所以取上面这个，这里可以认为上面一小点是1，下面一小点是0，如下图：</p>
+<p><img src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616201440356.png" alt="image-20200616201440356"></p>
+<p>就能得到：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">110011011011001100001110011111110111010111011000010101110101010110011011101011101110110111011110011111101</span></span><br></pre></td></tr></table></figure></div>
+
+<p>然后得到之后首先观察数据，因为很短，所以推测不是文件，应该是处理字符编码得到flag。</p>
+<p>首先这里一共是105位</p>
+<p>不符合8位一个字符，符合7位，于是在每个7位之前加个0，得到</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ANGELSCRIPT"><figure class="iseeu highlight /angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">01100110</span>,<span class="number">01101100</span>,<span class="number">01100001</span>,<span class="number">01100111</span>,<span class="number">01111011</span>,<span class="number">01010111</span>,<span class="number">00110000</span></span><br><span class="line"><span class="number">01010111</span>,<span class="number">00101010</span>,<span class="number">01100110</span>,<span class="number">01110101</span>,<span class="number">01101110</span>,<span class="number">01101110</span>,<span class="number">01111001</span>,</span><br><span class="line"><span class="number">01111101</span></span><br></pre></td></tr></table></figure></div>
+
+<p>最后二进制转十进制，转ASCII得到：flag{W0W*funny}</p>
+<p>好吧，这边编码的确恶心人。</p>
+<h5 id="E-LSB音频隐写"><a href="#E-LSB音频隐写" class="headerlink" title="E.LSB音频隐写"></a>E.LSB音频隐写</h5><p><strong>背景知识</strong></p>
+<p>类似于图片隐写中的 LSB 隐写，音频中也有对应的 LSB 隐写。主要可以使用Silenteye工具，其介绍如下：</p>
+<p>SilentEye是一种跨平台应用程序设计，可轻松使用隐写术，在这种情况下，将消息隐藏为图片或声音。它提供了一个非常漂亮的界面，并通过使用插件系统轻松集成了新的密写算法和加密过程。</p>
+<p><strong>实验：</strong></p>
+<p>2015 广东省强网杯 - Little Apple</p>
+<p>直接使用 <code>slienteye</code> 即可。</p>
+<p><img src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616203211716.png" alt="image-20200616203211716"></p>
+<p>这道原题找不到了，但是这主要就是考的知识面，知道这个工具才能做出来</p>
+<p><strong>思考与实践</strong></p>
+<p>如何做一个音频隐写？</p>
+<hr>
+<h4 id="二、视频隐写"><a href="#二、视频隐写" class="headerlink" title="二、视频隐写"></a>二、视频隐写</h4><h5 id="A-基于文件结构的隐写"><a href="#A-基于文件结构的隐写" class="headerlink" title="A.基于文件结构的隐写"></a>A.基于文件结构的隐写</h5><p>目前在CTF赛事中较为常出现的视频隐写，一般都是将一场带有隐写信息的图片，嵌入视频中，我们所需要做的就是将这个图片从视频分离出来，然后在分析我们分离出来的文件是什么，之后的操作可能会涉及到密码编码，图片隐写等知识点。</p>
+<p>另一方面，我们分离文件，如果单独对视频来说ffmpeg是一个很好的工具，这里我使用的是foremost ，一款linux下的命令行工具，当然我们也可以使用binwalk或者dd等工具，正如我们图片隐写中教大家分离图片所用的方法一样。<br>区别是，ffmpeg将视频分解成一张一张的图片，foremost是一个基于文件头和尾部信息以及文件的内建数据结构恢复文件的命令行工具。</p>
+<p><strong>实验：</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ASCIIDOC"><figure class="iseeu highlight /asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>在实验机中找到隐写术目录，打多媒体隐写，进一步找到文件夹视频隐写的目录下找到powpow.mp4的文件</span><br><span class="line"><span class="bullet">- </span>我们可以先双击点开，观看下这个视频文件</span><br><span class="line"><span class="bullet">- </span>分离图片，得到一张图片，对图片分析，由提示可知是steghide的图片隐写</span><br><span class="line"><span class="bullet">- </span>之后的操作我们就不复述了, 看一下操作。</span><br><span class="line"><span class="bullet">- </span>flag&#123;We are fsociety, we are finally free, we are finally awake!&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>首先用foremost分离图片</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CSS"><figure class="iseeu highlight /css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">foremost</span> <span class="selector-tag">powpow</span><span class="selector-class">.mp4</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>在output目录下找到分离出来的图片</strong></p>
+<p><img src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200614104703882.png" alt="image-20200614104703882"></p>
+<p>使用命令 <code>steghide extract -sf thing.jpg -p password</code>提取图片隐写内容内容</p>
+<p><strong>对提取出来的隐写内容进行解码</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="RUBY"><figure class="iseeu highlight /ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat base64.txt</span><br><span class="line">python3</span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; import base64</span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; base64.b85decode(b<span class="string">'W^7?+dsk&amp;3VRB_4W^-?2X=QYIEFgDfAYpQ4AZBT9VQg%9AZBu9Wh@|fWgua4Wgup0ZeeU&#125;c_3kTVQXa&#125;eE'</span>)</span><br><span class="line">b<span class="string">'flag&#123;We are fsociety, we are finally free, we are finally awake!&#125;'</span></span><br></pre></td></tr></table></figure></div>
+
+<p>最终的flag是<br>**完整操作命令flag{We are fsociety, we are finally free, we are finally awake!}</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="STYLUS"><figure class="iseeu highlight /stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">foremost powpow.mp4</span><br><span class="line">stepic -<span class="selector-tag">i</span> output/png/<span class="number">00001069</span><span class="selector-class">.png</span> -d &gt; thing</span><br><span class="line">steghide extract -sf thing<span class="selector-class">.jpg</span> -<span class="selector-tag">p</span> password</span><br><span class="line">cat base64.txt</span><br><span class="line">python3</span><br><span class="line">&gt;&gt;&gt; import base64</span><br><span class="line">&gt;&gt;&gt; base64.b85decode(b<span class="string">'W^7?+dsk&amp;3VRB_4W^-?2X=QYIEFgDfAYpQ4AZBT9VQg%9AZBu9Wh@|fWgua4Wgup0ZeeU&#125;c_3kTVQXa&#125;eE'</span>)</span><br><span class="line">b<span class="string">'flag&#123;We are fsociety, we are finally free, we are finally awake!&#125;'</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h5 id="B-MSU-Stego隐写"><a href="#B-MSU-Stego隐写" class="headerlink" title="B.MSU Stego隐写"></a>B.MSU Stego隐写</h5><p>MSU StegoVideo 数据隐写</p>
+<p>这个隐写也是考了知识面吧，题目较少</p>
+<p><strong>解法：</strong></p>
+<p>选中”Extract file from video”:</p>
+<p><img src="https://i.loli.net/2020/06/17/IN3oXFRn2YbCqLg.png" alt="image-20200617160830674"></p>
+<p>选择带有隐藏信息的文件和一个空白的用于保存提取出来的信息的 .txt 文件：</p>
+<p><img src="https://i.loli.net/2020/06/17/cHfvkLS24CjPXr1.png" alt="image-20200617162437195"></p>
+<p>输入密码：(这个密码是在生成的时候设置的，考题可能会在其他地方会有提示)</p>
+<p><img src="https://i.loli.net/2020/06/17/kOxgqWjHCso7r14.png" alt="image-20200617162556361"></p>
+<p>正在进行信息提取操作：</p>
+<p><img src="https://i.loli.net/2020/06/17/vaMYhK3obJs62CU.png" alt="image-20200617162609599"></p>
+<p>操作完成后，就会得到隐藏的信息。</p>
+<p>隐藏的步骤可以自己去尝试</p>
+<h5 id="C-TCStego隐写"><a href="#C-TCStego隐写" class="headerlink" title="C.TCStego隐写"></a>C.TCStego隐写</h5><p>和MSU Stego一样，主要是考了知识面</p>
+<h3 id="电子文档隐写"><a href="#电子文档隐写" class="headerlink" title="电子文档隐写"></a>电子文档隐写</h3><p>电子文档，它主要包括电子文书、电子信件、电子报表、电子图纸、纸质文本文档的电子版本等等，是人们电脑办公中必不可少的文件。</p>
+<h4 id="一、word隐写"><a href="#一、word隐写" class="headerlink" title="一、word隐写"></a>一、word隐写</h4><p>微软的Word一直是文字处理软件中的佼佼者。微软的Word、Excel、PowerPoint提供了许多在文档中隐藏数据的方法，包括批注、个人信息、水印、不可见内容、隐藏文字和定制的XML数据。最简单，也是最奇妙的，也就是这里将提到的隐藏文本功能。</p>
+<h5 id="利用隐藏文本功能进行隐写"><a href="#利用隐藏文本功能进行隐写" class="headerlink" title="利用隐藏文本功能进行隐写"></a>利用隐藏文本功能进行隐写</h5><p><strong>实验：</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ASCIIDOC"><figure class="iseeu highlight /asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>在实验机中找到隐写术目录，打开电子文档隐写，打开flag.doc</span><br><span class="line"><span class="bullet">- </span>在菜单栏中选择，并单击File（文件）-&gt;Tool（工具）-&gt;Option（选项） </span><br><span class="line"><span class="bullet">- </span>找到 隐藏文字 功能，选择这个功能，点击保存</span><br><span class="line"><span class="bullet">- </span>最终flag&#123;doc<span class="emphasis">_stego_</span>is<span class="emphasis">_ez&#125;</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>首先打开，flag.doc</strong><br>打开flag.doc，能看到的文字内容只有<code>Flag in here。</code>,我们就可以猜测，flag是被隐藏起来了</p>
+<p><img src="https://i.loli.net/2020/06/14/JLdmzNC1kVhTW97.png" alt="image-20200614105634162"></p>
+<p><strong>开启隐藏文字显示功能，查看flag是否被隐写</strong><br>在文件栏中，找到选项，打开显示，隐藏文字选项</p>
+<p><img src="https://i.loli.net/2020/06/14/YFlaW2tqB4vpiMK.png" alt="image-20200614105617350"></p>
+<p><img src="https://i.loli.net/2020/06/14/wgpCzhIvT48irD2.png" alt="image-20200614105314028"></p>
+<p><strong>思考</strong></p>
+<ol>
+<li>尝试将文本中的 Flag in here。 也隐藏掉。</li>
+<li>尝试使用word自带的文档检查器检查是否又文字隐藏</li>
+</ol>
+<h5 id="word文档的xml转换"><a href="#word文档的xml转换" class="headerlink" title="word文档的xml转换"></a>word文档的xml转换</h5><p>我们可以将word文档转换成xml格式，当然反过来我们也可以将xml转换成word文档，这导致了我们如果重新打包为word文档的过程中，有可能被隐藏进其他数据。</p>
+<p><strong>实验：</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ASCIIDOC"><figure class="iseeu highlight /asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>在实验机中找到隐写术目录，打开电子文档隐写，打开file.docx</span><br><span class="line"><span class="bullet">- </span>看到的内容是 This is not the flag you're looking for.</span><br><span class="line"><span class="bullet">- </span>我们可以尝试分离word文档</span><br><span class="line"><span class="bullet">- </span>发现，其中包含了一个flag.txt的文件，我们可以直接用7Z，使用zip的方法重新打开file.doc</span><br><span class="line"><span class="bullet">- </span>打开flag.txt，最终flag&#123;this<span class="emphasis">_would_</span>be<span class="emphasis">_the_</span>flag<span class="emphasis">_you_</span>are<span class="emphasis">_looking_</span>for&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>首先，找到文件并打开文件查看</strong></p>
+<p><img src="https://i.loli.net/2020/06/14/S8rMghJPwGN5LQX.png" alt="image-20200614105905294"></p>
+<p><strong>尝试分离文件内容</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CRMSH"><figure class="iseeu highlight /crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">+bash-<span class="number">4.3</span>$ file file.docx </span><br><span class="line">file.docx: Zip archive data, at least v2.<span class="number">0</span> to extract</span><br><span class="line">+bash-<span class="number">4.3</span>$ <span class="number">7</span>z x file.docx -oout</span><br><span class="line"></span><br><span class="line"><span class="number">7</span>-Zip [<span class="number">64</span>] <span class="number">9.20</span>  Copyright (c) <span class="number">1999</span>-<span class="number">2010</span> Igor Pavlov  <span class="number">2010</span>-<span class="number">11</span>-<span class="number">18</span></span><br><span class="line">p7zip <span class="keyword">Version</span> <span class="number">9.20</span> (<span class="attr">locale=</span>utf8,<span class="attr">Utf16=</span>on,<span class="attr">HugeFiles=</span>on,<span class="number">8</span> CPUs)</span><br><span class="line"></span><br><span class="line">Processing archive: file.docx</span><br><span class="line"></span><br><span class="line">Extracting  word/numbering.xml</span><br><span class="line">Extracting  word/settings.xml</span><br><span class="line">Extracting  word/fontTable.xml</span><br><span class="line">Extracting  word/styles.xml</span><br><span class="line">Extracting  word/document.xml</span><br><span class="line">Extracting  word/_rels/document.xml.rels</span><br><span class="line">Extracting  _rels/.rels</span><br><span class="line">Extracting  [Content_Types].xml</span><br><span class="line">Extracting  flag.txt</span><br><span class="line"></span><br><span class="line">Everything is Ok</span><br></pre></td></tr></table></figure></div>
+
+<p>我们会发现又flag.txt的文件被打包在file.docx中，<br><strong>直接用7z等压缩包工具打开file.docx</strong></p>
+<p><img src="https://i.loli.net/2020/06/14/Pabuoxc9ENVqSsR.png" alt="image-20200614110300105"></p>
+<p><strong>思考</strong></p>
+<ol>
+<li>思考，如何制作这种隐写呢？</li>
+<li>试试能否用binwalk 或者strings等工具查看隐写痕迹。</li>
+</ol>
+<h4 id="二、PDF文件中的信息隐藏"><a href="#二、PDF文件中的信息隐藏" class="headerlink" title="二、PDF文件中的信息隐藏"></a>二、PDF文件中的信息隐藏</h4><p>PDF隐写中，我们最常用，也是最熟知的工具就是wbStego4open,这是可以把文件隐藏到BMP，TXT,HTM和PDF文件中的工具，当然，这里我们只用他来最为以PDF为载体进行隐写的工具。</p>
+<h5 id="工具："><a href="#工具：" class="headerlink" title="工具："></a>工具：</h5><ul>
+<li>wbStego4open</li>
+</ul>
+<p><strong>实验：</strong></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ASCIIDOC"><figure class="iseeu highlight /asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>在实验机中找到隐写术目录，打开电子文档隐写，找到  stego.pdf文档</span><br><span class="line"><span class="bullet">- </span>在工具目录中找到 wbStego4open，使用工具载入文档，</span><br><span class="line"><span class="bullet">- </span>根据提示，一步一步完成隐藏信息的提取</span><br><span class="line"><span class="bullet">- </span>最终flag&#123;CTF<span class="emphasis">_is_</span>funny&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>首先找到目标文件</strong><br>在实验机中找到隐写术目录，打开电子文档隐写，找到 stego.pdf文档</p>
+<p><strong>其次，找到工具wbStego4open</strong><br>在工具目录中找到 wbStego4open，使用工具载入文档，<br>Step 1 是文件介绍<br>Step 2 中，我们选择Decode，<br>Step 3 我们选择目标文件<br>Step 4 输入加密密码，如果是空密码，直接跳过<br>Step 5 为保存文件为 flag.txt</p>
+<p>这道题没了大伙自己网上去找</p>
+<p><strong>最后打开保存后的文件，flag.txt</strong><br>最后打开保存后的文件，flag.txt，就能得到flag了。</p>
+<p><strong>思考</strong></p>
+<ol>
+<li>查阅其他资料，是否还要其他的PDF隐写方式，其原理又是什么？</li>
+</ol>
+<hr>
+<h3 id="其他隐写"><a href="#其他隐写" class="headerlink" title="其他隐写"></a>其他隐写</h3><h4 id="一、数据包隐写术"><a href="#一、数据包隐写术" class="headerlink" title="一、数据包隐写术"></a>一、数据包隐写术</h4><p>数据包隐写术，就是将所要传达的信息和文件，以流量包的形式下发给参赛选手，参赛选手要从流量包中自行提取出所需要的文件或者相关内容进行解题。比较常用的工具是wireshark。关于此类部分的详细介绍，大家可以访问这个网址：<a href="https://ctf-wiki.github.io/ctf-wiki/misc/traffic/data/" target="_blank" rel="noopener">https://ctf-wiki.github.io/ctf-wiki/misc/traffic/data/</a></p>
+<h5 id="常用工具：-5"><a href="#常用工具：-5" class="headerlink" title="常用工具："></a>常用工具：</h5><ul>
+<li>wireshark</li>
+</ul>
+<p>数据包隐写术目前两种考察行为：</p>
+<p>①、flag或者关键信息直接隐藏在流量包中</p>
+<p>②、flag相关文件隐藏在流量包中，需要分离文件</p>
+<h4 id="二、细微的颜色差别"><a href="#二、细微的颜色差别" class="headerlink" title="二、细微的颜色差别"></a>二、细微的颜色差别</h4><p>就是看细心程度</p>
+<p>藏在第一列的第四只皮卡丘的酒窝里</p>
+<p><img src="https://i.loli.net/2020/06/14/8nVd4DWyoTqmj5b.png" alt="image-20200614112236379"></p>
+<p><img src="https://i.loli.net/2020/06/14/BLQ7jJZIa2kSOCs.png" alt="image-20200614112349386"></p>
+<p>其他的题型随时补充</p>
+<hr>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>一般的MISC题目都不是简简单单的一个隐写就能解决的，正常都包含了密码，编码，隐写甚至更多的计算机网络知识。</p>
+<hr>
+<p>本文大部分源于<a href="https://link.zhihu.com/?target=https%3A//xz.aliyun.com/">先知社区</a>中M1n3所作<a href="https://xz.aliyun.com/t/1833" target="_blank" rel="noopener">Misc 总结 —-隐写术之图片隐写</a>一文，对其进行了相应的补充并增加了自己的思考以作为自己的学习笔记，如有侵删。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="yimingy72 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="yimingy72 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CTF-MISC/" rel="tag"># CTF,MISC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" rel="next" title="内网渗透工具">
+                <i class="fa fa-chevron-left"></i> 内网渗透工具
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/1+X%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" rel="prev" title="1+X知识点总结">
+                1+X知识点总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <a href="/">
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="yimingy72" />
+               </a>
+            
+              <p class="site-author-name" itemprop="name">yimingy72</p>
+              <p class="site-description motion-element" itemprop="description">hello world</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=477434920&auto=1&height=66"></iframe>
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Misc-隐写术总结"><span class="nav-number">1.</span> <span class="nav-text">Misc-隐写术总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景介绍"><span class="nav-number">1.1.</span> <span class="nav-text">背景介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图片隐写术"><span class="nav-number">1.1.1.</span> <span class="nav-text">图片隐写术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、附加式的图片隐写"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">一、附加式的图片隐写</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景知识"><span class="nav-number">1.1.1.1.1.</span> <span class="nav-text">背景知识</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#A丶附加字符串"><span class="nav-number">1.1.1.1.2.</span> <span class="nav-text">A丶附加字符串</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#B丶图种"><span class="nav-number">1.1.1.1.3.</span> <span class="nav-text">B丶图种</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、基于文件结构的图片隐写"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">二、基于文件结构的图片隐写</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景知识："><span class="nav-number">1.1.1.2.1.</span> <span class="nav-text">背景知识：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常用工具："><span class="nav-number">1.1.1.2.2.</span> <span class="nav-text">常用工具：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#A-高度被修改引起的隐写"><span class="nav-number">1.1.1.2.3.</span> <span class="nav-text">A.高度被修改引起的隐写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#B-隐写信息以IDAT块加入图片"><span class="nav-number">1.1.1.2.4.</span> <span class="nav-text">B.隐写信息以IDAT块加入图片</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、基于LSB原理的图片隐写"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">三、基于LSB原理的图片隐写</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景知识-1"><span class="nav-number">1.1.1.3.1.</span> <span class="nav-text">背景知识</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常用工具：-1"><span class="nav-number">1.1.1.3.2.</span> <span class="nav-text">常用工具：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#A-简单的LSB隐写"><span class="nav-number">1.1.1.3.3.</span> <span class="nav-text">A.简单的LSB隐写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#B-有一点难度的LSB隐写"><span class="nav-number">1.1.1.3.4.</span> <span class="nav-text">B.有一点难度的LSB隐写</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、基于DCT域的JPG图片隐写"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">四、基于DCT域的JPG图片隐写</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景知识-2"><span class="nav-number">1.1.1.4.1.</span> <span class="nav-text">背景知识</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常用工具：-2"><span class="nav-number">1.1.1.4.2.</span> <span class="nav-text">常用工具：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#A-JPhide隐写—jpg隐写"><span class="nav-number">1.1.1.4.3.</span> <span class="nav-text">A.JPhide隐写—jpg隐写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#B-JSteg隐写—jpg隐写"><span class="nav-number">1.1.1.4.4.</span> <span class="nav-text">B.JSteg隐写—jpg隐写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#C-Outguess隐写—jpg隐写"><span class="nav-number">1.1.1.4.5.</span> <span class="nav-text">C.Outguess隐写—jpg隐写</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、数字水印的隐写"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">五、数字水印的隐写</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景知识-3"><span class="nav-number">1.1.1.5.1.</span> <span class="nav-text">背景知识</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常用工具：-3"><span class="nav-number">1.1.1.5.2.</span> <span class="nav-text">常用工具：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六、图片容差的隐写"><span class="nav-number">1.1.1.6.</span> <span class="nav-text">六、图片容差的隐写</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景知识-4"><span class="nav-number">1.1.1.6.1.</span> <span class="nav-text">背景知识</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常用工具"><span class="nav-number">1.1.1.6.2.</span> <span class="nav-text">常用工具</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多媒体文件隐写"><span class="nav-number">1.1.2.</span> <span class="nav-text">多媒体文件隐写</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、音频隐写"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">一、音频隐写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用工具：-4"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">常用工具：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#A-摩尔斯电码音频隐写"><span class="nav-number">1.1.2.2.1.</span> <span class="nav-text">A.摩尔斯电码音频隐写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#B-MP3stego工具隐写"><span class="nav-number">1.1.2.2.2.</span> <span class="nav-text">B.MP3stego工具隐写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#C-频谱图音频隐写"><span class="nav-number">1.1.2.2.3.</span> <span class="nav-text">C.频谱图音频隐写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#D-波形音频隐写"><span class="nav-number">1.1.2.2.4.</span> <span class="nav-text">D.波形音频隐写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#E-LSB音频隐写"><span class="nav-number">1.1.2.2.5.</span> <span class="nav-text">E.LSB音频隐写</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、视频隐写"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">二、视频隐写</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#A-基于文件结构的隐写"><span class="nav-number">1.1.2.3.1.</span> <span class="nav-text">A.基于文件结构的隐写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#B-MSU-Stego隐写"><span class="nav-number">1.1.2.3.2.</span> <span class="nav-text">B.MSU Stego隐写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#C-TCStego隐写"><span class="nav-number">1.1.2.3.3.</span> <span class="nav-text">C.TCStego隐写</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电子文档隐写"><span class="nav-number">1.1.3.</span> <span class="nav-text">电子文档隐写</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、word隐写"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">一、word隐写</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#利用隐藏文本功能进行隐写"><span class="nav-number">1.1.3.1.1.</span> <span class="nav-text">利用隐藏文本功能进行隐写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#word文档的xml转换"><span class="nav-number">1.1.3.1.2.</span> <span class="nav-text">word文档的xml转换</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、PDF文件中的信息隐藏"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">二、PDF文件中的信息隐藏</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#工具："><span class="nav-number">1.1.3.2.1.</span> <span class="nav-text">工具：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他隐写"><span class="nav-number">1.1.4.</span> <span class="nav-text">其他隐写</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、数据包隐写术"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">一、数据包隐写术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#常用工具：-5"><span class="nav-number">1.1.4.1.1.</span> <span class="nav-text">常用工具：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、细微的颜色差别"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">二、细微的颜色差别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">1.1.5.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yimingy72</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">46.2k</span>
+  
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+-->
+          
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="footer.total_visitors">
+      &nbsp;本站访客数&nbsp;<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人</span>	
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="footer.total_views">
+      &nbsp;本站总访问量&nbsp;<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>	
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/undefined/Misc%E9%9A%90%E5%86%99%E6%9C%AF%E6%80%BB%E7%BB%93/';
+          this.page.identifier = 'undefined/Misc隐写术总结/';
+          this.page.title = 'Misc-隐写术总结';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":350},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

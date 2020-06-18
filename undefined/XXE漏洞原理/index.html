@@ -128,12 +128,12 @@
 
 
 
-<meta name="description" content="前言XXE全称是——XML External Entity,也就是XML外部实体注入攻击.漏洞是在对不安全的外部实体数据进行处理时引发的安全问题。 xxe漏洞主要针对web-service危险的引用的外部实体并且未对外部实体进行敏感字符的过滤，从而可以造成命令执行，目录遍历等．首先存在漏洞的web服务一定是存在xml传输数据的，可以在http头的content-type中查看，也可以根据url一些">
+<meta name="description" content="[TOC] 前言XXE全称是——XML External Entity,也就是XML外部实体注入攻击.漏洞是在对不安全的外部实体数据进行处理时引发的安全问题。 xxe漏洞主要针对web-service危险的引用的外部实体并且未对外部实体进行敏感字符的过滤，从而可以造成命令执行，目录遍历等．首先存在漏洞的web服务一定是存在xml传输数据的，可以在http头的content-type中查看，也可以根">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XXE漏洞原理">
 <meta property="og:url" content="http://yoursite.com/undefined/XXE%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="yym&#39;s blog">
-<meta property="og:description" content="前言XXE全称是——XML External Entity,也就是XML外部实体注入攻击.漏洞是在对不安全的外部实体数据进行处理时引发的安全问题。 xxe漏洞主要针对web-service危险的引用的外部实体并且未对外部实体进行敏感字符的过滤，从而可以造成命令执行，目录遍历等．首先存在漏洞的web服务一定是存在xml传输数据的，可以在http头的content-type中查看，也可以根据url一些">
+<meta property="og:description" content="[TOC] 前言XXE全称是——XML External Entity,也就是XML外部实体注入攻击.漏洞是在对不安全的外部实体数据进行处理时引发的安全问题。 xxe漏洞主要针对web-service危险的引用的外部实体并且未对外部实体进行敏感字符的过滤，从而可以造成命令执行，目录遍历等．首先存在漏洞的web服务一定是存在xml传输数据的，可以在http头的content-type中查看，也可以根">
 <meta property="og:image" content="https://i.imgur.com/3MhyU4U.png">
 <meta property="og:image" content="https://i.imgur.com/LxYOrGA.png">
 <meta property="og:image" content="https://i.imgur.com/XGXPp9F.png">
@@ -148,7 +148,7 @@
 <meta property="og:image" content="https://i.imgur.com/u3U1EPq.png">
 <meta property="og:image" content="https://i.imgur.com/8WMGQfV.gif">
 <meta property="article:published_time" content="2020-05-19T00:08:40.000Z">
-<meta property="article:modified_time" content="2020-05-20T13:08:20.839Z">
+<meta property="article:modified_time" content="2020-06-18T06:13:01.385Z">
 <meta property="article:author" content="yimingy72">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
@@ -507,7 +507,8 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>XXE全称是——XML External Entity,也就是XML外部实体注入攻击.漏洞是在对不安全的外部实体数据进行处理时引发的安全问题。</p>
+        <p>[TOC]</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>XXE全称是——XML External Entity,也就是XML外部实体注入攻击.漏洞是在对不安全的外部实体数据进行处理时引发的安全问题。</p>
 <p>xxe漏洞主要针对web-service危险的引用的外部实体并且未对外部实体进行敏感字符的过滤，从而可以造成命令执行，目录遍历等．首先存在漏洞的web服务一定是存在xml传输数据的，可以在http头的content-type中查看，也可以根据url一些常见的关键字进行判断测试，例如wsdl（web服务描述语言）．或者一些常见的采用xml的java服务配置文件（spring，struts2）．不过现实中存在的大多数xxe漏洞都是blind，即不可见的，必须采用带外通道进行返回信息的记录，这里简单来说就是攻击者必须具有一台具有公网ip的主机．</p>
 <h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ul>
 <li>XML</li>
@@ -893,7 +894,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -904,7 +905,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -915,7 +916,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -989,7 +990,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">29.3k</span>
+    <span title="Site words total count">46.2k</span>
   
 </div>
 <!--
