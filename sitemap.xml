@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/undefined/docker-ce+registry/</loc>
+    
+    <lastmod>2020-06-21T13:58:10.898Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/undefined/Misc%E9%9A%90%E5%86%99%E6%9C%AF%E6%80%BB%E7%BB%93/</loc>
     
     <lastmod>2020-06-21T06:50:44.094Z</lastmod>
