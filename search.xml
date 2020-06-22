@@ -1624,6 +1624,17 @@
       </tags>
   </entry>
   <entry>
+    <title>2019强网杯&#39;&#39;随便注&#39;&#39;</title>
+    <url>/undefined/2019%E5%BC%BA%E7%BD%91%E6%9D%AF&#39;&#39;%E9%9A%8F%E4%BE%BF%E6%B3%A8&#39;&#39;/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>BUUCTF</category>
+      </categories>
+      <tags>
+        <tag>SQL注入</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>BUUCTF | 2018护网杯(WEB)easy_tornado(模板注入)</title>
     <url>/undefined/2018%E6%8A%A4%E7%BD%91%E6%9D%AF(WEB)easy_tornado(%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5)/</url>
     <content><![CDATA[<h1 id="考察知识点：模板注入"><a href="#考察知识点：模板注入" class="headerlink" title="考察知识点：模板注入"></a><center>考察知识点：模板注入</center></h1><p>打开页面发现三个链接依次打开，发现各自的文本<br><img src= "/img/loading.gif" data-src="https://i.imgur.com/zsu1I4d.png" alt="1"></p>
@@ -1644,17 +1655,6 @@
       </categories>
       <tags>
         <tag>模板注入</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2019强网杯&#39;&#39;随便注&#39;&#39;</title>
-    <url>/undefined/2019%E5%BC%BA%E7%BD%91%E6%9D%AF&#39;&#39;%E9%9A%8F%E4%BE%BF%E6%B3%A8&#39;&#39;/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>BUUCTF</category>
-      </categories>
-      <tags>
-        <tag>SQL注入</tag>
       </tags>
   </entry>
   <entry>
