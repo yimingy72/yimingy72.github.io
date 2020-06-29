@@ -162,9 +162,10 @@
 <ul>
 <li>熟悉SQL语句</li>
 </ul>
-<p>因为题目提示是sqlmap跑的，然后观察流量包，发现GET请求挺多，就应该是一个GET请求的注入，然后就先把GET请求全导出来吧</p>
-<p><img src= "/img/loading.gif" data-src="https://i.loli.net/2020/06/28/zKdEsO5AigceInv.png" alt="image-20200628082245198"></p>
-<p>然后再 编辑-》复制-》as plain text，粘贴到text文件得到：</p>
+<p>因为题目提示是sqlmap跑的，然后观察流量包，发现GET请求挺多，就应该是一个GET请求的注入，然后就先过滤一下http协议得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://i.loli.net/2020/06/28/2NwUJTxf1mDAGCV.png" alt="image-20200628195800029"></p>
+<p>得到了注入语句和回显，然后根据返回的状态码都是200，所以推测<code>sqlmap</code>是根据<code>包长</code>来判断回显。</p>
+<p>然后就是先导出流量</p>
 ]]></content>
       <categories>
         <category>CTF</category>
