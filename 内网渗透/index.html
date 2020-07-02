@@ -1,0 +1,253 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>内网渗透工具 | yym's blog</title><meta name="description" content="[TOC] 内网渗透TCP内网穿透常见内网穿透手段与工具介绍与使用使用场景： 攻击者从外网打开了入口，想入侵更多的内网机器 常见工具lcx.exe   netsh   portmap   iptables LCX端口转发使用：lcx有两大功能：  端口转发（listen和slave成对使用） 端口映射（tran）  端口转发： Lcx -Listen &lt;监听slave请求的端口(对应slav"><meta name="keywords" content="内网渗透"><meta name="author" content="yym"><meta name="copyright" content="yym"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://www.yym.show/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin="crossorigin"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="内网渗透工具"><meta property="og:url" content="http://www.yym.show/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"><meta property="og:site_name" content="yym's blog"><meta property="og:description" content="[TOC] 内网渗透TCP内网穿透常见内网穿透手段与工具介绍与使用使用场景： 攻击者从外网打开了入口，想入侵更多的内网机器 常见工具lcx.exe   netsh   portmap   iptables LCX端口转发使用：lcx有两大功能：  端口转发（listen和slave成对使用） 端口映射（tran）  端口转发： Lcx -Listen &lt;监听slave请求的端口(对应slav"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2020-06-04T13:56:06.000Z"><meta property="article:modified_time" content="2020-06-18T06:13:45.727Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="prev" title="Misc-隐写术总结" href="http://www.yym.show/Misc%E9%9A%90%E5%86%99%E6%9C%AF%E6%80%BB%E7%BB%93/"><link rel="next" title="现代对称加密算法原理" href="http://www.yym.show/%E7%8E%B0%E4%BB%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86/"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5/js/md5.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-170083067-1', 'auto');
+ga('send', 'pageview');
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/rss2.html" title="yym's blog" type="application/rss+xml">
+</head><body><canvas class="fireworks"></canvas><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">42</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">22</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">24</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#内网渗透"><span class="toc-number">1.</span> <span class="toc-text">内网渗透</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP内网穿透"><span class="toc-number">1.1.</span> <span class="toc-text">TCP内网穿透</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常见内网穿透手段与工具介绍与使用"><span class="toc-number">1.1.1.</span> <span class="toc-text">常见内网穿透手段与工具介绍与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#常见工具"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">常见工具</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#LCX端口转发使用："><span class="toc-number">1.1.1.1.1.</span> <span class="toc-text">LCX端口转发使用：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#LCX端口映射使用："><span class="toc-number">1.1.1.1.2.</span> <span class="toc-text">LCX端口映射使用：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Windows自带的转发工具netsh："><span class="toc-number">1.1.1.1.3.</span> <span class="toc-text">Windows自带的转发工具netsh：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#LINUX自带的转发工具iptables："><span class="toc-number">1.1.1.1.4.</span> <span class="toc-text">LINUX自带的转发工具iptables：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内网代理工具"><span class="toc-number">1.1.2.</span> <span class="toc-text">内网代理工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#regeorg内网代理工具"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">regeorg内网代理工具</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#step1："><span class="toc-number">1.1.2.1.1.</span> <span class="toc-text">step1：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#step2："><span class="toc-number">1.1.2.1.2.</span> <span class="toc-text">step2：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配合使用的软件："><span class="toc-number">1.1.2.2.</span> <span class="toc-text">配合使用的软件：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集代理和端口转发功能于一身的Earthworm（多平台）"><span class="toc-number">1.1.3.</span> <span class="toc-text">集代理和端口转发功能于一身的Earthworm（多平台）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#直接当做socks5代理使用"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">直接当做socks5代理使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#端口转发"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">端口转发</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#step1"><span class="toc-number">1.1.3.2.1.</span> <span class="toc-text">step1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#step2"><span class="toc-number">1.1.3.2.2.</span> <span class="toc-text">step2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#step3"><span class="toc-number">1.1.3.2.3.</span> <span class="toc-text">step3</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多级级联"><span class="toc-number">1.1.4.</span> <span class="toc-text">多级级联</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ICMP-UDP内网穿透"><span class="toc-number">1.1.5.</span> <span class="toc-text">ICMP&#x2F;UDP内网穿透</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#icmptunnel内网穿透"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">icmptunnel内网穿透</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#服务端执行的脚本和启动命令"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">服务端执行的脚本和启动命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端执行的脚本和启动的命令"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">客户端执行的脚本和启动的命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS协议穿透内网"><span class="toc-number">1.1.6.</span> <span class="toc-text">DNS协议穿透内网</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dns2tcp工具安装"><span class="toc-number">1.1.6.1.</span> <span class="toc-text">dns2tcp工具安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解析域名"><span class="toc-number">1.1.6.2.</span> <span class="toc-text">解析域名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置服务端"><span class="toc-number">1.1.6.3.</span> <span class="toc-text">配置服务端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#端口复用技术"><span class="toc-number">1.1.7.</span> <span class="toc-text">端口复用技术</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见工具介绍与使用"><span class="toc-number">1.2.</span> <span class="toc-text">常见工具介绍与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Cobaltstrike使用介绍"><span class="toc-number">1.2.1.</span> <span class="toc-text">Cobaltstrike使用介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cobaltstrike搭建与应用"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">Cobaltstrike搭建与应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Listener设置"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">Listener设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Attacks模块"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">Attacks模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生成可执行文件后门"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">生成可执行文件后门</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行效果"><span class="toc-number">1.2.1.5.</span> <span class="toc-text">执行效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何进入Beacon控制台"><span class="toc-number">1.2.1.6.</span> <span class="toc-text">如何进入Beacon控制台</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Metasploit使用介绍"><span class="toc-number">1.2.2.</span> <span class="toc-text">Metasploit使用介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Empire使用介绍"><span class="toc-number">1.2.3.</span> <span class="toc-text">Empire使用介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Empire工具安装向导"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">Empire工具安装向导</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置Listener"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">设置Listener</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生成后门"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">生成后门</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><div id="web_bg" data-type="photo"></div><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">yym's blog</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">内网渗透工具</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-06-04 21:56:06"><i class="far fa-calendar-alt fa-fw"></i> 发表于 2020-06-04</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-06-18 14:13:45"><i class="fas fa-history fa-fw"></i> 更新于 2020-06-18</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a><i class="fas fa-angle-right post-meta__separator"></i><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E5%B7%A5%E5%85%B7/">工具</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta__icon"></i><span>字数总计:</span><span class="word-count">2.2k</span><span class="post-meta__separator">|</span><i class="far fa-clock fa-fw post-meta__icon"></i><span>阅读时长: 7 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="far fa-eye fa-fw post-meta__icon"></i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>[TOC]</p>
+<h1 id="内网渗透"><a href="#内网渗透" class="headerlink" title="内网渗透"></a>内网渗透</h1><h2 id="TCP内网穿透"><a href="#TCP内网穿透" class="headerlink" title="TCP内网穿透"></a>TCP内网穿透</h2><h3 id="常见内网穿透手段与工具介绍与使用"><a href="#常见内网穿透手段与工具介绍与使用" class="headerlink" title="常见内网穿透手段与工具介绍与使用"></a>常见内网穿透手段与工具介绍与使用</h3><p><strong>使用场景：</strong></p>
+<p>攻击者从外网打开了入口，想入侵更多的内网机器</p>
+<h4 id="常见工具"><a href="#常见工具" class="headerlink" title="常见工具"></a>常见工具</h4><p>lcx.exe   netsh   portmap   iptables</p>
+<h5 id="LCX端口转发使用："><a href="#LCX端口转发使用：" class="headerlink" title="LCX端口转发使用："></a>LCX端口转发使用：</h5><p>lcx有两大功能：</p>
+<ul>
+<li>端口转发（listen和slave成对使用）</li>
+<li>端口映射（tran）</li>
+</ul>
+<p><strong>端口转发：</strong></p>
+<p>Lcx -Listen &lt;监听slave请求的端口(对应slave的第二个参数)&gt; &lt;等待连接的端口&gt;</p>
+<p>Lcx -slave &lt;你的ip&gt; &lt;监听端口(对应listen的第一个参数)&gt; &lt;目标ip&gt; &lt;目标端口&gt;</p>
+<p><strong>使用示例：</strong></p>
+<p>使用环境：本机外网IP，它机内网IP</p>
+<p>本机上运行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lcx -listen 34 3434</span><br></pre></td></tr></table></figure>
+
+<p>这句话的意思就是监听本机的34端口然后将数据转发到3434端口</p>
+<p>它机上运行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lcx -slave 10.128.2.171 34 192.168.56.134 21</span><br></pre></td></tr></table></figure>
+
+<p>假设本机IP为10.128.2.171 被控机为192.168.56.134</p>
+<p>这句话的意思是内网被控机将21端口转发到本机IP—10.128.2.171的34端口上</p>
+<p>然后本机就能通过连接本地的3434端口进行监听控制</p>
+<h5 id="LCX端口映射使用："><a href="#LCX端口映射使用：" class="headerlink" title="LCX端口映射使用："></a>LCX端口映射使用：</h5><p>lcx有两大功能：</p>
+<ul>
+<li>端口转发（listen和slave成对使用）</li>
+<li>端口映射（tran）</li>
+</ul>
+<p>Lcx -tran &lt;等待连接的端口&gt; &lt;目标ip&gt; &lt;目标端口&gt;</p>
+<p>这句话的意思是将本机的等待映射的端口映射到目标ip 的目标端口</p>
+<h5 id="Windows自带的转发工具netsh："><a href="#Windows自带的转发工具netsh：" class="headerlink" title="Windows自带的转发工具netsh："></a>Windows自带的转发工具netsh：</h5><p>配置方法<br>假定需要通过192.168.1.8的14941端口连接192.168.1.118的1494端口，则需要在192.168.1.8主机的命令行输入如下语句</p>
+<p><strong>开启IPv6支持</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netsh interface ipv6 install</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果操作系统开启了主机防火墙，需要放行TCP 14941的入站连接，下面是配置端口转发的两条语句，区别不大，一条指定IP，一条默认本机IP</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netsh interface portproxy add v4tov4 listenaddress&#x3D;192.168.1.8 listenport&#x3D;14941 connectaddress&#x3D;192.168.1.118 connectport&#x3D;1494</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netsh interface portproxy add v4tov4 listenport&#x3D;14941 connectaddress &#x3D;192.168.1.118 connectport&#x3D;1494</span><br></pre></td></tr></table></figure>
+
+<p><strong>取消上面配置的端口转发，可以用如下语句：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netsh interface portproxy delete v4tov4 listenaddress 192.168.1.8 listenport &#x3D;33891</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果想查看已经配置了哪些端口转发，可以用如下语句：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netsh interface portproxy show v4tov4</span><br></pre></td></tr></table></figure>
+
+<h5 id="LINUX自带的转发工具iptables："><a href="#LINUX自带的转发工具iptables：" class="headerlink" title="LINUX自带的转发工具iptables："></a>LINUX自带的转发工具iptables：</h5><p><strong>首先开启内核转发：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo 1&gt;&#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_forward          &#x2F;&#x2F;当主机发现不是自己的流量就会进行转发</span><br><span class="line">sysctl -p                                     &#x2F;&#x2F;立即生效</span><br></pre></td></tr></table></figure>
+
+<p><strong>配置iptables进行端口转发</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp -m tcp --dport21521 -j DNET --to-destination 192.168.0.211:1521</span><br><span class="line">&#x2F;&#x2F;把目的端口为21521的端口的流量转发到192.168.0.211主机的1521端口，DNAT表示目的地址转换</span><br><span class="line">iptables -t nat -A POSTROUTING -s 192.168.0.0&#x2F;16 -d 192.168.0.211 -p tcp -m tcp --dport 1521 -j SNAT --to-source 192.168.0.132</span><br><span class="line">&#x2F;&#x2F;指定192.168.0.0&#x2F;16 ip段的请求进行来源地址转换</span><br></pre></td></tr></table></figure>
+
+<h3 id="内网代理工具"><a href="#内网代理工具" class="headerlink" title="内网代理工具"></a>内网代理工具</h3><h4 id="regeorg内网代理工具"><a href="#regeorg内网代理工具" class="headerlink" title="regeorg内网代理工具"></a>regeorg内网代理工具</h4><p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606132624260.png" alt="image-20200606132624260"></p>
+<p>reGeorgSocksProxy.py是运行在本机上的，渗透一个网站之后，上传对应格式的tunnel文件到服务器</p>
+<h5 id="step1："><a href="#step1：" class="headerlink" title="step1："></a>step1：</h5><p>首先通过webshell等方式上传对应的可使用的代理脚本</p>
+<h5 id="step2："><a href="#step2：" class="headerlink" title="step2："></a>step2：</h5><p>然后攻击者在本地执行python脚本，利用网络上的脚本建立socks5代理隧道</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python reGeorgSocksProxy.py -u http:&#x2F;&#x2F;10.128.2.171&#x2F;tunnel.nosocket.php</span><br></pre></td></tr></table></figure>
+
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606135145093.png" alt="image-20200606135145093"></p>
+<p>此时用软件连接到socks5代理127.0.0.1:8888就处于该服务器的内网环境了</p>
+<h4 id="配合使用的软件："><a href="#配合使用的软件：" class="headerlink" title="配合使用的软件："></a>配合使用的软件：</h4><p><strong>MAC下：</strong><br>proxychains（Proxifier/直接用burpsuite或浏览器连接到socks5代理<br><strong>Windows下：</strong><br>Proxifier.exe/直接用burpsuite或浏览器连接到socks5代理<br><strong>Linux下：</strong><br>proxychains</p>
+<p><strong>proxychains配置</strong></p>
+<p>首先修改配置文件</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606135511794.png" alt="image-20200606135511794"></p>
+<p>在MAC或者linux_上，修改配置文件后，就可以直接在想执行的命令前加上proxychians命令，这样会自动让后面的命令通过代理执行</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606135625508.png" alt="image-20200606135625508"></p>
+<h3 id="集代理和端口转发功能于一身的Earthworm（多平台）"><a href="#集代理和端口转发功能于一身的Earthworm（多平台）" class="headerlink" title="集代理和端口转发功能于一身的Earthworm（多平台）"></a>集代理和端口转发功能于一身的Earthworm（多平台）</h3><h4 id="直接当做socks5代理使用"><a href="#直接当做socks5代理使用" class="headerlink" title="直接当做socks5代理使用"></a>直接当做socks5代理使用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ew_win32.exe -s ssocksd -h</span><br><span class="line">&#x2F;&#x2F;列出参数</span><br></pre></td></tr></table></figure>
+
+<p>使用命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ew_win32.exe -s ssocksd -l 8082</span><br><span class="line">&#x2F;&#x2F;监听8082端口</span><br></pre></td></tr></table></figure>
+
+<h4 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h4><p>rssocks和rcsocks则是成对使用的选项，可以直接搭建lcx那样的端口转发隧道，只不过转发的端口直接就是earthworm提供的socks5代理</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606140307805.png" alt="image-20200606140307805"></p>
+<p>内网victim主机执行的是将建立在本地的socks5代理转发到公网某端口<br>公网attacker的主机执行的是监听两个端口，一个用来接收attacker的链接，一个用来转发内网的代理</p>
+<h5 id="step1"><a href="#step1" class="headerlink" title="step1"></a>step1</h5><p>首先在公网主机上监听好两个端口，等待内网主机链接</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606140721591.png" alt="image-20200606140721591"></p>
+<h5 id="step2"><a href="#step2" class="headerlink" title="step2"></a>step2</h5><p>然后在victim的电脑上执行earthworm以开启socks5代理，并执行转发</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606140744284.png" alt="image-20200606140744284"></p>
+<h5 id="step3"><a href="#step3" class="headerlink" title="step3"></a>step3</h5><p>浏览器设置好代理后就相当于已经处于该内网直接可以访问内网的资源</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606140856159.png" alt="image-20200606140856159"></p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606140910046.png" alt="image-20200606140910046"></p>
+<p>或者也可以通过<br>proxychains/proxifier把代理用在其<br>他的一些工具上<br>nmap/sqlmap/rdesktop</p>
+<h3 id="多级级联"><a href="#多级级联" class="headerlink" title="多级级联"></a>多级级联</h3><p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606141238357.png" alt="image-20200606141238357"></p>
+<p>数据流向：SOCKS v5-&gt; 1080-&gt; 8888-&gt; 9999-&gt; 7777-&gt; rssocks</p>
+<h3 id="ICMP-UDP内网穿透"><a href="#ICMP-UDP内网穿透" class="headerlink" title="ICMP/UDP内网穿透"></a>ICMP/UDP内网穿透</h3><h4 id="icmptunnel内网穿透"><a href="#icmptunnel内网穿透" class="headerlink" title="icmptunnel内网穿透"></a>icmptunnel内网穿透</h4><p>icmptunnel借助icmp协议进行通信</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606141542429.png" alt="image-20200606141542429"></p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606141552013.png" alt="image-20200606141552013"></p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606141640116.png" alt="image-20200606141640116"></p>
+<h4 id="服务端执行的脚本和启动命令"><a href="#服务端执行的脚本和启动命令" class="headerlink" title="服务端执行的脚本和启动命令"></a>服务端执行的脚本和启动命令</h4><p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606141716894.png" alt="image-20200606141716894"></p>
+<h4 id="客户端执行的脚本和启动的命令"><a href="#客户端执行的脚本和启动的命令" class="headerlink" title="客户端执行的脚本和启动的命令"></a>客户端执行的脚本和启动的命令</h4><p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606141809132.png" alt="image-20200606141809132"></p>
+<h3 id="DNS协议穿透内网"><a href="#DNS协议穿透内网" class="headerlink" title="DNS协议穿透内网"></a>DNS协议穿透内网</h3><h4 id="dns2tcp工具安装"><a href="#dns2tcp工具安装" class="headerlink" title="dns2tcp工具安装"></a>dns2tcp工具安装</h4><p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606142043435.png" alt="image-20200606142043435"></p>
+<h4 id="解析域名"><a href="#解析域名" class="headerlink" title="解析域名"></a>解析域名</h4><p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606142111545.png" alt="image-20200606142111545"></p>
+<p>一条A记录和一条Ns记录当查询到ssrf这个子域名的时候(xxxx.ssrf.nuptzj.cn)会去ns记录指向的blog子域名查询</p>
+<h4 id="配置服务端"><a href="#配置服务端" class="headerlink" title="配置服务端"></a>配置服务端</h4><p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606142433789.png" alt="image-20200606142433789"></p>
+<p>启动服务器端</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dns2tcpd -f &#x2F;etc&#x2F;dns2tcpd.conf -d 1</span><br></pre></td></tr></table></figure>
+
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606142523168.png" alt="image-20200606142523168"></p>
+<p>启动客户端 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dns2tcpc -r ssh -I 7777 -z ssrf.nuptzj.cn blog.nuptzj.cn</span><br></pre></td></tr></table></figure>
+
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606143114174.png" alt="image-20200606143114174"></p>
+<p>连接到ssh服务</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606143205496.png" alt="image-20200606143205496"></p>
+<h3 id="端口复用技术"><a href="#端口复用技术" class="headerlink" title="端口复用技术"></a>端口复用技术</h3><p>参考链接 <a href="https://xz.aliyun.com/t/1661" target="_blank" rel="noopener">https://xz.aliyun.com/t/1661</a></p>
+<h2 id="常见工具介绍与使用"><a href="#常见工具介绍与使用" class="headerlink" title="常见工具介绍与使用"></a>常见工具介绍与使用</h2><h3 id="Cobaltstrike使用介绍"><a href="#Cobaltstrike使用介绍" class="headerlink" title="Cobaltstrike使用介绍"></a>Cobaltstrike使用介绍</h3><h4 id="Cobaltstrike搭建与应用"><a href="#Cobaltstrike搭建与应用" class="headerlink" title="Cobaltstrike搭建与应用"></a>Cobaltstrike搭建与应用</h4><p>启动Cobaltstrike Team Server</p>
+<p>配置完java环境以后直接运行teamserver文件就可以开启<br>./teamserver[服务器的IP] [你的连接密码]</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606144233886.png" alt="image-20200606144233886"></p>
+<p>Cobalt Strike Client<br>运行cobaltstrike客户端文件连接到该服务器</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606144742574.png" alt="image-20200606144742574"></p>
+<p>在面板中填入配置信息就可以点击connect连接到C&amp;C服务器，Cobaltstrike是一个适合团队协作的平台，可以多人连接到服务器，一起对客户机进行渗透操作，共享shell</p>
+<h4 id="Listener设置"><a href="#Listener设置" class="headerlink" title="Listener设置"></a>Listener设置</h4><p>首次使用需要先设置一个默认的listener，就是指的程序默认监听回连靶机的方式（就是渗透的靶机回连的端口是vps的8088端口，然后客户端这边监听vps的8088）</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606144855822.png" alt="image-20200606144855822"></p>
+<p>监听有很多种方式，dns，ttp，https选择https或者dns协议会让通信更加隐秘，不那么容易被侦测到流量<img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606145236715.png" alt="image-20200606145236715"></p>
+<h4 id="Attacks模块"><a href="#Attacks模块" class="headerlink" title="Attacks模块"></a>Attacks模块</h4><p>设置完监听我们就可以来看看有哪些方式能用来攻击</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606145433934.png" alt="image-20200606145433934"></p>
+<p>Cs提供的直接生成恶意文件的方式</p>
+<p>Cs提供的包括站点克隆（钓鱼），添加文件到网页 链接利用WEB方式传输payload，应用识别等辅助攻击功能</p>
+<h4 id="生成可执行文件后门"><a href="#生成可执行文件后门" class="headerlink" title="生成可执行文件后门"></a>生成可执行文件后门</h4><p>使用Attacks-&gt;Packages–&gt;Windows executable生成一个恶意文件</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606145830581.png" alt="image-20200606145830581"></p>
+<p>listener表示当对方运行了这个.exe文件后，对方已怎样的方式回连到主控端</p>
+<h4 id="执行效果"><a href="#执行效果" class="headerlink" title="执行效果"></a>执行效果</h4><p>通过各种手段让靶机执行以后，可以看到客户端上线啦~<br>CS的载荷不是时刻保持socket通信的，而是有–定的心跳时间，默认是每一分钟会向C&amp;C服务器拉取一-下最新的指令并执行，所以我们下达指令后，靶机会周期性的来获取命令然后执行并返回结果（可以通过Beacon中的sleep命令调整时间）</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606150051268.png" alt="image-20200606150051268"></p>
+<h4 id="如何进入Beacon控制台"><a href="#如何进入Beacon控制台" class="headerlink" title="如何进入Beacon控制台"></a>如何进入Beacon控制台</h4><p>对着目标右键选择interact可以进入这个目标的控制台界面</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606150458393.png" alt="image-20200606150458393"></p>
+<h3 id="Metasploit使用介绍"><a href="#Metasploit使用介绍" class="headerlink" title="Metasploit使用介绍"></a>Metasploit使用介绍</h3><h3 id="Empire使用介绍"><a href="#Empire使用介绍" class="headerlink" title="Empire使用介绍"></a>Empire使用介绍</h3><h4 id="Empire工具安装向导"><a href="#Empire工具安装向导" class="headerlink" title="Empire工具安装向导"></a>Empire工具安装向导</h4><p>项目地址：<br><a href="https://github.com/EmpireProject/Empire" target="_blank" rel="noopener">https://github.com/EmpireProject/Empire</a><br>安装方法：<br>使用ubuntu或者debian<br>git clone <a href="https://github.com/EmpireProject/Empire" target="_blank" rel="noopener">https://github.com/EmpireProject/Empire</a><br>cd setup&amp;&amp;sudo./install.sh<br>这个工具安装前要先配置好python和pip</p>
+<h4 id="设置Listener"><a href="#设置Listener" class="headerlink" title="设置Listener"></a>设置Listener</h4><p>empire的监听方式</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606152723567.png" alt="image-20200606152723567"></p>
+<p>包含的类型比较多：<br>●可以委派给其他监听器的比如msf的meterpreter<br>●基于利用微软onedrive作为c&amp;c服务器 的监听器onedrive直接是在本机监听http及 多种http相关协议的多个监听器</p>
+<p>执行uselistener http以后直接按照默认配置执行execute会启动http80端口的监听当然也可以通过info命令显示选项，通过set命令调整设置以后再execute启动</p>
+<h4 id="生成后门"><a href="#生成后门" class="headerlink" title="生成后门"></a>生成后门</h4><p>设置完监听模式以后生成payload<br>可以直接通过launcher powershel[python]http生成连接到对应的监听器的payload</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606152928138.png" alt="image-20200606152928138"></p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606153712491.png" alt="image-20200606153712491"><br><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606153724477.png" alt="image-20200606153724477"></p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606153758800.png" alt="image-20200606153758800"></p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606153817638.png" alt="image-20200606153817638"></p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200606153853515.png" alt="image-20200606153853515"></p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">yym</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.yym.show/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">http://www.yym.show/内网渗透/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.yym.show" target="_blank">yym's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><button class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="/img/wechat.jpg" alt="wechat" onclick="window.open('/img/wechat.jpg')"/><div class="post-qr-code__desc">wechat</div></li><li class="reward-item"><img class="post-qr-code__img" src="/img/alipay.jpg" alt="alipay" onclick="window.open('/img/alipay.jpg')"/><div class="post-qr-code__desc">alipay</div></li></ul></div></button></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/Misc%E9%9A%90%E5%86%99%E6%9C%AF%E6%80%BB%E7%BB%93/"><img class="prev-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Misc-隐写术总结</div></div></a></div><div class="next-post pull-right"><a href="/%E7%8E%B0%E4%BB%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86/"><img class="next-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">现代对称加密算法原理</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="lv-container" data-id="city" data-uid="MTAyMC81MDU5Ny8yNzA4MA=="><script>(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');</script></div></div></article></main><footer id="footer" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By yym</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">Hi, welcome to my <a href="http://www.yym.show/">blog</a>!</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" title="缩小字体"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">繁</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fas fa-comments"></i></a><button class="close" id="mobile-toc-button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/third-party/click_heart.js"></script><script src="/js/search/local-search.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":200,"height":350},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

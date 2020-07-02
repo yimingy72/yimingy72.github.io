@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>BUUCTF-流量分析刷题记录</title>
-    <url>/undefined/2020-06-30-BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+    <url>/2020-06-30-BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h3 id="一丶wireshark"><a href="#一丶wireshark" class="headerlink" title="一丶wireshark"></a>一丶wireshark</h3><p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200630153805782.png" alt="image-20200630153805782"></p>
 <p><strong>本题要点：</strong></p>
 <ul>
@@ -72,7 +72,28 @@
 <ul>
 <li>追踪TCP流</li>
 </ul>
-<p>flag{3OpWdJ-JP6FzK-koCMAK-VkfWBq-75Un2z}</p>
+<p>看了很多人的WP，虽然说出了解题步骤，但思路啥的都没有说清楚，然后只能自己好好研究一下思路</p>
+<p>打开首先发现有很多TCP包和HTTP包，首先要明白他在传输什么，所以需要先追踪一下HTTP流：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701140956772.png" alt="image-20200701140956772"></p>
+<p>从<code>post</code>的内容看出就是一个菜刀连接服务器的流量，应该是执行了一个列出目录的命令，然后就看到了列出的目录里有<code>flag.txt</code>，然后猜测后面应该会有查看<code>flag.txt</code>文件的操作，但是很遗憾，查看完第一个http流还是没有有效的信息，然后只能接着查看下一个<code>HTTP</code>流，然后第二个<code>HTTP</code>流也没有什么重要的信息，第三个流有数据，但是应该是传输了一个无关紧要的<code>.deb</code>的软件包。</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701163947030.png" alt="image-20200701163947030"></p>
+<p>然后继续往下看，第7个HTTP流：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701181726275.png" alt="image-20200701181726275"></p>
+<p>发现传输了一大串16进制数据，然后提取出来粘贴到<code>winhex</code>就发现了，这个文件头不就是JPG图片吗，然后保存得到了一串密码：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701181848815.png" alt="image-20200701181848815"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701181946127.png" alt="image-20200701181946127"></p>
+<p>然后继续查看HTTP流，第9个HTTP流又发现了不同：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701182129889.png" alt="image-20200701182129889"></p>
+<p>杂项做得多了就一眼看出这是个zip压缩包的数据，然后这里直接复制粘贴到winhex会有问题，下面是<strong>文件提取</strong>，有两种方案：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701184148144.png" alt="image-20200701184148144"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/15171357208475.png!small" alt="Clipboard Image.png"></p>
+<p>然后打开需要密码，尝试用之前得到的图片中的密码解密得到flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701184504989.png" alt="image-20200701184504989"></p>
+<p>flag：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;3OpWdJ-JP6FzK-koCMAK-VkfWBq-75Un2z&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="七丶被偷走的文件"><a href="#七丶被偷走的文件" class="headerlink" title="七丶被偷走的文件"></a>七丶被偷走的文件</h3><p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701185150836.png" alt="image-20200701185150836"></p>
+<h3 id="八丶秘密文件"><a href="#八丶秘密文件" class="headerlink" title="八丶秘密文件"></a>八丶秘密文件</h3><h3 id="九丶sqltest"><a href="#九丶sqltest" class="headerlink" title="九丶sqltest"></a>九丶sqltest</h3><h3 id="十丶sqltest"><a href="#十丶sqltest" class="headerlink" title="十丶sqltest"></a>十丶sqltest</h3><h3 id="十一丶john-in-the-middle"><a href="#十一丶john-in-the-middle" class="headerlink" title="十一丶john-in-the-middle"></a>十一丶john-in-the-middle</h3><h3 id="十二丶-安洵杯-2019-Attack"><a href="#十二丶-安洵杯-2019-Attack" class="headerlink" title="十二丶[安洵杯 2019]Attack"></a>十二丶[安洵杯 2019]Attack</h3><h3 id="十三丶-SUCTF2018-followme"><a href="#十三丶-SUCTF2018-followme" class="headerlink" title="十三丶[SUCTF2018]followme"></a>十三丶[SUCTF2018]followme</h3><h3 id="十四丶voip"><a href="#十四丶voip" class="headerlink" title="十四丶voip"></a>十四丶voip</h3><h3 id="十五丶-BSidesSF2019-table-tennis"><a href="#十五丶-BSidesSF2019-table-tennis" class="headerlink" title="十五丶[BSidesSF2019]table-tennis"></a>十五丶[BSidesSF2019]table-tennis</h3><h3 id="十六丶greatescape"><a href="#十六丶greatescape" class="headerlink" title="十六丶greatescape"></a>十六丶greatescape</h3><h3 id="十七丶-CFI-CTF-2018-webLogon-capture"><a href="#十七丶-CFI-CTF-2018-webLogon-capture" class="headerlink" title="十七丶[CFI-CTF 2018]webLogon capture"></a>十七丶[CFI-CTF 2018]webLogon capture</h3><h3 id="十八丶-XMAN2018排位赛-AutoKey"><a href="#十八丶-XMAN2018排位赛-AutoKey" class="headerlink" title="十八丶[XMAN2018排位赛]AutoKey"></a>十八丶[XMAN2018排位赛]AutoKey</h3><h3 id="十九丶-SUCTF2019-protocol"><a href="#十九丶-SUCTF2019-protocol" class="headerlink" title="十九丶[SUCTF2019]protocol"></a>十九丶[SUCTF2019]protocol</h3><h3 id="二十丶-BSidesSF2019-thekey"><a href="#二十丶-BSidesSF2019-thekey" class="headerlink" title="二十丶[BSidesSF2019]thekey"></a>二十丶[BSidesSF2019]thekey</h3><h3 id="二十一丶-RCTF2019-printer"><a href="#二十一丶-RCTF2019-printer" class="headerlink" title="二十一丶[RCTF2019]printer"></a>二十一丶[RCTF2019]printer</h3><p>二十二丶</p>
 ]]></content>
       <categories>
         <category>CTF</category>
@@ -85,7 +106,7 @@
   </entry>
   <entry>
     <title>TCP &amp;&amp; HTTP 报文字段解读</title>
-    <url>/undefined/2020-06-27-TCP-&amp;&amp;-HTTP-%E6%8A%A5%E6%96%87%E5%AD%97%E6%AE%B5%E8%A7%A3%E8%AF%BB/</url>
+    <url>/2020-06-27-TCP-&amp;&amp;-HTTP-%E6%8A%A5%E6%96%87%E5%AD%97%E6%AE%B5%E8%A7%A3%E8%AF%BB/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>CTF</category>
@@ -98,7 +119,7 @@
   </entry>
   <entry>
     <title>bugku-流量分析刷题记录</title>
-    <url>/undefined/2020-06-26-bugku-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+    <url>/2020-06-26-bugku-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h3 id="一、flag被盗"><a href="#一、flag被盗" class="headerlink" title="一、flag被盗"></a>一、flag被盗</h3><p><strong>本题要点：</strong></p>
 <ul>
 <li>wireshark数据包搜索</li>
@@ -282,7 +303,7 @@
   </entry>
   <entry>
     <title>IPSec配置</title>
-    <url>/undefined/IPSec%E9%85%8D%E7%BD%AE/</url>
+    <url>/IPSec%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h3 id="一、R2和R3-配置-ipsec-隧道模式，内网nat"><a href="#一、R2和R3-配置-ipsec-隧道模式，内网nat" class="headerlink" title="一、R2和R3 配置 ipsec 隧道模式，内网nat"></a>一、R2和R3 配置 ipsec 隧道模式，内网nat</h3><p><img src= "/img/loading.gif" data-src="https://i.loli.net/2020/06/22/Tm9QU3AK1akdtVR.png" alt="image-20200622144316700"></p>
 <h4 id="1、设置IP和路由"><a href="#1、设置IP和路由" class="headerlink" title="1、设置IP和路由"></a>1、设置IP和路由</h4><h4 id="2、设置IPSec"><a href="#2、设置IPSec" class="headerlink" title="2、设置IPSec"></a>2、设置IPSec</h4><ul>
 <li>IKE配置</li>
@@ -352,7 +373,7 @@
   </entry>
   <entry>
     <title>安装docker-ce和配置私有仓库</title>
-    <url>/undefined/docker-ce+registry/</url>
+    <url>/docker-ce+registry/</url>
     <content><![CDATA[<h3 id="一、第一题：安装docker-ce"><a href="#一、第一题：安装docker-ce" class="headerlink" title="一、第一题：安装docker-ce"></a>一、第一题：安装docker-ce</h3><p>先打开两台虚拟机。账号：root。密码：000000</p>
 <p>修改两张网卡，server1和server2 都要修改</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost &#x2F;]#vi &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-eno16777736</span><br></pre></td></tr></table></figure>
@@ -434,7 +455,7 @@
   </entry>
   <entry>
     <title>Misc-隐写术总结</title>
-    <url>/undefined/Misc%E9%9A%90%E5%86%99%E6%9C%AF%E6%80%BB%E7%BB%93/</url>
+    <url>/Misc%E9%9A%90%E5%86%99%E6%9C%AF%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h1 id="Misc-隐写术总结"><a href="#Misc-隐写术总结" class="headerlink" title="Misc-隐写术总结"></a>Misc-隐写术总结</h1><h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>隐写术是关于信息隐藏，即不让计划的接收者之外的任何人知道信息的传递事件（而不只是信息的内容）的一门技巧与科学,英文写作Steganography。而密码编码是关于信息加密，即设想到信息可能会被接受者之外的第三方获取而采取的一种措施，通过通信双方预先设定的规则对信息进行加密，使第三方即使获取到信息也无法理解其含义。所以隐写术重点在于信息的隐藏，密码编码重点在于信息的加密，这两者属于完全不同的概念。</p>
 <p>[TOC]</p>
 <h3 id="图片隐写术"><a href="#图片隐写术" class="headerlink" title="图片隐写术"></a>图片隐写术</h3><p>图片隐写术大致分为下列六类</p>
@@ -1062,6 +1083,8 @@
 <p><img src= "/img/loading.gif" data-src="https://i.loli.net/2020/06/14/BLQ7jJZIa2kSOCs.png" alt="image-20200614112349386"></p>
 <p>其他的题型随时补充</p>
 <hr>
+<p>题目地址：</p>
+<p><a href="https://images-1300363852.cos.ap-shanghai.myqcloud.com/%E5%85%B6%E4%BB%96/%E9%9A%90%E5%86%99%E6%9C%AF.zip" target="_blank" rel="noopener">https://images-1300363852.cos.ap-shanghai.myqcloud.com/%E5%85%B6%E4%BB%96/%E9%9A%90%E5%86%99%E6%9C%AF.zip</a></p>
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>一般的MISC题目都不是简简单单的一个隐写就能解决的，正常都包含了密码，编码，隐写甚至更多的计算机网络知识。</p>
 <hr>
 <p>本文大部分源于<a href="https://link.zhihu.com/?target=https%3A//xz.aliyun.com/">先知社区</a>中M1n3所作<a href="https://xz.aliyun.com/t/1833" target="_blank" rel="noopener">Misc 总结 —-隐写术之图片隐写</a>一文，对其进行了相应的补充并增加了自己的思考以作为自己的学习笔记，如有侵删。</p>
@@ -1076,7 +1099,7 @@
   </entry>
   <entry>
     <title>内网渗透工具</title>
-    <url>/undefined/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/</url>
+    <url>/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/</url>
     <content><![CDATA[<p>[TOC]</p>
 <h1 id="内网渗透"><a href="#内网渗透" class="headerlink" title="内网渗透"></a>内网渗透</h1><h2 id="TCP内网穿透"><a href="#TCP内网穿透" class="headerlink" title="TCP内网穿透"></a>TCP内网穿透</h2><h3 id="常见内网穿透手段与工具介绍与使用"><a href="#常见内网穿透手段与工具介绍与使用" class="headerlink" title="常见内网穿透手段与工具介绍与使用"></a>常见内网穿透手段与工具介绍与使用</h3><p><strong>使用场景：</strong></p>
 <p>攻击者从外网打开了入口，想入侵更多的内网机器</p>
@@ -1224,7 +1247,7 @@
   </entry>
   <entry>
     <title>现代对称加密算法原理</title>
-    <url>/undefined/%E7%8E%B0%E4%BB%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86/</url>
+    <url>/%E7%8E%B0%E4%BB%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>对称密码沿用替代置换等古典密码技术(混乱与扩散) , 被称为传统密码</p>
 <h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><h4 id="加密算法："><a href="#加密算法：" class="headerlink" title="加密算法："></a>加密算法：</h4><p>一次性密码本+完美秘密+伪随机数生成+Diffie-Hellman密钥交换</p>
 <h5 id="一次性码本原理："><a href="#一次性码本原理：" class="headerlink" title="一次性码本原理："></a>一次性码本原理：</h5><p>首先是需要加密的明文：“hello”; ——————————————5位字母</p>
@@ -1275,7 +1298,7 @@
   </entry>
   <entry>
     <title>XXE漏洞原理</title>
-    <url>/undefined/XXE%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/</url>
+    <url>/XXE%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p>[TOC]</p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>XXE全称是——XML External Entity,也就是XML外部实体注入攻击.漏洞是在对不安全的外部实体数据进行处理时引发的安全问题。</p>
 <p>xxe漏洞主要针对web-service危险的引用的外部实体并且未对外部实体进行敏感字符的过滤，从而可以造成命令执行，目录遍历等．首先存在漏洞的web服务一定是存在xml传输数据的，可以在http头的content-type中查看，也可以根据url一些常见的关键字进行判断测试，例如wsdl（web服务描述语言）．或者一些常见的采用xml的java服务配置文件（spring，struts2）．不过现实中存在的大多数xxe漏洞都是blind，即不可见的，必须采用带外通道进行返回信息的记录，这里简单来说就是攻击者必须具有一台具有公网ip的主机．</p>
@@ -1510,7 +1533,7 @@
   </entry>
   <entry>
     <title>ISCC | 未知的风险-1</title>
-    <url>/undefined/%5BISCC%5D%E6%9C%AA%E7%9F%A5%E7%9A%84%E9%A3%8E%E9%99%A9-1/</url>
+    <url>/%5BISCC%5D%E6%9C%AA%E7%9F%A5%E7%9A%84%E9%A3%8E%E9%99%A9-1/</url>
     <content><![CDATA[<p><img src= "/img/loading.gif" data-src="https://i.imgur.com/p3MffHP.png" alt=""></p>
 <p>进入题目：   </p>
 <p><img src= "/img/loading.gif" data-src="https://i.imgur.com/BCfxRDa.png" alt=""></p>
@@ -1530,7 +1553,7 @@
   </entry>
   <entry>
     <title>bugku | insert into</title>
-    <url>/undefined/%5Bbugku%5Dinsert%20into/</url>
+    <url>/%5Bbugku%5Dinsert%20into/</url>
     <content><![CDATA[<p>这道题我觉得还是主要考了编写脚本的能力  </p>
 <h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>flag格式：flag{xxxxxxxxxxxx}   </p>
 <p>不如写个Python吧    </p>
@@ -1563,7 +1586,7 @@
   </entry>
   <entry>
     <title>MSF--Metasploit Framework渗透测试工具</title>
-    <url>/undefined/MSF--Metasploit%20Framework%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</url>
+    <url>/MSF--Metasploit%20Framework%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<p>目前最流行、最强大、最具扩展性的渗透测试平台软件    </p>
 <p>2003年由HD More发布第一版，2007年用ruby语言重写，MSF默认集成在Kali Linux之中    </p>
 <p>Kali左侧有MSF的快捷方式，可以直接点击使用，也可以在终端输入msfconsole启动MSF </p>
@@ -1640,20 +1663,8 @@
       </tags>
   </entry>
   <entry>
-    <title>ISCC | Where is file?</title>
-    <url>/undefined/%5BISCC%5DWhere%20is%20file/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>WEB漏洞</category>
-        <category>文件包含</category>
-      </categories>
-      <tags>
-        <tag>文件包含 | PHP伪协议</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>web应用安全概述</title>
-    <url>/undefined/web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E6%A6%82%E8%BF%B0/</url>
+    <url>/web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E6%A6%82%E8%BF%B0/</url>
     <content><![CDATA[<h3 id="OWASP-开放的web应用程序安全项目组织"><a href="#OWASP-开放的web应用程序安全项目组织" class="headerlink" title="OWASP(开放的web应用程序安全项目组织)"></a>OWASP(开放的web应用程序安全项目组织)</h3><p>OWASP TOP10（10大应用安全风险）</p>
 <ul>
 <li>1.注入</li>
@@ -1703,7 +1714,7 @@
   </entry>
   <entry>
     <title>ISCC | 是我DIO哒</title>
-    <url>/undefined/%5BISCC%5D%E6%98%AF%E6%88%91DIO%E5%93%92/</url>
+    <url>/%5BISCC%5D%E6%98%AF%E6%88%91DIO%E5%93%92/</url>
     <content><![CDATA[<p><img src= "/img/loading.gif" data-src="https://i.imgur.com/pcz4stw.png" alt="">   </p>
 <p>首先下载得到图片   </p>
 <p><img src= "/img/loading.gif" data-src="https://i.imgur.com/noZWCEy.png" alt=""></p>
@@ -1749,7 +1760,7 @@
   </entry>
   <entry>
     <title>SQL注入绕过</title>
-    <url>/undefined/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87/</url>
+    <url>/SQL%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87/</url>
     <content><![CDATA[<h2 id="1-WAF相关介绍"><a href="#1-WAF相关介绍" class="headerlink" title="1.WAF相关介绍"></a>1.WAF相关介绍</h2><p>WAF(web应用防火墙)   </p>
 <h3 id="WAF有哪些类："><a href="#WAF有哪些类：" class="headerlink" title="WAF有哪些类："></a>WAF有哪些类：</h3><ul>
 <li>1.软件型WAF</li>
@@ -1783,7 +1794,7 @@
   </entry>
   <entry>
     <title>ISCC | Php is the best language</title>
-    <url>/undefined/%5BISCC%5DPhp%20is%20the%20best%20language/</url>
+    <url>/%5BISCC%5DPhp%20is%20the%20best%20language/</url>
     <content><![CDATA[<p>首先拿到题目下载文件得到源码：<br><img src= "/img/loading.gif" data-src="https://i.imgur.com/LwHKfwo.png" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php  </span><br><span class="line">@error_reporting(1);</span><br><span class="line">include &#39;flag.php&#39;;</span><br><span class="line">class baby </span><br><span class="line">&#123;</span><br><span class="line">    public $file;</span><br><span class="line">    function __toString()      </span><br><span class="line">    &#123;</span><br><span class="line">        if(isset($this-&gt;file))</span><br><span class="line">        &#123;</span><br><span class="line">            $filename &#x3D; &quot;.&#x2F;&#123;$this-&gt;file&#125;&quot;;</span><br><span class="line">            if (base64_encode(file_get_contents($filename)))</span><br><span class="line">            &#123;</span><br><span class="line">                return base64_encode(file_get_contents($filename));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">if (isset($_GET[&#39;data&#39;]))</span><br><span class="line">&#123;</span><br><span class="line">    $data &#x3D; $_GET[&#39;data&#39;];</span><br><span class="line">        $good &#x3D; unserialize($data);</span><br><span class="line">        echo $good;</span><br><span class="line">&#125;</span><br><span class="line">else </span><br><span class="line">&#123;</span><br><span class="line">    $url&#x3D;&#39;.&#x2F;index.php&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$html&#x3D;&#39;&#39;;</span><br><span class="line">if(isset($_POST[&#39;test&#39;]))&#123;</span><br><span class="line">    $s &#x3D; $_POST[&#39;test&#39;];</span><br><span class="line">    $html.&#x3D;&quot;&lt;p&gt;谢谢参与!&lt;&#x2F;p&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line">&#x2F;&#x2F;</span><br></pre></td></tr></table></figure>
 <p>unserialize()反序列化函数，确定为反序列化题目<br>直接构造序列化函数</p>
@@ -1807,7 +1818,7 @@
   </entry>
   <entry>
     <title>条件竞争漏洞</title>
-    <url>/undefined/%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89%E6%BC%8F%E6%B4%9E/</url>
+    <url>/%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89%E6%BC%8F%E6%B4%9E/</url>
     <content><![CDATA[<h3 id="什么是条件竞争漏洞"><a href="#什么是条件竞争漏洞" class="headerlink" title="什么是条件竞争漏洞"></a>什么是条件竞争漏洞</h3><p>条件竞争漏洞是一种服务器端的漏洞，由于服务器端在处理不同用户的请求时是并发进行的，因此，如果并发处理不当或相关操作逻辑顺序设计的不合理时，将会导致此类问题的发生。</p>
 <h3 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h3><p>假设有这么一个代码，实现用户上传图片功能</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">  if(isset($_GET[&#39;src&#39;]))&#123;</span><br><span class="line">    copy($_GET[&#39;src&#39;],$_GET[&#39;dst&#39;]);</span><br><span class="line">    &#x2F;&#x2F;...</span><br><span class="line">    &#x2F;&#x2F;check file</span><br><span class="line">    unlink($_GET[&#39;dst&#39;]);</span><br><span class="line">    &#x2F;&#x2F;...</span><br><span class="line"> &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
@@ -1831,7 +1842,7 @@
   </entry>
   <entry>
     <title>PHP函数笔记</title>
-    <url>/undefined/PHP%E5%87%BD%E6%95%B0%E7%AC%94%E8%AE%B0/</url>
+    <url>/PHP%E5%87%BD%E6%95%B0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h3 id="strpos-函数"><a href="#strpos-函数" class="headerlink" title="strpos() 函数"></a>strpos() 函数</h3><p>查找字符串在另一个字符串中首次出现的位置</p>
 <h4 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">var_dump(strpos(&#39;开始23测试ceshi&#39;, &#39;测试&#39;));</span><br><span class="line">&#x2F;&#x2F;输出int(8)</span><br><span class="line">&#x2F;&#x2F;strpos 按字节处理，UTF-8一个汉字占3个字节</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <hr>
@@ -1884,7 +1895,7 @@
   </entry>
   <entry>
     <title>ISCC | What can images do</title>
-    <url>/undefined/%5BISCC%5DWhat%20can%20images%20do/</url>
+    <url>/%5BISCC%5DWhat%20can%20images%20do/</url>
     <content><![CDATA[<h3 id="首先查看题目"><a href="#首先查看题目" class="headerlink" title="首先查看题目"></a>首先查看题目</h3><p><img src= "/img/loading.gif" data-src="https://i.imgur.com/VStF8zR.png" alt="">   </p>
 <p>尝试上传.php一句话   </p>
 <p>如图：   </p>
@@ -1913,7 +1924,7 @@
   </entry>
   <entry>
     <title>客户端 session 导致的安全问题</title>
-    <url>/undefined/%E5%AE%A2%E6%88%B7%E7%AB%AF%20session%20%E5%AF%BC%E8%87%B4%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/</url>
+    <url>/%E5%AE%A2%E6%88%B7%E7%AB%AF%20session%20%E5%AF%BC%E8%87%B4%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>在Web中，session是认证用户身份的凭证，它具备如下几个特点：  </p>
 <ul>
 <li>1.用户不可以任意篡改</li>
@@ -1974,19 +1985,8 @@
       </tags>
   </entry>
   <entry>
-    <title>2019强网杯&#39;&#39;随便注&#39;&#39;</title>
-    <url>/undefined/2019%E5%BC%BA%E7%BD%91%E6%9D%AF&#39;&#39;%E9%9A%8F%E4%BE%BF%E6%B3%A8&#39;&#39;/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>BUUCTF</category>
-      </categories>
-      <tags>
-        <tag>SQL注入</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>BUUCTF | 2018护网杯(WEB)easy_tornado(模板注入)</title>
-    <url>/undefined/2018%E6%8A%A4%E7%BD%91%E6%9D%AF(WEB)easy_tornado(%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5)/</url>
+    <url>/2018%E6%8A%A4%E7%BD%91%E6%9D%AF(WEB)easy_tornado(%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5)/</url>
     <content><![CDATA[<h1 id="考察知识点：模板注入"><a href="#考察知识点：模板注入" class="headerlink" title="考察知识点：模板注入"></a><center>考察知识点：模板注入</center></h1><p>打开页面发现三个链接依次打开，发现各自的文本<br><img src= "/img/loading.gif" data-src="https://i.imgur.com/zsu1I4d.png" alt="1"></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag in &#x2F;fllllllllllllag</span><br><span class="line">render</span><br><span class="line">md5(cookie_secret+md5(filename))</span><br></pre></td></tr></table></figure>
 <p>从上面三个信息得知flag在/fllllllllllllag文件中<br>render这个卡住了看了WP 说render是模板注入<br>第三个文件说了文件名的哈希方法     </p>
@@ -2008,8 +2008,19 @@
       </tags>
   </entry>
   <entry>
+    <title>2019强网杯&#39;&#39;随便注&#39;&#39;</title>
+    <url>/2019%E5%BC%BA%E7%BD%91%E6%9D%AF&#39;&#39;%E9%9A%8F%E4%BE%BF%E6%B3%A8&#39;&#39;/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>BUUCTF</category>
+      </categories>
+      <tags>
+        <tag>SQL注入</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>dockerfile解析</title>
-    <url>/undefined/dockerfile%E8%A7%A3%E6%9E%90/</url>
+    <url>/dockerfile%E8%A7%A3%E6%9E%90/</url>
     <content><![CDATA[<h1 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a><font color = yellow >Dockerfile</font></h1><h2 id="dockerfile是什么："><a href="#dockerfile是什么：" class="headerlink" title="dockerfile是什么："></a><font color = red>dockerfile是什么：</font></h2><p>Dockerfile是用来构建Docker镜像的构建文件，是由一系列命令和参数构成的脚本。</p>
 <h3 id="构建三步骤"><a href="#构建三步骤" class="headerlink" title="构建三步骤"></a><font color = gree >构建三步骤</font></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1丶编写Dockerfile 文件</span><br><span class="line">2丶docker build 创建镜像</span><br><span class="line">3丶docker run 运行容器</span><br></pre></td></tr></table></figure>
 <h3 id="文件什么样？"><a href="#文件什么样？" class="headerlink" title="文件什么样？"></a><font color = gree>文件什么样？</font></h3><h4 id="以我们熟悉的centos为例："><a href="#以我们熟悉的centos为例：" class="headerlink" title="以我们熟悉的centos为例："></a>以我们熟悉的centos为例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">FROM scratch</span><br><span class="line">MAINTAINER The CentOS Project &lt;cloud-ops@centos.org&gt;</span><br><span class="line">ADD c68-docker.tar.xz &#x2F;</span><br><span class="line">LABEL name&#x3D;&quot;CentOS Base Image&quot; \</span><br><span class="line">    vendor&#x3D;&quot;CentOS&quot; \</span><br><span class="line">    license&#x3D;&quot;GPLv2&quot; \</span><br><span class="line">    build-date&#x3D;&quot;2016-06-02&quot;</span><br><span class="line"></span><br><span class="line"># Default command</span><br><span class="line">CMD [&quot;&#x2F;bin&#x2F;bash&quot;]</span><br></pre></td></tr></table></figure>
@@ -2093,7 +2104,7 @@
   </entry>
   <entry>
     <title>dockerfile创建数据卷</title>
-    <url>/undefined/dockerfile%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%8D%B7/</url>
+    <url>/dockerfile%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%8D%B7/</url>
     <content><![CDATA[<h1 id="DockerFile-创建数据卷"><a href="#DockerFile-创建数据卷" class="headerlink" title="DockerFile 创建数据卷"></a><font color=red>DockerFile 创建数据卷</font></h1><p>在 Dockerfile 中使用 Volume 指令来给镜像添加一个或多个数据卷。<br>语法格式：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">VOLUME[&quot;&#x2F;dataVolumeContainer1&quot;,&quot;&#x2F;dataVolumeContainer2&quot;]</span><br></pre></td></tr></table></figure>
 <p>说明：<br>出于可移值和分享的考虑，用 -v 主机目录:容器目录 这种方法 不能够直接在Dockerfile中实现。  </p>
@@ -2139,7 +2150,7 @@
   </entry>
   <entry>
     <title>18.thinkphp5资源路由和快捷路由</title>
-    <url>/undefined/18.thinkphp5%E8%B5%84%E6%BA%90%E8%B7%AF%E7%94%B1%E5%92%8C%E5%BF%AB%E6%8D%B7%E8%B7%AF%E7%94%B1/</url>
+    <url>/18.thinkphp5%E8%B5%84%E6%BA%90%E8%B7%AF%E7%94%B1%E5%92%8C%E5%BF%AB%E6%8D%B7%E8%B7%AF%E7%94%B1/</url>
     <content><![CDATA[<h1 id="一丶资源路由和快捷路由"><a href="#一丶资源路由和快捷路由" class="headerlink" title="一丶资源路由和快捷路由"></a><font color=red>一丶资源路由和快捷路由</font></h1><h1 id="1丶资源路由"><a href="#1丶资源路由" class="headerlink" title="1丶资源路由"></a><font color=green>1丶资源路由</font></h1><p>5.0支持设置 RESTFu1请求的资源路由，方式如下:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Route:resource（&#39;blog&#39;,&#39;index&#x2F;blog&#39;）</span><br></pre></td></tr></table></figure>
 <p>或者在路由配置文件中使用<strong>rest</strong>添加资源路由定义：</p>
@@ -2162,7 +2173,7 @@
   </entry>
   <entry>
     <title>17.thinkphp5路由之路由注册</title>
-    <url>/undefined/17.thinkphp5%E8%B7%AF%E7%94%B1%E4%B9%8B%E8%B7%AF%E7%94%B1%E6%B3%A8%E5%86%8C/</url>
+    <url>/17.thinkphp5%E8%B7%AF%E7%94%B1%E4%B9%8B%E8%B7%AF%E7%94%B1%E6%B3%A8%E5%86%8C/</url>
     <content><![CDATA[<h1 id="一丶路由之路由注册"><a href="#一丶路由之路由注册" class="headerlink" title="一丶路由之路由注册"></a><font color=red>一丶路由之路由注册</font></h1><h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a><font color=green size=6>路由</font></h1><p>路由功能由<code>\think\Route</code>类完成。</p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a><font color=green>概述</font></h2><p>由于<code>ThinkPHP5.0默认采用的URL规则是：</code></p>
 <p><code>http://server/module/controller/action/param/value/.....</code></p>
@@ -2250,7 +2261,7 @@
   </entry>
   <entry>
     <title>16.thinkphp5模板之内置标签</title>
-    <url>/undefined/16.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%86%85%E7%BD%AE%E6%A0%87%E7%AD%BE/</url>
+    <url>/16.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E5%86%85%E7%BD%AE%E6%A0%87%E7%AD%BE/</url>
     <content><![CDATA[<h1 id="一丶模板之内置标签"><a href="#一丶模板之内置标签" class="headerlink" title="一丶模板之内置标签"></a><font color=red>一丶模板之内置标签</font></h1><h2 id="1丶内置标签"><a href="#1丶内置标签" class="headerlink" title="1丶内置标签"></a><font color=green>1丶内置标签</font></h2><p>变量输岀使用普通标签就足够了，但是要完成其他的控制、循环和判断功能，就需要借助模板引擎的标签库功能了，系统内置标签库的所有标签无需引入即可直接使用。   </p>
 <p>内置标签包括：<br>|标签名|作用|<br>|——|————————-|<br>|include|包含外部模板文件|<br>|load|导入资源文件(闭合包括js css import别名)|<br>|volist|循环数组数据输出|<br>|foreach|数组或对象遍历输出|<br>|for|For循环数据输出|<br>|switch|分支判断输出|<br>|case|分支判断输出(必须个switch配套使用)|<br>|default|默认情况输出(闭合 必须和switch配套使用)|<br>|compare|比较输出(包括eq neq it gt egt elt heq nheq等别名)|<br>|range|判断范围输出(包括 in notin between notbetween别名)|<br>|present|判断是否赋值|<br>|notpresent|判断是否尚未赋值|<br>|empty|判断数据是否为空|<br>|notempty|判断数据是否不为空|<br>|defined|判断常量是否定义|<br>|notdefined|判断常量是否未定义|<br>|define|常量定义|<br>|assign|变量赋值(闭合)|<br>|if|条件判断输出|<br>|elseif|条件判断输出(闭合 必须和if标签配套使用)|<br>|else|条件不成立输出(闭合 可用于其他标签)|<br>|php|使用php代码volist|</p>
 <h2 id="2丶循环输出标签"><a href="#2丶循环输出标签" class="headerlink" title="2丶循环输出标签"></a><font color=green>2丶循环输出标签</font></h2><h2 id="VOLIST标签"><a href="#VOLIST标签" class="headerlink" title="VOLIST标签"></a><font color=green>VOLIST标签</font></h2><p>volist标签通常用于查询数据集（ select方法）的结果输出，通常模型的select方法返回的结果是一个二维数组，可以直接使用 alist标签进行输出。在控制器中首先对模板赋值：</p>
@@ -2299,7 +2310,7 @@
   </entry>
   <entry>
     <title>15.thinkphp5模板之模板继承和包含文件</title>
-    <url>/undefined/15.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8C%85%E5%90%AB%E6%96%87%E4%BB%B6/</url>
+    <url>/15.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8C%85%E5%90%AB%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="一丶模板之模板继承和包含文件"><a href="#一丶模板之模板继承和包含文件" class="headerlink" title="一丶模板之模板继承和包含文件"></a><font color=red>一丶模板之模板继承和包含文件</font></h1><h2 id="1丶模板继承"><a href="#1丶模板继承" class="headerlink" title="1丶模板继承"></a><font color=green>1丶模板继承</font></h2><p>模板继承是一项更加灵活的模板布局方式，模板继承不同于模板布局，甚至来说，应该是在模板布局的上层。模板继承其实并不难理解，就好比类的继承一样，模板也可以定义一个基础模板（或者是布局），并且其中定义的相关的区块（block），然后继承（extend）该基础模块的子模板中就可以对基础模板中定义的区块进行重载。</p>
 <p>因此，模板继承的优势其实是设计基础模块中的区块（block）和子模块中替换这些区块。   </p>
 <p>每个区块由（b1ock}{/b1ock}标签组成。下面就是基础模板中的一个典型的区块设计。</p>
@@ -2333,7 +2344,7 @@
   </entry>
   <entry>
     <title>14.thinkphp5模板之模板布局</title>
-    <url>/undefined/14.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A8%A1%E6%9D%BF%E5%B8%83%E5%B1%80/</url>
+    <url>/14.thinkphp5%E6%A8%A1%E6%9D%BF%E4%B9%8B%E6%A8%A1%E6%9D%BF%E5%B8%83%E5%B1%80/</url>
     <content><![CDATA[<h1 id="一丶模板之模板布局"><a href="#一丶模板之模板布局" class="headerlink" title="一丶模板之模板布局"></a><font color=red>一丶模板之模板布局</font></h1><h2 id="1丶全局配置方式"><a href="#1丶全局配置方式" class="headerlink" title="1丶全局配置方式"></a><font color=green>1丶全局配置方式</font></h2><p>这种方式仅需在项目配置文件中添加相关的布局模板配置,就可以简单实现模板布局功能，比较适用于全站使用相同布局的情况,需要配置开启layout_on参数(默认不开启),并且设置布局入口文件名 layout_name(默认为layout).</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;template&#39;&#x3D;&gt;[</span><br><span class="line">    &#39;layout_on&#39;&#x3D;&gt;true,</span><br><span class="line">    &#39;layout_name&#39;&#x3D;&gt;&#39;layout&#39;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <p>开启 layout_on后，我们的模板渲染流程就有所变化，例如：</p>
@@ -2361,7 +2372,7 @@
   </entry>
   <entry>
     <title>13.thinkphp5模板系统变量输出和函数使用</title>
-    <url>/undefined/13.thinkphp5%E6%A8%A1%E6%9D%BF%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E8%BE%93%E5%87%BA%E5%92%8C%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/</url>
+    <url>/13.thinkphp5%E6%A8%A1%E6%9D%BF%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F%E8%BE%93%E5%87%BA%E5%92%8C%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h1 id="一丶模板系统变量输出和函数使用"><a href="#一丶模板系统变量输出和函数使用" class="headerlink" title="一丶模板系统变量输出和函数使用"></a><font color=red>一丶模板系统变量输出和函数使用</font></h1><h2 id="1丶系统变量输出"><a href="#1丶系统变量输出" class="headerlink" title="1丶系统变量输出"></a><font color=green>1丶系统变量输出</font></h2><p>普通的模板变量需要首先赋值之后才能在模板中输出，但是系统变量则不需要，可以直接在模板中输出，系统变量的输出通常以{$Think打头，例如：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;$Think, server, server_name&#125;&#x2F;&#x2F;输出 $_SERVER[&#39;SERVER_NAME&#39;]变量;</span><br><span class="line">&#123;$Think, session. user_id&#125;&#x2F;&#x2F;输出$_SESSION[&#39;user_id]变量;</span><br><span class="line">&#123;$Think,get.pageNumber&#125;&#x2F;&#x2F;输出$_GET[&#39;pageNumber]变量;</span><br><span class="line">&#123;$Think. cookie.name&#125;&#x2F;输出$_C0OKIE[&#39;name&#39;]变量;</span><br></pre></td></tr></table></figure>
 <p>支持输出$_SERVER丶$_ENV丶$_POST丶$_GET丶$_REQUEST丶$_SESSION和$_COOKIE变量。</p>
@@ -2392,7 +2403,7 @@
   </entry>
   <entry>
     <title>12.thinkphp5视图之模板赋值和模板渲染</title>
-    <url>/undefined/12.thinkphp5%E8%A7%86%E5%9B%BE%E4%B9%8B%E6%A8%A1%E6%9D%BF%E8%B5%8B%E5%80%BC%E5%92%8C%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93/</url>
+    <url>/12.thinkphp5%E8%A7%86%E5%9B%BE%E4%B9%8B%E6%A8%A1%E6%9D%BF%E8%B5%8B%E5%80%BC%E5%92%8C%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93/</url>
     <content><![CDATA[<h1 id="一丶视图之模板赋值和模板渲染"><a href="#一丶视图之模板赋值和模板渲染" class="headerlink" title="一丶视图之模板赋值和模板渲染"></a><font color=red>一丶视图之模板赋值和模板渲染</font></h1><h2 id="首先创建文件夹"><a href="#首先创建文件夹" class="headerlink" title="首先创建文件夹"></a><font color=green>首先创建文件夹</font></h2><p><img src= "/img/loading.gif" data-src="https://i.imgur.com/lu7oH89.png" alt="1"> </p>
 <h2 id="1丶视图实例化"><a href="#1丶视图实例化" class="headerlink" title="1丶视图实例化"></a><font color=green>1丶视图实例化</font></h2><p>视图由\think\View类配合试图驱动（模板引擎）类一起完成，目前的内置模板引擎包含PHP原生模板和think模板引擎；   </p>
 <p>因为新版的控制器可以无需继承任何的基础类，因此在控制器中如何使用视图决定于你怎么定义控制器。   </p>
@@ -2423,7 +2434,7 @@
   </entry>
   <entry>
     <title>11.thinkphp5模型操作之删除数据</title>
-    <url>/undefined/11.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE/</url>
+    <url>/11.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE/</url>
     <content><![CDATA[<h1 id="一丶模型操作之删除数据"><a href="#一丶模型操作之删除数据" class="headerlink" title="一丶模型操作之删除数据"></a><font color=red>一丶模型操作之删除数据</font></h1><h2 id="1丶删除当前模型"><a href="#1丶删除当前模型" class="headerlink" title="1丶删除当前模型"></a><font color=green>1丶删除当前模型</font></h2><p>删除模型数据，可以实例化模型后调用delete方法</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$user &#x3D; User::get(1);</span><br><span class="line">$user-&gt;delete();</span><br></pre></td></tr></table></figure>
 <h2 id="2丶根据主键删除"><a href="#2丶根据主键删除" class="headerlink" title="2丶根据主键删除"></a><font color=green>2丶根据主键删除</font></h2><p>或者直接调用静态方法   </p>
@@ -2441,7 +2452,7 @@
   </entry>
   <entry>
     <title>10.thinkphp5模型操作之查询数据</title>
-    <url>/undefined/10.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</url>
+    <url>/10.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</url>
     <content><![CDATA[<h1 id="一丶模型操作之查询数据"><a href="#一丶模型操作之查询数据" class="headerlink" title="一丶模型操作之查询数据"></a><font color=red>一丶模型操作之查询数据</font></h1><h2 id="1丶获取单个数据"><a href="#1丶获取单个数据" class="headerlink" title="1丶获取单个数据"></a><font color=green>1丶获取单个数据</font></h2><p><img src= "/img/loading.gif" data-src="https://i.imgur.com/r5MBwFC.png" alt="1"> </p>
 <h2 id="2丶获取多个数据"><a href="#2丶获取多个数据" class="headerlink" title="2丶获取多个数据"></a><font color=green>2丶获取多个数据</font></h2><p><img src= "/img/loading.gif" data-src="https://i.imgur.com/4wU4rjB.png" alt="1"> </p>
 <h2 id="3丶聚合"><a href="#3丶聚合" class="headerlink" title="3丶聚合"></a><font color=green>3丶聚合</font></h2><p><img src= "/img/loading.gif" data-src="https://i.imgur.com/0ZWVjMe.png" alt="1"> </p>
@@ -2455,7 +2466,7 @@
   </entry>
   <entry>
     <title>9.thinkphp5模型操作之更新数据</title>
-    <url>/undefined/9.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE/</url>
+    <url>/9.thinkphp5%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE/</url>
     <content><![CDATA[<h1 id="一丶模型操作之更新数据"><a href="#一丶模型操作之更新数据" class="headerlink" title="一丶模型操作之更新数据"></a><font color=red>一丶模型操作之更新数据</font></h1><h2 id="1丶查找并更新"><a href="#1丶查找并更新" class="headerlink" title="1丶查找并更新"></a><font color=green>1丶查找并更新</font></h2><p><img src= "/img/loading.gif" data-src="https://i.imgur.com/rHDc90y.png" alt="1"><br><font size=3>解释：  </font><br>调用UserModel模型的get方法;<br>“（1）”表示get主键为1的数据<br>save（）方法判断</p>
 <h2 id="2丶直接更新数据"><a href="#2丶直接更新数据" class="headerlink" title="2丶直接更新数据"></a><font color=green>2丶直接更新数据</font></h2><p><img src= "/img/loading.gif" data-src="https://i.imgur.com/XUUONWY.png" alt="1"><br><font size=3>解释：  </font><br>还是调用get方法选择数据<br>save（）方法直接进行保存，将name保存为刘涛</p>
 <h2 id="3丶批量更新数据"><a href="#3丶批量更新数据" class="headerlink" title="3丶批量更新数据"></a><font color=green>3丶批量更新数据</font></h2><p><img src= "/img/loading.gif" data-src="https://i.imgur.com/S6Nxat1.png" alt="1"> </p>
@@ -2471,7 +2482,7 @@
   </entry>
   <entry>
     <title>8.thinkphp5模型定义与新增数据</title>
-    <url>/undefined/8.thinkphp5%E6%A8%A1%E5%9E%8B%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%96%B0%E5%A2%9E%E6%95%B0%E6%8D%AE/</url>
+    <url>/8.thinkphp5%E6%A8%A1%E5%9E%8B%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%96%B0%E5%A2%9E%E6%95%B0%E6%8D%AE/</url>
     <content><![CDATA[<h1 id="一丶模型定义与新增数据"><a href="#一丶模型定义与新增数据" class="headerlink" title="一丶模型定义与新增数据"></a><font color=red>一丶模型定义与新增数据</font></h1><h2 id="模型定义"><a href="#模型定义" class="headerlink" title="模型定义"></a><font color=red>模型定义</font></h2><p><font color=red size=3>大多数情况下，我们无需为模型定义任何的属性和方法即可完成基础的操作。   </p>
 <p>因为模型会自动对应一个数据表。   </font></p>
 <p>规范是：数据库前缀+当前的模型类名（不含命名空间）因为模型类名是驼峰法，所以获取实际的数据表的时候会自动转换为小写+下划线命名的数据表名称。<br><font color = green size=3>先在数据库创建一个think_user数据表：<br><img src= "/img/loading.gif" data-src="https://i.imgur.com/Wu2V5it.png" alt="1"></p>
@@ -2491,7 +2502,7 @@
   </entry>
   <entry>
     <title>7.thinkphp5数据库查询之查询构造器2</title>
-    <url>/undefined/7.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A82/</url>
+    <url>/7.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A82/</url>
     <content><![CDATA[<h1 id="二丶数据库查询之查询构造器"><a href="#二丶数据库查询之查询构造器" class="headerlink" title="二丶数据库查询之查询构造器"></a><font color = red >二丶数据库查询之查询构造器</font></h1><h2 id="一丶查询数据"><a href="#一丶查询数据" class="headerlink" title="一丶查询数据"></a><font color = green >一丶查询数据</font></h2><p>最普通的查询就是判断某个字段是否等于某个值，而select（）方法用于查询数据集，如果查询成功，返回的是一个二维数组，如果没有满足条件的话则返回空数组。      </p>
 <p>find（）方法用于查找满足条件的第一个记录（即使你的查询条件有多个符合的数据），如果查询成功，返回的是一个一维数组，没有满足条件的话默认返回null；   </p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$result &#x3D; Db::name(&#39;data&#39;)-&gt;where(&#39;status&#39;,1)-&gt;find();   </span><br><span class="line">$result &#x3D; Db::name(&#39;data&#39;)-&gt;where(&#39;status&#39;,1)-&gt;select();</span><br></pre></td></tr></table></figure>
@@ -2515,7 +2526,7 @@
   </entry>
   <entry>
     <title>6.thinkphp5数据库查询之查询构造器1</title>
-    <url>/undefined/6.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A81/</url>
+    <url>/6.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A81/</url>
     <content><![CDATA[<h1 id="二丶数据库查询之查询构造器"><a href="#二丶数据库查询之查询构造器" class="headerlink" title="二丶数据库查询之查询构造器"></a><font color = red >二丶数据库查询之查询构造器</font></h1><h2 id="1丶table方法选择数据表"><a href="#1丶table方法选择数据表" class="headerlink" title="1丶table方法选择数据表"></a><font color=green>1丶table方法选择数据表</font></h2><p><img src= "/img/loading.gif" data-src="https://i.imgur.com/OdaxDKH.png" alt="1">   </p>
 <h2 id="2丶name方法"><a href="#2丶name方法" class="headerlink" title="2丶name方法"></a><font color = green >2丶name方法</font></h2><p><font size=3>由于我们在数据可以配置文件中设置了数据表的前缀为think_，因此，<font color = red >table方法</font>可以改成<font color = red >name方法</font>这样就不会因为数据表前缀的修改而改动CURD代码，例如：</font><br><img src= "/img/loading.gif" data-src="https://i.imgur.com/1VER43B.png" alt="1">   </p>
 <h2 id="3丶助手函数db"><a href="#3丶助手函数db" class="headerlink" title="3丶助手函数db"></a><font color = green >3丶助手函数db</font></h2><p>传入的表名也是不带前缀的，原表名为think_data;<br><img src= "/img/loading.gif" data-src="https://i.imgur.com/SpkCjkC.png" alt="1">   </p>
@@ -2531,7 +2542,7 @@
   </entry>
   <entry>
     <title>4.thinkphp5数据库操作之原生查询</title>
-    <url>/undefined/4.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%8E%9F%E7%94%9F%E6%9F%A5%E8%AF%A2/</url>
+    <url>/4.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%B9%8B%E5%8E%9F%E7%94%9F%E6%9F%A5%E8%AF%A2/</url>
     <content><![CDATA[<h1 id="一丶数据库操作之原生查询"><a href="#一丶数据库操作之原生查询" class="headerlink" title="一丶数据库操作之原生查询"></a><font color=red>一丶数据库操作之原生查询</font></h1><h3 id="Db-类支持原生-SQL-查询操作，主要包括下面两个方法："><a href="#Db-类支持原生-SQL-查询操作，主要包括下面两个方法：" class="headerlink" title="Db 类支持原生 SQL 查询操作，主要包括下面两个方法："></a>Db 类支持原生 SQL 查询操作，主要包括下面两个方法：</h3><h4 id="1丶query-方法"><a href="#1丶query-方法" class="headerlink" title="1丶query 方法   "></a><font color=red>1丶query 方法   </font></h4><p>query 方法用于执行 SQL 查询操作，如果数据非法或者查询错误则返回false，否则返回查询结果数据集<br>（同 select 方法）。<br><font color=red>使用示例：</font><br>Db::query(“select * from think_user where status=1”);<br>如果你当前采用了分布式数据库，并且设置了读写分离的话，query方法始终是在读服务器执行，因此query方法对应的都是读操作，而不管你的SQL语句是什么。<br><font color=red>2丶execute 方法</font><br>execute用于更新和写入数据的sql操作，如果数据非法或者查询错误则返回false ，否则返回影响的记录数。<br><font color=red>使用示例：</font><br>Db::execute(“update think_user set name=’thinkphp’ where status=1”);<br>如果你当前采用了分布式数据库，并且设置了读写分离的话，execute方法始终是在写服务器执行，因此execute方法对应的都是写操作，而不管你的SQL语句是什么。 </p>
 ]]></content>
       <categories>
@@ -2543,7 +2554,7 @@
   </entry>
   <entry>
     <title>3.thinkphp5数据库操作</title>
-    <url>/undefined/3.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/</url>
+    <url>/3.thinkphp5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<h1 id="配置文件定义"><a href="#配置文件定义" class="headerlink" title="配置文件定义"></a><font color=red>配置文件定义</font></h1><p>常用的配置方式是在应用目录或者模块目录下面的database.php中添加下面的参数：   </p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">return [</span><br><span class="line">&#x2F;&#x2F; 数据库类型</span><br><span class="line">&#39;type&#39; &#x3D;&gt; &#39;mysql&#39;,</span><br><span class="line">&#x2F;&#x2F; 数据库连接DSN配置</span><br><span class="line">&#39;dsn&#39; &#x3D;&gt; &#39;&#39;,</span><br><span class="line">&#x2F;&#x2F; 服务器地址</span><br><span class="line">&#39;hostname&#39; &#x3D;&gt; &#39;127.0.0.1&#39;,</span><br><span class="line">&#x2F;&#x2F; 数据库名</span><br><span class="line">&#39;database&#39; &#x3D;&gt; &#39;thinkphp&#39;,</span><br><span class="line">&#x2F;&#x2F; 数据库用户名</span><br><span class="line">&#39;username&#39; &#x3D;&gt; &#39;root&#39;,</span><br><span class="line">&#x2F;&#x2F; 数据库密码</span><br><span class="line">&#39;password&#39; &#x3D;&gt; &#39;&#39;,</span><br><span class="line">&#x2F;&#x2F; 数据库连接端口</span><br><span class="line">&#39;hostport&#39; &#x3D;&gt; &#39;&#39;,</span><br><span class="line">&#x2F;&#x2F; 数据库连接参数</span><br><span class="line">&#39;params&#39; &#x3D;&gt; [],</span><br><span class="line">&#x2F;&#x2F; 数据库编码默认采用utf8</span><br><span class="line">&#39;charset&#39; &#x3D;&gt; &#39;utf8&#39;,</span><br><span class="line">&#x2F;&#x2F; 数据库表前缀</span><br><span class="line">&#39;prefix&#39; &#x3D;&gt; &#39;think_&#39;,</span><br><span class="line">&#x2F;&#x2F; 数据库调试模式</span><br><span class="line">&#39;debug&#39; &#x3D;&gt; false,</span><br><span class="line">&#x2F;&#x2F; 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)</span><br><span class="line">&#39;deploy&#39; &#x3D;&gt; 0,</span><br><span class="line">&#x2F;&#x2F; 数据库读写是否分离 主从式有效</span><br><span class="line">&#39;rw_separate&#39; &#x3D;&gt; false,</span><br><span class="line">&#x2F;&#x2F; 读写分离后 主服务器数量</span><br><span class="line">&#39;master_num&#39; &#x3D;&gt; 1,</span><br><span class="line">&#x2F;&#x2F; 指定从服务器序号</span><br><span class="line">&#39;slave_no&#39; &#x3D;&gt; &#39;&#39;,</span><br><span class="line">&#x2F;&#x2F; 是否严格检查字段是否存在</span><br><span class="line">&#39;fields_strict&#39; &#x3D;&gt; true,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
 <p>type 参数支持命名空间完整定义，不带命名空间定义的话，默认采用 \think\db\connector 作为命名<br>空间，如果使用应用自己扩展的数据库驱动，可以配置为：</p>
@@ -2557,7 +2568,7 @@
   </entry>
   <entry>
     <title>2.thinkphp5请求</title>
-    <url>/undefined/2.thinkphp5%E8%AF%B7%E6%B1%82/</url>
+    <url>/2.thinkphp5%E8%AF%B7%E6%B1%82/</url>
     <content><![CDATA[<h1 id="请求信息"><a href="#请求信息" class="headerlink" title="请求信息"></a><font color=red>请求信息</font></h1><h4 id="如果要获取当前的请求信息，可以使用-think-Request-类，"><a href="#如果要获取当前的请求信息，可以使用-think-Request-类，" class="headerlink" title="如果要获取当前的请求信息，可以使用 \think\Request 类，"></a>如果要获取当前的请求信息，可以使用 \think\Request 类，</h4><p>除了下文中的   </p>
 <h3 id="request-Request-instance"><a href="#request-Request-instance" class="headerlink" title="$request = Request::instance();"></a>$request = Request::instance();</h3><p>也可以使用助手函数   </p>
 <h3 id="request-request"><a href="#request-request" class="headerlink" title="$request = request();"></a>$request = request();</h3><h4 id="当然，最方便的还是使用注入请求对象的方式来获取变量。"><a href="#当然，最方便的还是使用注入请求对象的方式来获取变量。" class="headerlink" title="当然，最方便的还是使用注入请求对象的方式来获取变量。"></a>当然，最方便的还是使用注入请求对象的方式来获取变量。</h4><p>例如：   </p>
@@ -2578,7 +2589,7 @@
   </entry>
   <entry>
     <title>RCE</title>
-    <url>/undefined/RCE/</url>
+    <url>/RCE/</url>
     <content><![CDATA[<h1 id="RCE漏洞原理"><a href="#RCE漏洞原理" class="headerlink" title="RCE漏洞原理"></a>RCE漏洞原理</h1><p> <strong>英文全称：remote command/code execute(远程命令/代码执行漏洞)；</strong></p>
 <h3 id="RCE分为远程命令执行和远程代码执行"><a href="#RCE分为远程命令执行和远程代码执行" class="headerlink" title="RCE分为远程命令执行和远程代码执行"></a>RCE分为<font color = red>远程命令执行</font>和<font color = red>远程代码执行</font></h3><p>区别：   </p>
 <ul>
@@ -2685,7 +2696,7 @@ preg_replace 执行一个正则表达式的搜索和替换。
   </entry>
   <entry>
     <title>1.thinkphp5开发规范</title>
-    <url>/undefined/1.thinkphp5%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</url>
+    <url>/1.thinkphp5%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</url>
     <content><![CDATA[<h1 id="一丶URL访问"><a href="#一丶URL访问" class="headerlink" title="一丶URL访问"></a><font color=green>一丶URL访问</font></h1><h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a><font color=green>命名规范</font></h2><h3 id="ThinkPHP5-遵循-PSR-2-命名规范和-PSR-4-自动加载规范，并且注意如下规范："><a href="#ThinkPHP5-遵循-PSR-2-命名规范和-PSR-4-自动加载规范，并且注意如下规范：" class="headerlink" title="ThinkPHP5 遵循 PSR-2 命名规范和 PSR-4 自动加载规范，并且注意如下规范："></a>ThinkPHP5 遵循 PSR-2 命名规范和 PSR-4 自动加载规范，并且注意如下规范：</h3><h3 id="目录和文件"><a href="#目录和文件" class="headerlink" title="目录和文件"></a><font color=red>目录和文件</font></h3><ul>
 <li>目录使用小写+下划线；  </li>
 <li>类库、 函数文件统一以 .php 为后缀；   </li>
