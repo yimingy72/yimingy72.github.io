@@ -137,7 +137,7 @@
 <p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/bugku-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/32uSbPeR1cnDoqF.png" alt="image-20200626152515947"></p>
 <p>发现流量包信息中包含flag.tar.gz，flag应该就包含在这个压缩包中。</p>
 <p>使用binwalk进行分析：</p>
-<p><img src= "/img/loading.gif" data-src="https://i.loli.net/2020/06/26/Uonp2XIH1DOqzjB.png" alt="image-20200626153050895"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/bugku-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200705125552060.png" alt="image-20200705125552060"></p>
 <p>文件中包含一个压缩包，使用binwalk进行提取，并解压缩，获得flag.txt，打开文本获得flag。</p>
 <p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/bugku-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/1Ok7CIKhGjlRX6u.png" alt="image-20200626153119312"></p>
 <p>flag:</p>
@@ -149,7 +149,7 @@
 <p>第三个ok包里有数据，查看分组字节</p>
 <p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/bugku-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/RoNQS2bWaGvfJUz.png" alt="image-20200626161410941"></p>
 <p>之前得到是一个压缩包，然后这里的X@Y是需要过滤然后解码为压缩</p>
-<p><img src= "/img/loading.gif" data-src="https://i.loli.net/2020/06/26/pYnXIyD2RMoTcgs.png" alt="image-20200626161558984"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/bugku-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200705125625797.png" alt="image-20200705125625797"></p>
 <p>得到：</p>
 <p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/bugku-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/cLwQpxYujX4Z8G6.png" alt="image-20200626161610844"></p>
 <h3 id="三、这么多数据包"><a href="#三、这么多数据包" class="headerlink" title="三、这么多数据包"></a>三、这么多数据包</h3><p><strong>本题要点：</strong></p>
