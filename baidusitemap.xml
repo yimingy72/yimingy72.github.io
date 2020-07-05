@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.yym.show/2020-06-27-TCP-&amp;&amp;-HTTP-%E6%8A%A5%E6%96%87%E5%AD%97%E6%AE%B5%E8%A7%A3%E8%AF%BB/</loc>
+    <lastmod>2020-07-05</lastmod>
+  </url>  <url>
     <loc>http://www.yym.show/2020-06-26-bugku-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2020-07-05</lastmod>
   </url>  <url>
@@ -32,9 +35,6 @@
     <lastmod>2020-07-02</lastmod>
   </url>  <url>
     <loc>http://www.yym.show/2020-06-30-BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2020-07-02</lastmod>
-  </url>  <url>
-    <loc>http://www.yym.show/2020-06-27-TCP-&&-HTTP-%E6%8A%A5%E6%96%87%E5%AD%97%E6%AE%B5%E8%A7%A3%E8%AF%BB/</loc>
     <lastmod>2020-07-02</lastmod>
   </url>  <url>
     <loc>http://www.yym.show/2018%E6%8A%A4%E7%BD%91%E6%9D%AF(WEB)easy_tornado(%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5)/</loc>
