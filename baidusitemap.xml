@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.yym.show/%E5%AE%A2%E6%88%B7%E7%AB%AF%20session%20%E5%AF%BC%E8%87%B4%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2020-07-19</lastmod>
+  </url>  <url>
+    <loc>http://www.yym.show/%5Bbugku%5Dinsert%20into/</loc>
+    <lastmod>2020-07-19</lastmod>
+  </url>  <url>
     <loc>http://www.yym.show/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2020-07-19</lastmod>
   </url>  <url>
@@ -73,9 +79,6 @@
     <loc>http://www.yym.show/%5BISCC%5DPhp%20is%20the%20best%20language/</loc>
     <lastmod>2020-07-02</lastmod>
   </url>  <url>
-    <loc>http://www.yym.show/%5Bbugku%5Dinsert%20into/</loc>
-    <lastmod>2020-07-02</lastmod>
-  </url>  <url>
     <loc>http://www.yym.show/MSF--Metasploit%20Framework%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2020-06-18</lastmod>
   </url>  <url>
@@ -129,8 +132,5 @@
   </url>  <url>
     <loc>http://www.yym.show/web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E6%A6%82%E8%BF%B0/</loc>
     <lastmod>2020-05-08</lastmod>
-  </url>  <url>
-    <loc>http://www.yym.show/%E5%AE%A2%E6%88%B7%E7%AB%AF%20session%20%E5%AF%BC%E8%87%B4%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2020-05-06</lastmod>
   </url>
 </urlset>
