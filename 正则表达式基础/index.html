@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>正则表达式基础 | yym's blog</title><meta name="description" content="正则表达式基础"><meta name="keywords" content="正则表达式基础,正则表达式,python正则表达式,正则表达式总结"><meta name="author" content="yym"><meta name="copyright" content="yym"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://www.yym.show/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin="crossorigin"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="正则表达式基础"><meta property="og:url" content="http://www.yym.show/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80/"><meta property="og:site_name" content="yym's blog"><meta property="og:description" content="正则表达式基础"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2020-07-19T04:33:00.000Z"><meta property="article:modified_time" content="2020-07-19T04:34:51.600Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>正则表达式基础 | yym's blog</title><meta name="description" content="简单写一下正则表达式的一些基础点： 基础规则一丶转义符   表达式 可匹配    \r，\n 代表回车和换行符   \t 制表符   \ 代表 “\“本身   ^ 匹配^本身   \$ 匹配$本身   \. 匹配小数点(.)本身    re. match(‘ cmd.exe ‘ cmdaexe’)&lt;_sre.SRE_Match object; span&#x3D;(O, 7), match&#x3D;’ cmd"><meta name="keywords" content="正则表达式基础,正则表达式,python正则表达式,正则表达式总结"><meta name="author" content="yym"><meta name="copyright" content="yym"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://www.yym.show/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin="crossorigin"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="正则表达式基础"><meta property="og:url" content="http://www.yym.show/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80/"><meta property="og:site_name" content="yym's blog"><meta property="og:description" content="简单写一下正则表达式的一些基础点： 基础规则一丶转义符   表达式 可匹配    \r，\n 代表回车和换行符   \t 制表符   \ 代表 “\“本身   ^ 匹配^本身   \$ 匹配$本身   \. 匹配小数点(.)本身    re. match(‘ cmd.exe ‘ cmdaexe’)&lt;_sre.SRE_Match object; span&#x3D;(O, 7), match&#x3D;’ cmd"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2020-07-19T04:33:00.000Z"><meta property="article:modified_time" content="2020-07-22T01:25:34.004Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
   document.documentElement.setAttribute('data-theme', 'dark')
   if (document.querySelector('meta[name="theme-color"]') !== null) {
     document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
@@ -52,7 +52,7 @@ if (autoChangeMode === '1') {
 } else {
   if (t === 'dark') activateDarkMode()
   else if (t === 'light') activateLightMode()
-}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="next" title="七字命令执行环境搭建" href="http://www.yym.show/2020-07-08-%E4%B8%83%E5%AD%97%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5/js/md5.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="prev" title="python实现主机扫描探测" href="http://www.yym.show/python%E5%AE%9E%E7%8E%B0%E4%B8%BB%E6%9C%BA%E6%89%AB%E6%8F%8F%E6%8E%A2%E6%B5%8B/"><link rel="next" title="七字命令执行环境搭建" href="http://www.yym.show/2020-07-08-%E4%B8%83%E5%AD%97%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5/js/md5.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
@@ -94,7 +94,7 @@ ga('send', 'pageview');
   isPost: true,
   isHome: false,
   isHighlightShrink: false,
-  isSidebar: false
+  isSidebar: true
   }</script><noscript><style>
 #nav {
   opacity: 1
@@ -103,14 +103,331 @@ ga('send', 'pageview');
   opacity: 1
 }
 </style></noscript><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/rss2.html" title="yym's blog" type="application/rss+xml">
-</head><body><canvas class="fireworks"></canvas><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">44</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">24</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">28</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div id="body-wrap"><div id="web_bg" data-type="photo"></div><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">yym's blog</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">正则表达式基础</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-07-19 12:33:00"><i class="far fa-calendar-alt fa-fw"></i> 发表于 2020-07-19</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-07-19 12:34:51"><i class="fas fa-history fa-fw"></i> 更新于 2020-07-19</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/categories/CTF/">CTF</a><i class="fas fa-angle-right post-meta__separator"></i><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/categories/CTF/%E6%9D%82%E9%A1%B9/">杂项</a><i class="fas fa-angle-right post-meta__separator"></i><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/categories/CTF/%E6%9D%82%E9%A1%B9/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">流量分析</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta__icon"></i><span>字数总计:</span><span class="word-count">0</span><span class="post-meta__separator">|</span><i class="far fa-clock fa-fw post-meta__icon"></i><span>阅读时长: 1 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="far fa-eye fa-fw post-meta__icon"></i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">yym</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.yym.show/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80/">http://www.yym.show/正则表达式基础/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.yym.show" target="_blank">yym's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-python/">正则表达式,python</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><button class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="/img/wechat.jpg" alt="wechat" onclick="window.open('/img/wechat.jpg')"/><div class="post-qr-code__desc">wechat</div></li><li class="reward-item"><img class="post-qr-code__img" src="/img/alipay.jpg" alt="alipay" onclick="window.open('/img/alipay.jpg')"/><div class="post-qr-code__desc">alipay</div></li></ul></div></button></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020-07-08-%E4%B8%83%E5%AD%97%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"><img class="next-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">七字命令执行环境搭建</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="lv-container" data-id="city" data-uid="MTAyMC81MDU5Ny8yNzA4MA=="><script>(function(d, s) {
+</head><body><canvas class="fireworks"></canvas><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">46</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">26</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">31</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基础规则"><span class="toc-number">1.</span> <span class="toc-text">基础规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一丶转义符"><span class="toc-number">1.1.</span> <span class="toc-text">一丶转义符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二丶多种字符"><span class="toc-number">1.2.</span> <span class="toc-text">二丶多种字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三丶自定义多种字符"><span class="toc-number">1.3.</span> <span class="toc-text">三丶自定义多种字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四丶匹配次数"><span class="toc-number">1.4.</span> <span class="toc-text">四丶匹配次数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#五丶代表抽象意义"><span class="toc-number">1.5.</span> <span class="toc-text">五丶代表抽象意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#六丶表达式关系"><span class="toc-number">1.6.</span> <span class="toc-text">六丶表达式关系</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python中几个重要的正则表达式方法"><span class="toc-number">2.</span> <span class="toc-text">python中几个重要的正则表达式方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1丶split"><span class="toc-number">2.1.</span> <span class="toc-text">1丶split</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2丶用于替换"><span class="toc-number">2.2.</span> <span class="toc-text">2丶用于替换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3丶用于分段匹配"><span class="toc-number">2.3.</span> <span class="toc-text">3丶用于分段匹配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4丶re-match（固定提取）"><span class="toc-number">2.4.</span> <span class="toc-text">4丶re.match（固定提取）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5丶re-findall（匹配所有）"><span class="toc-number">2.5.</span> <span class="toc-text">5丶re.findall（匹配所有）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6丶re-search"><span class="toc-number">2.6.</span> <span class="toc-text">6丶re.search</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7丶re-compile-函数"><span class="toc-number">2.7.</span> <span class="toc-text">7丶re.compile 函数</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div id="web_bg" data-type="photo"></div><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">yym's blog</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">正则表达式基础</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-07-19 12:33:00"><i class="far fa-calendar-alt fa-fw"></i> 发表于 2020-07-19</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-07-22 09:25:34"><i class="fas fa-history fa-fw"></i> 更新于 2020-07-22</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta__icon"></i><span>字数总计:</span><span class="word-count">2.5k</span><span class="post-meta__separator">|</span><i class="far fa-clock fa-fw post-meta__icon"></i><span>阅读时长: 10 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="far fa-eye fa-fw post-meta__icon"></i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>简单写一下正则表达式的一些基础点：</p>
+<h3 id="基础规则"><a href="#基础规则" class="headerlink" title="基础规则"></a>基础规则</h3><h4 id="一丶转义符"><a href="#一丶转义符" class="headerlink" title="一丶转义符"></a>一丶转义符</h4><table>
+<thead>
+<tr>
+<th align="left">表达式</th>
+<th>可匹配</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\r，\n</td>
+<td>代表回车和换行符</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td>制表符</td>
+</tr>
+<tr>
+<td align="left">\</td>
+<td>代表 “\“本身</td>
+</tr>
+<tr>
+<td align="left">^</td>
+<td>匹配^本身</td>
+</tr>
+<tr>
+<td align="left">\$</td>
+<td>匹配$本身</td>
+</tr>
+<tr>
+<td align="left">\.</td>
+<td>匹配小数点(.)本身</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>re. match(‘ cmd.exe ‘ cmdaexe’)<br>&lt;_sre.SRE_Match object; span=(O, 7), match=’ cmdaexe’&gt;<br>re. match(‘ cmd.exe’ ,’ cmdbexe’)<br>&lt;_sre. SRE_Match object; span=(O, 7), match=’ cmdbexe’&gt;<br>re. match(‘ cmd.exe’ ,’ cmd. exe’)<br>&lt;_sre. SRE_. Match object; span=(0, 7), match=’ cmd. exe’&gt;<br>re. match(‘ cmd.exe’ cmd. exe’)<br>&lt;_sre. SRE_. Match object; span=(0, 7), match=’ cmd. exe’&gt;<br>re. match(‘ cmd.exe’ ,’ cmdaexe’)<br>re. match(‘ cmd.exe ,’ cmdbexe’)</p>
+</blockquote>
+<h4 id="二丶多种字符"><a href="#二丶多种字符" class="headerlink" title="二丶多种字符"></a>二丶多种字符</h4><table>
+<thead>
+<tr>
+<th align="left">表达式</th>
+<th>可匹配</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\d</td>
+<td>任意一个数字，0-9中的任意一个</td>
+</tr>
+<tr>
+<td align="left">\w</td>
+<td>任意一个字母或数字或下划线，也就是A-Z,a-z，0-9，_中的任意一个</td>
+</tr>
+<tr>
+<td align="left">\s</td>
+<td>包括空格丶制表符丶换页符等空白字符中的其中任意一个</td>
+</tr>
+<tr>
+<td align="left">.</td>
+<td>小数点可以匹配除了换行符(\n)以外的任意一个字符</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>re. match(“\d\d\d’,’123’)<br>&lt;_sre. SRE__Match object; span=(0, 3), match=’123’&gt;<br>re. match(“\d\d\d’,’12a”)&gt;&gt;&gt; re. match(“\d\d\w’,’12a’)<br>&lt;_sre. SRE_Match object; span=(O, 3), match=’12a’&gt;</p>
+</blockquote>
+<blockquote>
+<p>re. match(‘\s’’)<br>&lt;_sre. SRE_. Match object; span=(0, 1), match=’ ‘&gt;<br>re. match(^\s’,’ ‘)<br>&lt;_sre. SRE_ Match object; span=(0, 1), match=”\t’&gt;<br>re. match(^\s’,’\n’)<br>&lt;_sre. SRE_Match object; span=(0, 1), match=’^\n’&gt;<br>re. match(“\s’\r’)<br>&lt;_sre. SRE_Match object; span=(0, 1), match=”\r’&gt;</p>
+</blockquote>
+<h4 id="三丶自定义多种字符"><a href="#三丶自定义多种字符" class="headerlink" title="三丶自定义多种字符"></a>三丶自定义多种字符</h4><table>
+<thead>
+<tr>
+<th align="left">表达式</th>
+<th>可匹配</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">[ab5@]</td>
+<td>匹配”a”或”b”或”5”或”@”</td>
+</tr>
+<tr>
+<td align="left">[^abc]</td>
+<td>匹配”a”,”b”,”c”之外的任意一个字符</td>
+</tr>
+<tr>
+<td align="left">[f-k]</td>
+<td>匹配”f”-“k”之间的任意一个字符</td>
+</tr>
+<tr>
+<td align="left">[^A-F0-3]</td>
+<td>匹配”A”-“F”,”0”-“3”之外的任意一个字符</td>
+</tr>
+</tbody></table>
+<p>在[]中的开头的^表示取反</p>
+<blockquote>
+<p>re. match(‘a[a-z]c, abc’)D<br>&lt;_sre. SRE_. Match object; span=(0, 3), match=’ abc’&gt;<br>re. match(‘a[a-z]c’,’ adc’)<br>&lt;_sre. SRE_Match object; span=(O, 3), match=’ adc’&gt;<br>re. match(‘a[a-z]c,’a1c’)<br>re. match(‘a[0-9]c’,’a1c’)<br>&lt;_sre. SRE_Match object; span=(0, 3), match=’a1c’&gt;<br>re. match(‘a[^a-z]c’,’a1c’)<br>&lt;_sre. SRE_. Match object; span=(0, 3), match=’a1c’&gt;</p>
+</blockquote>
+<h4 id="四丶匹配次数"><a href="#四丶匹配次数" class="headerlink" title="四丶匹配次数"></a>四丶匹配次数</h4><table>
+<thead>
+<tr>
+<th align="left">表达式</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">{n}</td>
+<td>表达式重复n次，比如：”\w{2}”相当于”\w\w”;”a{5}”相当于”aaaaa”</td>
+</tr>
+<tr>
+<td align="left">{m,n}</td>
+<td>表达式至少重复m次，最多重复n次</td>
+</tr>
+<tr>
+<td align="left">{m,}</td>
+<td>表达式至少重复m次</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td>匹配表达式0次或者1次</td>
+</tr>
+<tr>
+<td align="left">+</td>
+<td>表达式至少出现1次</td>
+</tr>
+<tr>
+<td align="left">*</td>
+<td>表达式不出现或出现任意次</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>re. match(‘ ba(na)?’,’ ba’)<br>&lt;_sre. SRE_Match object; span=(O, 2), match=’ ba’&gt;<br>re. match(‘ ba(na)? ‘, bana’)<br>&lt;_sre. SRE_ Match object; span=(0, 4), match=’ bana’&gt;<br>re. match(‘ ba(na)? ‘, banana’)<br>&lt;_sre. SRE_Match object; span=(0, 4), match=’ bana’&gt;<br>re. match(“ba(na)<em>‘,’ ba’)<br>&lt;_sre. SRE_Match object; span=(0, 2), match=’ ba’&gt;<br>re. match(“ba(na)</em>‘,’ bana’)<br>&lt;_sre. SRE_. Match object; span=(0, 4), match=’ bana’&gt;<br>re. match(‘ ba(na)*’,’ banana’)<br>&lt;_sre. SRE_Match object; span=(0, 6), match=”‘ banana’&gt;</p>
+</blockquote>
+<h4 id="五丶代表抽象意义"><a href="#五丶代表抽象意义" class="headerlink" title="五丶代表抽象意义"></a>五丶代表抽象意义</h4><table>
+<thead>
+<tr>
+<th align="left">表达式</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">^</td>
+<td>与字符串开始的地方匹配，不匹配任何字符</td>
+</tr>
+<tr>
+<td align="left">$</td>
+<td>与字符串结束的地方匹配，不匹配任何字符</td>
+</tr>
+<tr>
+<td align="left">\b</td>
+<td>匹配一个单词边界，也就是单词和空格之间的位置，不匹配任何字符</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>re. match(‘^qytang’,’ qytangccies’)<br>&lt;_sre. SRE_ Match object; span=(0, 6), match=’ qytang’&gt;<br>re. match(‘^ccies’,’ qytangccies’)<br>re. match(‘.* ccies$’ qytangccies’)<br>&lt;_sre. SRE_. Match object; span=(0, 11), match=’ qytangccies’&gt;</p>
+</blockquote>
+<h4 id="六丶表达式关系"><a href="#六丶表达式关系" class="headerlink" title="六丶表达式关系"></a>六丶表达式关系</h4><table>
+<thead>
+<tr>
+<th align="left">表达式</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">|</td>
+<td>左右两边表达式之间”或“关系，匹配左边或者右边</td>
+</tr>
+<tr>
+<td align="left">()</td>
+<td>（1）在被修饰匹配次数的时候，括号中的表达式可以作为整体被修饰<br />（2）取匹配结果的时候，括号中的表达式匹配到的内容可以被单独得到</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>re. match(root Root’ root’)<br>&lt;_sre. SRE_Match object; span=(O, 4), match=’ root’&gt;<br>re. match(‘ root | Root , Root’)<br>&lt;_sre. SRE_Match object; span=(0, 4), match=’ Root’&gt;</p>
+</blockquote>
+<h3 id="python中几个重要的正则表达式方法"><a href="#python中几个重要的正则表达式方法" class="headerlink" title="python中几个重要的正则表达式方法"></a>python中几个重要的正则表达式方法</h3><p>使用re模块</p>
+<h4 id="1丶split"><a href="#1丶split" class="headerlink" title="1丶split"></a>1丶split</h4><p>用于分段匹配</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.splt(---&#39;,&#39;aaa---bb---ccc&#39;)</span><br><span class="line">&#x2F;&#x2F;&#x2F;[&#39;aaa&#39;,&#39;bbb&#39;,&#39;ccc&#39;]</span><br></pre></td></tr></table></figure>
+
+<h4 id="2丶用于替换"><a href="#2丶用于替换" class="headerlink" title="2丶用于替换"></a>2丶用于替换</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.sub(&#39;--&#39;,&#39;...&#39;,&#39;aaa--bbb--ccc&#39;)</span><br><span class="line">&#x2F;&#x2F;&#x2F;&#39;aaa...bbb...ccc&#39;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3丶用于分段匹配"><a href="#3丶用于分段匹配" class="headerlink" title="3丶用于分段匹配"></a>3丶用于分段匹配</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.split(&#39;[-&#x3D;]&#39;,&#39;aaa-bbb&#x3D;ccc&#39;)</span><br><span class="line">&#x2F;&#x2F;&#x2F;[&#39;aaa&#39;,&#39;bbb&#39;,&#39;ccc&#39;]</span><br></pre></td></tr></table></figure>
+
+<h4 id="4丶re-match（固定提取）"><a href="#4丶re-match（固定提取）" class="headerlink" title="4丶re.match（固定提取）"></a>4丶re.match（固定提取）</h4><p>re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</p>
+<p><strong>函数语法</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.match(pattern, string, flags&#x3D;0)</span><br></pre></td></tr></table></figure>
+
+<p>函数参数说明：</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">pattern</td>
+<td align="left">匹配的正则表达式</td>
+</tr>
+<tr>
+<td align="left">string</td>
+<td align="left">要匹配的字符串。</td>
+</tr>
+<tr>
+<td align="left">flags</td>
+<td align="left">标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等。</td>
+</tr>
+</tbody></table>
+<p>匹配成功re.search方法返回一个匹配的对象，否则返回None。</p>
+<p>我们可以使用group(num) 或 groups() 匹配对象函数来获取匹配表达式。</p>
+<blockquote>
+<p>str1 = ‘ spam/ham/eggs’<br>str1. split(/“)<br>[‘ spam’, ‘ ham’, ‘ eggs’]<br>re. match(“(.<em>)/(.</em>)/(.<em>)’, str1). groups()<br>(‘ spam’, ‘ ham’, ‘ eggs’)<br>str2 = ‘<spam>/<ham>/<eggs>‘<br>re. match(‘&lt;(.</em>)&gt;/&lt;(.<em>)&gt;/&lt;(.</em>)&gt;’, str2). groups()<br>(‘ spam’, ‘ ham’, eggs’)</p>
+</blockquote>
+<blockquote>
+<p>str3=’ <spam>/<ham><eggs>‘<br>re. match(“\s*&lt;(.*)&gt;/?&lt;(.*)&gt;/?&lt;.*)&gt;’, str2). groups()<br>(‘ spam’, ‘ ham’, ‘ eggs’)<br>str4 = ‘ Hello pattern world!’<br>str4. split()<br>[‘ Hello’, ‘ pattern’, ‘ world!’]<br>str5 = ‘ Hellopattern world !’<br>re. match(‘ Hello\s*([a-z]*)\s+(.*)\s*!’, str5 ). groups()<br>(‘ pattern’, ‘ world’)</p>
+</blockquote>
+<p><strong>例题：</strong></p>
+<p>匹配路由器的show ip biref内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import re</span><br><span class="line">str1 &#x3D; ‘Port-channel1.189 192.168.1.1 YES CONFIG up’</span><br><span class="line">result &#x3D; re.match(&#39;\s*(\w.*\d)\s+(\d&#123;1,3&#125;\.\d&#123;1,3&#125;\.\d&#123;1,3&#125;)\s+(\w*)\s+(\w*)\s+(\w*)\s+(\w*)\s*&#39;,str1).groups()</span><br><span class="line">## \s*表示空白或者没有空白，*表示出现0次或多次，\s+表示至少匹配一次空白</span><br><span class="line">print(&#39;_&#39;*80)</span><br><span class="line">print(%-7s : %s&#39; % (&#39;接口&#39;,result[0]))</span><br><span class="line">print(%-7s : %s&#39; % (&#39;IP地址&#39;,result[1]))</span><br><span class="line">print(%-7s : %s&#39; % (&#39;状态&#39;,result[4]))</span><br></pre></td></tr></table></figure>
+
+<h4 id="5丶re-findall（匹配所有）"><a href="#5丶re-findall（匹配所有）" class="headerlink" title="5丶re.findall（匹配所有）"></a>5丶re.findall（匹配所有）</h4><p>在字符串中找到正则表达式所匹配的所有子串，并返回一个列表，如果没有找到匹配的，则返回空列表。</p>
+<p><strong>注意：</strong> match 和 search 是匹配一次 findall 匹配所有。</p>
+<p>语法格式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">findall(string[, pos[, endpos]])</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li><strong>string</strong> : 待匹配的字符串。</li>
+<li><strong>pos</strong> : 可选参数，指定字符串的起始位置，默认为 0。</li>
+<li><strong>endpos</strong> : 可选参数，指定字符串的结束位置，默认为字符串的长度。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># -*- coding:UTF8 -*-</span><br><span class="line"> </span><br><span class="line">import re</span><br><span class="line"> </span><br><span class="line">pattern &#x3D; re.compile(r&#39;\d+&#39;)   # 查找数字</span><br><span class="line">result1 &#x3D; pattern.findall(&#39;runoob 123 google 456&#39;)</span><br><span class="line">result2 &#x3D; pattern.findall(&#39;run88oob123google456&#39;, 0, 10)</span><br><span class="line"> </span><br><span class="line">print(result1)</span><br><span class="line">print(result2)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[&#39;123&#39;, &#39;456&#39;]</span><br><span class="line">[&#39;88&#39;, &#39;12&#39;]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>str1 =’<spam>/<ham>/<eggs>‘<br>str1.find（’ham’）#找到出现问位置<br>8<br>re.findall（’&lt;（.*？）&gt;’，str1）<br>[‘spam’，’ham’，eggs’]<br>str2 =’<spam>/<ham>/<eggs>‘</p>
+<p>re.findall（’&lt;（.*？）&gt;’，str2）<br>[‘spam’，’ham’，’eggs’]</p>
+</blockquote>
+<h4 id="6丶re-search"><a href="#6丶re-search" class="headerlink" title="6丶re.search"></a>6丶re.search</h4><p>re.search 扫描整个字符串并返回第一个成功的匹配。</p>
+<p>函数语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.search(pattern, string, flags&#x3D;0)</span><br></pre></td></tr></table></figure>
+
+<p>函数参数说明：</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">pattern</td>
+<td align="left">匹配的正则表达式</td>
+</tr>
+<tr>
+<td align="left">string</td>
+<td align="left">要匹配的字符串。</td>
+</tr>
+<tr>
+<td align="left">flags</td>
+<td align="left">标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等。</td>
+</tr>
+</tbody></table>
+<p>匹配成功re.search方法返回一个匹配的对象，否则返回None。</p>
+<p>我们可以使用group(num) 或 groups() 匹配对象函数来获取匹配表达式。</p>
+<table>
+<thead>
+<tr>
+<th align="left">匹配对象方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">group(num=0)</td>
+<td align="left">匹配的整个表达式的字符串，group() 可以一次输入多个组号，在这种情况下它将返回一个包含那些组所对应值的元组。</td>
+</tr>
+<tr>
+<td align="left">groups()</td>
+<td align="left">返回一个包含所有小组字符串的元组，从 1 到 所含的小组号。</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;python</span><br><span class="line"># -*- coding: UTF-8 -*- </span><br><span class="line"> </span><br><span class="line">import re</span><br><span class="line">print(re.search(&#39;www&#39;, &#39;www.runoob.com&#39;).span())  # 在起始位置匹配</span><br><span class="line">print(re.search(&#39;com&#39;, &#39;www.runoob.com&#39;).span())         # 不在起始位置匹配</span><br></pre></td></tr></table></figure>
+
+<p>以上实例运行输出结果为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(0, 3)</span><br><span class="line">(11, 14)</span><br></pre></td></tr></table></figure>
+
+<p><strong>实例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;python</span><br><span class="line">import re</span><br><span class="line"> </span><br><span class="line">line &#x3D; &quot;Cats are smarter than dogs&quot;;</span><br><span class="line"> </span><br><span class="line">searchObj &#x3D; re.search( r&#39;(.*) are (.*?) .*&#39;, line, re.M|re.I)</span><br><span class="line"> </span><br><span class="line">if searchObj:</span><br><span class="line">   print &quot;searchObj.group() : &quot;, searchObj.group()</span><br><span class="line">   print &quot;searchObj.group(1) : &quot;, searchObj.group(1)</span><br><span class="line">   print &quot;searchObj.group(2) : &quot;, searchObj.group(2)</span><br><span class="line">else:</span><br><span class="line">   print &quot;Nothing found!!&quot;</span><br></pre></td></tr></table></figure>
+
+<p>以上实例执行结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">searchObj.group() :  Cats are smarter than dogs</span><br><span class="line">searchObj.group(1) :  Cats</span><br><span class="line">searchObj.group(2) :  smarter</span><br></pre></td></tr></table></figure>
+
+<h4 id="7丶re-compile-函数"><a href="#7丶re-compile-函数" class="headerlink" title="7丶re.compile 函数"></a>7丶re.compile 函数</h4><p>compile 函数用于编译正则表达式，生成一个正则表达式（ Pattern ）对象，供 match() 和 search() 这两个函数使用。</p>
+<p>语法格式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.compile(pattern[, flags])</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li><strong>pattern</strong> : 一个字符串形式的正则表达式</li>
+<li><strong>flags</strong> : 可选，表示匹配模式，比如忽略大小写，多行模式等，具体参数为：<ol>
+<li><strong>re.I</strong> 忽略大小写</li>
+<li><strong>re.L</strong> 表示特殊字符集 \w, \W, \b, \B, \s, \S 依赖于当前环境</li>
+<li><strong>re.M</strong> 多行模式</li>
+<li><strong>re.S</strong> 即为 <strong>.</strong> 并且包括换行符在内的任意字符（<strong>.</strong> 不包括换行符）</li>
+<li><strong>re.U</strong> 表示特殊字符集 \w, \W, \b, \B, \d, \D, \s, \S 依赖于 Unicode 字符属性数据库</li>
+<li><strong>re.X</strong> 为了增加可读性，忽略空格和 <strong>#</strong> 后面的注释</li>
+</ol>
+</li>
+</ul>
+<p><strong>实例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;import re</span><br><span class="line">&gt;&gt;&gt; pattern &#x3D; re.compile(r&#39;\d+&#39;)                    # 用于匹配至少一个数字</span><br><span class="line">&gt;&gt;&gt; m &#x3D; pattern.match(&#39;one12twothree34four&#39;)        # 查找头部，没有匹配</span><br><span class="line">&gt;&gt;&gt; print m</span><br><span class="line">None</span><br><span class="line">&gt;&gt;&gt; m &#x3D; pattern.match(&#39;one12twothree34four&#39;, 2, 10) # 从&#39;e&#39;的位置开始匹配，没有匹配</span><br><span class="line">&gt;&gt;&gt; print m</span><br><span class="line">None</span><br><span class="line">&gt;&gt;&gt; m &#x3D; pattern.match(&#39;one12twothree34four&#39;, 3, 10) # 从&#39;1&#39;的位置开始匹配，正好匹配</span><br><span class="line">&gt;&gt;&gt; print m                                         # 返回一个 Match 对象</span><br><span class="line">&lt;_sre.SRE_Match object at 0x10a42aac0&gt;</span><br><span class="line">&gt;&gt;&gt; m.group(0)   # 可省略 0</span><br><span class="line">&#39;12&#39;</span><br><span class="line">&gt;&gt;&gt; m.start(0)   # 可省略 0</span><br><span class="line">3</span><br><span class="line">&gt;&gt;&gt; m.end(0)     # 可省略 0</span><br><span class="line">5</span><br><span class="line">&gt;&gt;&gt; m.span(0)    # 可省略 0</span><br><span class="line">(3, 5)</span><br></pre></td></tr></table></figure>
+
+<p>在上面，当匹配成功时返回一个 Match 对象，其中：</p>
+<ul>
+<li><code>group([group1, …])</code> 方法用于获得一个或多个分组匹配的字符串，当要获得整个匹配的子串时，可直接使用 <code>group()</code> 或 <code>group(0)</code>；</li>
+<li><code>start([group])</code> 方法用于获取分组匹配的子串在整个字符串中的起始位置（子串第一个字符的索引），参数默认值为 0；</li>
+<li><code>end([group])</code> 方法用于获取分组匹配的子串在整个字符串中的结束位置（子串最后一个字符的索引+1），参数默认值为 0；</li>
+<li><code>span([group])</code> 方法返回 <code>(start(group), end(group))</code>。</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">yym</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.yym.show/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80/">http://www.yym.show/正则表达式基础/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.yym.show" target="_blank">yym's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-python/">正则表达式,python</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><button class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="/img/wechat.jpg" alt="wechat" onclick="window.open('/img/wechat.jpg')"/><div class="post-qr-code__desc">wechat</div></li><li class="reward-item"><img class="post-qr-code__img" src="/img/alipay.jpg" alt="alipay" onclick="window.open('/img/alipay.jpg')"/><div class="post-qr-code__desc">alipay</div></li></ul></div></button></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/python%E5%AE%9E%E7%8E%B0%E4%B8%BB%E6%9C%BA%E6%89%AB%E6%8F%8F%E6%8E%A2%E6%B5%8B/"><img class="prev-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">python实现主机扫描探测</div></div></a></div><div class="next-post pull-right"><a href="/2020-07-08-%E4%B8%83%E5%AD%97%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"><img class="next-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">七字命令执行环境搭建</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="lv-container" data-id="city" data-uid="MTAyMC81MDU5Ny8yNzA4MA=="><script>(function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];
     if (typeof LivereTower === 'function') { return; }
     j = d.createElement(s);
     j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
     j.async = true;
     e.parentNode.insertBefore(j, e);
-})(document, 'script');</script></div></div></article></main><footer id="footer" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By yym</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">Hi, welcome to my <a href="http://www.yym.show/">blog</a>!</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" title="缩小字体"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">繁</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fas fa-comments"></i></a><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+})(document, 'script');</script></div></div></article></main><footer id="footer" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By yym</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">Hi, welcome to my <a href="http://www.yym.show/">blog</a>!</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" title="缩小字体"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">繁</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fas fa-comments"></i></a><button class="close" id="mobile-toc-button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
  <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
 POWERMODE.shake = true;
 document.body.addEventListener('input', POWERMODE);
