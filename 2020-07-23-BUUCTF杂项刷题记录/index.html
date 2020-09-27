@@ -1,0 +1,2079 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BUUCTF杂项刷题记录 | yym's blog</title><meta name="description" content="一丶签到本题要点：  眼睛  flag： flag&amp;#123;buu_ctf&amp;#125;  二丶金三胖本题要点：  逐帧查看  potplayer（D查看上一帧，F查看下一帧）或其他逐帧查看器   potplayer逐帧播放得到：  flag： flag&amp;#123;he11ohongke&amp;#125;  三丶二维码本题要点：  二维码扫描 附加式的图片隐写 ziperello暴力破解  首先二维码扫"><meta name="keywords" content="BUUCTF,杂项,"><meta name="author" content="yym"><meta name="copyright" content="yym"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://www.yym.show/2020-07-23-BUUCTF%E6%9D%82%E9%A1%B9%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin="crossorigin"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="BUUCTF杂项刷题记录"><meta property="og:url" content="http://www.yym.show/2020-07-23-BUUCTF%E6%9D%82%E9%A1%B9%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><meta property="og:site_name" content="yym's blog"><meta property="og:description" content="一丶签到本题要点：  眼睛  flag： flag&amp;#123;buu_ctf&amp;#125;  二丶金三胖本题要点：  逐帧查看  potplayer（D查看上一帧，F查看下一帧）或其他逐帧查看器   potplayer逐帧播放得到：  flag： flag&amp;#123;he11ohongke&amp;#125;  三丶二维码本题要点：  二维码扫描 附加式的图片隐写 ziperello暴力破解  首先二维码扫"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2020-07-23T05:53:00.000Z"><meta property="article:modified_time" content="2020-09-19T23:41:02.373Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="prev" title="Misc-隐写术进阶总结" href="http://www.yym.show/2020-06-14-Misc-%E9%9A%90%E5%86%99%E6%9C%AF%E8%BF%9B%E9%98%B6%E6%80%BB%E7%BB%93/"><link rel="next" title="Scapy流量分析" href="http://www.yym.show/2020-07-23-Scapy%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5/js/md5.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-170083067-1', 'auto');
+ga('send', 'pageview');
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/rss2.html" title="yym's blog" type="application/rss+xml">
+</head><body><canvas class="fireworks"></canvas><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">50</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">29</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">28</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一丶签到"><span class="toc-number">1.</span> <span class="toc-text">一丶签到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二丶金三胖"><span class="toc-number">2.</span> <span class="toc-text">二丶金三胖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三丶二维码"><span class="toc-number">3.</span> <span class="toc-text">三丶二维码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四丶N种方法解决"><span class="toc-number">4.</span> <span class="toc-text">四丶N种方法解决</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五丶大白"><span class="toc-number">5.</span> <span class="toc-text">五丶大白</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六丶基础破解"><span class="toc-number">6.</span> <span class="toc-text">六丶基础破解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七丶你竟然赶我走"><span class="toc-number">7.</span> <span class="toc-text">七丶你竟然赶我走</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八丶乌镇峰会种图"><span class="toc-number">8.</span> <span class="toc-text">八丶乌镇峰会种图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#九丶LSB"><span class="toc-number">9.</span> <span class="toc-text">九丶LSB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十丶rar"><span class="toc-number">10.</span> <span class="toc-text">十丶rar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十一丶qr"><span class="toc-number">11.</span> <span class="toc-text">十一丶qr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十二丶文件中的秘密"><span class="toc-number">12.</span> <span class="toc-text">十二丶文件中的秘密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十三丶wireshark"><span class="toc-number">13.</span> <span class="toc-text">十三丶wireshark</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十四丶ningen"><span class="toc-number">14.</span> <span class="toc-text">十四丶ningen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十五丶zip伪加密"><span class="toc-number">15.</span> <span class="toc-text">十五丶zip伪加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十六丶镜子里面的世界"><span class="toc-number">16.</span> <span class="toc-text">十六丶镜子里面的世界</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十七丶小明的保险箱"><span class="toc-number">17.</span> <span class="toc-text">十七丶小明的保险箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十八丶被嗅探的流量"><span class="toc-number">18.</span> <span class="toc-text">十八丶被嗅探的流量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十九丶爱因斯坦"><span class="toc-number">19.</span> <span class="toc-text">十九丶爱因斯坦</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二十丶easycap"><span class="toc-number">20.</span> <span class="toc-text">二十丶easycap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二十一丶假如给我三天光明"><span class="toc-number">21.</span> <span class="toc-text">二十一丶假如给我三天光明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二十二丶FLAG"><span class="toc-number">22.</span> <span class="toc-text">二十二丶FLAG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二十三丶另外一个世界"><span class="toc-number">23.</span> <span class="toc-text">二十三丶另外一个世界</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二十四丶隐藏的钥匙"><span class="toc-number">24.</span> <span class="toc-text">二十四丶隐藏的钥匙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二十五丶-GKCTF2020-签到"><span class="toc-number">25.</span> <span class="toc-text">二十五丶[GKCTF2020]签到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二十六丶-BJDCTF-2nd-最简单的misc-y1ng"><span class="toc-number">26.</span> <span class="toc-text">二十六丶[BJDCTF 2nd]最简单的misc-y1ng</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二十七丶-BJDCTF-2nd-A-Beautiful-Picture"><span class="toc-number">27.</span> <span class="toc-text">二十七丶[BJDCTF 2nd]A_Beautiful_Picture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二十八丶荷兰宽带数据泄露"><span class="toc-number">28.</span> <span class="toc-text">二十八丶荷兰宽带数据泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二十九丶后门查杀"><span class="toc-number">29.</span> <span class="toc-text">二十九丶后门查杀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三十丶神秘龙卷风"><span class="toc-number">30.</span> <span class="toc-text">三十丶神秘龙卷风</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三十一丶来首歌吧"><span class="toc-number">31.</span> <span class="toc-text">三十一丶来首歌吧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三十二丶-BJDCTF-2nd-小姐姐-y1ng"><span class="toc-number">32.</span> <span class="toc-text">三十二丶[BJDCTF 2nd]小姐姐-y1ng</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三十三丶九连环"><span class="toc-number">33.</span> <span class="toc-text">三十三丶九连环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三十四丶数据包中的线索"><span class="toc-number">34.</span> <span class="toc-text">三十四丶数据包中的线索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三十五丶面具下的flag"><span class="toc-number">35.</span> <span class="toc-text">三十五丶面具下的flag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三十六丶snake"><span class="toc-number">36.</span> <span class="toc-text">三十六丶snake</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三十七丶被劫持的神秘礼物"><span class="toc-number">37.</span> <span class="toc-text">三十七丶被劫持的神秘礼物</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三十八丶webshell后门"><span class="toc-number">38.</span> <span class="toc-text">三十八丶webshell后门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三十九丶梅花香之苦寒来"><span class="toc-number">39.</span> <span class="toc-text">三十九丶梅花香之苦寒来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四十丶刷新过的图片"><span class="toc-number">40.</span> <span class="toc-text">四十丶刷新过的图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四十一丶-BJDCTF-2nd-圣火昭昭-y1ng"><span class="toc-number">41.</span> <span class="toc-text">四十一丶[BJDCTF 2nd]圣火昭昭-y1ng</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四十二丶菜刀666"><span class="toc-number">42.</span> <span class="toc-text">四十二丶菜刀666</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四十三丶-BJDCTF-2nd-EasyBaBa"><span class="toc-number">43.</span> <span class="toc-text">四十三丶[BJDCTF 2nd]EasyBaBa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四十四丶-GKCTF2020-Pokémon"><span class="toc-number">44.</span> <span class="toc-text">四十四丶[GKCTF2020]Pokémon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四十五丶-BJDCTF-2nd-Real-EasyBaBa"><span class="toc-number">45.</span> <span class="toc-text">四十五丶[BJDCTF 2nd]Real_EasyBaBa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四十六丶穿越时空的思念"><span class="toc-number">46.</span> <span class="toc-text">四十六丶穿越时空的思念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四十七丶-SWPU2019-神奇的二维码"><span class="toc-number">47.</span> <span class="toc-text">四十七丶[SWPU2019]神奇的二维码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四十八丶被偷走的文件"><span class="toc-number">48.</span> <span class="toc-text">四十八丶被偷走的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四十九丶秘密文件"><span class="toc-number">49.</span> <span class="toc-text">四十九丶秘密文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五十丶-GXYCTF2019-佛系青年"><span class="toc-number">50.</span> <span class="toc-text">五十丶[GXYCTF2019]佛系青年</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五十一丶-BJDCTF2020-认真你就输了"><span class="toc-number">51.</span> <span class="toc-text">五十一丶[BJDCTF2020]认真你就输了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五十二丶Mysterious"><span class="toc-number">52.</span> <span class="toc-text">五十二丶Mysterious</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五十三丶-BJDCTF2020-一叶障目"><span class="toc-number">53.</span> <span class="toc-text">五十三丶[BJDCTF2020]一叶障目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五十四丶sqltest"><span class="toc-number">54.</span> <span class="toc-text">五十四丶sqltest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五十五丶-BJDCTF2020-你猜我是个啥"><span class="toc-number">55.</span> <span class="toc-text">五十五丶[BJDCTF2020]你猜我是个啥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五十六丶-BJDCTF2020-藏藏藏"><span class="toc-number">56.</span> <span class="toc-text">五十六丶[BJDCTF2020]藏藏藏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五十七丶-BJDCTF2020-just-a-rar"><span class="toc-number">57.</span> <span class="toc-text">五十七丶[BJDCTF2020]just_a_rar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五十八丶喵喵喵"><span class="toc-number">58.</span> <span class="toc-text">五十八丶喵喵喵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五十九丶-SWPU2019-我有一只马里奥"><span class="toc-number">59.</span> <span class="toc-text">五十九丶[SWPU2019]我有一只马里奥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六十丶-BJDCTF-2nd-TARGZ-y1ng"><span class="toc-number">60.</span> <span class="toc-text">六十丶[BJDCTF 2nd]TARGZ-y1ng</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六十一丶-BJDCTF2020-鸡你太美"><span class="toc-number">61.</span> <span class="toc-text">六十一丶[BJDCTF2020]鸡你太美</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六十二丶-BJDCTF2020-纳尼"><span class="toc-number">62.</span> <span class="toc-text">六十二丶[BJDCTF2020]纳尼</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六十三丶zip"><span class="toc-number">63.</span> <span class="toc-text">六十三丶zip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六十四丶-ACTF新生赛2020-outguess"><span class="toc-number">64.</span> <span class="toc-text">六十四丶[ACTF新生赛2020]outguess</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六十五丶谁赢了比赛？"><span class="toc-number">65.</span> <span class="toc-text">六十五丶谁赢了比赛？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六十六丶-GXYCTF2019-gakki"><span class="toc-number">66.</span> <span class="toc-text">六十六丶[GXYCTF2019]gakki</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六十七丶弱口令"><span class="toc-number">67.</span> <span class="toc-text">六十七丶弱口令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六十八丶-SWPU2019-伟大的侦探"><span class="toc-number">68.</span> <span class="toc-text">六十八丶[SWPU2019]伟大的侦探</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六十九丶-HBNIS2018-excel破解"><span class="toc-number">69.</span> <span class="toc-text">六十九丶[HBNIS2018]excel破解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七十丶-RoarCTF2019-黄金6年"><span class="toc-number">70.</span> <span class="toc-text">七十丶[RoarCTF2019]黄金6年</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七十一丶john-in-the-middle"><span class="toc-number">71.</span> <span class="toc-text">七十一丶john-in-the-middle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七十二丶黑客帝国"><span class="toc-number">72.</span> <span class="toc-text">七十二丶黑客帝国</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七十三丶-SWPU2019-你有没有好好看网课"><span class="toc-number">73.</span> <span class="toc-text">七十三丶[SWPU2019]你有没有好好看网课?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七十四丶-安洵杯-2019-吹着贝斯扫二维码"><span class="toc-number">74.</span> <span class="toc-text">七十四丶[安洵杯 2019]吹着贝斯扫二维码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七十五丶间谍启示录"><span class="toc-number">75.</span> <span class="toc-text">七十五丶间谍启示录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七十六丶-GXYCTF2019-SXMgdGhpcyBiYXNlPw"><span class="toc-number">76.</span> <span class="toc-text">七十六丶[GXYCTF2019]SXMgdGhpcyBiYXNlPw&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七十七丶-ACTF新生赛2020-base64隐写"><span class="toc-number">77.</span> <span class="toc-text">七十七丶[ACTF新生赛2020]base64隐写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七十八丶-BJDCTF-2nd-Imagin-开场曲"><span class="toc-number">78.</span> <span class="toc-text">七十八丶[BJDCTF 2nd]Imagin - 开场曲</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七十九丶-V-amp-N2020-公开赛-拉胯的三条命令"><span class="toc-number">79.</span> <span class="toc-text">七十九丶[V&amp;N2020 公开赛]拉胯的三条命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八十丶-WUSTCTF2020-find-me"><span class="toc-number">80.</span> <span class="toc-text">八十丶[WUSTCTF2020]find_me</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八十一丶-MRCTF2020-你能看懂音符吗"><span class="toc-number">81.</span> <span class="toc-text">八十一丶[MRCTF2020]你能看懂音符吗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八十二丶-HBNIS2018-来题中等的吧"><span class="toc-number">82.</span> <span class="toc-text">八十二丶[HBNIS2018]来题中等的吧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八十三丶二维码"><span class="toc-number">83.</span> <span class="toc-text">八十三丶二维码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八十四丶-HBNIS2018-caesar"><span class="toc-number">84.</span> <span class="toc-text">八十四丶[HBNIS2018]caesar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八十五丶-SUCTF-2019-Game"><span class="toc-number">85.</span> <span class="toc-text">八十五丶[SUCTF 2019]Game</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八十六丶蜘蛛侠呀"><span class="toc-number">86.</span> <span class="toc-text">八十六丶蜘蛛侠呀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八十七丶小易的U盘"><span class="toc-number">87.</span> <span class="toc-text">八十七丶小易的U盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八十八丶-GUET-CTF2019-KO"><span class="toc-number">88.</span> <span class="toc-text">八十八丶[GUET-CTF2019]KO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八十九丶-MRCTF2020-ezmisc"><span class="toc-number">89.</span> <span class="toc-text">八十九丶[MRCTF2020]ezmisc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#九十丶-DDCTF2018-╯°□°）╯︵-┻━┻"><span class="toc-number">90.</span> <span class="toc-text">九十丶[DDCTF2018](╯°□°）╯︵ ┻━┻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#九十一丶-HBNIS2018-低个头"><span class="toc-number">91.</span> <span class="toc-text">九十一丶[HBNIS2018]低个头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#九十二丶-安洵杯-2019-Attack"><span class="toc-number">92.</span> <span class="toc-text">九十二丶[安洵杯 2019]Attack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#九十三丶-ACTF新生赛2020-NTFS数据流"><span class="toc-number">93.</span> <span class="toc-text">九十三丶[ACTF新生赛2020]NTFS数据流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#九十四丶百里挑一"><span class="toc-number">94.</span> <span class="toc-text">九十四丶百里挑一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#九十五丶USB"><span class="toc-number">95.</span> <span class="toc-text">九十五丶USB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#九十六丶寂静之城"><span class="toc-number">96.</span> <span class="toc-text">九十六丶寂静之城</span></a></li></ol></div></div></div><div id="body-wrap"><div id="web_bg" data-type="photo"></div><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">yym's blog</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">BUUCTF杂项刷题记录</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-07-23 13:53:00"><i class="far fa-calendar-alt fa-fw"></i> 发表于 2020-07-23</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-09-20 07:41:02"><i class="fas fa-history fa-fw"></i> 更新于 2020-09-20</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/categories/BUUCTF/">BUUCTF</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta__icon"></i><span>字数总计:</span><span class="word-count">9.8k</span><span class="post-meta__separator">|</span><i class="far fa-clock fa-fw post-meta__icon"></i><span>阅读时长: 36 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="far fa-eye fa-fw post-meta__icon"></i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h3 id="一丶签到"><a href="#一丶签到" class="headerlink" title="一丶签到"></a>一丶签到</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>眼睛</li>
+</ul>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;buu_ctf&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二丶金三胖"><a href="#二丶金三胖" class="headerlink" title="二丶金三胖"></a>二丶金三胖</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li><p>逐帧查看</p>
+</li>
+<li><p>potplayer（D查看上一帧，F查看下一帧）或其他逐帧查看器</p>
+</li>
+</ul>
+<p>potplayer逐帧播放得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723141149683.png" alt="image-20200723141149683"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;he11ohongke&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三丶二维码"><a href="#三丶二维码" class="headerlink" title="三丶二维码"></a>三丶二维码</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>二维码扫描</li>
+<li>附加式的图片隐写</li>
+<li>ziperello暴力破解</li>
+</ul>
+<p>首先二维码扫描得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">secret is here</span><br></pre></td></tr></table></figure>
+
+<p>猜测flag就在图片中，可以使用formost分离得到压缩包，也可直接将图片后缀改为zip得到压缩包：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723142303215.png" alt="image-20200723142303215"></p>
+<p>提示4number，然后使用ziperello暴力破解得到密码：7639</p>
+<p>打开得到flag</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CTF&#123;vjpw_wnoei&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四丶N种方法解决"><a href="#四丶N种方法解决" class="headerlink" title="四丶N种方法解决"></a>四丶N种方法解决</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>Data URI scheme</li>
+</ul>
+<p><strong>知识背景</strong></p>
+<p>Data URI scheme是在RFC2397中定义的，目的是将一些小的数据，直接嵌入到网页中，从而不用再从外部文件载入。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">目前，Data URI scheme支持的类型有：</span><br><span class="line">data:,文本数据</span><br><span class="line">data:text&#x2F;plain,文本数据</span><br><span class="line">data:text&#x2F;html,HTML代码</span><br><span class="line">data:text&#x2F;html;base64,base64编码的HTML代码</span><br><span class="line">data:text&#x2F;css,CSS代码</span><br><span class="line">data:text&#x2F;css;base64,base64编码的CSS代码</span><br><span class="line">data:text&#x2F;javascript,Javascript代码</span><br><span class="line">data:text&#x2F;javascript;base64,base64编码的Javascript代码</span><br><span class="line">data:image&#x2F;gif;base64,base64编码的gif图片数据</span><br><span class="line">data:image&#x2F;png;base64,base64编码的png图片数据</span><br><span class="line">data:image&#x2F;jpeg;base64,base64编码的jpeg图片数据</span><br><span class="line">data:image&#x2F;x-icon;base64,base64编码的icon图片数据</span><br></pre></td></tr></table></figure>
+
+<p>首先得到一个<code>.exe</code>文件，但是不能运行，然后使用<code>winhex</code>查看，发现是使用了url data格式</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723143304932.png" alt="image-20200723143304932"></p>
+<p>然后复制到游览器得到二维码，扫码得flag</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">KEY&#123;dca57f966e4e4e31fd5b15417da63269&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五丶大白"><a href="#五丶大白" class="headerlink" title="五丶大白"></a>五丶大白</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>基于文件结构的图片隐写</li>
+<li>高度被修改引起的隐写</li>
+</ul>
+<p>经过一系列操作之后没有发现端倪，然后放入<code>linux</code>发现出现了CRC校验错误，猜测是高度有问题，然后在<code>winhex</code>中修改高度，将1修改为2，得到flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723144040580.png" alt="image-20200723144040580"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723144122316.png" alt="image-20200723144122316"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;He1l0_d4_ba1&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="六丶基础破解"><a href="#六丶基础破解" class="headerlink" title="六丶基础破解"></a>六丶基础破解</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>rar暴力破解</li>
+<li>base64编码</li>
+</ul>
+<p>首先得到题目提示：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723152938072.png" alt="image-20200723152938072"></p>
+<p>然后尝试使用ARPR暴力破解得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723153012855.png" alt="image-20200723153012855"></p>
+<p>然后解压得到base64编码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ZmxhZ3s3MDM1NDMwMGE1MTAwYmE3ODA2ODgwNTY2MWI5M2E1Y30&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>base64解码得到flag</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;70354300a5100ba78068805661b93a5c&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="七丶你竟然赶我走"><a href="#七丶你竟然赶我走" class="headerlink" title="七丶你竟然赶我走"></a>七丶你竟然赶我走</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>winhex查看</li>
+</ul>
+<p>直接使用<code>winhex</code>查看16进制数得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723153423634.png" alt="image-20200723153423634"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;stego_is_s0_bor1ing&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="八丶乌镇峰会种图"><a href="#八丶乌镇峰会种图" class="headerlink" title="八丶乌镇峰会种图"></a>八丶乌镇峰会种图</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>winhex查看</li>
+</ul>
+<p>也是直接使用winhex查看得到flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723153731058.png" alt="image-20200723153731058"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;97314e7864a8f62627b26f3f998c37f1&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="九丶LSB"><a href="#九丶LSB" class="headerlink" title="九丶LSB"></a>九丶LSB</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>stegsove工具</li>
+<li>LSB最低有效位</li>
+</ul>
+<p>题目提示LSB，直接用stegsove打开得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723154637140.png" alt="image-20200723154637140"></p>
+<p>发现RGB的最低有效位有异常，然后使用Data Extract查看最低有效位</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723154714558.png" alt="image-20200723154714558"></p>
+<p>取RGB最低有效位得到数据，发现有个PNG头部，提取得到png图片二维码，扫码得到flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723154817247.png" alt="image-20200723154817247"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cumtctf&#123;1sb_i4_s0_Ea4y&#125;</span><br><span class="line">&#x2F;&#x2F;提交需要改flag格式为flag&#123;1sb_i4_s0_Ea4y&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="十丶rar"><a href="#十丶rar" class="headerlink" title="十丶rar"></a>十丶rar</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>rar暴力破解</li>
+</ul>
+<p>题目提示四位纯数字加密，所以第一时间想到暴力破解</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723155257594.png" alt="image-20200723155257594"></p>
+<p>暴力破解得：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723155838224.png" alt="image-20200723155838224"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;1773c5da790bd3caff38e3decd180eb7&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="十一丶qr"><a href="#十一丶qr" class="headerlink" title="十一丶qr"></a>十一丶qr</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>有手就行</li>
+</ul>
+<p>扫得flag：</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Flag&#123;878865ce73370a4ce607d21ca01b5e59&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="十二丶文件中的秘密"><a href="#十二丶文件中的秘密" class="headerlink" title="十二丶文件中的秘密"></a>十二丶文件中的秘密</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>winhex</li>
+<li>心细</li>
+</ul>
+<p>做杂项得人一定要心细</p>
+<p>直接用winhex就能发现，一开始用搜索功能没发现，然后上下滚动查看了一下发现了</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723160721316.png" alt="image-20200723160721316"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;870c5a72806115cb5439345d8b014396&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="十三丶wireshark"><a href="#十三丶wireshark" class="headerlink" title="十三丶wireshark"></a>十三丶wireshark</h3><p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723161027019.png" alt="image-20200723161027019"></p>
+<p>题目提示管理员密码即是flag，然后打开流量包，先尝试追踪一下HTTP流，可能在登录过程中是用GET传输的。</p>
+<p>追踪到第二个HTTP流得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723161422904.png" alt="image-20200723161422904"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;ffb7567a1d4f4abdffdb54e022f8facd&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="十四丶ningen"><a href="#十四丶ningen" class="headerlink" title="十四丶ningen"></a>十四丶ningen</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>foremost/binwalk分离</li>
+<li>zip暴力破解</li>
+</ul>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723161701578.png" alt="image-20200723161701578"></p>
+<p>题目提示了很多，就直接foremost分离得到zip压缩包，然后ziperello暴力破解得到密码8368</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723161912711.png" alt="image-20200723161912711"></p>
+<p>解密得到flag</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;b025fc9ca797a67d2103bfbc407a6d5f&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="十五丶zip伪加密"><a href="#十五丶zip伪加密" class="headerlink" title="十五丶zip伪加密"></a>十五丶zip伪加密</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>zip伪加密</li>
+<li>winhex</li>
+</ul>
+<p>题目直接提示zip伪加密，然后使用winhex改参数然后直接打开得到flag</p>
+<p>修改zip的<code>全局方式位标记</code>为00，何为全局方式位标记自行百度zip文件格式</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723162505417.png" alt="image-20200723162505417"></p>
+<p>将09改为00得到flag</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;Adm1N-B2G-kU-SZIP&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="十六丶镜子里面的世界"><a href="#十六丶镜子里面的世界" class="headerlink" title="十六丶镜子里面的世界"></a>十六丶镜子里面的世界</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>LSB最低有效位</li>
+</ul>
+<p>首先看这个文件名就为<code>steg</code>，然后文件又是<code>png</code>文件，就直接上<code>stegsolve</code>,然后粗看图层没有发现异常，就直接提取最低有效位得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723163533131.png" alt="image-20200723163533131"></p>
+<p>得到flag</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;st3g0_saurus_wr3cks&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="十七丶小明的保险箱"><a href="#十七丶小明的保险箱" class="headerlink" title="十七丶小明的保险箱"></a>十七丶小明的保险箱</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>foremost/binwalk分离</li>
+<li>rar文件暴力破解</li>
+</ul>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723164132838.png" alt="image-20200723164132838"></p>
+<p>得到flag</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;75a3d68bf071ee188c418ea6cf0bb043&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="十八丶被嗅探的流量"><a href="#十八丶被嗅探的流量" class="headerlink" title="十八丶被嗅探的流量"></a>十八丶被嗅探的流量</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>分组字节流搜索</li>
+</ul>
+<p>一开始以为这道题需要提取tcp传输的文件，没想到。。。</p>
+<p>直接尝试分组字节流里搜索一下flag得到flag：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200630154902924.png" alt="image-20200630154902924"></p>
+<p>flag:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;da73d88936010da1eeeb36e945ec4b97&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="十九丶爱因斯坦"><a href="#十九丶爱因斯坦" class="headerlink" title="十九丶爱因斯坦"></a>十九丶爱因斯坦</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>图片详细信息</li>
+<li>foremost/binwalk分离</li>
+</ul>
+<p>首先foremost分离得到加密压缩包，然后不知道密码，查看图片/属性/详细信息得到密码，解密得到flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723171126736.png" alt="image-20200723171126736"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;dd22a92bf2cceb6c0cd0d6b83ff51606&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二十丶easycap"><a href="#二十丶easycap" class="headerlink" title="二十丶easycap"></a>二十丶easycap</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>有手就行</li>
+<li>追踪tcp流</li>
+</ul>
+<p>直接追踪tcp流得到flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723171448377.png" alt="image-20200723171448377"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;385b87afc8671dee07550290d16a8071&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二十一丶假如给我三天光明"><a href="#二十一丶假如给我三天光明" class="headerlink" title="二十一丶假如给我三天光明"></a>二十一丶假如给我三天光明</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>盲文对照表</li>
+<li>摩尔斯电码</li>
+</ul>
+<p>得到一张图片和一个加密压缩包，首先要去解密图片，结合图片和题目名为假如给我三天光明，猜测点图为盲文，翻译得到解压密码：kmdonowg</p>
+<p><strong>盲文对照表：</strong></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTF1294588-20171209020410718-2097173928.png" alt="img"></p>
+<p>解压得到摩尔斯电码音频；翻译得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CTFWPEI08732?23DZ</span><br></pre></td></tr></table></figure>
+
+<p>提交需要改成小写，然后将ctf改为flag：</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;wpei08732?23dz&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二十二丶FLAG"><a href="#二十二丶FLAG" class="headerlink" title="二十二丶FLAG"></a>二十二丶FLAG</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>LSB最低有效位</li>
+</ul>
+<p>这道题有点问题</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="二十三丶另外一个世界"><a href="#二十三丶另外一个世界" class="headerlink" title="二十三丶另外一个世界"></a>二十三丶另外一个世界</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>进制转换</li>
+</ul>
+<p>拿到题目放入winhex，发现最后一行有二进制数，然后尝试了几种进制转换，取八位二进制数为一组，二进制转换为ascii码得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200723193919546.png" alt="image-20200723193919546"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;koekj3s&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二十四丶隐藏的钥匙"><a href="#二十四丶隐藏的钥匙" class="headerlink" title="二十四丶隐藏的钥匙"></a>二十四丶隐藏的钥匙</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>winhex搜索</li>
+</ul>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724084008772.png" alt="image-20200724084008772"></p>
+<p>看了题目还以为是jpghid加密的，然后foremost分离出了两张照片，但试了好久不行，试了好几种密码，然后从头做，winhex搜了一下flag，得到了：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724084229226.png" alt="image-20200724084229226"></p>
+<p>base64解码得到flag</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二十五丶-GKCTF2020-签到"><a href="#二十五丶-GKCTF2020-签到" class="headerlink" title="二十五丶[GKCTF2020]签到"></a>二十五丶[GKCTF2020]签到</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li><p>找不到flag</p>
+</li>
+</ul>
+<h3 id="二十六丶-BJDCTF-2nd-最简单的misc-y1ng"><a href="#二十六丶-BJDCTF-2nd-最简单的misc-y1ng" class="headerlink" title="二十六丶[BJDCTF 2nd]最简单的misc-y1ng"></a>二十六丶[BJDCTF 2nd]最简单的misc-y1ng</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>伪加密</li>
+<li>png文件头补全</li>
+</ul>
+<p>这道题的伪加密很有特点，不在开头，需要熟悉zip文件格式，首先搜索十六进制数<code>504B</code>，然后修改对应的全局方式位标记。</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724093345872.png" alt="image-20200724093345872"></p>
+<p>或者使用<code>ZipCenOp</code>工具直接修复</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFSnipaste_2020-07-24_09-25-30.png" alt="Snipaste_2020-07-24_09-25-30"></p>
+<p>然后查看得到的文件16进制数，发现IHDR数据块，判断这是个PNG图片，补全文件头得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724093540926.png" alt="image-20200724093540926"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724093549232.png" alt="image-20200724093549232"></p>
+<p>得到一串16进制数，转ascii码得到flag：BJD{y1ngzuishuai}</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;y1ngzuishuai&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二十七丶-BJDCTF-2nd-A-Beautiful-Picture"><a href="#二十七丶-BJDCTF-2nd-A-Beautiful-Picture" class="headerlink" title="二十七丶[BJDCTF 2nd]A_Beautiful_Picture"></a>二十七丶[BJDCTF 2nd]A_Beautiful_Picture</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>基于文件结构的图片隐写</li>
+<li>改高度</li>
+</ul>
+<p>PNG文件头知识：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- （固定）八个字节89 50 4E 47 0D 0A 1A 0A为png的文件头</span><br><span class="line">- （固定）四个字节00 00 00 0D（即为十进制的13）代表数据块的长度为13</span><br><span class="line">- （固定）四个字节49 48 44 52（即为ASCII码的IHDR）是文件头数据块的标示（IDCH）</span><br><span class="line">- （可变）13位数据块（IHDR)</span><br><span class="line">    - 前四个字节代表该图片的宽</span><br><span class="line">    - 后四个字节代表该图片的高</span><br><span class="line">    - 后五个字节依次为：</span><br><span class="line">    Bit depth、ColorType、Compression method、Filter method、Interlace method</span><br><span class="line">- （可变）剩余四字节为该png的CRC检验码，由从IDCH到IHDR的十七位字节进行crc计算得到。</span><br></pre></td></tr></table></figure>
+
+<p>直接winhex改了高度就得到了</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724164113116.png" alt="image-20200724164113116"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;PnG_He1ghT_1s_WR0ng&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二十八丶荷兰宽带数据泄露"><a href="#二十八丶荷兰宽带数据泄露" class="headerlink" title="二十八丶荷兰宽带数据泄露"></a>二十八丶荷兰宽带数据泄露</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>RouterPassView</li>
+</ul>
+<p>下载附件得到一个conf.bin文件，路由器信息数据，一般包含账号密码。题目并没有提示flag是什么，猜测是账号或者密码加上格式为最终flag。</p>
+<p>用RouterPassView查看后，搜索username或者password</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724165042586.png" alt="image-20200724165042586"></p>
+<p>最后发现是用户名为flag，加上格式提交即可。</p>
+<p>这道题没思路，是个新的类型，就直接搜答案了，算是get到了一个新点</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;053700357621&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二十九丶后门查杀"><a href="#二十九丶后门查杀" class="headerlink" title="二十九丶后门查杀"></a>二十九丶后门查杀</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>D盾扫描</li>
+</ul>
+<p>找了很久没找到，D盾一扫就出来了，然后就文件内搜索pass得到md5值</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724170747207.png" alt="image-20200724170747207"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;6ac45fb83b3bc355c024f5034b947dd3&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三十丶神秘龙卷风"><a href="#三十丶神秘龙卷风" class="headerlink" title="三十丶神秘龙卷风"></a>三十丶神秘龙卷风</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>ARPR暴力破解rar</li>
+<li><a href="https://en.wikipedia.org/wiki/Brainfuck" target="_blank" rel="noopener">Brainfuck</a></li>
+</ul>
+<p>首先用ARPR暴力破解得到解压密码，解压后得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724180612413.png" alt="image-20200724180612413"></p>
+<p>做多了杂项一定不会陌生，这是brainfuck的编码</p>
+<p>解码得：</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;e4bbef8bdf9743f8bf5b727a9f6332a8&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三十一丶来首歌吧"><a href="#三十一丶来首歌吧" class="headerlink" title="三十一丶来首歌吧"></a>三十一丶来首歌吧</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>audacity</li>
+<li>摩尔斯电码 </li>
+</ul>
+<p>直接用audacity打开音频，发现是双轨，第一个音轨明显得摩尔斯电码；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">..... -... -.-. ----. ..--- ..... -.... ....- ----. -.-. -... ----- .---- ---.. ---.. ..-. ..... ..--- . -.... .---- --... -.. --... ----- ----. ..--- ----. .---- ----. .---- -.-.</span><br></pre></td></tr></table></figure>
+
+<p>解码得：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5BC925649CB0188F52E617D70929191C</span><br></pre></td></tr></table></figure>
+
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;5BC925649CB0188F52E617D70929191C&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三十二丶-BJDCTF-2nd-小姐姐-y1ng"><a href="#三十二丶-BJDCTF-2nd-小姐姐-y1ng" class="headerlink" title="三十二丶[BJDCTF 2nd]小姐姐-y1ng"></a>三十二丶[BJDCTF 2nd]小姐姐-y1ng</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>strings</li>
+</ul>
+<p>原本以为是jphid加密，但是不知道密码，然后用了strings搜了一下字符串就意外得到了flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724190202447.png" alt="image-20200724190202447"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724190305091.png" alt="image-20200724190305091"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;haokanma_xjj&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三十三丶九连环"><a href="#三十三丶九连环" class="headerlink" title="三十三丶九连环"></a>三十三丶九连环</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>伪加密</li>
+<li>steghide分离</li>
+</ul>
+<p>formost/binwalk分离得到加密压缩包，其中一个文件是一个伪加密，将1改为0后得到图片</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724190801458.png" alt="image-20200724190801458"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724190859442.png" alt="image-20200724190859442"></p>
+<p>然后使用<code>steghide</code>分离图片，不需要密码，得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724193040518.png" alt="image-20200724193040518"></p>
+<p>打开<code>ko.txt</code>得到解压密码</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724193107950.png" alt="image-20200724193107950"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;1RTo8w@&amp;4nK@z*XL&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三十四丶数据包中的线索"><a href="#三十四丶数据包中的线索" class="headerlink" title="三十四丶数据包中的线索"></a>三十四丶数据包中的线索</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>导出HTTP对象</li>
+<li>base64解密</li>
+</ul>
+<p>这道题有一点小坑，我导出数据之后再base64解密后图片无法显示，也不知道哪里搞错了，不过后来直接在wireshark里解密转图片了</p>
+<p>大致思路就是看到全是tcp流量，然后观察一下发现有数据传输，然后显示分组字节流</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200630185219536.png" alt="image-20200630185219536"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200630185238871.png" alt="image-20200630185238871"></p>
+<p>然后观察数据猜测是base64编码，然后观察解码后的数据，文件头是jpg，然后转成图片得到flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200630185339209.png" alt="image-20200630185339209"></p>
+<p>flag：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;209acebf6324a09671abc31c869de72c&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三十五丶面具下的flag"><a href="#三十五丶面具下的flag" class="headerlink" title="三十五丶面具下的flag"></a>三十五丶面具下的flag</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>伪加密</li>
+<li>NTFS数据流加密</li>
+<li>7z x xxx  解压</li>
+</ul>
+<p>formost分离得到加密压缩包，ziperello解密未检测出加密，猜测伪加密，查找16进制数504B，修改全局位标志，解压得到flag.vmdk文件</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200724193813889.png" alt="image-20200724193813889"></p>
+<p>得到flag.vmdk后用7z解压，也不知道为什么用7z解压，但算是多了个知识点吧，遇到.vmdk文件可以用7z解压</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200725093325499.png" alt="image-20200725093325499"></p>
+<p>得到的key_part_one文件夹中的null内容为：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200725093435339.png" alt="image-20200725093435339"></p>
+<p>放到<a href="https://www.splitbrain.org/services/ook" target="_blank" rel="noopener">Brainfuck</a> 解密得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;N7F5_AD5</span><br></pre></td></tr></table></figure>
+
+<p>还有一半flag在key_part_two中，是okk解码，还是这个网站okk解密得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_i5_funny!&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;N7F5_AD5_i5_funny!&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三十六丶snake"><a href="#三十六丶snake" class="headerlink" title="三十六丶snake"></a>三十六丶snake</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>Serpent – Symmetric Ciphers算法</li>
+</ul>
+<p>foremost/binwalk分离得到一个压缩包，解压得到两个文件，首先查看key文件，winhex下得到一串base64编码字符串</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">V2hhdCBpcyBOaWNraSBNaW5haidzIGZhdm9yaXRlIHNvbmcgdGhhdCByZWZlcnMgdG8gc25ha2VzPwo&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>解密得：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">What is Nicki Minaj&#39;s favorite song that refers to snakes?</span><br></pre></td></tr></table></figure>
+
+<p>百度Nicki Minaj关于蛇的歌，当然看了一些大佬的博客，知道了指的是anaconda，就是cipher解密的私钥了。</p>
+<p>解密地址：<a href="http://serpent.online-domain-tools.com/" target="_blank" rel="noopener">http://serpent.online-domain-tools.com/</a></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200728102744823.png" alt="image-20200728102744823"></p>
+<p>得到flag：</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;who_knew_serpent_cipher_existed&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三十七丶被劫持的神秘礼物"><a href="#三十七丶被劫持的神秘礼物" class="headerlink" title="三十七丶被劫持的神秘礼物"></a>三十七丶被劫持的神秘礼物</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>分组字节流搜索</li>
+<li>md5加密</li>
+</ul>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200728102925622.png" alt="image-20200728102925622"></p>
+<p>说明越详细，题目越简单，分组字节流搜索<code>password</code>轻松秒杀、</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200630190231735.png" alt="image-20200630190231735"></p>
+<p>md5加密得：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200630190249805.png" alt="image-20200630190249805"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;1d240aafe21a86afc11f38a45b541a49&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三十八丶webshell后门"><a href="#三十八丶webshell后门" class="headerlink" title="三十八丶webshell后门"></a>三十八丶webshell后门</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li><p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200728104100232.png" alt="image-20200728104100232"></p>
+</li>
+</ul>
+<p>D盾一扫，pass一搜，flag就来了</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;ba8e6c6f35a53933b871480bb9a9545c&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三十九丶梅花香之苦寒来"><a href="#三十九丶梅花香之苦寒来" class="headerlink" title="三十九丶梅花香之苦寒来"></a>三十九丶梅花香之苦寒来</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>gnuplot绘图</li>
+</ul>
+<p>下载题目附件得到图片</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFmeihuai.jpg" alt="meihuai"></p>
+<p>放入<code>winhex</code>发现异常：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200729170651203.png" alt="image-20200729170651203"></p>
+<p>图片数据后面跟着一大串数字，首先进行分离</p>
+<p>工具：strings</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">strings &#x2F;root&#x2F;桌面&#x2F;meihuai.jpg &gt;1.txt</span><br><span class="line">&#x2F;&#x2F;   &gt;  将输出的结果赋值给1.txt</span><br></pre></td></tr></table></figure>
+
+<p>保存好之后删除没用的字符串，可以看出是十六进制数，将它转为ascii字符串，写脚本：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with open(&#39;strings.txt&#39;,&#39;r&#39;) as h:</span><br><span class="line">    h&#x3D;h.read()</span><br><span class="line">tem&#x3D;&#39;&#39;</span><br><span class="line">for i in range(0,len(h),2):</span><br><span class="line">    tem&#x3D;&#39;0x&#39;+h[i]+h[i+1]</span><br><span class="line">    tem&#x3D;int(tem,base&#x3D;16)</span><br><span class="line">    print(chr(tem),end&#x3D;&#39;&#39;)</span><br></pre></td></tr></table></figure>
+
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200729191536030.png" alt="image-20200729191536030"></p>
+<p>35019个坐标，用gnuplot绘图，但要先改为gnuplot能识别的方式，写脚本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with open(&#39;ascii.txt&#39;,&#39;r&#39;)as a:</span><br><span class="line">    a&#x3D;a.read()</span><br><span class="line">a&#x3D;a.split()</span><br><span class="line">tem&#x3D;&#39;&#39;</span><br><span class="line">for i in range(0,len(a)):</span><br><span class="line">    tem&#x3D;a[i]</span><br><span class="line">    tem&#x3D;tem.lstrip(&#39;(&#39;)</span><br><span class="line">    tem&#x3D;tem.rstrip(&#39;)&#39;)</span><br><span class="line">    for j in range(0,len(tem)):</span><br><span class="line">        if tem[j]&#x3D;&#x3D;&#39;,&#39;:</span><br><span class="line">            tem&#x3D;tem[:j]+&#39; &#39;+tem[j+1:]</span><br><span class="line">    print(tem)</span><br></pre></td></tr></table></figure>
+
+<p>得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200729191658974.png" alt="image-20200729191658974"></p>
+<p>用gnuplot</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200729192355696.png" alt="image-20200729192355696"></p>
+<p>扫码得到flag：</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;40fc0a979f759c8892f4dc045e28b820&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四十丶刷新过的图片"><a href="#四十丶刷新过的图片" class="headerlink" title="四十丶刷新过的图片"></a>四十丶刷新过的图片</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>F5隐写</li>
+<li>伪加密</li>
+</ul>
+<p>题目名为<code>刷新过的图片</code>,网页中F5为刷新，所以可以联想到F5隐写。</p>
+<p><strong>F5下载安装</strong></p>
+<p> F5隐写全称F5-steganography，在kail系统命令端输入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;matthewgao&#x2F;F5-steganography</span><br></pre></td></tr></table></figure>
+
+<p>出现以上信息即表示下载完成。下载完是一个文件夹，如下图：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200730130941159.png" alt="image-20200730130941159"></p>
+<p><strong>F5隐写工具的使用</strong></p>
+<p>在文件夹中找到，下载的F5工具包，双击打开，然后空白处右键使用终端打开。</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200730131041975.png" alt="image-20200730131041975"></p>
+<p> 在命令窗口输入 java Extract+图片路径</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200730131133889.png" alt="image-20200730131133889"></p>
+<p>如果有密码就：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java Extract+图片路径+(-p)+密码</span><br></pre></td></tr></table></figure>
+
+<p>然后在F5文件夹中output文件就是解密的文件，然后放入winhex，发现是个压缩文件，然后再破解伪加密得到flag</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;96efd0a2037d06f34199e921079778ee&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四十一丶-BJDCTF-2nd-圣火昭昭-y1ng"><a href="#四十一丶-BJDCTF-2nd-圣火昭昭-y1ng" class="headerlink" title="四十一丶[BJDCTF 2nd]圣火昭昭-y1ng"></a>四十一丶[BJDCTF 2nd]圣火昭昭-y1ng</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>佛论禅解密</li>
+<li>outguess解密</li>
+</ul>
+<p>首先查看属性，得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200730133955188.png" alt="image-20200730133955188"></p>
+<p>比较考知识面，这是<code>佛论禅</code>加密，解密网站：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;hi.pcmoe.net&#x2F;buddha.html</span><br></pre></td></tr></table></figure>
+
+<p>解密得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gemlovecom</span><br></pre></td></tr></table></figure>
+
+<p>按照题目提示去除<code>com</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gemlove</span><br></pre></td></tr></table></figure>
+
+<p>然后就是用<code>stegdetect检测</code>，得到这题是采用的<code>outguess加密</code></p>
+<p><code>加密：</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">outguess -k “my secret key” -d hidden.txt demo.jpg out.jpg</span><br><span class="line">加密之后，demo.jpg会覆盖out.jpg，hidden.txt的内容是要隐藏的东西。</span><br></pre></td></tr></table></figure>
+
+<p><code>解密：</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">outguess -k “my secret key” -r out.jpg hidden.txt</span><br></pre></td></tr></table></figure>
+
+<p>解密之后，解密内容放在hidden.txt中</p>
+<p>然后解密得到flag：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200731100711216.png" alt="image-20200731100711216"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;wdnmd_misc_1s_so_Fuck1ng_e@sy&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四十二丶菜刀666"><a href="#四十二丶菜刀666" class="headerlink" title="四十二丶菜刀666"></a>四十二丶菜刀666</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>追踪TCP流</li>
+</ul>
+<p>看了很多人的WP，虽然说出了解题步骤，但思路啥的都没有说清楚，然后只能自己好好研究一下思路</p>
+<p>打开首先发现有很多TCP包和HTTP包，首先要明白他在传输什么，所以需要先追踪一下HTTP流：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701140956772.png" alt="image-20200701140956772"></p>
+<p>从<code>post</code>的内容看出就是一个菜刀连接服务器的流量，应该是执行了一个列出目录的命令，然后就看到了列出的目录里有<code>flag.txt</code>，然后猜测后面应该会有查看<code>flag.txt</code>文件的操作，但是很遗憾，查看完第一个http流还是没有有效的信息，然后只能接着查看下一个<code>HTTP</code>流，然后第二个<code>HTTP</code>流也没有什么重要的信息，第三个流有数据，但是应该是传输了一个无关紧要的<code>.deb</code>的软件包。</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701163947030.png" alt="image-20200701163947030"></p>
+<p>然后继续往下看，第7个HTTP流：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701181726275.png" alt="image-20200701181726275"></p>
+<p>发现传输了一大串16进制数据，然后提取出来粘贴到<code>winhex</code>就发现了，这个文件头不就是JPG图片吗，然后保存得到了一串密码：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701181848815.png" alt="image-20200701181848815"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701181946127.png" alt="image-20200701181946127"></p>
+<p>然后继续查看HTTP流，第9个HTTP流又发现了不同：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701182129889.png" alt="image-20200701182129889"></p>
+<p>杂项做得多了就一眼看出这是个zip压缩包的数据，然后这里直接复制粘贴到winhex会有问题，下面是<strong>文件提取</strong>，有两种方案：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701184148144.png" alt="image-20200701184148144"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/15171357208475.png!small" alt="Clipboard Image.png"></p>
+<p>然后打开需要密码，尝试用之前得到的图片中的密码解密得到flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/BUUCTF-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20200701184504989.png" alt="image-20200701184504989"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;3OpWdJ-JP6FzK-koCMAK-VkfWBq-75Un2z&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四十三丶-BJDCTF-2nd-EasyBaBa"><a href="#四十三丶-BJDCTF-2nd-EasyBaBa" class="headerlink" title="四十三丶[BJDCTF 2nd]EasyBaBa"></a>四十三丶[BJDCTF 2nd]EasyBaBa</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>potplayer逐帧</li>
+<li>QR Research扫描二维码</li>
+</ul>
+<p>foremost分离得到压缩包，winhex打开发现是avi文件，potplayer打开逐帧播放得到二维码，扫码得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200731104530695.png" alt="image-20200731104530695"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200731104547828.png" alt="image-20200731104547828"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200731103412571.png" alt="image-20200731103412571"></p>
+<p>分别得到</p>
+<p>6167696E5F6C -&gt; agin_l</p>
+<p>6F76655F59 -&gt; ove_Y</p>
+<p>424A447B696D -&gt; BJD{im</p>
+<p>316E677D -&gt; 1ng}</p>
+<p>连成一句话</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BJD&#123;imagin_love_Y1ng&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四十四丶-GKCTF2020-Pokémon"><a href="#四十四丶-GKCTF2020-Pokémon" class="headerlink" title="四十四丶[GKCTF2020]Pokémon"></a>四十四丶[GKCTF2020]Pokémon</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>GBA模拟器</li>
+</ul>
+<p>贼有意思的一道题，口袋怪兽绿宝石，哈哈。<br>下载附件，一个gba后缀的，百度出用GBA模拟器打开就行。<br>W、S、A、D：上下左右移动。按住空格在按上下左右键可以加速。<br>K：确定<br>Enter键：打开菜单。</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTF_p" alt="在这里插入图片描述"></p>
+<p>玩游戏到103路，草丛就是flag。</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTF_p" alt="在这里插入图片描述"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;PokEmon_14_CutE&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四十五丶-BJDCTF-2nd-Real-EasyBaBa"><a href="#四十五丶-BJDCTF-2nd-Real-EasyBaBa" class="headerlink" title="四十五丶[BJDCTF 2nd]Real_EasyBaBa"></a>四十五丶[BJDCTF 2nd]Real_EasyBaBa</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>心细</li>
+</ul>
+<p>方法一丶</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200802160319275.png" alt="image-20200802160319275"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BJD&#123;572154976&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方法二丶</p>
+<p>因为这边插入的数据块文件头错误，所以foremost识别分离不了，所以修补文件头，分离得到压缩文件</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200802161556796.png" alt="image-20200802161556796"></p>
+<p>得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200802162748010.png" alt="image-20200802162748010"></p>
+<p>我手机扫不出来，但听说：</p>
+<p>用手机晃动扫码（可以直接产生模糊效果，能省掉电脑PS的时间2333），得到一串命令，直接去kali里面对这个图片复制命令操作，发现：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTF34e6bcf7c2f2910d657c9ed34abbe7f7.png" alt="rezbb"></p>
+<h3 id="四十六丶穿越时空的思念"><a href="#四十六丶穿越时空的思念" class="headerlink" title="四十六丶穿越时空的思念"></a>四十六丶穿越时空的思念</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>audacity</li>
+<li>二进制转ascii码</li>
+</ul>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200802163300567.png" alt="image-20200802163300567"></p>
+<p>原本以为是摩尔斯电码，但翻译出来不对，然后就想到是二进制数，然后按四位一组得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0010 11111 00111 11110 1000 100 10000 0010 00000 00000 01111 01111 00011 11110 0 0 100 0 1000 11100 0 00001 00000 01 01111 11000 00000 1000 11111 11000 11100 10000</span><br></pre></td></tr></table></figure>
+
+<p>得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">F029BD6F551139EEDEB8E45A175B0786</span><br></pre></td></tr></table></figure>
+
+<p>转换为小写得到：</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;f029bd6f551139eedeb8e45a175b0786&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四十七丶-SWPU2019-神奇的二维码"><a href="#四十七丶-SWPU2019-神奇的二维码" class="headerlink" title="四十七丶[SWPU2019]神奇的二维码"></a>四十七丶[SWPU2019]神奇的二维码</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>套娃</li>
+</ul>
+<p>这道题没意思，网上找的wp</p>
+<p>CQR先扫一下二维码</p>
+<blockquote>
+<p>swpuctf{flag_is_not_here}</p>
+</blockquote>
+<p>嗯，正常<br>显然是隐写<code>binwalk</code>先看一下，发现有四个压缩包，<code>-e</code>分离，应该是个套娃题，一个一个解吧<br><code>7164.rar</code>压缩包里有个encode.txt打开发现是一段base64<code>YXNkZmdoamtsMTIzNDU2Nzg5MA==</code>解开得到<code>asdfghjkl1234567890</code>，看上去像密码呢，用这个解<code>看看flag在不在里面^_^.rar</code>发现里面有张图片，按照ctf的尿性，这里面不用分析都知道没有flag，接着看<code>17012.rar</code>里面有一长段base64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Vm0wd2QyUXlVWGxWV0d4V1YwZDRWMVl3WkRSV01WbDNXa1JTVjAxV2JETlhhMUpUVmpBeFYySkVUbGhoTVVwVVZtcEJlRll5U2tWVWJHaG9UVlZ3VlZadGNFSmxSbGw1VTJ0V1ZXSkhhRzlVVmxaM1ZsWmFjVkZ0UmxSTmJFcEpWbTEwYTFkSFNrZGpSVGxhVmpOU1IxcFZXbUZrUjA1R1UyMTRVMkpIZHpGV1ZFb3dWakZhV0ZOcmFHaFNlbXhXVm1wT1QwMHhjRlpYYlVaclVqQTFSMWRyV25kV01ERkZVbFJHVjFaRmIzZFdha1poVjBaT2NtRkhhRk5sYlhoWFZtMXdUMVF3TUhoalJscFlZbFZhY1ZadGRHRk5SbFowWlVaT1ZXSlZXVEpWYkZKSFZqRmFSbUl6WkZkaGExcG9WakJhVDJOdFJraGhSazVzWWxob1dGWnRNWGRVTVZGM1RVaG9hbEpzY0ZsWmJGWmhZMnhXY1ZGVVJsTk5XRUpIVmpKNFQxWlhTa2RqUmxwWFlsaFNNMVpxU2t0V1ZrcFpXa1prYUdFeGNGbFhhMVpoVkRKTmVGcElUbWhTTW5oVVdWUk9RMWRzV1hoWGJYUk9VakZHTlZaWE5VOWhiRXAwVld4c1dtSkdXbWhaTW5oWFl6RldjbHBHWkdsU2JrSmFWMnhXWVZReFdsaFRiRnBZVmtWd1YxbHJXa3RUUmxweFUydGFiRlpzV2xwWGExcHJZVWRGZUdOR2JGaGhNVnBvVmtSS1QyTXlUa1phUjJoVFRXNW9WVlpHWTNoaU1rbDRWMWhvWVZKRlNtRldiWGh6VFRGU1ZtRkhPV2hpUlhCNldUQmFjMWR0U2tkWGJXaGFUVzVvV0ZreFdrZFdWa3B6VkdzMVYySkdhM2hXYTFwaFZURlZlRmR1U2s1WFJYQnhWVzB4YjFZeFVsaE9WazVPVFZad2VGVXlkREJXTVZweVkwWndXR0V4Y0ROV2FrWkxWakpPU1dKR1pGZFNWWEJ2Vm10U1MxUXlUWGxVYTFwb1VqTkNWRmxZY0ZkWFZscFlZMFU1YVUxcmJEUldNV2h2V1ZaS1IxTnNaRlZXYkZwNlZHeGFZVmRGTlZaUFZtaFRUVWhDU2xac1pEUmpNV1IwVTJ0a1dHSlhhR0ZVVnpWdlYwWnJlRmRyWkZkV2EzQjZWa2R6TVZZd01WWmlla1pYWWxoQ1MxUldaRVpsUm1SWldrVTFWMVpzY0ZWWFYzUnJWVEZzVjFWc1dsaGlWVnBQVkZaYWQyVkdWWGxrUkVKWFRWWndlVmt3V25kWFIwVjRZMFJPV21FeVVrZGFWM2hIWTIxS1IxcEhiRmhTVlhCS1ZtMTBVMU14VlhoWFdHaFlZbXhhVmxsclpHOWpSbHB4VTIwNWJHSkhVbGxhVldNMVlWVXhjbUpFVWxkTmFsWlVWa2Q0YTFOR1ZuTlhiRlpYVFRGS05sWkhlR0ZXTWxKSVZXdG9hMUl5YUhCVmJHaENaREZhYzFwRVVtcE5WMUl3VlRKMGExZEhTbGhoUjBaVlZucFdkbFl3V25OT2JFcHpXa2R3YVZORlNrbFdNblJyWXpGVmVWTnVTbFJpVlZwWVZGYzFiMWRHYkhGVGExcHNVbTFTV2xkclZURldNVnB6WTBaV1dGWnNTa2hhUkVaYVpVZEtTVk5zYUdoTk1VcFdWbGN4TkdReVZrZFdXR3hyVWpCYWNGVnRlSGRsYkZsNVpVaGtXRkl3VmpSWk1GSlBWMjFGZVZWclpHRldNMmhJV1RJeFMxSXlSa2RoUmxKVFZsaENTMVp0TVRCVk1VMTRWbGhvV0ZkSGFGbFpiWGhoVm14c2NscEhPV3BTYkhCNFZrY3dOVll4V25OalJXaFlWa1UxZGxsV1ZYaGpNVTUxWTBaa1RtRnNXbFZXYTJRMFlURk9SMVp1VGxoaVJscFlWRlJHUzA1c1draGxSMFpYVFd4S1NWWlhkRzloTVVwMFlVWlNWVlpYYUVSVk1uaGhZekZ3UlZWdGNFNVdNVWwzVmxSS01HRXhaRWhUYkdob1VqQmFWbFp0ZUhkTk1XeFdWMjVrVTJKSVFraFdSM2hUVlRKRmVsRnFWbGRTTTJob1ZrUktSMWRHU2xsYVIzQlRWak5vV1ZkWGVHOVJNVkpIVlc1S1dHSkZjSE5WYlRGVFpXeHNWbGRzVG1oU1ZFWjZWVEkxYjFZeFdqWlJhbEpWWVRKU1NGVnFSbUZYVm5CSVlVWk9WMVpHV2xaV2JHTjRUa2RSZVZaclpGZFhSM2h5VldwQ1lXTkdWblJsU0dSc1lrWldOVnBWYUd0WFIwcEhZMFpvV2sxSGFFeFdha1poVW14a2NtVkdaRTVXYmtKSlYxUkplRk14U1hoalJXUmhVbFJXVDFWc2FFTlRNVnAwVFZSQ1ZrMVZNVFJXYkdodlYwWmtTR0ZHYkZwaVdHaG9WbXBHYzJNeGNFaFBWbVJUWWxob1lWZFVRbUZoTWtwSVUydG9WbUpIZUdoV2JHUk9UVlpzVjFaWWFGaFNiRnA1V1ZWYWExUnRSbk5YYkZaWFlUSlJNRlpFUms5VFJrcHlXa1pLYVZKdVFuZFdiWFJYVm0xUmVGZHVVbXBTVjFKWFZGWmFkMDFHVm5Sa1J6bFdVbXh3TUZsVldsTldWbHBZWVVWU1ZXSkdjR2hWTUdSWFUwWktkR05GTlZkTlZXd3pWbXhTUzAxSFJYaGFSV2hVWWtkb2IxVnFRbUZXYkZwMVkwWmthMkpHYkROV01qVlBWREpLUm1OSWNGaGhNbEl6V1ZaYVQxSnNUbkppUm1ST1lteEtlVmRZY0VkV2JWWlhWRzVXVkdKR1NuQldiRnAzVjFaYVIxbDZSbWxOVjFKSVdXdG9SMVpIUlhoalNFNVdZbFJHVkZZeWVHdGpiRnBWVW14a1RsWnVRalpYVkVKaFZqRmtSMWRZY0ZaaWEzQllWbXRXWVdWc1duRlNiR1JxVFZkU2VsbFZaSE5oVmxweVkwUmFWMDFYVVhkWFZtUlNaVlphY2xwR1pHbGlSWEJRVm0xNGExVXhXbk5WYkdoclUwZFNWRlJXV25OT1ZuQldZVWQwV0ZJd2NFaFpNRnB2VjJzeFNGVnVXbGROYWtaSFdsWmFWMk5zY0VoU2JHUk9UVzFvU2xZeFVrcGxSazE0VTFob2FsSlhVbWhWYkZKWFZERldjMkZGVGxSTlZuQXdWRlpTUTFack1WWk5WRkpYWWtkb2RsWXdXbXRUUjBaSFlrWndhVmRIYUc5V2JURTBZekpPYzJORmFGQldNMEpVV1d0b1EwNUdXbkpaTTJSUFZqQldOVlV5ZEd0aGJFcFlZVVpvV21KR1NrTlVWbHBoVjBkTmVtRkdhRk5pUm05NFYxUkNZV0V4VW5SU2JrNVlZWHBHV0ZsWGRFdGpiRlkyVW1zNVUwMVdjREZXVjNoUFlWWkplRk51V2xoV2JFcElXa1JHVDFZeFpISmhSM1JUVFVad2FGWnRNSGhWTVU1WFYyeG9hMUo2Ykc5VVZsWnpUbFpzVm1GRlRsZGlWWEJKV1ZWV1QxbFdTa1pYYldoYVpXdGFNMVZzV2xka1IwNUdUbFprVGxaWGQzcFdiWGhUVXpBeFNGTlliRk5oTWxKVldXMXpNVlpXYkhKYVJ6bFhZa1p3TUZwVmFHdFVhekZYWWtST1YwMXFWa3haYTFwTFpFWldkV0pIUmxOV01VbDZWMVphWVZsWFRuUlVhMXBwVW0xU2NGVnFSa1prTVdSWFZXdDBVMDFXYkRSV1J6VlhWbTFLUmxOc2FGWmlSa3BZVmpGYVlWSXhiRFpTYld4T1ZqRktTVmRYZEc5U01WcElVbGhvYWxORk5WZFpiRkpIVmtaWmVXVkhkR3BpUm5CV1ZXMTRhMVJzV25WUmFscFlWa1ZLYUZacVJtdFNNV1JaWTBaYWFXRXpRbGxXYlhSWFdWZFdjMWR1UmxOaVIxSnhWRlprVTJWc2JGWmFTRTVvVm14d2VWa3dVbUZXTURGWVZWaGtXRlp0VWxOYVZscGhZMnh3UjFwSGJHbFNXRUpSVm0weE5HRXhWWGhYYms1V1lrZG9jbFV3WkZOV1JsSlhWMjVPVDFadVFsZFpWV1F3VjBaSmQyTkZhRnBOUm5CMlZqSnplRk5IUmtabFJtUm9ZVEZ3YjFaWE1UUmhNazUwVm10a1lWSlVWbGhaYlhSTFUyeFplRlZyY0d4U2F6RTBWVEZvYjJGc1NsaFZiV2hXWWtaS1dGWkVSbGRqTWtaR1ZHeFNUbFp1UVhkV1JscFRVVEZhY2sxV1drNVdSa3BZV1d0a2IyUnNXWGRYYlhSVVVqQmFTRmxyV25kaFZtUklZVWM1VjJKVVJUQlpla3BQWXpKT1JtRkdRbGROTUVwVlYxZDBiMUV3TlVkWGJrcGFUVEpTVUZadGVITk9SbGw1VGxaT1YySlZjRWxaVlZwdlZqSkdjazVWT1ZWV2JIQm9WakJrVG1WdFJrZGhSazVwVW01Qk1WWXhXbGRaVjBWNFZXNVNVMkpyTlZsWmExcGhWMFpzVlZOc1NrNVNiVkpZVmpKME1HRnJNVmRUYWtaWFVucEdkbFpVU2t0U01rNUhZa1prVTJKRmNFMVhWM0JIVkRGWmVGcElTbWhTTTJoVVZGVmFkMkZHV25STlNHaFdUVlZzTkZaWE5VOVhSMHBXVjJ4a1ZtSllhRE5VVlZwaFYwZE9ObFpzYUdsU2JrSklWa2Q0VjFVeFdsaFRhMlJxVWpKb1YxUlZaRk5YUmxWM1YydDBhMUl3TlVkVWJGcHJWR3hhV0dRemNGZGlXR2hVVlhwQmVGTkdTbGxoUjBaVFZqSm9WbGRYZEd0aU1rbDRWbTVHVW1KVldsaFphMXAzVFZacmQxZHRkR2hOYTNCSVdXdFNUMVl3TVhGV2JFSlhVa1Z3VEZWdE1VOVRWMDVIWVVkb1RtSkZiRFpXTVZwaFdWWlJlRk51VGxWaWEzQndWVzB4YjFkR2JISlhibVJzVm0xU1dsa3dWbXRXTWtwWFVtcE9WVlpzV25wWlZWcExZMnMxV0U5V2NHaE5iV2hGVm1wR1lXRXhXWGhqUlZaU1lsaFNjRlp0ZEZwTlJscHhVMnBTVjAxV1ZqVlZNblJyWVd4T1JrNVdaRnBpUmtwSVZtdGFVMVl4WkhOWGJYaFhUVVJSZVZaWE1UUmhNVkp6VjI1V1VtRnNjRmxXYTFaTFlVWmFjVkp0ZEZOTlYxSXhWa2Q0VTJGRk1YUmhSemxYVmpOU1dGZFdaRTlqTVZwMVVteFNhRTB4U2xaV2JURTBVekF4UjJKR1dsaGhlbXh3VldwQ2QxZHNiRlpYYTJSWFRXdFdORmt3Wkc5WFJscDBWV3hPWVZac2NHaFpNbmgzVWpGd1NHSkhiRk5YUlVwU1ZtMHdlRTVIUlhoV1dHaFlWMGRvVjFsclpHOWpiRlYzV2taT1dGSnNTbGhYYTFKVFlrWmFjMk5HYkZWV2JGcHlWakJhUzJOdFNrVlViR1JwVjBWS1ZWWnFTbnBsUmtsNFZHNU9VbUpIVW05WlZFNURVMVprVlZOcVVtaE5helV3Vm0xMGExbFdTWGxoUnpsVlZrVktURlpYZUdGak1WWnlWRzFvVGxaWGR6QldWRVp2WXpGVmVWSlliR2hUUlVwWFdXeG9UbVZHYTNkWGJrNVhWbXRhTVZkclZURmhWa3AxVVZoa1YxSnNjRlJWVkVaaFkyc3hWMWRyTlZkU2EzQlpWbTB3ZUdJeVZuTlhiazVZWWxoU1ZWVnFSbUZUUmxsNVpVaGtWMDFWY0ZoWmFrNTNWMFphYzFkdGFGZGhhM0JRVm1wR1UyUldWbk5SYkdScFZtdHdWbFl4WkRCV01sRjRXa2hPV0dFeWFITlZhazVEVlVaYWRHVklUazlTYkd3MVZHeFZOV0ZIU2taalJteGFWbFp3ZWxacVNrWmxSbHBaWVVkR1UwMHlhRFpXYlhCSFdWWmtXRkpyWkdoU2F6VndWVzB3TlU1R1dYaFZhMDVhVmpCV05GWlhOVTlYUm1SSVpVYzVWbUV4V2pOV01GcHpWMGRTUm1SSGNHbFNiR3Q1Vmxjd2VFMUdXWGROVm1ScVVrVmFWMVJYTlc5U1JscHhVMnQwVkZacldqRlhhMXByWVZaa1IxTnNiRmRpVkVJMFZsY3hWMUl4Y0VsV2JFNXBVbGhDZDFadGVHRmtNa1pIVjI1U1RsTkhhRmRVVmxVeFYwWlplV1ZIT1doTlZXOHlXV3RqTlZaV1duTlhibkJWWWtad2VsWnRNVWRTYkZKeldrZHNWMWRGU2t0V01WcFhWakZSZUdKR1pGUmhNWEJaV1d4a2IxbFdjRmhrUjBaT1RWWmFlbFl5ZUd0aE1VbDNUbFZrVldKR2NISldSM2hoVjBkUmVtTkdaR2xYUjJoVlZsaHdRbVZHVGtkVWJHeHBVbXMxYjFSWGVFdFdiR1JZVFZod1RsWnNjRmhaYTJoUFZqSktWbGRzYUZwaE1YQXpWRlZhZDFadFJraGtSbFpvWld0YVdWZFVRbTlqTVZsM1RWaEdVMkV5YUdGV2FrNXZZVVpyZVUxVk9WTldhM0I2V1ZWa2IxUnNaRVpUYkVwWFlsaFNjbFJyV25OWFJsSjFWV3hXYUUxV2NGbFhWM1JyVlRGYVIxVnNWbFJpVkd4d1ZGWmFkMlZXV2xoa1JFSldUVVJHV0ZsclVsTldNVW8yVm14b1YySlVSa3hWYlhoUFl6SkdSMWR0YkZOaE0wSmFWbTF3UjFsWFJYaFhXR2hYWW10d2FGVnFUbE5VTVd4VlVtNWtWRlpzY0hoVk1uQlRWakF4VjFacVZsWmlSMmgyV1ZkNFQxSnJOVmRhUm5CcFVtdHdTVlp0ZEdGa01XUklWbXRzVldKSFVuQlZha1pMVG14YWNsa3phR2xOVmxZMFZqSjBZVmRIUm5OalJtaFhZVEZhZVZwVlduTldWa3B6WTBkNFUySldTbUZYVkVKaFdWZEdWMWRZYkdoU2JXaFpXV3RrVW1ReFpGZFhiazVYVFdzMVNGWXllRzloVmtsNFUyNW9WMUp0VVhkWFZscEtaVVpXV1dGR2FHbFhSa3AyVmxkd1IxbFhWbk5YV0d4cVVqQmFXRlJWVWtkWFZscFhZVWQwV0ZKc2NEQldWM2hQV1ZaYWMyTkhhRnBOYm1nelZXcEdkMU5IU2toaVJrNVlVbFZ3VTFadE1IZGxSVFZJVWxob1YxZEhhRmxXTUdSdlZqRnNjbHBIT1dwaVJsWXpWMnRhVDFkR1NuTlRiR2hYVFdwV2NsWkhlRXRrUjFKRlZHeG9hRTFXY0hsV2FrSmhVMjFSZVZScldtaFNia0pQVlcwMVEwMXNXbkZUYm5Cc1VtczFTRlp0TlZkWFIwcElWV3M1V21KVVJuWlpha1poWTFaR2RGSnNaRTVoZWxZMlYxUkNWMkl4VlhsVGEyaFdZa2RvVmxadGVHRk5NVnBZWlVkR2FrMVlRa3BYYTFwVFZHeGFWVkpVUWxkV1JWcDJXWHBHVm1WV1NsbGlSbHBwVmtkNFdGZFhlRzlpTVZKSFYyNUtXR0pWV25GVVYzUmhVakZhU0dWR1RsVmlSbkF4VlZkd1UxWXhXalpSYWxKV1lXdGFhRmt5YzNoV01XUnlUbFprVTJFelFscFdiVEIzWlVkSmVWWnVUbGhpYXpWWldXeG9VMVpXVm5GUmJVWlVWbTE0VjFZeU1VZFdWMHBHWTBSR1ZsWjZRVEZXYWtwTFZsWktWVkZzY0d4aE0wSlJWMWh3UjJReFRsZFVibEpyVW1zMVQxUlZWbmRXYkZsNFdrUkNXbFl4UmpOVWJGWnJWMGRLU0dGRk9WZGhNVnBNVmtSR1YyUkhWa2xVYXpsVFlrZDNNVlpIZUZaT1YwWklVMnRhYWxKdGVHRldiRnAzWkd4YWNWTnJaR3BoZWxaWVZsZDRhMVV4V25WUmFscFhZbGhvYUZWcVJtdFhSa3B5V2taV2FWSXhTblpXUmxKRFUyc3hjMWR1VW10U00xSlFWVzB4TkZkR1duTmhTRTVYVWpCV05Ga3dXbk5XTURGSVlVVlNWMDFHY0doWmVrWnJaRlp3UjFSck5WZGhNV3QzVm0xd1MwMUdVWGhYYmxKVVlURndWVmxyV25kV2JGcHpWMnRrVGsxV1draFZiRkp6VlZaV1ZVMUVhejA9</span><br></pre></td></tr></table></figure>
+
+<p>一开始猜测是先base64解密，然后转文件呢，没想到就是不停套base64。。。套了20层解出来<code>comEON_YOuAreSOSoS0great</code>本来以为这玩意没有，后来没找到<code>18394.rar</code>的密码拿这玩意试，发现就是这个。。。<br>打开<code>18394.rar</code>发现里面mp3是一段摩尔斯码解码拿到flag</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- --- .-. ... . .. ... ...- . .-. -.-- ...- . .-. -.-- . .- ... -.--</span><br></pre></td></tr></table></figure>
+
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;morseisveryveryeasy&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四十八丶被偷走的文件"><a href="#四十八丶被偷走的文件" class="headerlink" title="四十八丶被偷走的文件"></a>四十八丶被偷走的文件</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>ARPR暴力破解</li>
+</ul>
+<p>打开流量包发现FTP传输rar文件，尝试用binwalk分离得到加密rar文件</p>
+<p>ARPR暴力破解得到flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200804121458443.png" alt="image-20200804121458443"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;6fe99a5d03fb01f833ec3caa80358fa3&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四十九丶秘密文件"><a href="#四十九丶秘密文件" class="headerlink" title="四十九丶秘密文件"></a>四十九丶秘密文件</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>ARPR暴力破解</li>
+</ul>
+<p>binwalk 305df1f78bef4ccfd2a3bd0fe4a6c0d7.pcapng 得到压缩包</p>
+<p>ARPR暴力破解得到flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200804122725995.png" alt="image-20200804122725995"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;d72e5a671aa50fa5f400e5d10eedeaa5&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五十丶-GXYCTF2019-佛系青年"><a href="#五十丶-GXYCTF2019-佛系青年" class="headerlink" title="五十丶[GXYCTF2019]佛系青年"></a>五十丶[GXYCTF2019]佛系青年</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>伪加密</li>
+<li>佛伦禅</li>
+</ul>
+<p>打开压缩包，图片正常打开，txt文件需要密码，第一反应是伪加密，winrar修复得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200804123417392.png" alt="image-20200804123417392"></p>
+<p>明显的佛伦禅加密，解密得到flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200804123235356.png" alt="image-20200804123235356"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;w0_fo_ci_Be1&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五十一丶-BJDCTF2020-认真你就输了"><a href="#五十一丶-BJDCTF2020-认真你就输了" class="headerlink" title="五十一丶[BJDCTF2020]认真你就输了"></a>五十一丶[BJDCTF2020]认真你就输了</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>binwalk</li>
+</ul>
+<p>首先拿到一个xls文件，打开得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200804124219702.png" alt="image-20200804124219702"></p>
+<p>可能里面包含flag.txt文件，然后使用binwalk分离得到：</p>
+<p>稍微找一下得到flag</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;M9eVfi2Pcs#&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五十二丶Mysterious"><a href="#五十二丶Mysterious" class="headerlink" title="五十二丶Mysterious"></a>五十二丶Mysterious</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>。。。</li>
+</ul>
+<p>逆向题</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;123_Buff3r_0v3rf|0w&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五十三丶-BJDCTF2020-一叶障目"><a href="#五十三丶-BJDCTF2020-一叶障目" class="headerlink" title="五十三丶[BJDCTF2020]一叶障目"></a>五十三丶[BJDCTF2020]一叶障目</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>高度隐写</li>
+</ul>
+<p>改个高度</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200804130142970.png" alt="image-20200804130142970"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;66666&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五十四丶sqltest"><a href="#五十四丶sqltest" class="headerlink" title="五十四丶sqltest"></a>五十四丶sqltest</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>就是个sql注入</li>
+</ul>
+<p>导出http协议数据，然后分析一下sql语句就行了</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;47edb8300ed5f9b28fc54b0d09ecdef7&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五十五丶-BJDCTF2020-你猜我是个啥"><a href="#五十五丶-BJDCTF2020-你猜我是个啥" class="headerlink" title="五十五丶[BJDCTF2020]你猜我是个啥"></a>五十五丶[BJDCTF2020]你猜我是个啥</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li><p>winhex查看得出这是个png图片，然后改后缀得到二维码图片，扫码得到flag不在这</p>
+</li>
+</ul>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200804134923318.png" alt="image-20200804134923318"></p>
+<p>然后winhex打开发现flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200804135056704.png" alt="image-20200804135056704"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;i_am_fl@g&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五十六丶-BJDCTF2020-藏藏藏"><a href="#五十六丶-BJDCTF2020-藏藏藏" class="headerlink" title="五十六丶[BJDCTF2020]藏藏藏"></a>五十六丶[BJDCTF2020]藏藏藏</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>手</li>
+</ul>
+<p>foremost分离得到压缩包，打开里面的word文件，扫一下二维码得到flag</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;you are the best!&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五十七丶-BJDCTF2020-just-a-rar"><a href="#五十七丶-BJDCTF2020-just-a-rar" class="headerlink" title="五十七丶[BJDCTF2020]just_a_rar"></a>五十七丶[BJDCTF2020]just_a_rar</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li><p>ARPR</p>
+</li>
+<li><p>图片详细信息</p>
+</li>
+</ul>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200804144721551.png" alt="image-20200804144721551"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200804144815953.png" alt="image-20200804144815953"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;Wadf_123&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五十八丶喵喵喵"><a href="#五十八丶喵喵喵" class="headerlink" title="五十八丶喵喵喵"></a>五十八丶喵喵喵</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>LSB隐写</li>
+<li>二维码补全（修改图片高度）</li>
+<li>NTFS交换数据流隐写</li>
+<li>反编译</li>
+<li>python简单解密（python使用）</li>
+</ul>
+<p>stegsolve提取最低有效位得到png图片</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200804150909543.png" alt="image-20200804150909543"></p>
+<p>得到半个二维码，改高度得到完整二维码。扫码得到百度网盘下载地址：</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200804153853282.png" alt="image-20200804153853282"></p>
+<p>下载得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200804153926684.png" alt="image-20200804153926684"></p>
+<p>这里就要说到一个坑了，这道题的原题是在安恒月赛里的，当时的题目有三个hint，其中一个就是NTFS，但是BUUCTF里面没有提到……卑微-ing，我就看了题解。</p>
+<p>然后发现有大佬说这个得到的flag.rar如果用winrar解压就可以报出错误，但我是用bandzip……解压过程顺畅无比……</p>
+<p>使用工具</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTF20191003233852437.png" alt="img"></p>
+<p>它可以自动识别出你的文件中NTFS隐藏的数据流，并可以直接导出，于是我发现了一个.pyc文件：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTF20191003233955881.png" alt="img"></p>
+<p>丢到在线网站上反编译 <a href="https://tool.lu/pyc/" target="_blank" rel="noopener">python反编译</a>得到一段用来加密的脚本，脚本比较简单，直接写出解密的运行即可得到flag：</p>
+<p><strong>反编译出的加密脚本：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encode</span><span class="params">()</span>:</span></span><br><span class="line">    flag = <span class="string">'*************'</span></span><br><span class="line">    ciphertext = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(flag)):</span><br><span class="line">        s = chr(i ^ ord(flag[i]))</span><br><span class="line">        <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            s = ord(s) + <span class="number">10</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            s = ord(s) - <span class="number">10</span></span><br><span class="line">        ciphertext.append(str(s))</span><br><span class="line">    <span class="keyword">return</span> ciphertext[::<span class="number">-1</span>]  <span class="comment">#倒序一遍</span></span><br><span class="line">ciphertext = [</span><br><span class="line">    <span class="string">'96'</span>,</span><br><span class="line">    <span class="string">'65'</span>,</span><br><span class="line">    <span class="string">'93'</span>,</span><br><span class="line">    <span class="string">'123'</span>,</span><br><span class="line">    <span class="string">'91'</span>,</span><br><span class="line">    <span class="string">'97'</span>,</span><br><span class="line">    <span class="string">'22'</span>,</span><br><span class="line">    <span class="string">'93'</span>,</span><br><span class="line">    <span class="string">'70'</span>,</span><br><span class="line">    <span class="string">'102'</span>,</span><br><span class="line">    <span class="string">'94'</span>,</span><br><span class="line">    <span class="string">'132'</span>,</span><br><span class="line">    <span class="string">'46'</span>,</span><br><span class="line">    <span class="string">'112'</span>,</span><br><span class="line">    <span class="string">'64'</span>,</span><br><span class="line">    <span class="string">'97'</span>,</span><br><span class="line">    <span class="string">'88'</span>,</span><br><span class="line">    <span class="string">'80'</span>,</span><br><span class="line">    <span class="string">'82'</span>,</span><br><span class="line">    <span class="string">'137'</span>,</span><br><span class="line">    <span class="string">'90'</span>,</span><br><span class="line">    <span class="string">'109'</span>,</span><br><span class="line">    <span class="string">'99'</span>,</span><br><span class="line">    <span class="string">'112'</span>]</span><br></pre></td></tr></table></figure>
+
+<p><strong>解密脚本：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">ciphertext = [<span class="string">'96'</span>,<span class="string">'65'</span>,<span class="string">'93'</span>,<span class="string">'123'</span>,<span class="string">'91'</span>,<span class="string">'97'</span>,<span class="string">'22'</span>, <span class="string">'93'</span>,<span class="string">'70'</span>,<span class="string">'102'</span>,<span class="string">'94'</span>,<span class="string">'132'</span>,<span class="string">'46'</span>,<span class="string">'112'</span>,<span class="string">'64'</span>,<span class="string">'97'</span>,<span class="string">'88'</span>,<span class="string">'80'</span>,<span class="string">'82'</span>,<span class="string">'137'</span>,<span class="string">'90'</span>,<span class="string">'109'</span>,<span class="string">'99'</span>,<span class="string">'112'</span>]</span><br><span class="line"></span><br><span class="line">ciphertext = ciphertext[::<span class="number">-1</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decode</span><span class="params">()</span>:</span></span><br><span class="line">    code = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">24</span>):</span><br><span class="line">        <span class="keyword">if</span>(i%<span class="number">2</span> == <span class="number">0</span>):</span><br><span class="line">            a = int(ciphertext[i]) - <span class="number">10</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            a = int(ciphertext[i]) + <span class="number">10</span></span><br><span class="line">        a = i ^ a</span><br><span class="line">        code = code + chr(a)</span><br><span class="line">    print(code)</span><br><span class="line">decode()</span><br></pre></td></tr></table></figure>
+
+<p><strong>跑完得到flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;Y@e_Cl3veR_C1Ever!&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五十九丶-SWPU2019-我有一只马里奥"><a href="#五十九丶-SWPU2019-我有一只马里奥" class="headerlink" title="五十九丶[SWPU2019]我有一只马里奥"></a>五十九丶[SWPU2019]我有一只马里奥</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>NTFS</li>
+</ul>
+<p>打开运行后得到1.txt文件，提示NTFS，使用NtfsStreamsEditor2得到flag</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">swupctf&#123;ddg_is_cute&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="六十丶-BJDCTF-2nd-TARGZ-y1ng"><a href="#六十丶-BJDCTF-2nd-TARGZ-y1ng" class="headerlink" title="六十丶[BJDCTF 2nd]TARGZ-y1ng"></a>六十丶[BJDCTF 2nd]TARGZ-y1ng</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li><p>套娃</p>
+</li>
+<li><p>python</p>
+</li>
+</ul>
+<p>妈的解了10分钟100多层还没解开，上网一查有300个套娃，人傻了。</p>
+<p>只能写脚本。不得不说大佬太强了，这脚本我死也不会写</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#Python3.7大佬超级好用的脚本</span><br><span class="line">import zipfile</span><br><span class="line">name &#x3D; &#39;hW1ES89jF&#39;</span><br><span class="line">while True:</span><br><span class="line">    fz &#x3D; zipfile.ZipFile(name + &#39;.tar.gz&#39;, &#39;r&#39;)</span><br><span class="line">    fz.extractall(pwd&#x3D;bytes(name,&#39;utf-8&#39;))</span><br><span class="line">    name &#x3D; fz.filelist[0].filename[0:9]</span><br><span class="line">    fz.close()</span><br><span class="line">    # fz.filelist[]</span><br><span class="line">    # 获取zip文件中包含的文件的文件列表</span><br><span class="line">    # filename[0:9]获取文件名的第0-9个字符</span><br><span class="line">    #也就是重新赋值name为解压后的文件内的第一个文件的文件名的0-9位字符串</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">        zipfile.ZipFile() 加载压缩文件，创建ZipFile对象</span><br><span class="line">        class zipfile.ZipFile(file[, mode[, compression[, allowZip64]]])</span><br><span class="line">        1.参数file表示文件的路径或类文件对象(file - likeobject);</span><br><span class="line">        2.参数mode指示打开zip文件的模式，默认值为&#39;r&#39;，表示读已经存在的zip文件，也可以为&#39;w&#39;或&#39;a&#39;，</span><br><span class="line">        w&#39;表示新建一个zip文档或覆盖一个已经存在的zip文档，&#39;a&#39;表示将数据附加到一个现存的zip文档中;</span><br><span class="line">        3.参数compression表示在写zip文档时使用的压缩方法，它的值可以是zipfile.ZIP_STORED</span><br><span class="line">        或zipfile.ZIP_DEFLATED。如果要操作的zip文件大小超过2G，应该将allowZip64设置为True。</span><br><span class="line">        </span><br><span class="line">        zipfile.extractall(path&#x3D;None, members&#x3D;None,pwd&#x3D;None) </span><br><span class="line">        path解压缩目录，没什么可说的 </span><br><span class="line">        member需要解压缩的文件名儿列表 </span><br><span class="line">        password当zip文件有密码时需要该选项 </span><br><span class="line">        对于简单的应用，这么多就够了。 </span><br><span class="line">        &#39;&#39;&#39;</span><br></pre></td></tr></table></figure>
+
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BJD&#123;wow_you_can_rea11y_dance&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="六十一丶-BJDCTF2020-鸡你太美"><a href="#六十一丶-BJDCTF2020-鸡你太美" class="headerlink" title="六十一丶[BJDCTF2020]鸡你太美"></a>六十一丶[BJDCTF2020]鸡你太美</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>gif文件头补全</li>
+</ul>
+<p>得到一个篮球GIF和篮球GIF副本，但是副本却打不开，winhex打开发现确实文件头，补全GIF文件头得到flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200804191033957.png" alt="image-20200804191033957"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;zhi_yin_you_are_beautiful&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="六十二丶-BJDCTF2020-纳尼"><a href="#六十二丶-BJDCTF2020-纳尼" class="headerlink" title="六十二丶[BJDCTF2020]纳尼"></a>六十二丶[BJDCTF2020]纳尼</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>gif文件头补全</li>
+</ul>
+<p>还是补全gif文件头，补全后得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200804191320490.png" alt="image-20200804191320490"></p>
+<p>跳动着一串串base64编码字符串，逐帧播放得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Q1RGe3dhbmdfYmFvX3FpYW5nX2lzX3NhZH0&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>解密得到：</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CTF&#123;wang_bao_qiang_is_sad&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="六十三丶zip"><a href="#六十三丶zip" class="headerlink" title="六十三丶zip"></a>六十三丶zip</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>crc32碰撞</li>
+</ul>
+<p><strong>CRC32碰撞</strong></p>
+<hr>
+<p>CRC校验实用程序库 在数据存储和数据通讯领域，为了保证数据的正确，就不得不采用检错的手段。在诸多检错手段中，CRC是最著名的一种。CRC的全称是循环冗余校验。</p>
+<p>总之每个文件都有唯一的CRC32值，即便数据中一个bit发生变化，也会导致CRC32值不同。若是知道一段数据的长度和CRC32值，便可穷举数据，与其CRC32对照，以此达到暴力猜解的目的。但通常只适用于较小文本文件。</p>
+<p>比如这里有一个加密的rar，直接双击就可以看见其中信息，而且我知道其中是数字和字符base64数，便可写脚本爆破</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200805160349123.png" alt="image-20200805160349123"></p>
+<p>脚本如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import zipfile</span><br><span class="line">import string</span><br><span class="line">import binascii</span><br><span class="line"></span><br><span class="line">def CrackCrc(crc):</span><br><span class="line">    for i in dic:</span><br><span class="line">        for j in dic:</span><br><span class="line">            for p in dic:</span><br><span class="line">                for q in dic:</span><br><span class="line">                    s &#x3D; i + j + p + q</span><br><span class="line">                    if crc &#x3D;&#x3D; (binascii.crc32(s)):</span><br><span class="line">                        #print s</span><br><span class="line">                        f.write(s)</span><br><span class="line">                        return</span><br><span class="line">#本题是4个字符所以</span><br><span class="line">def CrackZip():</span><br><span class="line">    for I in range(68):</span><br><span class="line">        file &#x3D; &#39;out&#39; + str(I) + &#39;.zip&#39;</span><br><span class="line">        f &#x3D; zipfile.ZipFile(file, &#39;r&#39;)</span><br><span class="line">        GetCrc &#x3D; f.getinfo(&#39;data.txt&#39;)</span><br><span class="line">        crc &#x3D; GetCrc.CRC</span><br><span class="line">        #以上3行为获取压缩包CRC32值的步骤</span><br><span class="line">        #ZipFile.getinfo(name)</span><br><span class="line">		#功能：获取zip文档内指定文件的信息。返回一个zipfile.ZipInfo对象，它包括文件的详细信息。将在下面 具体介绍该对象。</span><br><span class="line">        #print hex(crc)</span><br><span class="line">        CrackCrc(crc)</span><br><span class="line">        </span><br><span class="line">dic &#x3D; string.ascii_letters + string.digits + &#39;+&#x2F;&#x3D;&#39;</span><br><span class="line"></span><br><span class="line">f &#x3D; open(&#39;out.txt&#39;, &#39;w&#39;)</span><br><span class="line">CrackZip()</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200805175116139.png" alt="image-20200805175116139"></p>
+<p>然后得到一串base64编码字符串：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">z5BzAAANAAAAAAAAAKo+egCAIwBJAAAAVAAAAAKGNKv+a2MdSR0zAwABAAAAQ01UCRUUy91BT5UkSNPoj5hFEVFBRvefHSBCfG0ruGnKnygsMyj8SBaZHxsYHY84LEZ24cXtZ01y3k1K1YJ0vpK9HwqUzb6u9z8igEr3dCCQLQAdAAAAHQAAAAJi0efVT2MdSR0wCAAgAAAAZmxhZy50eHQAsDRpZmZpeCB0aGUgZmlsZSBhbmQgZ2V0IHRoZSBmbGFnxD17AEAHAA&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>然后做下去有点问题，然后我就直接找了网上的wp：</p>
+<p>这道题有点烦，拿出来单独写<br>先贴两张图，一会用<br><img src= "/img/loading.gif" data-src="https://www.icode9.com/img/ll/?i=20190809230910780.png?,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY2OTA5NQ==,size_16,color_FFFFFF,t_70" alt="图一"><br><img src= "/img/loading.gif" data-src="https://www.icode9.com/img/ll/?i=2019080922505529.png?,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY2OTA5NQ==,size_16,color_FFFFFF,t_70" alt="图二"></p>
+<p>首先这题给了68个压缩包，<br><img src= "/img/loading.gif" data-src="https://www.icode9.com/img/ll/?i=20190809225216396.png" alt="在这里插入图片描述"><br>每个压缩包里只有4bytes大小，于是可以想到是crc爆破，自己写的脚本总是被killed，犯懒找了个脚本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import zipfile</span><br><span class="line">import string</span><br><span class="line">import binascii</span><br><span class="line"></span><br><span class="line">def CrackCrc(crc):</span><br><span class="line">    for i in dic: </span><br><span class="line">        for j in dic:</span><br><span class="line">            for k in dic:</span><br><span class="line">                for h in dic:</span><br><span class="line">                    s &#x3D; i + j + k + h</span><br><span class="line">                    if crc &#x3D;&#x3D; (binascii.crc32(s.encode())):</span><br><span class="line">                        f.write(s)</span><br><span class="line">                        return</span><br><span class="line"></span><br><span class="line">def CrackZip():</span><br><span class="line">        for i in range(0,68):</span><br><span class="line">            file &#x3D; &#39;out&#39;+str(i)+&#39;.zip&#39;</span><br><span class="line">            crc &#x3D; zipfile.ZipFile(file,&#39;r&#39;).getinfo(&#39;data.txt&#39;).CRC</span><br><span class="line">            CrackCrc(crc)</span><br><span class="line"></span><br><span class="line">dic &#x3D; string.ascii_letters + string.digits + &#39;+&#x2F;&#x3D;&#39;</span><br><span class="line"></span><br><span class="line">f &#x3D; open(&#39;out.txt&#39;,&#39;w&#39;)</span><br><span class="line">CrackZip()</span><br><span class="line">print(&quot;CRC32碰撞完成&quot;)</span><br><span class="line">f.close</span><br></pre></td></tr></table></figure>
+
+<p>然后得到了一串base64编码，解码为十六进制<br><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFll" alt="在这里插入图片描述"><br>于是前面的图派上用场了，看到CF 90 73我们知道这是一个残缺的rar，补上52 61 72 21 1A 07 00 保存后解压，得到<br><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFll" alt="在这里插入图片描述"><br>这就很皮了，好不容易搞到flag.txt结果就给我看这个，<br>于是看第二张图，在文件头crc和位标记之间有一个74，这一位是固定的，但我们现在是7A<img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFll" alt="在这里插入图片描述"></p>
+<p>将7A改为74，解压<br><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFll" alt="在这里插入图片描述"><br>这个CMT里就是真正的flag了</p>
+<h3 id="六十四丶-ACTF新生赛2020-outguess"><a href="#六十四丶-ACTF新生赛2020-outguess" class="headerlink" title="六十四丶[ACTF新生赛2020]outguess"></a>六十四丶[ACTF新生赛2020]outguess</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>社会主义核心价值观</li>
+<li>outguess</li>
+</ul>
+<p>首先打开压缩包，发现huhuhu.zip里的flag.txt加密了，首先反应是伪加密，winrar修复之后得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200806172417302.png" alt="image-20200806172417302"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200806172558854.png" alt="image-20200806172558854"></p>
+<p>结合题目提示，应该是outguess加密，首先不使用密码尝试解密，但是解不出，然后寻找密码，</p>
+<p>同时解压出的图片发现线索，有一种密码叫<code>社会主机核心价值观</code></p>
+<p>解密得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200806172808366.png" alt="image-20200806172808366"></p>
+<p>outguess解密得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200806172847778.png" alt="image-20200806172847778"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ACTF&#123;gue33_Gu3Ss!2020&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="六十五丶谁赢了比赛？"><a href="#六十五丶谁赢了比赛？" class="headerlink" title="六十五丶谁赢了比赛？"></a>六十五丶谁赢了比赛？</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>ARPR</li>
+<li>GIFFrame</li>
+<li>stegsolve</li>
+</ul>
+<p>分离得到rar加密压缩包，ARPR破解得到gif图片：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200806081120156.png" alt="image-20200806081120156"></p>
+<p>分帧工具<code>GIFFrame</code>第309帧得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200806081355623.png" alt="image-20200806081355623"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">do_you_know_where_is_the_flag</span><br></pre></td></tr></table></figure>
+
+<p>疑似flag，于是提交flag失败，提取出309帧,保存帧为png,到<code>stegsolve</code></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200806081906967.png" alt="image-20200806081906967"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;shanxiajingwu_won_the_game&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="六十六丶-GXYCTF2019-gakki"><a href="#六十六丶-GXYCTF2019-gakki" class="headerlink" title="六十六丶[GXYCTF2019]gakki"></a>六十六丶[GXYCTF2019]gakki</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>压缩包爆破</li>
+<li>字频统计</li>
+</ul>
+<p>这道题做到后面就没有思路了，看了wp才知道字频统计这个点</p>
+<p>下载压缩包之后是一张gakki的图片</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTF2020013115185922.jpg" alt="img"></p>
+<p>foremost一下，得到一个压缩包，包里有flag.txt，但是需要密码才能打开。尝试数字爆破，得到密码8864，打开之后得到一串奇奇怪怪的字符</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808084458925.png" alt="image-20200808084458925"></p>
+<p>看了大佬的wp，对于这种无规律的字符集要尝试字频统计，附上字频统计exp：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">alphabet = <span class="string">"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&amp;*()_+- =&#123;&#125;[]"</span></span><br><span class="line">f = open(<span class="string">"flag.txt"</span>, <span class="string">"r"</span>)</span><br><span class="line">data = f.read()</span><br><span class="line">result = &#123;d:<span class="number">0</span> <span class="keyword">for</span> d <span class="keyword">in</span> alphabet&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sort_by_value</span><span class="params">(d)</span>:</span></span><br><span class="line">    items = d.items()</span><br><span class="line">    backitems = [[v[<span class="number">1</span>],v[<span class="number">0</span>]] <span class="keyword">for</span> v <span class="keyword">in</span> items]</span><br><span class="line">    backitems.sort(reverse=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">return</span> [ backitems[i][<span class="number">1</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(backitems))]</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> d <span class="keyword">in</span> data:</span><br><span class="line">    <span class="keyword">for</span> alpha <span class="keyword">in</span> alphabet:</span><br><span class="line">        <span class="keyword">if</span> d == alpha:</span><br><span class="line">            result[alpha] = result[alpha] + <span class="number">1</span></span><br><span class="line"> </span><br><span class="line">print(sort_by_value(result))</span><br></pre></td></tr></table></figure>
+
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808084649907.png" alt="image-20200808084649907"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GXY&#123;gaki_IsMyw1fe&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="六十七丶弱口令"><a href="#六十七丶弱口令" class="headerlink" title="六十七丶弱口令"></a>六十七丶弱口令</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li><h3 id="六十八丶-SWPU2019-伟大的侦探"><a href="#六十八丶-SWPU2019-伟大的侦探" class="headerlink" title="六十八丶[SWPU2019]伟大的侦探"></a>六十八丶[SWPU2019]伟大的侦探</h3></li>
+</ul>
+<p><strong>本题要点：</strong></p>
+<ul>
+<li>EBCDIC编码</li>
+<li>小人解密</li>
+</ul>
+<p>直接<code>010editor</code>修改文件编码，常用编码跑一跑，当换到<code>EBCDIC</code>的时候看到密码<code>wllm_is_the_best_team!</code>，顺利解开文件以后看到18张小人图片，百度搜索<code>小人解密</code>即可得到<code>福尔摩斯创的会跳舞的小人加密表</code>，对着表得到</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTF1697845-20191210124804210-1493999523.png" alt="img"></p>
+<p>这里用到的是福尔摩斯里面的跳舞的小人加密</p>
+<p><img src= "/img/loading.gif" data-src="C:%5CUsers%5Cyiming%5CDesktop%5CBUUCTF1697845-20191210130506154-1244972742.png" alt="img"></p>
+<p>又是一个新的知识点</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;iloveholmesandwllm&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="六十九丶-HBNIS2018-excel破解"><a href="#六十九丶-HBNIS2018-excel破解" class="headerlink" title="六十九丶[HBNIS2018]excel破解"></a>六十九丶[HBNIS2018]excel破解</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>winhex</li>
+</ul>
+<p>直接在winhex中搜索flag，或者放入kali里strings一下就能得到flag</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CTF&#123;office_easy_cracked&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="七十丶-RoarCTF2019-黄金6年"><a href="#七十丶-RoarCTF2019-黄金6年" class="headerlink" title="七十丶[RoarCTF2019]黄金6年"></a>七十丶[RoarCTF2019]黄金6年</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>winhex</li>
+<li>pr分帧查看视频</li>
+</ul>
+<p>首先得到一个mp4的视频，尝试了一下没有什么有用的信息，然后放入winhex中发现base64编码：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808094823960.png" alt="image-20200808094823960"></p>
+<p>导出解码得到：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808094859719.png" alt="image-20200808094859719"></p>
+<p>发现是个rar文件，notepad++解码保存为rar文件</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808095700258.png" alt="image-20200808095700258"></p>
+<p>打开发现是个加密txt，暴力破解无果，重新回到mp4视频找线索</p>
+<p>然后电脑是真的没装pr，网上wp一抄得到:</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808100414709.png" alt="image-20200808100414709"></p>
+<p>得到password:iwantplayctf</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">roarctf&#123;CTF-from-RuMen-to-RuYuan&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="七十一丶john-in-the-middle"><a href="#七十一丶john-in-the-middle" class="headerlink" title="七十一丶john-in-the-middle"></a>七十一丶john-in-the-middle</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>png图片隐写</li>
+</ul>
+<p>原来是一道普普通通的流量分析题，但是观察了很久实在找不出有什么特别的流量，全是传输的文件，没其他特别的流量，于是全部导出来观察</p>
+<p>首先还是来看图片，先全部看一下通道：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808125316421.png" alt="image-20200808125316421"></p>
+<p>get it</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;J0hn_th3_Sn1ff3r&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="七十二丶黑客帝国"><a href="#七十二丶黑客帝国" class="headerlink" title="七十二丶黑客帝国"></a>七十二丶黑客帝国</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>rar爆破</li>
+</ul>
+<p>首先得到一个txt文件，很明显的16进制数，然后放入winhex，保存为rar文件，发现有密码，尝试使用ARPR暴力破解得到密码：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808130452991.png" alt="image-20200808130452991"></p>
+<p>解压得到png图片，由于打不开，winhex查看发现疑似修改文件头，将文件头改为jpg文件头得到图片：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808130922843.png" alt="image-20200808130922843"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808130929625.png" alt="image-20200808130929625"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;57cd4cfd4e07505b98048ca106132125&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="七十三丶-SWPU2019-你有没有好好看网课"><a href="#七十三丶-SWPU2019-你有没有好好看网课" class="headerlink" title="七十三丶[SWPU2019]你有没有好好看网课?"></a>七十三丶[SWPU2019]你有没有好好看网课?</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>细心</li>
+</ul>
+<p>拿到压缩包之后flag3有提示，首先爆破得到密码</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808134035883.png" alt="image-20200808134035883"></p>
+<p>爆破flag3.zip的密码是183792</p>
+<p>word文档中的内容是：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808134110843.png" alt="image-20200808134110843"></p>
+<p>然后分别在5：20和7：11观察同在flag3文件夹中的<code>影流之主</code>视频：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808134353131.png" alt="image-20200808134353131"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808134420343.png" alt="image-20200808134420343"></p>
+<p>得到:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">..... ..&#x2F;... .&#x2F;... .&#x2F;... ..&#x2F;</span><br><span class="line">dXBfdXBfdXA&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>第一个是敲击码，第二个是base64编码；</p>
+<p>解密得到zip密码<code>wllmup_up_up</code></p>
+<p>解压得到flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808134926372.png" alt="image-20200808134926372"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">swpuctf&#123;A2e_Y0u_Ok?&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="七十四丶-安洵杯-2019-吹着贝斯扫二维码"><a href="#七十四丶-安洵杯-2019-吹着贝斯扫二维码" class="headerlink" title="七十四丶[安洵杯 2019]吹着贝斯扫二维码"></a>七十四丶[安洵杯 2019]吹着贝斯扫二维码</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>肝帝</li>
+</ul>
+<p>看到这道题的时候就知道不一般，不想做，直接网上找wp了，wp如下：</p>
+<p>里面有一堆文件，打开是这样的：<br><a href="https://s2.ax1x.com/2019/12/25/lFsHOA.png" target="_blank" rel="noopener"><img src= "/img/loading.gif" data-src="https://s2.ax1x.com/2019/12/25/lFsHOA.png" alt="https://s2.ax1x.com/2019/12/25/lFsHOA.png"></a><br>随便挑几个没有后缀的文件，用010editor打开，会发现它们的文件头都是FFD8FFE0，这是jpg格式的文件头。<br>可以通过批处理给他们都加上后缀。</p>
+<blockquote>
+<p>@echo off<br>ren * *.jpg</p>
+</blockquote>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808140631462.png" alt="image-20200808140631462"></p>
+<p>T T这是人干的事儿？可以拿<a href="http://d.hatena.ne.jp/keyword/PHOTOSHOP" target="_blank" rel="noopener">PHOTOSHOP</a>进行拼图，经过漫长的一个小时多拼好了。。</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFlF7SL6.png" alt="https://s2.ax1x.com/2019/12/25/lF7SL6.png"><br>扫到如下内容：</p>
+<p>BASE Family ???<br>85-&gt;64-&gt;85-&gt;13-&gt;16-&gt;32</p>
+<p>打开flag.zip 查看注释，因为由大写<a href="http://d.hatena.ne.jp/keyword/%BB%FA%CA%EC" target="_blank" rel="noopener">字母</a>+数字组成，所以很明显是base32，那么就按照它的提示逆序解一下就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GNATOMJVIQZUKNJXGRCTGNRTGI3EMNZTGNBTKRJWGI2UIMRRGNBDEQZWGI3DKMSFGNCDMRJTII3TMNBQGM4TERRTGEZTOMRXGQYDGOBWGI2DCNBY</span><br></pre></td></tr></table></figure>
+
+<p>base32-&gt;十六进制解码-&gt;ROT13-&gt;<a href="https://www.dcode.fr/ascii-85-encoding" target="_blank" rel="noopener">base85</a>-&gt;<a href="http://d.hatena.ne.jp/keyword/base64" target="_blank" rel="noopener">base64</a>-&gt;base85</p>
+<p>得到明文，即压缩文件密码：ThisIsSecret!233<br>解压得到flag。</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;Qr_Is_MeAn1nGfuL&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="七十五丶间谍启示录"><a href="#七十五丶间谍启示录" class="headerlink" title="七十五丶间谍启示录"></a>七十五丶间谍启示录</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>foremost</li>
+</ul>
+<p>foremost分离得到</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808141753045.png" alt="image-20200808141753045"></p>
+<p>得到4个东西 进入rar，打开压缩包运行flag.exe就生成了一个flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808141835390.png" alt="image-20200808141835390"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200808141901597.png" alt="image-20200808141901597"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;379:7b758:g7dfe7f19:9464f:4g9231&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="七十六丶-GXYCTF2019-SXMgdGhpcyBiYXNlPw"><a href="#七十六丶-GXYCTF2019-SXMgdGhpcyBiYXNlPw" class="headerlink" title="七十六丶[GXYCTF2019]SXMgdGhpcyBiYXNlPw=="></a>七十六丶[GXYCTF2019]SXMgdGhpcyBiYXNlPw==</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>base64隐写</li>
+</ul>
+<p>base64隐写原理：</p>
+<p><a href="https://blog.csdn.net/xnightmare/article/details/103774379" target="_blank" rel="noopener">https://blog.csdn.net/xnightmare/article/details/103774379</a></p>
+<p>题目文件中每一行为一串Base64编码后的字符串，解题思路大致如下：</p>
+<ol>
+<li>依次读取每行，从中提取出隐写位。<ul>
+<li>如果最后没有‘=’，说明没有隐写位，跳过。</li>
+<li>如果最后是一个‘=’，说明有两位隐写位，将倒数第二个字符转化为对应的二进制索引，然后取后两位。</li>
+<li>如果最后是两个‘=’，说明有四位隐写位，将倒数第三个字符转化为对应的二进制索引，然后取后四位。</li>
+</ul>
+</li>
+<li>将每行提取出的隐写位依次连接起来，每8位为一组转换为ASCII字符，最后不足8位的丢弃。</li>
+</ol>
+<p>解题脚本如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def inttobin(a, n):</span><br><span class="line">    ret &#x3D; bin(a)[2:]</span><br><span class="line">    while len(ret) &lt; n:</span><br><span class="line">        ret &#x3D; &#39;0&#39; + ret</span><br><span class="line">    return ret</span><br><span class="line"></span><br><span class="line">table &#x3D; &#39;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+&#x2F;&#39;</span><br><span class="line"></span><br><span class="line">f &#x3D; open(&quot;flag.txt&quot;, &quot;r&quot;)</span><br><span class="line">tmpbin &#x3D; &#39;&#39;</span><br><span class="line">res &#x3D; &#39;&#39;</span><br><span class="line">line &#x3D; f.readline()</span><br><span class="line">while line:</span><br><span class="line">    if line[-3] &#x3D;&#x3D; &#39;&#x3D;&#39;:</span><br><span class="line">        if line[-4] &#x3D;&#x3D; &#39;&#x3D;&#39;:</span><br><span class="line">            tmpbin +&#x3D; inttobin(table.index(line[-5]), 6)[2:]</span><br><span class="line">        else:</span><br><span class="line">            tmpbin +&#x3D; inttobin(table.index(line[-4]), 6)[4:]</span><br><span class="line">    line &#x3D; f.readline()</span><br><span class="line">quotient &#x3D; len(tmpbin)&#x2F;8</span><br><span class="line">for i in range(quotient):</span><br><span class="line">    res +&#x3D; chr(int(tmpbin[8*i:8*i+8], 2))</span><br><span class="line">print res</span><br></pre></td></tr></table></figure>
+
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GXY&#123;fazhazhenhaoting&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="七十七丶-ACTF新生赛2020-base64隐写"><a href="#七十七丶-ACTF新生赛2020-base64隐写" class="headerlink" title="七十七丶[ACTF新生赛2020]base64隐写"></a>七十七丶[ACTF新生赛2020]base64隐写</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>base64隐写</li>
+</ul>
+<p>解密脚本：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def get_base64_diff_value(s1, s2):</span><br><span class="line">    base64chars &#x3D; &#39;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+&#x2F;&#39;</span><br><span class="line">    res &#x3D; 0</span><br><span class="line">    for i in xrange(len(s2)):</span><br><span class="line">        if s1[i] !&#x3D; s2[i]:</span><br><span class="line">            return abs(base64chars.index(s1[i]) - base64chars.index(s2[i]))</span><br><span class="line">    return res</span><br><span class="line">def solve_stego():</span><br><span class="line">    with open(&#39;2.txt&#39;, &#39;rb&#39;) as f:</span><br><span class="line">        file_lines &#x3D; f.readlines()</span><br><span class="line">        bin_str &#x3D; &#39;&#39;</span><br><span class="line">        for line in file_lines:</span><br><span class="line">            steg_line &#x3D; line.replace(&#39;\n&#39;, &#39;&#39;)</span><br><span class="line">            norm_line &#x3D; line.replace(&#39;\n&#39;, &#39;&#39;).decode(&#39;base64&#39;).encode(&#39;base64&#39;).replace(&#39;\n&#39;, &#39;&#39;)</span><br><span class="line">            diff &#x3D; get_base64_diff_value(steg_line, norm_line)</span><br><span class="line">            print diff</span><br><span class="line">            pads_num &#x3D; steg_line.count(&#39;&#x3D;&#39;)</span><br><span class="line">            if diff:</span><br><span class="line">                bin_str +&#x3D; bin(diff)[2:].zfill(pads_num * 2)</span><br><span class="line">            else:</span><br><span class="line">                bin_str +&#x3D; &#39;0&#39; * pads_num * 2</span><br><span class="line">            print goflag(bin_str)</span><br><span class="line">def goflag(bin_str):</span><br><span class="line">    res_str &#x3D; &#39;&#39;</span><br><span class="line">    for i in xrange(0, len(bin_str), 8):</span><br><span class="line">        res_str +&#x3D; chr(int(bin_str[i:i + 8], 2))</span><br><span class="line">    return res_str</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    solve_stego()</span><br></pre></td></tr></table></figure>
+
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ACTF&#123;6aseb4_f33!&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="七十八丶-BJDCTF-2nd-Imagin-开场曲"><a href="#七十八丶-BJDCTF-2nd-Imagin-开场曲" class="headerlink" title="七十八丶[BJDCTF 2nd]Imagin - 开场曲"></a>七十八丶[BJDCTF 2nd]Imagin - 开场曲</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>emmm</li>
+</ul>
+<p>不太喜欢这种题。。</p>
+<p>wp：</p>
+<p><a href="https://blog.csdn.net/qq_42016346/article/details/105039640" target="_blank" rel="noopener">https://blog.csdn.net/qq_42016346/article/details/105039640</a></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BJD&#123;MIKUTAP3313313&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="七十九丶-V-amp-N2020-公开赛-拉胯的三条命令"><a href="#七十九丶-V-amp-N2020-公开赛-拉胯的三条命令" class="headerlink" title="七十九丶[V&amp;N2020 公开赛]拉胯的三条命令"></a>七十九丶[V&amp;N2020 公开赛]拉胯的三条命令</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>端口扫描原理</li>
+</ul>
+<p>题目提示检查端口开启状态，然后流量包名字为nmap，查看流量包</p>
+<p>TCP connect端口扫描服务端与客户端建立连接成功（目标端口开放）的过程：<br>① Client端发送SYN；<br>② Server端返回SYN/ACK，表明端口开放；<br>③ Client端返回ACK，表明连接已建立；<br>④ Client端主动断开连接。<br>建立连接成功（目标端口开放）如图所示</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTF20161219153112266" alt="img"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200812081052358.png" alt="image-20200812081052358"></p>
+<p>一大段红色的不用看，其中有几段连接成功的</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;21226318013306&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="八十丶-WUSTCTF2020-find-me"><a href="#八十丶-WUSTCTF2020-find-me" class="headerlink" title="八十丶[WUSTCTF2020]find_me"></a>八十丶[WUSTCTF2020]find_me</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>盲文解密</li>
+</ul>
+<p>属性面板详细信息得到盲文，解密得到flag</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200812081936528.png" alt="image-20200812081936528"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wctf2020&#123;y$0$u_f$1$n$d$_M$e$e$e$e$e&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="八十一丶-MRCTF2020-你能看懂音符吗"><a href="#八十一丶-MRCTF2020-你能看懂音符吗" class="headerlink" title="八十一丶[MRCTF2020]你能看懂音符吗"></a>八十一丶[MRCTF2020]你能看懂音符吗</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>文件头修复</li>
+<li>word隐藏文字</li>
+<li>音符解密</li>
+</ul>
+<p>拿到题目压缩包发现不能打开，winhex查看发现文件头不对，修改为52 61，得到word文件：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200812082701907.png" alt="image-20200812082701907"></p>
+<p>音符解密得到flag：</p>
+<p><a href="https://www.qqxiuzi.cn/bianma/wenbenjiami.php?s=yinyue" target="_blank" rel="noopener">https://www.qqxiuzi.cn/bianma/wenbenjiami.php?s=yinyue</a></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MRCTF&#123;thEse_n0tes_ArE_am@zing~&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="八十二丶-HBNIS2018-来题中等的吧"><a href="#八十二丶-HBNIS2018-来题中等的吧" class="headerlink" title="八十二丶[HBNIS2018]来题中等的吧"></a>八十二丶[HBNIS2018]来题中等的吧</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>莫尔斯电码</li>
+</ul>
+<p>妈的，真没想到这么简单，首先得到一张图片：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200812083534609.png" alt="image-20200812083534609"></p>
+<p>首先猜测为摩尔斯电码，窄为点，宽为杠</p>
+<p>得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.- .-.. .--. .... .- .-.. .- -...</span><br></pre></td></tr></table></figure>
+
+<p>解码得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALPHALAB</span><br></pre></td></tr></table></figure>
+
+<p>本以为没这么简单，去stegsolve里去看。。</p>
+<p>然后就这么简单：</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;ALPHALAB&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="八十三丶二维码"><a href="#八十三丶二维码" class="headerlink" title="八十三丶二维码"></a>八十三丶二维码</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>手动拼接</li>
+</ul>
+<p>没啥捷径，ps手工修吧，直接把9块碎图放一起扫不出来，因为这个纸形变略微严重，ps的变形功能可以修回去</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200812120716757.png" alt="image-20200812120716757"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;7bf116c8ec2545708781fd4a0dda44e5&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="八十四丶-HBNIS2018-caesar"><a href="#八十四丶-HBNIS2018-caesar" class="headerlink" title="八十四丶[HBNIS2018]caesar"></a>八十四丶[HBNIS2018]caesar</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>凯撒密码</li>
+</ul>
+<p>题目提示凯撒密码：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200812084838059.png" alt="image-20200812084838059"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;flagiscaesar&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="八十五丶-SUCTF-2019-Game"><a href="#八十五丶-SUCTF-2019-Game" class="headerlink" title="八十五丶[SUCTF 2019]Game"></a>八十五丶[SUCTF 2019]Game</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>3des加密</li>
+</ul>
+<p><strong>查看源代码找到一串base32，解码得：suctf{hAHaha_Fak3_F1ag}，显然是个假的flag。</strong><br>[<img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTF1.png" alt="This is an test image"><br>接着在图片中寻找，找到一个des加密的字符串：</p>
+<p>U2FsdGVkX1+zHjSBeYPtWQVSwXzcVFZLu6Qm0To/KeuHg8vKAxFrVQ==**<br>[<img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTF2.png" alt="This is an test image"><br>用在线网站解码des，使用3DES解码：密码为假的flag<br>[<img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTF3.png" alt="This is an test image"><br>得到flag：</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;U_F0und_1t&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="八十六丶蜘蛛侠呀"><a href="#八十六丶蜘蛛侠呀" class="headerlink" title="八十六丶蜘蛛侠呀"></a>八十六丶蜘蛛侠呀</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>不会</li>
+</ul>
+<h3 id="八十七丶小易的U盘"><a href="#八十七丶小易的U盘" class="headerlink" title="八十七丶小易的U盘"></a>八十七丶小易的U盘</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li><h3 id="八十八丶-GUET-CTF2019-KO"><a href="#八十八丶-GUET-CTF2019-KO" class="headerlink" title="八十八丶[GUET-CTF2019]KO"></a>八十八丶[GUET-CTF2019]KO</h3></li>
+</ul>
+<p><strong>本题要点：</strong></p>
+<ul>
+<li>ook编码</li>
+</ul>
+<p>解密网站：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.splitbrain.org&#x2F;services&#x2F;ook</span><br></pre></td></tr></table></figure>
+
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;welcome to CTF&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="八十九丶-MRCTF2020-ezmisc"><a href="#八十九丶-MRCTF2020-ezmisc" class="headerlink" title="八十九丶[MRCTF2020]ezmisc"></a>八十九丶[MRCTF2020]ezmisc</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>高度</li>
+</ul>
+<p>修改高度得到flag</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;1ts_vEryyyyyy_ez!&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="九十丶-DDCTF2018-╯°□°）╯︵-┻━┻"><a href="#九十丶-DDCTF2018-╯°□°）╯︵-┻━┻" class="headerlink" title="九十丶[DDCTF2018](╯°□°）╯︵ ┻━┻"></a>九十丶[DDCTF2018](╯°□°）╯︵ ┻━┻</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>ASCII编码</li>
+</ul>
+<p>首先得到一串字符串：</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200812135744057.png" alt="image-20200812135744057"></p>
+<p>尝试了几次解码解出来都是乱码，然后重新观察字符串，首先肯定是16进制数，然后将16进制数分割两位一组，然后转换成10进制得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import re</span><br><span class="line">string &#x3D; &#39;d4e8e1f4a0f7e1f3a0e6e1f3f4a1a0d4e8e5a0e6ece1e7a0e9f3baa0c4c4c3d4c6fbb9b2b2e1e2b9b9b7b4e1b4b7e3e4b3b2b2e3e6b4b3e2b5b0b6b1b0e6e1e5e1b5fd&#39;</span><br><span class="line"># 写出正则表达式 任意2个字符</span><br><span class="line">pattern &#x3D; re.compile(&#39;.&#123;2&#125;&#39;)</span><br><span class="line"># findall是找到所有的字符,再在字符中添加空格，当然你想添加其他东西当然也可以</span><br><span class="line">print(&#39; &#39;.join(pattern.findall(string)))</span><br></pre></td></tr></table></figure>
+
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200812135723210.png" alt="image-20200812135723210"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">212 232 225 244 160 247 225 243 160 230 225 243 244 161 160 212 232 229 160 230 236 225 231 160 233 243 186 160 196 196 195 212 198 251 185 178 178 225 226 185 185 183 180 225 180 183 227 228 179 178 178 227 230 180 179 226 181 176 182 177 176 230 225 229 225 181 253</span><br></pre></td></tr></table></figure>
+
+<p>发现得到的数字都在一个范围内，然后考虑到ascii码可见区域，于是尝试对其进行取余128的操作。</p>
+<p>最后发现余数均在ascii码的可见区域。之后hex2ascii 即可获取到flag。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a&#x3D;[212,232,225,244,160,247,225,243,160,230,225,243,244,161,160,212,232,229,160,230,236,225,231,160,233,243,186,160,196,196,195,212,198,251,185,178,178,225,226,185,185,183,180,225,180,183,227,228,179,178,178,227,230,180,179,226,181,176,182,177,176,230,225,229,225,181,253]</span><br><span class="line">b&#x3D;&#39;&#39;</span><br><span class="line">for i in a:</span><br><span class="line">	b+&#x3D;chr(i%128)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DDCTF&#123;922ab9974a47cd322cf43b50610faea5&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="九十一丶-HBNIS2018-低个头"><a href="#九十一丶-HBNIS2018-低个头" class="headerlink" title="九十一丶[HBNIS2018]低个头"></a>九十一丶[HBNIS2018]低个头</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li>键盘</li>
+</ul>
+<p>题目低个头，低头看到了键盘，一对应。。。。</p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTFimage-20200812142153794.png" alt="image-20200812142153794"></p>
+<p><img src= "/img/loading.gif" data-src="https://images-1300363852.cos.ap-shanghai.myqcloud.com/CTF%5B%E6%9D%82%E9%A1%B9%5D/BUUCTF20200407171541541.png" alt="在这里插入图片描述"></p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;CTF&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="九十二丶-安洵杯-2019-Attack"><a href="#九十二丶-安洵杯-2019-Attack" class="headerlink" title="九十二丶[安洵杯 2019]Attack"></a>九十二丶[安洵杯 2019]Attack</h3><p><strong>本题要点：</strong></p>
+<ul>
+<li><h3 id="九十三丶-ACTF新生赛2020-NTFS数据流"><a href="#九十三丶-ACTF新生赛2020-NTFS数据流" class="headerlink" title="九十三丶[ACTF新生赛2020]NTFS数据流"></a>九十三丶[ACTF新生赛2020]NTFS数据流</h3></li>
+</ul>
+<p><strong>本题要点：</strong></p>
+<ul>
+<li><h3 id="九十四丶百里挑一"><a href="#九十四丶百里挑一" class="headerlink" title="九十四丶百里挑一"></a>九十四丶百里挑一</h3></li>
+</ul>
+<p><strong>本体要点：</strong></p>
+<ul>
+<li><h3 id="九十五丶USB"><a href="#九十五丶USB" class="headerlink" title="九十五丶USB"></a>九十五丶USB</h3></li>
+</ul>
+<p><strong>本题要点：</strong></p>
+<ul>
+<li><h3 id="九十六丶寂静之城"><a href="#九十六丶寂静之城" class="headerlink" title="九十六丶寂静之城"></a>九十六丶寂静之城</h3></li>
+</ul>
+<p><strong>本题要点：</strong></p>
+<ul>
+<li>社工题</li>
+</ul>
+<p>点赞人中有一个<code>出题人</code>的昵称</p>
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">flag&#123;31010419920831481363542021127&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><strong>flag：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">yym</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.yym.show/2020-07-23-BUUCTF%E6%9D%82%E9%A1%B9%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">http://www.yym.show/2020-07-23-BUUCTF杂项刷题记录/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.yym.show" target="_blank">yym's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/buuctf-%E6%9D%82%E9%A1%B9/">buuctf,杂项</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><button class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="/img/wechat.jpg" alt="wechat" onclick="window.open('/img/wechat.jpg')"/><div class="post-qr-code__desc">wechat</div></li><li class="reward-item"><img class="post-qr-code__img" src="/img/alipay.jpg" alt="alipay" onclick="window.open('/img/alipay.jpg')"/><div class="post-qr-code__desc">alipay</div></li></ul></div></button></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020-06-14-Misc-%E9%9A%90%E5%86%99%E6%9C%AF%E8%BF%9B%E9%98%B6%E6%80%BB%E7%BB%93/"><img class="prev-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Misc-隐写术进阶总结</div></div></a></div><div class="next-post pull-right"><a href="/2020-07-23-Scapy%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/"><img class="next-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Scapy流量分析</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="lv-container" data-id="city" data-uid="MTAyMC81MDU5Ny8yNzA4MA=="><script>(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');</script></div></div></article></main><footer id="footer" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By yym</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">Hi, welcome to my <a href="http://www.yym.show/">blog</a>!</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" title="缩小字体"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">繁</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fas fa-comments"></i></a><button class="close" id="mobile-toc-button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/third-party/click_heart.js"></script><script src="/js/search/local-search.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":200,"height":350},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
